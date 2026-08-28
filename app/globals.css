@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { @apply bg-tinte text-kreide antialiased; }
+
+/* Sichtbarer Fokus. Ohne den ist die Seite mit der Tastatur unbedienbar —
+   und Barrierefreiheit ist eine der Leistungen, die hier verkauft werden. */
+:focus-visible {
+  outline: 2px solid theme("colors.leuchten");
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
