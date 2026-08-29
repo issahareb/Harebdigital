@@ -44,12 +44,24 @@ export const navigation = [
 ] as const;
 
 export const start = {
-  titel: "Webagentur Essen",
-  h1: "Websites aus Essen, die schnell sind und Anfragen bringen",
+  /*
+   * Die Startseite traegt die POSITIONIERUNG, nicht den Ort.
+   *
+   * Hier stand zuerst "Webagentur Essen" als Titel und "Websites aus Essen"
+   * als Ueberschrift. Das war zu eng: die Startseite ist die staerkste Seite,
+   * und wer aus Hamburg kommt und den Namen sucht, liest dort als Erstes eine
+   * geografische Einschraenkung, die es gar nicht gibt.
+   *
+   * Der Ortsbezug sitzt deshalb auf den lokalen Unterseiten — dort, wo die
+   * Suchen mit Kaufabsicht liegen. Lokal ist die Tuer, nicht die Decke.
+   */
+  titel: "Hareb Digital",
+  h1: "Websites und KI-Systeme, gebaut von dem, der sie entwickelt",
   beschreibung:
-    "Hareb Digital baut Websites, Landingpages und KI-Systeme für Unternehmen im Ruhrgebiet. Individuell entwickelt statt Baukasten — messbar schnell, bei Google auffindbar, nach dem Launch betreut.",
+    "Hareb Digital baut Websites, Landingpages und KI-Systeme — individuell entwickelt statt Baukasten. Aus Essen, remote für Kunden im gesamten deutschsprachigen Raum.",
   vorspann:
-    "Ich baue Ihre Website selbst — von der Struktur über das Design bis zum Code. Kein Template, kein Plugin-Stapel, keine Agentur-Kette. Sie haben einen Ansprechpartner, und der ist derjenige, der es gebaut hat.",
+    "Kein Template, kein Plugin-Stapel, keine Agentur-Kette. Sie haben einen Ansprechpartner, und der ist derjenige, der es gebaut hat — von der Struktur über das Design bis zum Code.",
+  ortszeile: "Sitz in Essen · remote für Kunden im gesamten deutschsprachigen Raum",
   hauptCta: { label: "Kostenloses Erstgespräch", href: "/kontakt" },
   zweitCta: { label: "Referenzen ansehen", href: "/referenzen" },
   belege: [
@@ -83,6 +95,28 @@ export const leistungen = [
       { titel: "Handgebaut, nicht zusammengesteckt", text: "Kein WordPress-Theme mit zwanzig Plugins, die sich gegenseitig ausbremsen und jede Woche Sicherheitslücken nachreichen." },
       { titel: "Barrierefrei von Anfang an", text: "Kontraste, Tastaturbedienung, Vorlesbarkeit. Seit dem Barrierefreiheitsstärkungsgesetz ist das für viele Unternehmen Pflicht — und nachträglich teurer." },
       { titel: "Pflegbar ohne mich", text: "Auf Wunsch mit CMS, damit Sie Texte und Bilder selbst ändern. Eine Einweisung ist dabei." },
+    ],
+  },
+  {
+    /*
+     * Zweite lokale Seite, bewusst mit ANDEREM Blickwinkel als
+     * webdesign-essen: dort geht es ums Bauen, hier um die Zusammenarbeit.
+     * Zwei Seiten mit demselben Inhalt waeren duenner Doppelinhalt — Google
+     * waehlt dann eine aus und wirft die andere weg.
+     */
+    slug: "webagentur-essen",
+    kurz: "Agentur aus Essen",
+    titel: "Webagentur Essen",
+    beschreibung:
+      "Webagentur in Essen: ein Ansprechpartner für Website, SEO, Betreuung und Automatisierung. Persönlich vor Ort im Ruhrgebiet, remote überall sonst.",
+    h1: "Eine Webagentur in Essen — mit einem Ansprechpartner statt einer Kette",
+    einleitung:
+      "In den meisten Agenturen reden Sie mit jemandem, der nicht baut, und jemand baut, mit dem Sie nie reden. Bei mir ist das dieselbe Person. Das kürzt jede Rückfrage ab und ist der Grund, warum Projekte hier in Wochen fertig werden und nicht in Quartalen.",
+    punkte: [
+      { titel: "Persönlich im Ruhrgebiet", text: "Essen, Bochum, Gelsenkirchen, Duisburg, Oberhausen, Mülheim — dort komme ich vorbei. Alles Weitere geht per Video, das ändert am Ergebnis nichts." },
+      { titel: "Alles aus einer Hand", text: "Design, Entwicklung, Texte, SEO und Betreuung. Sie koordinieren keine drei Dienstleister, die sich gegenseitig die Schuld geben." },
+      { titel: "Betreuung statt Übergabe und weg", text: "Auf Wunsch Wartung, Updates und Überwachung mit monatlichem Bericht. Ohne Betreuung bekommen Sie alles vollständig übergeben — Code, Domain, Zugänge." },
+      { titel: "Auch das, was andere nicht bauen", text: "Wenn Ihr Vorhaben über eine Website hinausgeht — Automatisierung, Auswertungen, ein KI-Agent —, muss dafür niemand hinzugezogen werden." },
     ],
   },
   {

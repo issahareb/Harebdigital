@@ -3,7 +3,12 @@ import { Abschnitt, Karte, Knopf, Projektbild, Ueberschrift } from "@/components
 import { ablauf, fragen, leistungen, marke, referenzen, start } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `${start.titel} — Websites, die Anfragen bringen`,
+  /*
+   * "absolute", damit die Vorlage aus dem Layout hier NICHT greift. Sonst
+   * stuende der Markenname zweimal im Titel — einmal aus der Vorlage, einmal
+   * aus dem Text. Ueber sechzig Zeichen kuerzt Google ohnehin.
+   */
+  title: { absolute: "Hareb Digital — Websites und KI-Systeme, die arbeiten" },
   description: start.beschreibung,
   alternates: { canonical: "/" },
 };
@@ -34,7 +39,7 @@ export default function Startseite() {
     <>
       <Abschnitt className="pt-20 sm:pt-28">
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-leuchten">
-          {marke.claim}
+          {start.ortszeile}
         </p>
         <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
           {start.h1}
