@@ -1,0 +1,27 @@
+# Wie diese Seite gebaut und gestartet wird — im Repo und nicht im Dashboard.
+#
+# Railway hat den ersten Anlauf mit "copy /app/out" abgebrochen: der Builder
+# hatte die Seite als statischen Export erkannt und suchte das Verzeichnis, das
+# `output: "export"` frueher erzeugt hat. Das ist beim Umzug weggefallen — die
+# Landingpage liest den Accept-Language-Kopf und einen Keks, und beides gibt es
+# beim Bauen noch nicht (siehe next.config.mjs). Es gibt kein out/ mehr, und es
+# soll auch keins geben.
+#
+# Steht der Plan hier, muss der Builder nichts erkennen. Das ist derselbe
+# Aufbau wie im Taxi-Repo, aus demselben Grund.
+
+[build]
+builder = "nixpacks"
+# `npm ci` statt `npm install`: es baut exakt das, was in package-lock.json
+# steht, und bricht ab, wenn die Datei nicht zum package.json passt. Ein Build,
+# der sich seine Abhaengigkeiten selbst aussucht, ist kein reproduzierbarer.
+buildCommand = "npm ci && npm run build"
+
+[deploy]
+# `next start` bedient den Server, der die Sprachwahl ueberhaupt erst moeglich
+# macht. Den Port gibt Railway ueber die Umgebung vor, Next liest ihn selbst.
+startCommand = "npm run start"
+healthcheckPath = "/"
+healthcheckTimeout = 120
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
