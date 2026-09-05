@@ -16,7 +16,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-const ORDNER = ["app", "components", "content"];
+const ORDNER = ["app", "components", "lib"];
 const MUSTER = /PLATZHALTER[A-Z_]*/g;
 
 async function dateien(pfad) {
@@ -47,7 +47,7 @@ if (treffer.length > 0) {
   console.error(`\n${treffer.length} Platzhalter — die Seite ist noch nicht startbereit:\n`);
   for (const t of treffer) console.error(`  ${t.datei}:${t.zeile}  ${t.text}`);
   console.error(
-    "\nBitte in content/site.ts eintragen: Anschrift, Telefon, E-Mail, USt-ID." +
+    "\nBitte in lib/marke.ts eintragen: Anschrift, Telefon, USt-ID." +
       "\nDie Datenschutzerklärung gehört vorher geprüft — sie ist ein Gerüst, kein fertiger Text.\n",
   );
   process.exit(1);

@@ -1,65 +1,68 @@
-import type { Metadata } from "next";
-import { Abschnitt } from "@/components/bausteine";
-import { marke } from "@/content/site";
+import type { Metadata } from 'next'
+import { HdUnterseite, Rechtsabschnitt } from '@/components/hd-unterseite'
+import { marke } from '@/lib/marke'
+import { sprache } from '@/lib/sprache'
 
 export const metadata: Metadata = {
-  title: "Impressum",
+  title: `Impressum — ${marke.name}`,
   description: `Impressum und Anbieterkennzeichnung von ${marke.name}.`,
-  alternates: { canonical: "/impressum/" },
+  alternates: { canonical: '/impressum/' },
   // Rechtstexte gehören nicht in den Index — sie sollen niemanden anziehen.
   robots: { index: false, follow: true },
-};
+}
 
-export default function Impressum() {
+/*
+ * Deutsch, auch wenn die Seite darum herum drei Sprachen spricht.
+ *
+ * Das ist kein Versäumnis: die Anbieterkennzeichnung nach § 5 DDG richtet sich
+ * nach dem Recht am Sitz des Anbieters, und der ist Essen. Eine übersetzte
+ * Fassung wäre keine zweite Rechtsgrundlage, sondern nur eine zweite Stelle,
+ * an der ein Zahlendreher stehen kann. Der Rahmen bleibt in der Sprache des
+ * Besuchers, der Text selbst trägt sein eigenes `lang`.
+ */
+export default async function Impressum() {
   return (
-    <Abschnitt className="pt-20 sm:pt-24">
-      <h1 className="text-4xl font-semibold tracking-tight">Impressum</h1>
+    <HdUnterseite lang={await sprache()}>
+      <div lang="de">
+        <h1 className="font-display text-4xl font-bold tracking-tight">Impressum</h1>
 
-      <div className="mt-10 max-w-2xl space-y-8 leading-relaxed text-nebel">
-        <section>
-          <h2 className="text-lg font-semibold text-kreide">Angaben gemäß § 5 DDG</h2>
-          <p className="mt-3">
-            {marke.name}
-            <br />
-            {marke.inhaber}
-            <br />
-            {marke.strasse}
-            <br />
-            {marke.plz} {marke.ort}
-          </p>
-        </section>
+        <div className="mt-10 max-w-2xl space-y-8">
+          <Rechtsabschnitt titel="Angaben gemäß § 5 DDG">
+            <p>
+              {marke.name}
+              <br />
+              {marke.inhaber}
+              <br />
+              {marke.strasse}
+              <br />
+              {marke.plz} {marke.ort}
+            </p>
+          </Rechtsabschnitt>
 
-        <section>
-          <h2 className="text-lg font-semibold text-kreide">Kontakt</h2>
-          <p className="mt-3">
-            Telefon: {marke.telefon}
-            <br />
-            E-Mail: {marke.email}
-          </p>
-        </section>
+          <Rechtsabschnitt titel="Kontakt">
+            <p>
+              Telefon: {marke.telefon}
+              <br />
+              E-Mail: {marke.email}
+            </p>
+          </Rechtsabschnitt>
 
-        <section>
-          <h2 className="text-lg font-semibold text-kreide">Umsatzsteuer</h2>
-          <p className="mt-3">PLATZHALTER_USTID</p>
-        </section>
+          <Rechtsabschnitt titel="Umsatzsteuer">
+            <p>PLATZHALTER_USTID</p>
+          </Rechtsabschnitt>
 
-        <section>
-          <h2 className="text-lg font-semibold text-kreide">
-            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
-          </h2>
-          <p className="mt-3">
-            {marke.inhaber}, Anschrift wie oben
-          </p>
-        </section>
+          <Rechtsabschnitt titel="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
+            <p>{marke.inhaber}, Anschrift wie oben</p>
+          </Rechtsabschnitt>
 
-        <section>
-          <h2 className="text-lg font-semibold text-kreide">Streitschlichtung</h2>
-          <p className="mt-3">
-            Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle teilzunehmen.
-          </p>
-        </section>
+          <Rechtsabschnitt titel="Streitschlichtung">
+            <p>
+              Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+          </Rechtsabschnitt>
+        </div>
       </div>
-    </Abschnitt>
-  );
+    </HdUnterseite>
+  )
 }

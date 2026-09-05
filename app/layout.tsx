@@ -1,131 +1,81 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Link from "next/link";
-import { marke, navigation, start } from "@/content/site";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next'
+import { Anton, League_Spartan, Oswald, Source_Sans_3 } from 'next/font/google'
+import { HD_HREFLANG } from '@/lib/hd-texte'
+import { DOMAIN } from '@/lib/marke'
+import { sprache } from '@/lib/sprache'
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-
-/*
- * metadataBase ist kein Beiwerk.
+/**
+ * Das Wurzel-Layout von hareb.digital.
  *
- * Ohne diese Zeile erzeugt Next relative og:image- und canonical-Adressen, und
- * relative Adressen sind fuer Google und jedes soziale Netzwerk wertlos. Das
- * ist einer der haeufigsten Fehler auf sonst sauber gebauten Next-Seiten.
+ * Die Seite kam als `/start` aus dem Portfolio-Repo herüber, wo sie unter
+ * issahareb.me lag und `noindex` trug — mit der ausdrücklichen Begründung,
+ * dass eine Seite, die erst unter der einen Domain Bewertungen sammelt und
+ * danach umzieht, gegen sich selbst anträte. Der Umzug ist jetzt passiert,
+ * die eigene Domain steht, und damit fällt der Grund weg: hier wird
+ * indexiert.
+ *
+ * Was dabei unverändert mitgekommen ist: die Sprachwahl aus dem
+ * Accept-Language-Kopf und einem Keks statt aus der Adresse. Das war unter
+ * `noindex` richtig — der Verkehr kam aus Anzeigen, und ein Besucher sollte
+ * ohne Zwischenklick in seiner Sprache ankommen.
+ *
+ * OFFEN, und zwar bewusst als eigener Schritt: mit Index ist es das nicht
+ * mehr. Derselbe Pfad liefert je nach Kopf einen anderen Text, und
+ * `Vary: Accept-Language` liesse sich hier nicht einmal setzen — der App
+ * Router schreibt `Vary` für seine eigenen RSC-Anfragen und überschreibt
+ * dabei alles, was aus `headers()` oder aus einer Middleware kommt
+ * (nachgemessen, beides kam nicht an). Die Sprachen brauchen eigene
+ * Adressen samt hreflang. Das ist der nächste Umbau, nicht dieser.
  */
+
+const bodyFace = Source_Sans_3({ subsets: ['latin'], variable: '--font-body-face' })
+const headingFace = League_Spartan({ subsets: ['latin'], variable: '--font-heading-face' })
+const posterFace = Anton({ subsets: ['latin'], weight: ['400'], variable: '--font-poster-face' })
+const labelFace = Oswald({ subsets: ['latin'], variable: '--font-label-face' })
+
 export const metadata: Metadata = {
-  metadataBase: new URL(marke.domain),
-  title: {
-    default: `${start.titel} — ${marke.name}`,
-    template: `%s — ${marke.name}`,
-  },
-  description: start.beschreibung,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "de_DE",
-    siteName: marke.name,
-    title: `${start.titel} — ${marke.name}`,
-    description: start.beschreibung,
-    url: marke.domain,
-  },
+  metadataBase: new URL(DOMAIN),
   robots: { index: true, follow: true },
-};
-
-/*
- * Strukturierte Daten fuer ein LOKALES Dienstleistungsunternehmen.
- *
- * Das ist der Teil, den Google fuer die Kartenbox und das Wissenspanel liest.
- * "areaServed" ist hier wichtiger als die Adresse: gearbeitet wird im ganzen
- * Ruhrgebiet, der Sitz ist nur der Ausgangspunkt.
- */
-function strukturierteDaten() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: marke.name,
-    description: start.beschreibung,
-    url: marke.domain,
-    email: marke.email,
-    telephone: marke.telefon,
-    founder: { "@type": "Person", name: marke.inhaber, url: marke.portfolio },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: marke.strasse,
-      postalCode: marke.plz,
-      addressLocality: marke.ort,
-      addressCountry: marke.land,
-    },
-    areaServed: marke.gebiet.map((ort) => ({ "@type": "City", name: ort })),
-    knowsAbout: ["Webdesign", "Webentwicklung", "Landingpages", "SEO", "Barrierefreiheit", "KI-Agenten"],
-    sameAs: [marke.portfolio],
-  };
+  icons: {
+    icon: [
+      /* /favicon.ico steht mit dabei und nicht nur als Datei im Ordner:
+         Googles Favicon-Crawler fragt genau diesen Pfad ab. */
+      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
+      { url: '/icon-32-v2.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-512-v2.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-icon-v2.png', sizes: '180x180', type: 'image/png' }],
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  /* Dunkel, seit der Held ein formatfuellender Film ist: ein Schreibtisch auf
+     einem Berggipfel im Sonnenaufgang. Die Seite darunter im hellen Papierton
+     zu lassen waere kein Wechsel, sondern ein Bruch — man saehe zwei Seiten,
+     die zufaellig untereinander stehen.
+
+     Der Wert steuert auch die Farbe der Adressleiste auf dem Telefon und die
+     Voreinstellung der Formularfelder. Beides stand vorher auf Hell und waere
+     jetzt zweimal falsch. */
+  colorScheme: 'dark',
+  themeColor: '#0b0a09',
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  /* Dieselbe Sprachwahl wie in der Seite darunter, aus demselben Kopf. Sie
+     steht hier ein zweites Mal, weil nur das Layout das html-Element schreibt
+     und ein falsches lang-Attribut echte Folgen hat: Vorleseprogramme sprechen
+     die Seite dann mit deutscher Aussprache englisch vor. */
+  const lang = await sprache()
   return (
-    <html lang="de" className={inter.variable}>
-      <body>
-        <a
-          href="#inhalt"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-signal focus:px-4 focus:py-2"
-        >
-          Zum Inhalt springen
-        </a>
-
-        <header className="sticky top-0 z-40 border-b border-white/10 bg-tinte/80 backdrop-blur">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4" aria-label="Hauptnavigation">
-            <Link href="/" className="text-base font-semibold tracking-tight">
-              {marke.name}
-            </Link>
-            <ul className="hidden gap-7 text-sm text-nebel md:flex">
-              {navigation.map((n) => (
-                <li key={n.href}>
-                  <Link href={n.href} className="transition-colors hover:text-kreide">
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/kontakt"
-              className="rounded-lg bg-signal px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
-            >
-              Anfragen
-            </Link>
-          </nav>
-        </header>
-
-        <main id="inhalt">{children}</main>
-
-        <footer className="mt-24 border-t border-white/10 px-5 py-12">
-          <div className="mx-auto flex max-w-6xl flex-col gap-6 text-sm text-nebel md:flex-row md:items-start md:justify-between">
-            <div>
-              <p className="font-semibold text-kreide">{marke.name}</p>
-              <p className="mt-1">
-                {marke.claim} · Inhaber {marke.inhaber}
-              </p>
-              <p className="mt-1">Tätig in {marke.gebiet.join(", ")}</p>
-            </div>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              <li><Link href="/referenzen" className="hover:text-kreide">Referenzen</Link></li>
-              <li><Link href="/kontakt" className="hover:text-kreide">Kontakt</Link></li>
-              <li><Link href="/impressum" className="hover:text-kreide">Impressum</Link></li>
-              <li><Link href="/datenschutz" className="hover:text-kreide">Datenschutz</Link></li>
-              <li>
-                <a href={marke.portfolio} className="hover:text-kreide" rel="me">
-                  Portfolio
-                </a>
-              </li>
-            </ul>
-          </div>
-        </footer>
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(strukturierteDaten()) }}
-        />
-      </body>
+    <html
+      lang={HD_HREFLANG[lang]}
+      className={`${bodyFace.variable} ${headingFace.variable} ${posterFace.variable} ${labelFace.variable}`}
+    >
+      <body className="hd antialiased">{children}</body>
     </html>
-  );
+  )
 }

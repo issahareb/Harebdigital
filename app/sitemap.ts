@@ -1,21 +1,17 @@
-import type { MetadataRoute } from "next";
-import { leistungen, marke } from "@/content/site";
+import type { MetadataRoute } from 'next'
+import { DOMAIN } from '@/lib/marke'
 
 /*
- * Bei output: "export" muss ausdruecklich dastehen, dass diese Datei beim
- * Build entsteht und nicht pro Anfrage.
+ * Zwei Adressen, mehr gibt es nicht: die Landingpage und die Kontaktseite.
+ *
+ * Die Sprachfassungen stehen bewusst NICHT drin. Sie haben keine eigenen
+ * Adressen — dieselbe URL liefert je nach Accept-Language einen anderen Text.
+ * Ein hreflang-Eintrag ohne eigene Adresse waere eine Falschaussage.
  */
-export const dynamic = "force-static";
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const jetzt = new Date();
-  const seiten = ["", ...leistungen.map((l) => l.slug), "referenzen", "kontakt"];
-
-  return seiten.map((pfad) => ({
-    url: pfad ? `${marke.domain}/${pfad}/` : `${marke.domain}/`,
-    lastModified: jetzt,
-    changeFrequency: pfad === "" ? "weekly" : "monthly",
-    // Die Startseite und der lokale Hauptbegriff zuerst.
-    priority: pfad === "" ? 1 : pfad === "webdesign-essen" ? 0.9 : 0.7,
-  }));
+  const jetzt = new Date()
+  return [
+    { url: `${DOMAIN}/`, lastModified: jetzt, changeFrequency: 'weekly', priority: 1 },
+    { url: `${DOMAIN}/kontakt/`, lastModified: jetzt, changeFrequency: 'monthly', priority: 0.8 },
+  ]
 }

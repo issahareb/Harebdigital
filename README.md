@@ -1,33 +1,64 @@
-# Hareb Digital — harebdigital.de
+# Hareb Digital — hareb.digital
 
-Die Agenturseite. Deutsch, lokal, statisch ausgeliefert.
+Die Landingpage. Dreisprachig, serverseitig gerendert.
 
-Getrennt vom Portfolio unter [issahareb.me](https://issahareb.me): das eine
-verkauft **Issa** an Firmen (englisch, Entwicklerprofil), das hier verkauft
-**Websites** an Unternehmen im Ruhrgebiet. Zwei Zielgruppen, zwei Sprachen,
-zwei Suchintentionen — eine Seite kann das nicht.
+Sie lag vorher als `/start` im Portfolio-Repo unter issahareb.me und trug dort
+`noindex` — mit der ausdrücklichen Begründung, dass eine Seite, die erst unter
+einer fremden Domain Bewertungen sammelt und dann umzieht, gegen sich selbst
+anträte. Der Umzug ist passiert. Hier wird indexiert.
 
 ## Aufbau
 
-Next.js 15 App Router mit `output: "export"` — beim Build entstehen fertige
-HTML-Dateien. Kein Server, kein Nachladen, läuft auf jedem Hoster.
-
 ```
-/                                Startseite
-/webdesign-essen                 lokaler Hauptbegriff
-/website-erstellen-lassen        kommerzielle Suchabsicht
-/landingpage-erstellen-lassen
-/ki-agenten-fuer-unternehmen     der Vorsprung gegenüber lokalen Agenturen
-/referenzen · /kontakt · /impressum · /datenschutz
+/                Die Landingpage (de/en/es, siehe Sprachen)
+/kontakt         E-Mail, Telefon, Sitz
+/impressum       deutsch, noindex
+/datenschutz     deutsch, noindex
 ```
 
-Jede Leistung hat eine **eigene URL** mit eigenem Titel und eigener
-Beschreibung. Das ist der Unterschied zur Vorgängerseite, die alles hinter
-Ankern (`#leistungen`) versteckt hatte: Anker ranken nicht einzeln.
+Next.js 16 App Router, Tailwind 4, `motion` für die Bewegung, `gsap` für die
+Galerie. Kein statischer Export mehr — warum, steht in `next.config.mjs`.
 
-## Texte ändern
+## Sprachen
 
-Alles steht in `content/site.ts`. Die Komponenten enthalten keine Inhalte.
+Die Seite wählt ihre Sprache aus drei Quellen, in dieser Reihenfolge: der
+ausdrücklichen Wahl im Schalter (Cookie `hd-sprache`), dem
+`Accept-Language`-Kopf des Browsers, dem Land. **Nicht** aus der Adresse.
+
+Das war unter `noindex` richtig: der Verkehr kam aus Anzeigen, und ein
+Besucher sollte ohne Zwischenklick in seiner Sprache ankommen.
+
+**Mit Index ist es das nicht mehr.** Derselbe Pfad liefert je nach Kopf einen
+anderen Text; ein Crawler bekäme mal die eine und mal die andere Fassung unter
+`/`. Der übliche Ausweg — `Vary: Accept-Language` — steht hier nicht zur
+Verfügung: der App Router schreibt `Vary` für seine eigenen RSC-Anfragen und
+überschreibt dabei alles, was aus `headers()` oder aus einer Middleware kommt.
+Nachgemessen, beides kam nicht an.
+
+Die Lösung sind eigene Adressen je Sprache (`/`, `/en`, `/es`) samt `hreflang`.
+Das ist der nächste Umbau und bewusst nicht Teil des Umzugs.
+
+## Was aus dem Portfolio NICHT mitgekommen ist
+
+`/anfrage` samt Formular. Es reicht seine Eingaben an den L.U.K.A.S.-Server
+weiter und hängt an einem Token, das hier nicht liegt. Der Ruf zur Tat führt
+deshalb auf `/kontakt`. Ein nachgebautes Formular ohne Empfänger wäre die
+schlechtere Lösung: es sähe vollständiger aus und wäre es nicht — der Besucher
+glaubt, er habe Kontakt aufgenommen, und versucht es kein zweites Mal.
+
+Zwei Sätze in `lib/hd-texte.ts` mussten dafür angepasst werden; sie
+beschrieben das Formular („Fünf Felder, eines davon freiwillig").
+
+## Was von der alten Agenturseite geblieben ist
+
+Impressum und Datenschutz — beides Pflicht, beides deutsch, beides jetzt im
+Gewand der Landingpage. Die Datenschutzerklärung stand vorher auf „keine
+Cookies, keine Analyse, keine fremden Server". Der Sprachschalter setzt einen
+Cookie, also stimmt der erste Teil nicht mehr; der Abschnitt „Sprachwahl" ist
+neu.
+
+Alles andere — Startseite, Leistungsseiten, Referenzen, `content/site.ts`,
+`components/bausteine.tsx` — ist entfernt.
 
 ## Vor dem Livegang
 
@@ -35,40 +66,21 @@ Alles steht in `content/site.ts`. Die Komponenten enthalten keine Inhalte.
 npm run pruefen
 ```
 
-Bricht ab, solange irgendwo `PLATZHALTER` steht — Anschrift, Telefon,
-E-Mail, USt-ID. Die Vorgängerseite hatte Platzhalter im Code mit einem
-Kommentar „vor dem Livegang ersetzen"; ein Kommentar hält niemanden auf,
-eine Prüfung schon.
+Bricht ab, solange irgendwo `PLATZHALTER` steht: Anschrift, Telefon, USt-ID,
+die ungeprüfte Datenschutzerklärung. Ein Kommentar hält niemanden auf, eine
+Prüfung schon.
 
 **Die Datenschutzerklärung ist ein Gerüst**, kein fertiger Text. Sie deckt den
-aktuellen Stand ab — keine Cookies, keine Analyse, keine fremden Schriften,
-kein Formular. Sobald etwas davon dazukommt, gehört sie erweitert und von
-jemandem geprüft, der dafür haftet.
+aktuellen Stand ab. Sobald etwas dazukommt — ein Formular, Analyse, eine
+Kartenansicht — gehört sie erweitert und von jemandem geprüft, der dafür
+haftet.
 
 ## Befehle
 
 ```bash
 npm run dev         # Entwicklung
-npm run build       # statischer Export nach out/
-npm run build:live  # Platzhalter-Prüfung + Build
-npm run bilder      # Projektbilder aus dem Portfolio neu optimieren
+npm run build       # Produktionsbau
+npm run start       # den gebauten Server starten (liest PORT)
+npm run pruefen     # Platzhalter-Prüfung
+npm run build:live  # Prüfung + Bau
 ```
-
-## Bilder
-
-`scripts/bilder-optimieren.mjs` holt die Projektbilder aus dem Portfolio-Repo
-und schreibt AVIF + WebP nach `public/projekte/`. Beim ersten Lauf:
-**9,72 MB → 0,61 MB**. Auf einem Portfolio fallen 2-MB-Screenshots kaum auf —
-hier ist Ladezeit das Verkaufsargument gegen Agenturen, die WordPress mit
-zwanzig Plugins ausliefern.
-
-## Was bewusst NICHT übernommen wurde
-
-Aus dem Portfolio: `scene.tsx`, `tech-orbs.tsx`, `lukas-brain.tsx`,
-`cinematic-intro.tsx`, `preloader.tsx`. WebGL-Szenen und ein Intro-Film sind
-auf einem Portfolio richtig — dort will man beeindrucken. Auf einer Seite, die
-ranken und Anfragen erzeugen soll, kosten sie genau die Ladezeit, mit der hier
-geworben wird.
-
-Aus der alten Landingpage: die vier erfundenen Kundenstimmen. Stattdessen
-echte Projekte mit den Beschreibungen aus dem Portfolio.
