@@ -1190,18 +1190,56 @@ button.enquiry-input {
    sie da: kein Abschnitt kennt eine Farbe, jeder kennt nur seine Rolle. Der
    dunkle Akt weiter unten hat seine Sonderfarben deshalb verloren — er hat
    jetzt dieselben wie alle. */
+/* ── Zwei Gruende, nicht einer ────────────────────────────────────────────
+   Die Seite stand auf einem einzigen Ton: #0b0a09, von der Buehne bis zur
+   Fusszeile. Die beiden Abweichungen — ein drei Prozent helleres Grau beim
+   Ablauf und ein sehr dunkles Braun beim Schluss — waren keine. Gemessen
+   waren das achttausend Pixel Text auf demselben Schwarz, und genau so las
+   es sich: nach dem Film passierte nichts mehr.
+
+   Der Wechsel ist deshalb kein Schmuck, sondern der Takt. Film, Wiedererkennung
+   und Arbeiten bleiben dunkel — dort sind Bilder, und Bilder brauchen einen
+   dunklen Rahmen. Leistungen, Ablauf und Zahlen stehen auf Papier. Der
+   Schluss geht zurueck ins Dunkle, damit der Ruf zur Tat dort landet, wo die
+   Seite angefangen hat.
+
+   Technisch kostet das nichts: die ganze Seite liest ihre Farben aus diesen
+   sechs Angaben. Ein Abschnitt, der sie neu setzt, faerbt alles darin um —
+   Knoepfe, Karten, Linien, Schrift — ohne dass eine einzige Komponente davon
+   weiss. */
 .hd {
-  --hd-paper: #0b0a09;
-  --hd-paper-2: #131110;
-  --hd-ink: #f7f4f0;
-  --hd-ink-soft: #a8a099;
-  --hd-line: #2a2724;
-  /* Der Akzent kommt aus dem Sonnenaufgang im Heldenbild. Auf Papier musste
-     er dunkel sein, um mit weisser Schrift 4.5:1 zu erreichen; im Dunkeln
-     gilt das Gegenteil, und er darf die Helligkeit haben, die er im Bild
-     auch hat. */
-  --hd-accent: oklch(0.78 0.15 58);
-  --hd-accent-soft: oklch(0.22 0.045 48);
+  --hd-paper: #0a0c0f;
+  --hd-paper-2: #11151a;
+  --hd-ink: #f2f5f7;
+  --hd-ink-soft: #94a0ad;
+  --hd-line: #212831;
+  /* Der Akzent kam aus dem Sonnenaufgang im Heldenbild und war ein warmes
+     Orange. Das war der zweite Teil des Problems: Orange trug die Kicker, die
+     Ziffern, die Zahlen, jede Linie und jeden Hover — alles, was hervorstach,
+     stach in derselben Farbe hervor, und dadurch stach nichts hervor.
+
+     Teal steht dem Sonnenaufgang gegenueber statt neben ihm. Das Bild bleibt
+     warm und wird dadurch zum Bild, nicht zur Markenfarbe. */
+  --hd-accent: oklch(0.82 0.13 192);
+  --hd-accent-soft: oklch(0.24 0.05 200);
+
+  background: var(--hd-paper);
+  color: var(--hd-ink);
+}
+
+/* Der helle Grund. Ungebleicht, nicht weiss: reines Weiss neben einem
+   Filmstill sieht aus wie ein Loch im Papier.
+   Der Akzent ist derselbe Ton, nur so weit heruntergezogen, dass er auf
+   diesem Grund als Fliesstext 4.5:1 erreicht. Oben durfte er die Helligkeit
+   haben, die er im Bild auch hat; hier gilt das Gegenteil. */
+.hd-hell {
+  --hd-paper: #efece5;
+  --hd-paper-2: #e6e2d9;
+  --hd-ink: #12151a;
+  --hd-ink-soft: #59616b;
+  --hd-line: #d5cfc3;
+  --hd-accent: oklch(0.5 0.1 195);
+  --hd-accent-soft: oklch(0.93 0.03 195);
 
   background: var(--hd-paper);
   color: var(--hd-ink);
@@ -2886,4 +2924,50 @@ html[data-perf='low'] .hd-band__reihe {
    border-Utility, das neben lauter hd-Klassen steht. */
 .hd-rule-unten {
   border-bottom: 1px solid var(--hd-line);
+}
+
+/* ── Fallblattanzeige ────────────────────────────────────────────────────
+   Die Kachel nimmt ihre Farbe aus dem Grund, auf dem sie gerade steht: auf
+   dem Papier ist sie die dunklere Tinte, im Dunkeln die hellere Flaeche.
+   Deshalb `--hd-paper-2` und nicht ein fester Wert — die Anzeige zieht beim
+   naechsten Grundwechsel von allein mit. */
+.fallblatt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.09em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: pre;
+  user-select: none;
+}
+
+.fallblatt__luecke {
+  width: 0.3em;
+}
+
+.fallblatt__blatt {
+  position: relative;
+  display: flex;
+  min-width: 0.72em;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.1em;
+  padding: 0.08em 0.06em 0.12em;
+  background: color-mix(in oklch, var(--hd-ink) 10%, var(--hd-paper-2));
+  /* Die Kante in der Mitte. Sie ist der ganze Trick: ohne sie sieht die
+     Kachel aus wie ein Kasten, mit ihr wie ein Blatt, das fallen kann. */
+  box-shadow:
+    inset 0 -1px 0 color-mix(in oklch, var(--hd-ink) 14%, transparent),
+    0 1px 2px color-mix(in oklch, var(--hd-ink) 12%, transparent);
+}
+
+.fallblatt__blatt::before {
+  content: '';
+  position: absolute;
+  left: 0.06em;
+  right: 0.06em;
+  top: calc(50% - 0.5px);
+  height: 1px;
+  background: color-mix(in oklch, var(--hd-paper) 55%, transparent);
+  pointer-events: none;
 }

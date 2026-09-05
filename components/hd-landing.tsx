@@ -9,10 +9,10 @@ import { Galerie, type Schaustueck } from './galerie'
 import { HdHeld } from './hd-held'
 import { HdSprachschalter } from './hd-sprachschalter'
 import { HdKartenmenue } from './hd-kartenmenue'
+import { Fallblatt } from './fallblatt'
 import { HD_TEXTE, type HdLang, type HdTexte } from '@/lib/hd-texte'
 import { PORTFOLIO } from '@/lib/marke'
 import {
-  animate,
   motion,
   useInView,
   useMotionValue,
@@ -473,42 +473,6 @@ function useBreit(abfrage = '(min-width: 1024px)') {
   return an
 }
 
-/* Die Zahlen zählen hoch. Was es mitteilt: hin zu den einzigen vier Angaben
-   auf der Seite, die man nachrechnen kann. Genau ein Element pro Zahl, keine
-   Zustandsänderung in React pro Bild. */
-function Zahl({ ziel, suffix }: { ziel: number; suffix: string }) {
-  const reduce = useReducedMotion()
-  const ref = useRef<HTMLSpanElement>(null)
-  const sichtbar = useInView(ref, { once: true, amount: 0.6 })
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (reduce) {
-      el.textContent = String(ziel) + suffix
-      return
-    }
-    if (!sichtbar) {
-      el.textContent = '0' + suffix
-      return
-    }
-    const controls = animate(0, ziel, {
-      duration: 1.1,
-      ease: EASE,
-      onUpdate: (v) => {
-        el.textContent = String(Math.round(v)) + suffix
-      },
-    })
-    return () => controls.stop()
-  }, [sichtbar, ziel, suffix, reduce])
-
-  /* Im Dokument steht die richtige Zahl, nicht die Null. Zwei Gründe: ein
-     Crawler liest "24 h" und nicht "0 h", und der Server rendert dasselbe wie
-     der Browser im ersten Durchgang, egal ob dort Bewegung abgeschaltet ist.
-     Auf null gesetzt wird erst danach, im Effekt, lange bevor der Abschnitt
-     überhaupt in den Blick kommt. */
-  return <span ref={ref}>{ziel + suffix}</span>
-}
 
 
 /* Das Laufwerk: die vier Leistungen liegen nebeneinander und fahren quer
@@ -993,7 +957,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
       </section>
 
       {/* ── Leistungen ──────────────────────────────────────────────────── */}
-      <section id="leistungen" className="hd-rule">
+      {/* Der erste Wechsel aufs Papier. Er sitzt hier und nicht frueher: davor
+          stehen Film und Bildschirmfoto, und die brauchen den dunklen Rahmen.
+          Ab hier wird nur noch gelesen. */}
+      <section id="leistungen" className="hd-rule hd-hell">
         <div className="mx-auto max-w-6xl px-6 pb-4 pt-16 sm:pt-24">
           <Titel className="hd-titel max-w-[20ch] font-display font-bold">
             {t.leistungen.titel}
@@ -1129,7 +1096,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
       </section>
 
       {/* ── Ablauf ──────────────────────────────────────────────────────── */}
-      <section id="ablauf" className="hd-rule hd-glanz" style={{ background: 'var(--hd-paper-2)' }}>
+      <section id="ablauf" className="hd-rule hd-glanz hd-hell">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
           <Auf>
             <span className="hd-label">{t.ablauf.label}</span>
@@ -1166,21 +1133,28 @@ export function HdLanding({ lang }: { lang: HdLang }) {
       </section>
 
       {/* ── Zahlen ──────────────────────────────────────────────────────── */}
-      <section className="hd-rule">
+      {/* Bleibt auf dem Papier des Ablaufs. Ablauf und Zahlen sind derselbe
+          Gedanke — so laeuft es, und das kommt dabei heraus —, und ein
+          Grundwechsel dazwischen haette sie auseinandergerissen. */}
+      <section className="hd-rule hd-hell">
         {/* Drei Angaben, drei Spalten. Die vierte war "3 Sprachen: Deutsch,
             Englisch, Spanisch" — die sagt die Seite jetzt selbst, indem sie in
-            der Sprache des Browsers dasteht. */}
-        <div className="mx-auto grid max-w-6xl gap-4 px-6 py-16 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            der Sprache des Browsers dasteht.
+
+            Die Kaesten sind weg. Sie machten aus drei Zusagen drei Kacheln in
+            einer Reihe, und die Zahl darin war so gross wie eine Zwischen-
+            ueberschrift. Das hier ist die Stelle, an der die Seite ihre
+            Bedingungen nennt — 24 Stunden, ein Ansprechpartner, null Euro —,
+            und sie darf dafuer die ganze Breite und eine Zeile Luft nehmen. */}
+        <div className="mx-auto grid max-w-6xl gap-y-14 px-6 py-24 sm:py-28 lg:grid-cols-3 lg:gap-x-10">
           {t.fakten.map((f, i) => (
-            <Auf key={f.v} delay={i * 0.08}>
-              <div className="hd-kasten h-full px-7 py-7">
-                <div className="font-display text-[2.9rem] font-bold leading-none tabular-nums tracking-tight text-[color:var(--hd-accent)]">
-                  <Zahl ziel={f.zahl} suffix={f.suffix} />
-                </div>
-                <p className="mt-2.5 max-w-[24ch] text-[16px] leading-[1.5] text-[color:var(--hd-ink-soft)]">
-                  {f.v}
-                </p>
+            <Auf key={f.v} delay={i * 0.1}>
+              <div className="text-[3.4rem] leading-none tracking-tight text-[color:var(--hd-accent)] sm:text-[4.5rem]">
+                <Fallblatt text={`${f.zahl}${f.suffix}`} />
               </div>
+              <p className="mt-5 max-w-[26ch] text-[17px] leading-[1.5] text-[color:var(--hd-ink-soft)]">
+                {f.v}
+              </p>
             </Auf>
           ))}
         </div>
