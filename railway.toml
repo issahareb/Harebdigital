@@ -12,10 +12,29 @@
 
 [build]
 builder = "nixpacks"
-# `npm ci` statt `npm install`: es baut exakt das, was in package-lock.json
-# steht, und bricht ab, wenn die Datei nicht zum package.json passt. Ein Build,
-# der sich seine Abhaengigkeiten selbst aussucht, ist kein reproduzierbarer.
-buildCommand = "npm ci && npm run build"
+# `npm install` und nicht `npm ci`, obwohl `npm ci` das strengere von beiden
+# ist. Der Grund liegt nicht in npm, sondern im Builder: Nixpacks haengt einen
+# Zwischenspeicher unter /app/node_modules/.cache ein, und `npm ci` raeumt
+# node_modules vor dem Installieren komplett ab. Ein eingehaengtes Verzeichnis
+# laesst sich nicht loeschen — der erste Anlauf brach genau daran ab
+# ("EBUSY: resource busy or locked, rmdir /app/node_modules/.cache").
+#
+# `npm install` haelt sich an package-lock.json, solange die Datei zum
+# package.json passt, und fasst node_modules nur an, wo es noetig ist. Die
+# Strenge, die dabei verloren geht, holt der Lauf in der Entwicklung zurueck:
+# dort laeuft `npm ci`, und dort faellt eine auseinandergelaufene Lockdatei auf.
+#
+# `NODE_ENV=development` davor, und das ist keine Schlamperei: Railway setzt
+# NODE_ENV=production, npm liest das als `--omit=dev` und laesst die
+# devDependencies weg. Dort liegen Tailwind, PostCSS und TypeScript — also
+# genau das, was zum BAUEN gebraucht wird und danach nie wieder. Ohne die Zeile
+# faellt der Build ueber einen fehlenden PostCSS-Anschluss, und die Meldung
+# zeigt dann auf Tailwind statt auf die Ursache. Dieselbe Zeile steht aus
+# demselben Grund im Taxi-Repo.
+#
+# Sie gilt nur fuer das Installieren. `next build` entscheidet selbst, dass es
+# eine Produktionsfassung baut; das haengt nicht an NODE_ENV.
+buildCommand = "NODE_ENV=development npm install --no-audit --no-fund && npm run build"
 
 [deploy]
 # `next start` bedient den Server, der die Sprachwahl ueberhaupt erst moeglich
