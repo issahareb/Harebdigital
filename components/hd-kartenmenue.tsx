@@ -74,11 +74,30 @@ export function HdKartenmenue({
   /* Die Zielhoehe wird gemessen, nicht geraten. Auf dem Telefon stehen die
      drei Karten untereinander, am Rechner nebeneinander, und beim
      Sprachwechsel aendert sich die Textlaenge. Eine feste Zahl waere in
-     genau diesen drei Faellen falsch. */
+     genau diesen drei Faellen falsch.
+     ---------------------------------------------------------------------
+     Die beiden Abstaende kommen aus dem Stil und stehen nicht als Zahl hier.
+     `.hd-kartenmenue__inhalt` ist absolut gesetzt (`inset: 64px 6px 6px`),
+     seine Hoehe haengt also an der Hoehe, die diese Funktion gerade
+     ausrechnet. Damit ist die Messung eine Rueckkopplung, und sie steht nur
+     dann still, wenn die Summe aus oberem und unterem Abstand hier exakt
+     dieselbe ist wie im Stil.
+
+     Hier stand `+ 12` bei einem tatsaechlichen Abstand von 64 + 6. Die
+     sechs Pixel Unterschied kamen bei jedem Ausschlag des Beobachters
+     obendrauf, und der Beobachter schlaegt aus, weil die Flaeche gerade
+     gewachsen ist: das Menue wuchs, solange es offen war. Gemessen auf einem
+     iPhone-Fenster: 483, 508, 533, 558, 583 Pixel — fuenfundzwanzig Pixel je
+     Sekunde, ohne Ende. Am Rechner fiel es nicht auf, weil die drei Karten
+     dort nebeneinander stehen und ihr Inhalt kuerzer ist als der Kasten;
+     dann meldet `scrollHeight` die Inhaltshoehe und nicht die eigene. */
   const messen = useCallback(() => {
     const el = inhalt.current
     if (!el) return GESCHLOSSEN
-    return GESCHLOSSEN + el.scrollHeight + 12
+    const stil = getComputedStyle(el)
+    const oben = Number.parseFloat(stil.top) || 0
+    const unten = Number.parseFloat(stil.bottom) || 0
+    return oben + el.scrollHeight + unten
   }, [])
 
   useEffect(() => {
@@ -86,11 +105,23 @@ export function HdKartenmenue({
       setHoehe(GESCHLOSSEN)
       return
     }
-    setHoehe(messen())
-    const beobachter = new ResizeObserver(() => setHoehe(messen()))
+    const anpassen = () => setHoehe(messen())
+    anpassen()
+    const beobachter = new ResizeObserver(anpassen)
     if (inhalt.current) beobachter.observe(inhalt.current)
-    window.addEventListener('resize', () => setHoehe(messen()))
-    return () => beobachter.disconnect()
+    window.addEventListener('resize', anpassen)
+    /* Beide wieder abmelden, nicht nur der Beobachter.
+       Der Zuhoerer auf `resize` blieb frueher haengen: nach dem Schliessen
+       stellte er bei jeder Fenstergroessenaenderung wieder die offene Hoehe
+       ein. Auf dem Telefon ist das keine Ausnahme, sondern der Normalfall —
+       jedes Ein- und Ausblenden der Adressleiste beim Scrollen loest ein
+       `resize` aus. Sichtbar war es als leerer schwarzer Kasten unter der
+       geschlossenen Leiste, mitten in der Seite. Nachgestellt: geschlossen
+       64 Pixel, nach einer Fensteraenderung 498. */
+    return () => {
+      beobachter.disconnect()
+      window.removeEventListener('resize', anpassen)
+    }
   }, [offen, messen])
 
   /* Escape schliesst, und ein Klick auf einen Verweis auch: wer im Menue auf
