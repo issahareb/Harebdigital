@@ -26,10 +26,16 @@ Ausnahme waren die Tippziele.
 
 - **Asymmetrischer Abschnittsabstand** bei `#leistungen`: 96 px oben, 16 px
   unten, während jeder andere Abschnitt symmetrisch läuft (96/96, mobil
-  64/64). Bricht den senkrechten Rhythmus an genau einer Stelle. → offen
+  64/64). Bricht den senkrechten Rhythmus an genau einer Stelle. →
+  **Behoben.** Der Kopfblock steht jetzt auf `py-16 sm:py-24`, und der
+  `pt-8` der Kachelliste darunter ist weg — sonst hätte die Symmetrie oben
+  einen doppelten Abstand in der Mitte erkauft.
 - **Zwei Kartenradien im Umlauf**: 12 px (Laufband) und 14 px (`hd-surface`,
   `hd-shot`). Beides ist begründet gewachsen, aber eine Familie wäre ruhiger.
-  → offen
+  → **Behoben.** `hd-band__satz`, `hd-feld` und die Galeriekarte (die mit 16
+  noch einen dritten Wert hatte) stehen auf 14. Bedienelemente bleiben voll
+  gerundet, die kleinen Kartenmenü-Flächen bei 10 — das ist die
+  Steuerungsfamilie und nicht die Flächenfamilie.
 
 ### Niedrig
 
@@ -65,8 +71,46 @@ Falschmeldungen.
 - **Umbrüche geregelt**: `text-balance` auf Überschriften, `text-pretty` auf
   Fließtexten.
 
-## Die drei nächsten Schritte
+## Nachtrag: der Abschnitt "Was ich verstanden habe"
 
-1. `#leistungen` auf symmetrischen Abstand bringen (96/96 statt 96/16)
-2. Kartenradius auf einen Wert vereinheitlichen — 14 px für alle Flächen
-3. Sprachtasten auf volle 44 px Fangbreite, damit die letzten drei fallen
+Dazugekommen nach dem Review, deshalb hier eigens geprüft.
+
+**Gemessen**
+
+- Waagerechter Überlauf 1440 und 390: 0 px, über die ganze Seite gescrollt.
+- Konsolenfehler beim Durchscrollen: keine, in beiden Breiten.
+- Kontraste im hellen Akt, auf dem Grund gerechnet, den das Bild mitbringt:
+  Wort 7,4:1 auf dem Textband und 4,7:1 auf dem Wortband (Großschrift,
+  Schwelle 3), Fließtext 5,3:1 bzw. am untersten Rand 4,9:1, Balken 4,9:1.
+  Der erste Entwurf lag beim Fließtext auf 4,4 — knapp unter der Schwelle
+  ist darunter, `--hd-ink-soft` ist deshalb auf `#282e37` nachgezogen.
+- Filme: laufen ausschließlich, solange sie sichtbar sind (an der Deckkraft
+  geschaltet, nicht am Akt). Im dritten Akt stehen beide still.
+- Reduzierte Bewegung: eigene Fassung ohne Bühne, drei Blöcke, ein Standbild.
+  Kein Abgleichsfehler mehr, seit die Umschaltung erst nach der Montage
+  passiert.
+
+**Drei Fallen, die dabei aufgegangen sind** — alle drei so, dass sie beim
+Ansehen wie Geschmacksfragen aussahen und keine waren:
+
+1. Motion baut aus einer scrollgebundenen Umrechnung eine WAAPI-Animation.
+   Stützstellen außerhalb von 0…1 nimmt die Schnittstelle nicht an und wirft
+   dabei die ganze Seite ab. Und wo die Liste nicht bei 0 anfängt und bei 1
+   aufhört, läuft der Browser vom letzten Wert zurück zum ersten statt zu
+   halten — der erste Akt stand am Ende der Strecke wieder quer über der
+   Statue.
+2. `mix-blend-mode` sieht jeden Stapelkontext darüber als Wand. Die
+   Motivebene hatte einen `z-index`, also mischten sich die Filme mit dem
+   Nichts in ihrer eigenen Ebene statt mit der Bühne: sichtbar als dunkler
+   Kasten um jeden Film, nachgemessen (6,7,9) innen gegen (10,12,15) außen.
+   Ohne `z-index` sind beide Werte gleich.
+3. Gleiche Parameterschritte sind auf einer Lemniskate keine gleichen
+   Abstände. Ohne Tabellierung der Bogenlänge drängeln sich die Ziffern an
+   der Kreuzung und die Bäuche reißen auf — das Zeichen las sich als X.
+
+## Die zwei nächsten Schritte
+
+1. Sprachtasten auf volle 44 px Fangbreite, damit die letzten drei Tippziele
+   fallen
+2. Eigene Adressen je Sprache samt hreflang — der eine offene Punkt, der
+   nicht Gestaltung ist, sondern Architektur (siehe `app/layout.tsx`)

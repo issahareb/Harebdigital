@@ -2085,7 +2085,7 @@ section.hd-akt {
      zerfliesst sie darin — man sieht dann Bilder schweben und keinen
      Stapel. */
   border: 1px solid color-mix(in oklch, var(--hd-ink) 18%, transparent);
-  border-radius: 16px;
+  border-radius: 14px;
   background: var(--hd-paper-2);
   box-shadow:
     0 34px 70px -28px rgb(0 0 0 / 0.55),
@@ -2940,7 +2940,7 @@ html[data-perf='low'] .wellenfeld::after {
    Kante ahnen lassen, nicht die Karte anstrahlen. */
 .hd-band__satz {
   white-space: nowrap;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid color-mix(in oklch, var(--hd-accent) 14%, var(--hd-line));
   background: linear-gradient(
     180deg,
@@ -3161,7 +3161,7 @@ html[data-perf='low'] .hd-band__lauf {
 
 .hd-feld {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid var(--hd-line);
   background: color-mix(in oklch, var(--hd-ink) 4%, var(--hd-paper-2));
   padding: 0.8rem 1rem;
@@ -3198,4 +3198,535 @@ select.hd-feld {
 select.hd-feld option {
   background-color: var(--hd-paper-2);
   color: var(--hd-ink);
+}
+
+/* ─── Was ich verstanden habe (components/hd-verstaendnis.tsx) ──────────────
+ *
+ * Drei Akte auf einer festgehaltenen Bühne. Der Abschnitt ist der einzige der
+ * Seite, der seinen Grund im Verlauf wechselt, und zwar aus einem sachlichen
+ * Grund: das Standbild der Statue bringt seinen eigenen grauen Verlauf mit.
+ * Ihn wegzuschneiden hiesse, das Bild an die Seite anzupassen. Hier passt sich
+ * die Seite dem Bild an — die Farbwerte unten sind Zeile für Zeile aus der
+ * Datei abgelesen, das Bild fuellt die Buehne in voller Hoehe, und damit
+ * liegt sein Verlauf genau auf diesem. Es gibt keine sichtbare Kante, weil es
+ * keine zwei Flaechen gibt.
+ *
+ * Nebenbei loest das die Dramaturgie: die beiden Akte ueber die Maschine
+ * liegen im Schwarz, der Akt ueber den Menschen im Tageslicht.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+.hd-verst {
+  position: relative;
+  /* Der Canvas liest beides einmalig aus. `oklch()` versteht die Zeichenfläche
+     erst ab Safari 16.4, deshalb steht die Akzentfarbe hier als Hexwert —
+     derselbe Ton, nur in einer Schreibweise, die überall ankommt. */
+  --hd-schleife-farbe: #38deda;
+  --hd-schleife-schrift: var(--font-label-face), ui-sans-serif, sans-serif;
+  /* Der abgelesene Verlauf des Standbilds, von oben nach unten. */
+  --hd-verst-grau: linear-gradient(
+    to bottom,
+    #4a4a53 0%,
+    #4f5057 6%,
+    #555862 12%,
+    #616370 20%,
+    #6e7182 30%,
+    #7a7e90 40%,
+    #83879a 50%,
+    #8a8ea1 60%,
+    #8e93a4 70%,
+    #8f98a4 80%,
+    #9299a6 90%,
+    #949ba8 100%
+  );
+  --hd-verst-rand: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+.hd-verst-bahn {
+  position: relative;
+  height: 320svh;
+}
+
+.hd-verst-buehne {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--hd-paper);
+}
+
+/* Der Grund des dritten Akts. */
+.hd-verst-tag {
+  position: absolute;
+  inset: 0;
+  background: var(--hd-verst-grau);
+  z-index: 0;
+}
+
+/* ── Die Motive ──────────────────────────────────────────────────────────── */
+
+/* Kein `z-index` hier, und das ist keine Nachlaessigkeit. Jeder Stapelkontext
+   ist fuer `mix-blend-mode` eine Wand: die Filme haetten sich dann mit dem
+   Inhalt dieser Ebene gemischt statt mit der Buehne dahinter, und weil da
+   nichts liegt, hiess das gar nicht mischen. Sichtbar war es als dunkler
+   Kasten um jeden Film — die Deckkraft der Huelle auf Schwarz, ohne dass
+   `screen` das Schwarz je weggerechnet haette. Ohne `z-index` malt die Ebene
+   nach Reihenfolge im Dokument, also zwischen Grund und Text, und die
+   Gruppe zum Mischen ist die Buehne mit ihrem `isolation: isolate`. */
+.hd-verst-motiv {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.hd-verst-motiv > * {
+  grid-area: 1 / 1;
+  will-change: opacity, transform;
+}
+
+/* Knoten und Falter liegen auf reinem Schwarz. `screen` rechnet das Schwarz
+   heraus, ohne dass eine Alphamaske ins Video musste: was schwarz ist, bleibt
+   der Grund, was leuchtet, kommt durch.
+ *
+ * Die Mischung steht auf der Huelle und nicht auf dem Film. Auf dem Film
+ * hatte sie keine Wirkung, weil die Huelle selbst eine Deckkraft unter eins
+ * traegt: das macht aus ihr eine eigene Gruppe, und der Film mischte sich
+ * dann mit dem Nichts darin statt mit der Buehne dahinter. Sichtbar war das
+ * als schwarzer Kasten um jeden Film. */
+.hd-verst-knoten,
+.hd-verst-falter {
+  mix-blend-mode: screen;
+}
+
+.hd-verst-knoten video,
+.hd-verst-falter video {
+  display: block;
+}
+
+/* Der Kontrast ist kein Geschmack, sondern Rechnerei. H.264 legt Schwarz auf
+   den Wert 16 und nicht auf 0, und `screen` hebt genau diese 16 ueber den
+   Grund — sichtbar als hellerer Kasten um den Film herum. `contrast(1.7)`
+   zieht alles unter 0.2 auf null, und damit verschwindet die Kante. */
+.hd-verst-knoten video {
+  width: min(66svh, 62vw);
+  height: auto;
+  filter: saturate(0.5) contrast(1.7) blur(0.6px);
+}
+
+.hd-verst-falter video {
+  width: min(50svh, 62vw);
+  height: auto;
+  filter: contrast(1.5);
+}
+
+.hd-verst-schleife-huelle {
+  display: grid;
+  place-items: center;
+}
+
+/* Breiter als hoch, weil die Lemniskate es ist. Im Quadrat blieb ueber und
+   unter ihr genauso viel Luft, wie sie selbst hoch war, und die Ziffern
+   wurden entsprechend klein. */
+.hd-verst-schleife {
+  width: min(58vw, 720px);
+  aspect-ratio: 2.15;
+  /* Die Delle soll auf der ganzen Fläche entstehen und nicht nur dort, wo
+     gerade eine Ziffer liegt. */
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.hd-verst-flaeche {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hd-verst-statue {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hd-verst-statue img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  /* Nur seitlich ausgeblendet. Oben und unten schliesst das Bild buendig mit
+     der Buehne ab, dort ist nichts zu blenden; seitlich trifft Grund auf
+     Grund, und die Blende macht aus zwei gleichen Werten einen. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+/* ── Die Akte ────────────────────────────────────────────────────────────── */
+
+.hd-verst-akt {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: clamp(4rem, 11svh, 7rem) var(--hd-verst-rand) clamp(4.5rem, 12svh, 7.5rem);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+/* Das grosse Wort. Es steht in zwei Haelften an den beiden Raendern und laesst
+   das Motiv dazwischen stehen — die Anordnung stammt aus den beiden Vorlagen,
+   die der Auftraggeber geschickt hat, und sie erledigt zwei Dinge auf einmal:
+   das Wort ist linksbuendig wie jede Ueberschrift dieser Seite, und das Motiv
+   sitzt in ihm statt daneben. */
+.hd-verst-wort {
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-poster), 'Arial Narrow', sans-serif;
+  font-size: clamp(2.4rem, 11vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--hd-ink);
+  /* Der Schatten ist kein Schmuck. Das Wort liegt ueber Bewegtbild, und ohne
+     ihn verschwindet eine Kante, sobald eine helle Ziffer darunter durchlaeuft. */
+  text-shadow: 0 2px 26px rgb(0 0 0 / 0.55);
+}
+
+.hd-verst-satz {
+  align-self: end;
+  max-width: 46ch;
+}
+
+.hd-verst-titel {
+  margin-top: 0.9rem;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--hd-ink);
+  text-wrap: balance;
+}
+
+.hd-verst-text {
+  margin-top: 0.85rem;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--hd-ink-soft);
+  text-wrap: pretty;
+}
+
+/* Der helle Akt. Er dreht nur die sechs Werte um; alles darueber rechnet
+   weiter mit denselben Variablen. */
+/* Nachgerechnet auf dem Grund, den das Bild mitbringt, und nicht geschaetzt.
+   Der Verlauf ist unten am hellsten: #9ba2ae dort, wo der Text steht.
+   #282e37 kommt darauf auf 5.3, am untersten Rand noch auf 4.9. Mit dem
+   ersten Entwurf #2f3641 waren es 4.4 — knapp unter der Schwelle, und knapp
+   darunter ist darunter. Der Akzent traegt hier den Fortschrittsbalken, also
+   Grafik: #003a3b liegt auf 4.9 statt auf 2.6. */
+.hd-verst-akt--hell {
+  --hd-ink: #0e1116;
+  --hd-ink-soft: #282e37;
+  --hd-line: rgb(0 0 0 / 0.24);
+  --hd-accent: #003a3b;
+}
+
+.hd-verst-akt--hell .hd-verst-wort {
+  text-shadow: 0 2px 22px rgb(255 255 255 / 0.28);
+}
+
+/* Der Schleier unter dem Text des hellen Akts. Er ist in der Farbe des
+   Bildgrunds gehalten und nicht in Schwarz: das Bild soll heller werden, wo
+   gelesen wird, und nicht abgedunkelt. */
+.hd-verst-akt--hell::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 52%;
+  background: linear-gradient(
+    to top,
+    #9ba2ae 0%,
+    rgb(155 162 174 / 0.92) 34%,
+    rgb(155 162 174 / 0) 100%
+  );
+  z-index: -1;
+}
+
+/* ── Rangliste, Sekunden, Fortschritt ────────────────────────────────────── */
+
+.hd-verst-rang,
+.hd-verst-sek {
+  position: absolute;
+  right: var(--hd-verst-rand);
+  bottom: clamp(4.5rem, 12svh, 7.5rem);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hd-verst-rang {
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+  font-family: var(--font-label), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--hd-ink-soft);
+}
+
+.hd-verst-rang li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  justify-content: flex-end;
+}
+
+.hd-verst-rang__n {
+  min-width: 1.4em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--hd-accent);
+}
+
+/* Der Sekundenblock steht neben den Akten und nicht in ihnen, erbt also die
+   hellen Werte des dritten Akts nicht von selbst. Er ist nur dort sichtbar,
+   also bekommt er sie hier. */
+.hd-verst-sek {
+  --hd-ink: #0e1116;
+  --hd-ink-soft: #282e37;
+  --hd-line: rgb(0 0 0 / 0.3);
+  --hd-accent: #003a3b;
+  display: grid;
+  justify-items: end;
+  gap: 0.35rem;
+  text-align: right;
+}
+
+.hd-verst-sek__zahl {
+  font-family: var(--font-poster), sans-serif;
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  line-height: 0.85;
+  color: var(--hd-ink);
+}
+
+.hd-verst-sek__label {
+  font-family: var(--font-label), sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hd-ink-soft);
+  max-width: 18ch;
+}
+
+/* Der Balken laeuft in genau drei Sekunden leer. Er ist die Aussage des Akts
+   in der Zeit, die sie beschreibt — laenger waere gelogen. */
+.hd-verst-sek__balken {
+  display: block;
+  width: clamp(7rem, 16vw, 11rem);
+  height: 2px;
+  margin-top: 0.5rem;
+  background: var(--hd-line);
+  overflow: hidden;
+}
+
+.hd-verst-sek__balken i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: right center;
+  background: var(--hd-accent);
+  animation: hd-verst-drei 3s linear infinite;
+}
+
+@keyframes hd-verst-drei {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.hd-verst-linie {
+  position: absolute;
+  inset: auto var(--hd-verst-rand) clamp(1.8rem, 5svh, 3rem) var(--hd-verst-rand);
+  height: 1px;
+  background: var(--hd-line);
+  z-index: 3;
+}
+
+.hd-verst-linie > div {
+  height: 100%;
+  transform-origin: left center;
+  background: var(--hd-accent);
+}
+
+/* ── Das Telefon ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .hd-verst-bahn {
+    height: 300svh;
+  }
+
+  /* Drei Baender statt zweier Raender: Wort oben, Motiv in der Mitte, Text
+     unten. Um ein Motiv herumzusetzen ist auf 390 Pixeln keine Anordnung,
+     sondern zwei zu kleine Dinge nebeneinander. Linksbuendig bleibt alles. */
+  .hd-verst-akt {
+    grid-template-rows: auto 1fr;
+    padding: 15svh 1.4rem 15svh;
+  }
+
+  .hd-verst-wort {
+    align-self: start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  .hd-verst-satz {
+    align-self: end;
+    max-width: none;
+  }
+
+  .hd-verst-titel {
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+
+  .hd-verst-text {
+    font-size: 16px;
+  }
+
+  /* Das Motiv sitzt im Band zwischen Wort und Text, nicht in der Mitte der
+     Buehne: die Mitte der Buehne ist hier schon vom Text belegt. */
+  .hd-verst-motiv {
+    padding-bottom: 20svh;
+  }
+
+  .hd-verst-schleife {
+    width: 76vw;
+  }
+
+  /* Der Knotenfilm faellt auf dem Telefon ganz weg. Zwei Gruende, beide
+     zaehlen: das Entschluesselungsbudget fuer gleichzeitige Filme ist dort
+     sehr knapp und die Buehne davor haelt schon einen, und auf 390 Pixeln
+     erdrueckt der Knoten die gezeichnete Schleife, um die es hier geht. */
+  .hd-verst-knoten {
+    display: none;
+  }
+
+  .hd-verst-falter video {
+    width: 68vw;
+  }
+
+  .hd-verst-schleife-huelle,
+  .hd-verst-knoten,
+  .hd-verst-falter {
+    opacity: 0.85;
+  }
+
+  /* Die Statue bleibt der Grund und rueckt nicht mit. */
+  .hd-verst-statue {
+    align-self: stretch;
+    margin-bottom: -20svh;
+  }
+
+  /* Die Rangliste wird zur Zeile und zeigt die ersten vier. Sieben Eintraege
+     untereinander waeren hier die halbe Bildschirmhoehe fuer eine
+     Nebenaussage. Sie steht unter dem Text und nicht darueber: oben liegt die
+     Kopfzeile, und alles, was dort hinkommt, verschwindet darunter. */
+  .hd-verst-rang {
+    left: 1.4rem;
+    right: 1.4rem;
+    bottom: 7svh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    font-size: 11px;
+  }
+
+  /* Drei Eintraege, damit die Zeile eine bleibt. Ein umbrechendes viertes
+     Paar sah aus wie ein abgeschnittener Rest und nicht wie eine Auswahl. */
+  .hd-verst-rang li:nth-child(n + 4) {
+    display: none;
+  }
+
+  .hd-verst-rang li {
+    justify-content: flex-start;
+    gap: 0.4rem;
+  }
+
+  .hd-verst-sek {
+    left: 1.4rem;
+    right: auto;
+    bottom: 6svh;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+    gap: 0.2rem 0.9rem;
+  }
+
+  .hd-verst-sek__zahl {
+    grid-row: span 2;
+    font-size: 3rem;
+  }
+
+  .hd-verst-sek__balken {
+    margin-top: 0;
+  }
+
+  .hd-verst-linie {
+    inset: auto 1.4rem 2.6svh 1.4rem;
+  }
+
+  .hd-verst-akt--hell::after {
+    height: 64%;
+  }
+}
+
+/* ── Die ruhige Fassung ──────────────────────────────────────────────────── */
+
+/* Ohne Buehne gibt es keine Mitte, um die herum das Wort auseinandertreten
+   koennte: hier steht es als ein Wort mit einer Fuge. */
+.hd-verst--ruhig .hd-verst-wort {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.28em;
+  font-family: var(--font-poster), sans-serif;
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--hd-ink);
+}
+
+.hd-verst--ruhig .hd-verst-satz,
+.hd-verst--ruhig .hd-verst-text {
+  max-width: 62ch;
+}
+
+.hd-verst-ruhig-bild {
+  margin-top: 1.6rem;
+  max-width: 420px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.hd-verst-ruhig-bild img {
+  display: block;
+  width: 100%;
+  height: auto;
 }

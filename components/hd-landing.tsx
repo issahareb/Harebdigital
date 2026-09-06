@@ -10,6 +10,7 @@ import { HdHeld } from './hd-held'
 import { HdSprachschalter } from './hd-sprachschalter'
 import { HdKartenmenue } from './hd-kartenmenue'
 import { HdBand } from './hd-band'
+import { HdVerstaendnis } from './hd-verstaendnis'
 import { Zaehler } from './zaehler'
 import { HD_TEXTE, type HdLang, type HdTexte } from '@/lib/hd-texte'
 import { PORTFOLIO } from '@/lib/marke'
@@ -987,7 +988,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           stehen Film und Bildschirmfoto, und die brauchen den dunklen Rahmen.
           Ab hier wird nur noch gelesen. */}
       <section id="leistungen" className="hd-rule hd-hell">
-        <div className="mx-auto max-w-6xl px-6 pb-4 pt-16 sm:pt-24">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
           <Titel className="hd-titel max-w-[20ch] font-display font-bold">
             {t.leistungen.titel}
           </Titel>
@@ -1001,7 +1002,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         {laufwerk ? (
           <Laufwerk t={t} />
         ) : (
-          <div className="mx-auto max-w-6xl px-6 pb-16 pt-8 sm:pb-24">
+          <div className="mx-auto max-w-6xl px-6 pb-16 sm:pb-24">
             {t.leistungen.punkte.map((l, i) => (
               <Auf key={l.n} delay={i * 0.06}>
                 {/* Die Zeile bekommt beim Zeigen einen hellen Grund und rückt
@@ -1127,6 +1128,12 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
         </div>
       </section>
+
+      {/* ── Was ich verstanden habe ─────────────────────────────────────── */}
+      {/* Steht hinter den Zahlen, nicht davor: erst der Beleg, dann die
+          Erklaerung. Andersherum waere es eine Behauptung mit nachgereichtem
+          Beweis. */}
+      <HdVerstaendnis t={t} />
 
       {/* ── Ablauf ──────────────────────────────────────────────────────── */}
       <section id="ablauf" className="hd-rule hd-glanz hd-hell">

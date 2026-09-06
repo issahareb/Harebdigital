@@ -141,6 +141,33 @@ export type HdTexte = {
   }
   probleme: { titel: string; punkte: string[] }
   behauptung: string
+  /* Der Abschnitt "Was ich verstanden habe".
+   *
+   * Er ist die einzige Stelle der Seite, an der nicht die Arbeit belegt wird,
+   * sondern der Grund dafuer. Drei Akte, die aufeinander aufbauen und deshalb
+   * eine Liste sind und keine drei Felder: die Reihenfolge traegt das
+   * Argument. Kanal misst -> Gewichtung verschiebt sich -> der Mensch bleibt.
+   *
+   * `wortLinks` und `wortRechts` sind die zwei Haelften eines einzigen
+   * grossen Wortes. Dazwischen steht das Motiv. Der Trennpunkt muss in jeder
+   * Sprache an einer Stelle liegen, an der das Wort noch lesbar zerfaellt:
+   * ALGO|RITHMUS, ALGO|RITHM, ALGO|RITMO. */
+  verstaendnis: {
+    label: string
+    akte: {
+      wortLinks: string
+      wortRechts: string
+      titel: string
+      text: string
+    }[]
+    /* Die Groessen, nach denen sortiert wird. Sie laufen als Schrift auf der
+       Unendlichkeitsschleife mit — deshalb kurz, deshalb ohne Punkt. */
+    kriterien: string[]
+    sekunden: { zahl: string; label: string }
+    statueAlt: string
+    knotenAlt: string
+    falterAlt: string
+  }
   arbeiten: {
     label: string
     titel: string
@@ -332,6 +359,43 @@ const DE: HdTexte = {
   },
   behauptung:
     'Genau das ist die Arbeit. Du bekommst keine Präsentation, sondern eine Seite, die läuft. Kein Baukasten, kein Abo, keine Warteschleife. Klemmt etwas, schreibst du mir und nicht einer Hotline.',
+  verstaendnis: {
+    label: 'Was ich verstanden habe',
+    akte: [
+      {
+        wortLinks: 'ALGO',
+        wortRechts: 'RITHMUS',
+        titel: 'Ich weiß, wonach sortiert wird.',
+        text: 'Kein Kanal zeigt ein Video, weil es gut ist. Er zeigt es, weil Zahlen es sagen: wie lange jemand bleibt, ob er zurückspult, ob er speichert, ob er es weiterschickt. Diese Größen sind kein Geheimnis. Man muss sie nur ernst nehmen, bevor der erste Schnitt sitzt.',
+      },
+      {
+        wortLinks: 'IMMER',
+        wortRechts: 'ANDERS',
+        titel: 'Und dass sie sich verschieben.',
+        text: 'Was diesen Monat oben steht, zählt im nächsten weniger. Die Gewichtung wird geändert, ohne Ankündigung, und jeder Trick, der auf genau eine Einstellung gebaut war, stirbt mit ihr. Deshalb hänge ich nichts an einen Trick.',
+      },
+      {
+        wortLinks: 'DREI',
+        wortRechts: 'SEKUNDEN',
+        titel: 'Der Mensch verschiebt sich nicht.',
+        text: 'Drei Sekunden entscheiden, ob weitergewischt wird. In dieser Zeit liest niemand, er erkennt: ein Gesicht, eine Bewegung, etwas, das nicht aufgeht. Wer das trifft, muss den Algorithmus nicht überlisten. Er liefert ihm genau das Signal, auf das der wartet.',
+      },
+    ],
+    kriterien: [
+      'Verweildauer',
+      'Wiedergaberate',
+      'Gespeichert',
+      'Geteilt',
+      'Zurückgespult',
+      'Kommentiert',
+      'Profilaufruf',
+    ],
+    sekunden: { zahl: '3', label: 'Sekunden, bevor entschieden ist' },
+    statueAlt:
+      'Schwarze Büste mit zurückgelegtem Kopf, das Gesicht von leuchtend grüner Masse überzogen, die am Kinn herabläuft',
+    knotenAlt: 'Ein endlos rotierender Knoten, dessen Oberfläche vollständig aus Ziffern besteht',
+    falterAlt: 'Eine schillernde Form, die sich aufklappt wie zwei Flügel',
+  },
   arbeiten: {
     label: 'Arbeiten',
     /* Geschuetzte Leerzeichen: "online gestellt" und "im Betrieb" sind je
@@ -691,6 +755,43 @@ const EN: HdTexte = {
   },
   behauptung:
     'That is exactly the work. You get a site that runs, not a presentation. No page builder, no subscription, no hold music. If something breaks, you write to me and not to a hotline.',
+  verstaendnis: {
+    label: 'What I worked out',
+    akte: [
+      {
+        wortLinks: 'ALGO',
+        wortRechts: 'RITHM',
+        titel: 'I know what gets measured.',
+        text: 'No platform shows a video because it is good. It shows it because the numbers say so: how long someone stays, whether they rewind, whether they save it, whether they pass it on. Those figures are no secret. They just have to be taken seriously before the first cut lands.',
+      },
+      {
+        wortLinks: 'NEVER',
+        wortRechts: 'THE SAME',
+        titel: 'And that it keeps moving.',
+        text: 'What counts most this month counts less next month. The weighting changes without notice, and every trick built for one exact setting dies with it. So I hang nothing on a trick.',
+      },
+      {
+        wortLinks: 'THREE',
+        wortRechts: 'SECONDS',
+        titel: 'People do not move.',
+        text: 'Three seconds decide whether someone swipes on. In that time nobody reads, they recognise: a face, a movement, something that does not add up. Hit that and you do not need to outsmart the algorithm. You hand it exactly the signal it is waiting for.',
+      },
+    ],
+    kriterien: [
+      'Watch time',
+      'Completion rate',
+      'Saves',
+      'Shares',
+      'Rewatches',
+      'Comments',
+      'Profile visits',
+    ],
+    sekunden: { zahl: '3', label: 'seconds before it is decided' },
+    statueAlt:
+      'A black bust with its head tipped back, the face coated in glowing green liquid running down from the chin',
+    knotenAlt: 'An endlessly turning knot whose surface is made entirely of digits',
+    falterAlt: 'An iridescent form opening out like a pair of wings',
+  },
   arbeiten: {
     label: 'Work',
     titel: 'Built, shipped, and running.',
@@ -1047,6 +1148,43 @@ const ES: HdTexte = {
   },
   behauptung:
     'Ese es justo el trabajo. No recibes una presentación, sino una web que funciona. Sin plantillas, sin cuota mensual, sin música de espera. Si algo falla, me escribes a mí y no a un centro de atención.',
+  verstaendnis: {
+    label: 'Lo que he entendido',
+    akte: [
+      {
+        wortLinks: 'ALGO',
+        wortRechts: 'RITMO',
+        titel: 'Sé según qué se ordena.',
+        text: 'Ninguna plataforma muestra un vídeo porque sea bueno. Lo muestra porque lo dicen los números: cuánto se queda alguien, si lo rebobina, si lo guarda, si lo reenvía. Esas magnitudes no son ningún secreto. Solo hay que tomárselas en serio antes del primer corte.',
+      },
+      {
+        wortLinks: 'SIEMPRE',
+        wortRechts: 'DISTINTO',
+        titel: 'Y que se desplazan.',
+        text: 'Lo que pesa este mes pesa menos el siguiente. La ponderación cambia sin avisar, y cada truco construido para un ajuste exacto muere con él. Por eso no cuelgo nada de un truco.',
+      },
+      {
+        wortLinks: 'TRES',
+        wortRechts: 'SEGUNDOS',
+        titel: 'La persona no se desplaza.',
+        text: 'Tres segundos deciden si alguien sigue deslizando. En ese tiempo nadie lee, reconoce: una cara, un movimiento, algo que no encaja. Quien acierta ahí no necesita burlar al algoritmo. Le entrega justo la señal que está esperando.',
+      },
+    ],
+    kriterien: [
+      'Tiempo de vista',
+      'Tasa de finalización',
+      'Guardados',
+      'Compartidos',
+      'Repeticiones',
+      'Comentarios',
+      'Visitas al perfil',
+    ],
+    sekunden: { zahl: '3', label: 'segundos antes de que esté decidido' },
+    statueAlt:
+      'Busto negro con la cabeza inclinada hacia atrás y el rostro cubierto por una masa verde luminosa que gotea desde la barbilla',
+    knotenAlt: 'Un nudo que gira sin fin y cuya superficie está hecha enteramente de cifras',
+    falterAlt: 'Una forma iridiscente que se abre como un par de alas',
+  },
   arbeiten: {
     label: 'Trabajos',
     titel: 'Hecho, publicado y en marcha.',
