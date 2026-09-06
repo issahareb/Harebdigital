@@ -9,7 +9,6 @@ import {
   useTransform,
 } from "motion/react";
 import { EchoText } from "./echo-text";
-import { Wachstum } from "./wachstum";
 
 /**
  * Die Heldenbühne: ein Film, der am Scrollen hängt.
@@ -56,29 +55,11 @@ type Props = {
   vorspann: string;
   bildAlt: string;
   hinweis: string;
-  /* Die Wachstumsszene rechts. Sie gehoert inhaltlich zur Buehne, ist aber
-     ein eigenes Bauteil: sie hat keinen Anteil am Film und an der
-     Scroll-Kopplung. */
-  wachstum: { zeile: string; alt: string };
   children: React.ReactNode;
 };
 
 const klemm = (v: number, min = 0, max = 1) => Math.min(Math.max(v, min), max);
 
-/* Ob genug Breite fuer die Ecke unten rechts da ist. Der erste Durchlauf
-   meldet immer false — auf dem Server gibt es kein matchMedia —, das Telefon
-   ist damit der Grundzustand und die Ecke die Zutat. */
-function useBreit(abfrage = "(min-width: 1024px)") {
-  const [an, setAn] = useState(false);
-  useEffect(() => {
-    const m = window.matchMedia(abfrage);
-    const setzen = () => setAn(m.matches);
-    setzen();
-    m.addEventListener("change", setzen);
-    return () => m.removeEventListener("change", setzen);
-  }, [abfrage]);
-  return an;
-}
 
 export function HdHeld({
   sektion,
@@ -87,11 +68,9 @@ export function HdHeld({
   vorspann,
   bildAlt,
   hinweis,
-  wachstum,
   children,
 }: Props) {
   const reduce = !!useReducedMotion();
-  const breit = useBreit();
   const abschnitt = sektion;
   const film = useRef<HTMLVideoElement>(null);
   const [bereit, setBereit] = useState(false);
@@ -153,8 +132,27 @@ export function HdHeld({
       return klemm((window.scrollY - oben) / weg);
     };
 
+    /* Steht die Buehne im Bild? Startwert true, damit der erste Meter
+       gerechnet wird, bevor der Beobachter das erste Mal antwortet. */
+    let weiter = true;
+
     const bild = (jetzt: number) => {
       if (!laeuft) return;
+      /* Ausserhalb des Bildes wird nichts gerechnet.
+         Die Schleife lief vorher ueber die ganze Seite weiter — auch wenn die
+         Buehne achttausend Pixel darueber lag. Auf dem Rechner faellt das
+         nicht auf; auf einem Telefon haelt es den Videodekoder und einen
+         Bildtakt am Leben, waehrend weiter unten die Galerie ihren eigenen
+         Dekoder braucht. iOS hat dafuer eine harte Grenze, und wer sie
+         reisst, bekommt keine Fehlermeldung, sondern eine neu geladene Seite.
+
+         `weiter` wird vom Beobachter unten gesetzt. Die Schleife bleibt
+         angemeldet, sie rechnet nur nichts — so faengt sie ohne Zutun wieder
+         an, sobald die Buehne zurueck ins Bild kommt. */
+      if (!weiter) {
+        requestAnimationFrame(bild);
+        return;
+      }
       const dt = Math.min((jetzt - letzte) / 1000, 0.1);
       letzte = jetzt;
 
@@ -192,6 +190,20 @@ export function HdHeld({
       if (versuch) versuch.then(() => v.pause()).catch(() => {});
     };
 
+    /* Ob die Buehne ueberhaupt in der Naehe ist. Ein Bildschirm Rand nach
+       oben und unten, damit die Schleife wieder laeuft, bevor man die Buehne
+       sieht — sonst stuende der Film beim Zurueckscrollen einen Moment. */
+    const beobachter = new IntersectionObserver(
+      ([eintrag]) => {
+        weiter = eintrag.isIntersecting;
+        /* Ausserhalb wird der Film angehalten. Er ist ohnehin nur ein
+           Standbild, das gescrubbt wird — laufen muss er nie. */
+        if (!weiter && v) v.pause();
+      },
+      { rootMargin: "100% 0px" },
+    );
+    beobachter.observe(el);
+
     if (v) {
       if (v.readyState >= 1) setzen();
       v.addEventListener("loadedmetadata", setzen, { once: true });
@@ -209,6 +221,7 @@ export function HdHeld({
     const id = requestAnimationFrame(bild);
     return () => {
       laeuft = false;
+      beobachter.disconnect();
       cancelAnimationFrame(id);
       window.removeEventListener("pointerdown", anstossen);
       window.removeEventListener("touchstart", anstossen);
@@ -220,11 +233,6 @@ export function HdHeld({
   const textDeckung = useTransform(fortschrittWert, [0, 0.42, 0.72], [1, 1, 0]);
   const textY = useTransform(fortschrittWert, [0, 0.72], [0, -70]);
   const hinweisDeckung = useTransform(fortschrittWert, [0, 0.06], [1, 0]);
-
-  /* Auf dem Telefon uebernimmt die Szene den Platz des Textes: sie kommt,
-     waehrend er geht. Am Rechner steht sie von Anfang an in ihrer Ecke und
-     braucht keinen Auftritt. */
-  const wachstumDeckung = useTransform(fortschrittWert, [0.3, 0.55], [0, 1]);
 
   return (
     <section
@@ -317,23 +325,6 @@ export function HdHeld({
           <div className="flex flex-wrap items-center justify-start gap-3">
             {children}
           </div>
-        </motion.div>
-
-        {/* Die Wachstumsszene als eigene Ebene, nicht in der Textspalte.
-            Am Rechner steht sie unten rechts — die Knoepfe sitzen unten links,
-            die Ecke war leer, und dort stoert sie weder Schlagzeile noch
-            Schreibtisch.
-
-            Auf dem Telefon ist unten rechts kein Platz. Dort erscheint sie
-            stattdessen genau da, wo der Text geht: er blendet zwischen 42 und
-            72 Prozent des Buehnenwegs aus, sie blendet zwischen 30 und 55
-            Prozent ein. Wer weiterscrollt, sieht erst die Ansage und dann das
-            Bild dazu — beides gehoert zur Buehne, nur nicht gleichzeitig. */}
-        <motion.div
-          className="hd-held-wachstum"
-          style={{ opacity: breit ? 1 : wachstumDeckung }}
-        >
-          <Wachstum zeile={wachstum.zeile} alt={wachstum.alt} />
         </motion.div>
 
         <motion.div

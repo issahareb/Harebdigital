@@ -10,7 +10,7 @@ import { HdHeld } from './hd-held'
 import { HdSprachschalter } from './hd-sprachschalter'
 import { HdKartenmenue } from './hd-kartenmenue'
 import { HdBand } from './hd-band'
-import { Fallblatt } from './fallblatt'
+import { Zaehler } from './zaehler'
 import { HD_TEXTE, type HdLang, type HdTexte } from '@/lib/hd-texte'
 import { PORTFOLIO } from '@/lib/marke'
 import {
@@ -278,7 +278,7 @@ function Zahlenliste({
             {z.label}
           </dt>
           <dd className="font-display text-[1.6rem] font-bold leading-none tabular-nums tracking-tight text-[color:var(--hd-accent)]">
-            {z.wert}
+            <Zaehler wert={z.wert} />
           </dd>
         </div>
       ))}
@@ -758,7 +758,6 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         vorspann={t.buehne.vorspann}
         bildAlt={t.buehne.bildAlt}
         hinweis={t.buehne.hinweis}
-        wachstum={t.wachstum}
       >
         {/* Der Anker haelt Breite und Höhe, waehrend der Knopf oben in der
             Kopfzeile sitzt. Ohne ihn ruecke "Arbeiten ansehen" in genau dem
@@ -1138,8 +1137,8 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         <div className="mx-auto grid max-w-6xl gap-y-14 px-6 py-24 sm:py-28 lg:grid-cols-3 lg:gap-x-10">
           {t.fakten.map((f, i) => (
             <Auf key={f.v} delay={i * 0.1}>
-              <div className="text-[3.4rem] leading-none tracking-tight text-[color:var(--hd-accent)] sm:text-[4.5rem]">
-                <Fallblatt text={`${f.zahl}${f.suffix}`} />
+              <div className="font-display text-[3.4rem] font-bold leading-none tabular-nums tracking-tight text-[color:var(--hd-accent)] sm:text-[4.5rem]">
+                <Zaehler wert={`${f.zahl}${f.suffix}`} />
               </div>
               <p className="mt-5 max-w-[26ch] text-[17px] leading-[1.5] text-[color:var(--hd-ink-soft)] text-pretty">
                 {f.v}
