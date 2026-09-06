@@ -111,6 +111,16 @@ export function sprachAusKopf(kopf: string | null | undefined): HdLang | null {
 export type HdTexte = {
   meta: { titel: string; beschreibung: string }
   ctaHaupt: string
+  /* Die Wachstumsszene rechts in der Buehne.
+   *
+   * Eine Ameise laeuft durch eine Tuer und kommt als Elefant heraus. Was es
+   * mitteilt: hier wird aus klein gross — und zwar durch etwas hindurch, das
+   * gebaut werden muss. Der Satz darueber sagt dasselbe in Worten, damit die
+   * Szene nicht geraten werden muss.
+   *
+   * `alt` beschreibt die Szene fuer Vorlesegeraete. Sie ist Zierrat und wird
+   * deshalb ausgeblendet; der Satz darueber traegt die Aussage allein. */
+  wachstum: { zeile: string; alt: string }
   buehne: {
     /* Zwei Zeilen, und zwar als zwei Angaben. Ein einziger Satz haette dem
        Zeilenumbruch des Browsers vertraut, und der bricht dort, wo die Breite
@@ -241,6 +251,10 @@ const DE: HdTexte = {
       'Hareb Digital baut Websites, Webanwendungen und Automatisierungen für kleine und mittlere Unternehmen. Ein Ansprechpartner, fester Preis, Antwort in 24 Stunden.',
   },
   ctaHaupt: 'Projekt anfragen',
+  wachstum: {
+    zeile: 'Machen wir deine Marke groß.',
+    alt: 'Eine Ameise läuft durch eine Tür und kommt als Elefant wieder heraus.',
+  },
   buehne: {
     titelOben: 'Lass uns gemeinsam',
     titelUnten: 'etwas Einzigartiges bauen.',
@@ -494,6 +508,10 @@ const EN: HdTexte = {
       'Hareb Digital builds websites, web applications and automation for small and mid-sized businesses. One contact, a fixed price, an answer within 24 hours.',
   },
   ctaHaupt: 'Start a project',
+  wachstum: {
+    zeile: "Let's get your brand growing.",
+    alt: 'An ant walks through a door and comes out the other side as an elephant.',
+  },
   buehne: {
     titelOben: "Let's build something",
     titelUnten: 'singular. Together.',
@@ -744,6 +762,10 @@ const ES: HdTexte = {
       'Hareb Digital crea webs, aplicaciones y automatizaciones para pequeñas y medianas empresas. Una sola persona de contacto, precio cerrado y respuesta en 24 horas.',
   },
   ctaHaupt: 'Solicitar proyecto',
+  wachstum: {
+    zeile: 'Hagamos crecer tu marca.',
+    alt: 'Una hormiga cruza una puerta y sale por el otro lado convertida en elefante.',
+  },
   buehne: {
     titelOben: 'Construyamos juntos',
     titelUnten: 'algo único.',

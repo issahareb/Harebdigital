@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import { EchoText } from "./echo-text";
+import { Wachstum } from "./wachstum";
 
 /**
  * Die Heldenbühne: ein Film, der am Scrollen hängt.
@@ -55,6 +56,10 @@ type Props = {
   vorspann: string;
   bildAlt: string;
   hinweis: string;
+  /* Die Wachstumsszene rechts. Sie gehoert inhaltlich zur Buehne, ist aber
+     ein eigenes Bauteil: sie hat keinen Anteil am Film und an der
+     Scroll-Kopplung. */
+  wachstum: { zeile: string; alt: string };
   children: React.ReactNode;
 };
 
@@ -67,6 +72,7 @@ export function HdHeld({
   vorspann,
   bildAlt,
   hinweis,
+  wachstum,
   children,
 }: Props) {
   const reduce = !!useReducedMotion();
@@ -246,6 +252,11 @@ export function HdHeld({
               Schreibtisch im Weg) und danach oben (dort lagen die Knöpfe auf
               dem Bildschirm). Auseinandergezogen gehört die Mitte wieder dem
               Bild — und genau dort steht der Gegenstand, um den es geht. */}
+          {/* Schrift links, Szene rechts.
+              Die rechte Haelfte der Buehne trug bisher nur Nebel. Ein
+              Blickfang dort gibt dem Bild eine zweite Stelle, an der etwas
+              passiert, ohne dass der Film lauter werden muss. */}
+          <div className="hd-held-kopf">
           <div>
             {/* Jede Zeile mit ihrem eigenen Nachhall (EchoText, React Bits).
               Über einem Film ist die Tönung wichtiger als in der alten,
@@ -279,6 +290,9 @@ export function HdHeld({
             <p className="hd-held-vorspann mt-5 max-w-[46ch] text-pretty text-[17px] leading-[1.6] sm:text-[19px]">
               {vorspann}
             </p>
+          </div>
+
+            <Wachstum zeile={wachstum.zeile} alt={wachstum.alt} />
           </div>
 
           <div className="flex flex-wrap items-center justify-start gap-3">

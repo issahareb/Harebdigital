@@ -757,6 +757,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         vorspann={t.buehne.vorspann}
         bildAlt={t.buehne.bildAlt}
         hinweis={t.buehne.hinweis}
+        wachstum={t.wachstum}
       >
         {/* Der Anker haelt Breite und Höhe, waehrend der Knopf oben in der
             Kopfzeile sitzt. Ohne ihn ruecke "Arbeiten ansehen" in genau dem
