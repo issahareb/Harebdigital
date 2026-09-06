@@ -2269,16 +2269,35 @@ section.hd-akt {
    Schrift am leichtesten zu lesen war. Nur: das Bild hat unten seinen
    Gegenstand — den Schreibtisch — und der Text lag ihm quer im Weg. Oben
    liegt Himmel, dort hat er Platz, und der Schleier deckt den Unterschied. */
+/* Linksbuendig, nicht mittig.
+   Zentrierte Schlagzeilen lesen sich wie ein Plakat: jede Zeile faengt
+   woanders an, und das Auge muss den Anfang jedes Mal neu suchen. Auf einer
+   Seite, die gelesen werden soll, ist die linke Kante der Halt — und sie ist
+   dieselbe wie die aller Abschnitte darunter, sodass die Seite eine
+   durchgehende Fluchtlinie bekommt statt zweier konkurrierender. */
 .hd-held-text {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
   padding: 15svh 1.5rem calc(10svh + env(safe-area-inset-bottom));
-  text-align: center;
+  text-align: left;
+}
+
+/* Dieselbe Fluchtlinie wie alle Abschnitte darunter.
+   Die Abschnitte liegen in einem 72rem breiten, mittig gesetzten Kasten mit
+   1,5rem Innenabstand; ihr Text beginnt auf einem 1440er Bildschirm also bei
+   rund 168 Pixeln. Die Buehne fuellte dagegen die ganze Breite und begann bei
+   24. Linksbuendig war beides, aber an zwei verschiedenen Kanten — und ein
+   Versatz von 144 Pixeln beim ersten Scrollen sieht nicht nach Absicht aus,
+   sondern nach Fehler. Der innere Kasten zieht die Buehne auf dieselbe
+   Linie, ohne dass der Film darunter beschnitten wird. */
+.hd-held-text > * {
+  width: min(72rem, 100%);
+  margin-inline: auto;
 }
 
 /* Die Schlagzeile. Zwei Zeilen, jede erzwungen, und die Grösse hängt an der

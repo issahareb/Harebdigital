@@ -552,7 +552,7 @@ function Laufwerk({ t }: { t: HdTexte }) {
                 <h3 className="font-display text-[28px] font-bold leading-[1.12] tracking-[-0.02em]">
                   {l.titel}
                 </h3>
-                <p className="mt-4 max-w-[46ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+                <p className="mt-4 max-w-[46ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
                   {l.text}
                 </p>
               </div>
@@ -871,10 +871,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           }}
         />
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-32">
-          <Auf className="text-center">
+          <Auf>
             <span className="hd-label">{t.arbeiten.label}</span>
           </Auf>
-          <Titel className="hd-titel mx-auto mt-4 max-w-[20ch] text-center font-display font-bold">
+          <Titel className="hd-titel mt-4 max-w-[20ch] font-display font-bold">
             {t.arbeiten.titel}
           </Titel>
 
@@ -884,7 +884,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <h3 className="mt-3 font-display text-2xl font-bold tracking-[-0.02em]">
                 {t.arbeiten.kundeName}
               </h3>
-              <p className="mt-3 max-w-[44ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+              <p className="mt-3 max-w-[44ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
                 {t.arbeiten.kundeText}
               </p>
 
@@ -945,7 +945,12 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         {/* Die Galerie steht ausserhalb des Textcontainers und nimmt die
             volle Breite: der Stapel kippt nach hinten weg und braucht links
             und rechts Luft fuer die zurueckgesetzten Nachbarn. */}
-        <div className="pb-20 sm:pb-32">
+        {/* `id` und `scroll-mt`, weil das Kartenmenue hierher zeigt.
+            Der Punkt „Websites" verwies auf #werkschau, und den Anker gab es
+            nicht — der Klick tat schlicht nichts. `scroll-mt-24` schiebt das
+            Ziel unter die klebende Kopfzeile, sonst liegt die erste Folie
+            darunter. */}
+        <div id="werkschau" className="scroll-mt-24 pb-20 sm:pb-32">
           <Galerie
             stuecke={SCHAU}
             label={t.werkschau.label}
@@ -966,7 +971,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             {t.leistungen.titel}
           </Titel>
           <Auf delay={0.1}>
-            <p className="mt-5 max-w-[54ch] text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+            <p className="mt-5 max-w-[54ch] text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
               {t.leistungen.vorspann}
             </p>
           </Auf>
@@ -986,7 +991,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <h3 className="font-display text-xl font-bold tracking-[-0.015em] sm:text-[22px]">
                     {l.titel}
                   </h3>
-                  <p className="max-w-[56ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:col-span-2">
+                  <p className="max-w-[56ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:col-span-2 text-pretty">
                     {l.text}
                   </p>
                 </div>
@@ -1006,7 +1011,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             {t.social.titel}
           </Titel>
           <Auf delay={0.1}>
-            <p className="mt-5 max-w-[56ch] text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+            <p className="mt-5 max-w-[56ch] text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
               {t.social.vorspann}
             </p>
           </Auf>
@@ -1061,7 +1066,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                     <h3 className="font-display text-xl font-bold tracking-[-0.015em] sm:text-[22px]">
                       {b.titel}
                     </h3>
-                    <p className="mt-3 max-w-[56ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+                    <p className="mt-3 max-w-[56ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
                       {b.text}
                     </p>
                     <div className="mt-7">
@@ -1152,7 +1157,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <div className="text-[3.4rem] leading-none tracking-tight text-[color:var(--hd-accent)] sm:text-[4.5rem]">
                 <Fallblatt text={`${f.zahl}${f.suffix}`} />
               </div>
-              <p className="mt-5 max-w-[26ch] text-[17px] leading-[1.5] text-[color:var(--hd-ink-soft)]">
+              <p className="mt-5 max-w-[26ch] text-[17px] leading-[1.5] text-[color:var(--hd-ink-soft)] text-pretty">
                 {f.v}
               </p>
             </Auf>
@@ -1162,12 +1167,12 @@ export function HdLanding({ lang }: { lang: HdLang }) {
 
       {/* ── Schluss ─────────────────────────────────────────────────────── */}
       <section className="hd-rule hd-schluss" style={{ background: 'var(--hd-accent-soft)' }}>
-        <div className="mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
-          <Titel className="hd-titel mx-auto max-w-[20ch] font-display font-bold">
+        <div className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
+          <Titel className="hd-titel max-w-[20ch] font-display font-bold">
             {t.schluss.titel}
           </Titel>
           <Auf delay={0.1}>
-            <p className="mx-auto mt-5 max-w-[48ch] text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
+            <p className="mt-5 max-w-[48ch] text-pretty text-[18px] leading-[1.6] text-[color:var(--hd-ink-soft)]">
               {t.schluss.text}
             </p>
             <Magnet className="mt-9">

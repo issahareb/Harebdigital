@@ -276,12 +276,12 @@ export function HdHeld({
               ))}
             </h1>
 
-            <p className="mx-auto mt-5 max-w-[46ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:text-[19px]">
+            <p className="mt-5 max-w-[46ch] text-pretty text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:text-[19px]">
               {vorspann}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex flex-wrap items-center justify-start gap-3">
             {children}
           </div>
         </motion.div>
