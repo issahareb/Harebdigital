@@ -3399,9 +3399,12 @@ select.hd-feld option {
   letter-spacing: -0.015em;
   text-transform: uppercase;
   color: var(--hd-ink);
-  /* Der Schatten ist kein Schmuck. Das Wort liegt ueber Bewegtbild, und ohne
-     ihn verschwindet eine Kante, sobald eine helle Ziffer darunter durchlaeuft. */
-  text-shadow: 0 2px 26px rgb(0 0 0 / 0.55);
+  /* Kein Schlagschatten. Er stand hier als Absicherung fuer den Fall, dass
+     eine helle Ziffer unter einer Buchstabenkante durchlaeuft — nur laeuft
+     die Schleife zwischen den beiden Worthaelften und nicht durch sie
+     hindurch, und was blieb, war ein weicher dunkler Kasten quer ueber der
+     Buehne. Auf einem Schwarz mit Blaustich liest der sich als blauer
+     Rahmen. Weiss auf dem Grund steht ohnehin auf 17:1. */
 }
 
 .hd-verst-satz {
@@ -3441,10 +3444,6 @@ select.hd-feld option {
   --hd-ink-soft: #282e37;
   --hd-line: rgb(0 0 0 / 0.24);
   --hd-accent: #003a3b;
-}
-
-.hd-verst-akt--hell .hd-verst-wort {
-  text-shadow: 0 2px 22px rgb(255 255 255 / 0.28);
 }
 
 /* Der Schleier unter dem Text des hellen Akts. Er ist in der Farbe des
