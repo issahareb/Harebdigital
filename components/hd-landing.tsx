@@ -9,6 +9,7 @@ import { Galerie, type Schaustueck } from './galerie'
 import { HdHeld } from './hd-held'
 import { HdSprachschalter } from './hd-sprachschalter'
 import { HdKartenmenue } from './hd-kartenmenue'
+import { HdBand } from './hd-band'
 import { Fallblatt } from './fallblatt'
 import { HD_TEXTE, type HdLang, type HdTexte } from '@/lib/hd-texte'
 import { PORTFOLIO } from '@/lib/marke'
@@ -828,25 +829,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             zweite Haelfte genau dann anfaengt, wenn die erste durch ist; der
             Schnitt liegt bei -50 %, deshalb ist er unsichtbar. Die Kopie
             traegt `aria-hidden`, sonst laese ein Vorlesegeraet alles doppelt. */}
-        <div className="hd-band">
-          {[0, 1].map((reihe) => (
-            <div key={reihe} className={`hd-band__reihe hd-band__reihe--${reihe}`}>
-              {[0, 1].map((halb) => (
-                <ul key={halb} className="hd-band__spur" aria-hidden={halb === 1 || undefined}>
-                  {t.probleme.punkte
-                    .filter((_, i) => i % 2 === reihe)
-                    .map((satz) => (
-                      <li key={satz} className="hd-band__satz">
-                        <span aria-hidden className="text-[color:var(--hd-accent)]">&bdquo;</span>
-                        {satz}
-                        <span aria-hidden className="text-[color:var(--hd-accent)]">&ldquo;</span>
-                      </li>
-                    ))}
-                </ul>
-              ))}
-            </div>
-          ))}
-        </div>
+        <HdBand saetze={t.probleme.punkte} />
       </section>
 
       {/* ── Behauptung ──────────────────────────────────────────────────── */}
