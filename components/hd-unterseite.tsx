@@ -51,7 +51,7 @@ export function HdUnterseite({
             <strong className="font-semibold text-[color:var(--hd-ink)]">Hareb Digital</strong>,{' '}
             {t.fuss.inhaber}
           </span>
-          <nav className="flex flex-wrap items-center gap-x-7 gap-y-1 text-[15px] text-[color:var(--hd-ink-soft)] [&_a]:inline-flex [&_a]:min-h-[24px] [&_a]:items-center [&_a:hover]:text-[color:var(--hd-ink)]">
+          <nav className="hd-fuss-nav flex flex-wrap items-center gap-x-7 gap-y-2 text-[15px] text-[color:var(--hd-ink-soft)] [&_a]:inline-flex [&_a]:min-h-[24px] [&_a]:items-center [&_a:hover]:text-[color:var(--hd-ink)]">
             <a href="mailto:info@hareb.org">info@hareb.org</a>
             <Link href="/impressum/">{t.fuss.impressum}</Link>
             <Link href="/datenschutz/">{t.fuss.datenschutz}</Link>

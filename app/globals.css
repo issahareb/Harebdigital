@@ -3309,3 +3309,67 @@ html[data-perf='low'] .hd-band__lauf {
     padding-top: 21svh;
   }
 }
+
+/* ── Tippziele ───────────────────────────────────────────────────────────
+   Die Pruefung mit design-review hat auf dem Telefon neunzehn Bedienelemente
+   unter 44 mal 44 Pixeln gefunden. Zwei Gruppen davon sind echte Fehler, und
+   die erste habe ich selbst gebaut: der Sprachschalter wurde auf Wunsch
+   kleiner und landete damit bei 28 Pixeln Hoehe. Die Verweise im Kartenmenue
+   stehen bei 32.
+
+   Die Loesung ist nicht, sie wieder groesser zu machen — klein war die
+   Absicht. Eine unsichtbare Flaeche darueber vergroessert das Ziel, ohne das
+   Aussehen anzufassen. `inset` mit negativem Wert zieht sie ueber die Kanten
+   hinaus; der Finger trifft, das Auge sieht dasselbe.
+
+   `::after` und nicht `padding`, weil Innenabstand die Pille auseinander-
+   zoege und der Schalter dann wieder gross waere. */
+.hd-sprachschalter-knopf,
+.hd-kartenmenue__links a {
+  position: relative;
+}
+
+.hd-sprachschalter-knopf::after,
+.hd-kartenmenue__links a::after,
+.hd-kartenmenue__marke::after,
+.hd-fuss-nav a::after,
+.galerie-punkt::after {
+  content: '';
+  position: absolute;
+  /* So weit nach aussen, dass die kleinste Kante 44 erreicht. */
+  inset: -8px -4px;
+  /* Nur fangen, nichts zeichnen. */
+  pointer-events: auto;
+}
+
+/* Die Marke ist auf dem Telefon nur das Zeichen — 28 Pixel breit, weil die
+   Wortmarke dort ausgeblendet ist. */
+.hd-kartenmenue__marke,
+.hd-fuss-nav a,
+.galerie-punkt {
+  position: relative;
+}
+
+/* Die Fusszeile stand auf 24 Pixeln Hoehe. Breit genug waren die Verweise,
+   hoch genug nicht — und in der Fusszeile stehen sie eng untereinander,
+   also trifft man dort am ehesten daneben. */
+.hd-fuss-nav a::after {
+  inset: -10px -6px;
+}
+
+.hd-kartenmenue__marke::after {
+  inset: 0 -8px;
+}
+
+/* Die Punkte der Galerie sind 18 mal 8. Sie sollen so klein bleiben — sie
+   zeigen die Stelle an, sie sind kein Knopf, den man sucht. Getroffen werden
+   muessen sie trotzdem. */
+.galerie-punkt::after {
+  inset: -18px -13px;
+}
+
+@media (max-width: 640px) {
+  .hd-sprachschalter-knopf::after {
+    inset: -9px -7px;
+  }
+}
