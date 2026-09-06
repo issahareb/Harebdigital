@@ -3142,3 +3142,60 @@ html[data-perf='low'] .hd-band__lauf {
     inset: -9px -7px;
   }
 }
+
+/* ── Formularfelder ──────────────────────────────────────────────────────
+   Sie stehen auf der Kontaktseite, und die traegt den Grund der Sprache des
+   Besuchers — hell oder dunkel. Deshalb keine festen Farben, sondern
+   dieselben Angaben wie ueberall: das Feld ist einen Hauch heller als sein
+   Grund und bekommt beim Fokus die Akzentfarbe. */
+.hd-feld-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-label), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--hd-ink-soft);
+}
+
+.hd-feld {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--hd-line);
+  background: color-mix(in oklch, var(--hd-ink) 4%, var(--hd-paper-2));
+  padding: 0.8rem 1rem;
+  font: inherit;
+  font-size: 16px; /* Darunter zoomt iOS beim Antippen ins Feld hinein. */
+  color: var(--hd-ink);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hd-feld::placeholder {
+  color: color-mix(in oklch, var(--hd-ink-soft) 70%, transparent);
+}
+
+.hd-feld:focus-visible {
+  outline: none;
+  border-color: var(--hd-accent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--hd-accent) 24%, transparent);
+}
+
+/* Die Auswahl zeichnet das Betriebssystem. Ohne eigene Farben stuende auf
+   dem dunklen Grund schwarze Schrift auf weissem Feld. */
+select.hd-feld {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--hd-ink-soft) 50%),
+    linear-gradient(135deg, var(--hd-ink-soft) 50%, transparent 50%);
+  background-position: right 1.1rem center, right 0.75rem center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+}
+
+select.hd-feld option {
+  background-color: var(--hd-paper-2);
+  color: var(--hd-ink);
+}

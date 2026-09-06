@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
+import { Anfrageformular } from '@/components/anfrageformular'
 import { HdUnterseite } from '@/components/hd-unterseite'
 import { HD_TEXTE } from '@/lib/hd-texte'
 import { marke } from '@/lib/marke'
@@ -12,9 +14,14 @@ import { sprache } from '@/lib/sprache'
  * Dienst und an einem Token, die beide nicht mit umgezogen sind. Hier stehen
  * deshalb die beiden Wege, auf denen eine Anfrage tatsaechlich ankommt.
  *
- * Ein nachgebautes Formular ohne Empfaenger waere die schlechtere Loesung: es
- * saehe vollstaendiger aus und waere es nicht — der Besucher glaubt, er habe
- * Kontakt aufgenommen, und versucht es kein zweites Mal.
+ * Ein Formular gibt es inzwischen doch — aber eines, das nichts verspricht,
+ * was es nicht haelt: es setzt die E-Mail auf und uebergibt sie dem
+ * Mailprogramm des Besuchers. Er sieht, was rausgeht, und hat es im eigenen
+ * Postausgang. Ein Formular, das "danke" sagt und die Nachricht verwirft,
+ * waere schlechter als gar keines.
+ *
+ * `?leistung=<slug>` belegt die Auswahl vor. Wer auf einer Kachel oder einer
+ * Detailseite auf "anfragen" geklickt hat, findet sie schon ausgewaehlt.
  */
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,7 +46,14 @@ export default async function Kontaktseite() {
         {t.vorspann}
       </p>
 
-      <dl className="mt-12 grid gap-6 sm:grid-cols-2">
+      {/* `Suspense`, weil das Formular die Adresszeile liest. Ohne die Klammer
+          zwingt Next die ganze Seite in die Auslieferung beim Aufruf und
+          meldet das beim Bauen als Fehler. */}
+      <Suspense fallback={null}>
+        <Anfrageformular t={HD_TEXTE[lang]} epost={marke.email} />
+      </Suspense>
+
+      <dl className="mt-16 grid gap-6 sm:grid-cols-2">
         <div>
           <dt className="hd-label">{t.epost}</dt>
           <dd className="mt-1 text-lg">

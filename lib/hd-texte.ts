@@ -167,7 +167,26 @@ export type HdTexte = {
     label: string
     titel: string
     vorspann: string
-    punkte: { n: string; titel: string; text: string }[]
+    /* Die Beschriftung der beiden Verweise auf jeder Kachel. */
+    anfragen: string
+    mehr: string
+    /* `slug` ist in allen drei Sprachen derselbe. Das ist Absicht: die
+       Adresse einer Leistung soll sich nicht aendern, wenn jemand die Sprache
+       umstellt, und sie ist der Schluessel, mit dem das Formular die richtige
+       Auswahl vorbelegt. Deutsch, weil der Markt deutsch ist. */
+    punkte: {
+      n: string
+      slug: string
+      titel: string
+      text: string
+      /* Die Detailseite unter /leistungen/<slug>. */
+      detail: {
+        vorspann: string
+        dabei: { titel: string; punkte: string[] }
+        ablauf: { titel: string; text: string }
+        preis: { titel: string; text: string }
+      }
+    }[]
   }
   /* Der Reichweiten-Beleg.
    *
@@ -231,6 +250,25 @@ export type HdTexte = {
     telefon: string
     sitz: string
     zurueck: string
+    /* Das Formular.
+     *
+     * Es traegt keinen eigenen Empfaenger: es setzt eine E-Mail auf und
+     * uebergibt sie dem Mailprogramm des Besuchers. Das ist bewusst so —
+     * ein Formular, das "danke" sagt und die Nachricht verwirft, ist
+     * schlechter als keines, und einen Versand ueber einen eigenen Dienst
+     * gibt es hier noch nicht. So sieht der Absender, was rausgeht, hat es
+     * selbst im Postausgang, und nichts kann still verlorengehen. */
+    formular: {
+      titel: string
+      leistung: string
+      leistungLeer: string
+      name: string
+      epost: string
+      nachricht: string
+      nachrichtHinweis: string
+      senden: string
+      hinweis: string
+    }
   }
 }
 
@@ -340,26 +378,120 @@ const DE: HdTexte = {
     titel: 'Such dir aus, was gerade drückt.',
     vorspann:
       'Du musst nicht alles auf einmal machen. Meistens ist es einer dieser vier Punkte, und der bringt schon den Unterschied.',
+    anfragen: 'Jetzt unverbindlich anfragen',
+    mehr: 'Mehr Infos',
     punkte: [
       {
         n: '01',
+        slug: 'neue-website',
         titel: 'Eine neue Website',
         text: 'Von der ersten Skizze bis zu dem Tag, an dem sie läuft. Sie sieht auf dem Handy so gut aus wie am Rechner, wird bei Google gefunden und schickt dir Anfragen direkt zu. Eine Landingpage in zwei bis drei Wochen, eine mehrseitige Seite in vier bis acht.',
+        detail: {
+          vorspann:
+            'Eine Website, die nicht nur da ist, sondern arbeitet: gefunden werden, verstanden werden, Anfragen bekommen. Gebaut von einer Person, von der Struktur über das Design bis zum Code — keine Weitergabe, keine Zwischenstation.',
+          dabei: {
+            titel: 'Was dabei entsteht',
+            punkte: [
+              'Struktur und Texte, gemeinsam erarbeitet — nicht von dir geliefert und von mir eingefügt',
+              'Eigenes Design statt Vorlage, auf dem Handy zuerst gedacht',
+              'Technisches SEO von Anfang an: Struktur, Ladezeit, strukturierte Daten',
+              'Barrierefrei nach BFSG, nicht nachträglich draufgesetzt',
+              'Ein Kontaktweg, der bei dir ankommt und nicht im Nichts endet',
+            ],
+          },
+          ablauf: {
+            titel: 'Wie es läuft',
+            text: 'Ein Gespräch, dann ein Entwurf, den du siehst, bevor du dich festlegst. Danach wird gebaut, du siehst Zwischenstände, und am Ende geht sie live — mit Übergabe, damit du selbst Texte ändern kannst.',
+          },
+          preis: {
+            titel: 'Dauer und Preis',
+            text: 'Eine Landingpage in zwei bis drei Wochen, eine mehrseitige Seite in vier bis acht. Fester Preis, kein Stundenzettel: Du weißt vorher, was es kostet.',
+          },
+        },
       },
       {
         n: '02',
+        slug: 'website-ueberarbeiten',
         titel: 'Die bestehende überarbeiten',
         text: 'Wenn das Grundgerüst steht, aber nichts davon mehr stimmt. Neues Aussehen ohne bei null anzufangen, schneller, endlich sauber auf dem Handy. Und barrierefrei nach dem Barrierefreiheitsstärkungsgesetz, was nachträglich aufwendiger ist als gleich mitgemacht.',
+          detail: {
+          vorspann:
+            'Nicht alles muss weg. Oft steht die Struktur, und was fehlt, ist alles andere: das Aussehen, die Ladezeit, die Bedienung auf dem Handy. Das lässt sich überarbeiten, ohne bei null anzufangen — und es geht schneller und kostet weniger als ein Neubau.',
+          dabei: {
+            titel: 'Was dabei entsteht',
+            punkte: [
+              'Ein Blick auf das, was da ist: was bleibt, was geht, was neu muss',
+              'Neues Aussehen auf der bestehenden Struktur',
+              'Ladezeit heruntergeholt — meistens der größte einzelne Gewinn',
+              'Sauber auf dem Handy, statt am Rechner entworfen und dort gequetscht',
+              'Barrierefrei nach BFSG nachgezogen',
+            ],
+          },
+          ablauf: {
+            titel: 'Wie es läuft',
+            text: 'Zuerst schaue ich mir die Seite an und sage dir, was sich lohnt und was nicht. Erst danach entscheiden wir über den Umfang — es kann gut sein, dass drei Eingriffe reichen.',
+          },
+          preis: {
+            titel: 'Dauer und Preis',
+            text: 'Je nach Umfang eine bis vier Wochen. Der Blick auf die bestehende Seite ist kostenlos, danach ein fester Preis für das, was wir vereinbaren.',
+          },
+        },
       },
       {
         n: '03',
+        slug: 'automatisierung',
         titel: 'Abläufe automatisieren',
         text: 'Alles, was du jede Woche von Hand machst und nicht müsstest. Angebote, Rechnungen, Terminerinnerungen, Anfragen sortieren und beantworten.',
+        detail: {
+          vorspann:
+            'Jeder Betrieb hat drei bis fünf Handgriffe, die jede Woche wiederkehren und niemandem gehören. Angebote abtippen, Termine erinnern, Anfragen sortieren. Das lässt sich abgeben — nicht an einen Menschen, sondern an einen Ablauf, der immer gleich funktioniert.',
+          dabei: {
+            titel: 'Was dabei entsteht',
+            punkte: [
+              'Angebote und Rechnungen aus einer Vorlage statt aus dem Kopf',
+              'Terminerinnerungen, die von allein rausgehen',
+              'Anfragen vorsortiert, beantwortet oder weitergereicht',
+              'Ein Ort, an dem du siehst, was offen ist — statt fünf Postfächer',
+              'Anbindung an das, was du schon nutzt, statt eines neuen Programms',
+            ],
+          },
+          ablauf: {
+            titel: 'Wie es läuft',
+            text: 'Wir gehen eine Woche deiner Arbeit durch und suchen die Handgriffe, die sich wiederholen. Der teuerste kommt zuerst dran, damit sich der Aufwand sofort rechnet.',
+          },
+          preis: {
+            titel: 'Dauer und Preis',
+            text: 'Ein einzelner Ablauf ist meist in ein bis zwei Wochen fertig. Fester Preis je Ablauf, damit du entscheiden kannst, wie viele es werden.',
+          },
+        },
       },
       {
         n: '04',
+        slug: 'gefunden-werden',
         titel: 'Nur gefunden werden',
         text: 'Die Seite bleibt, wie sie ist. Sichtbar wird sie trotzdem: ganz oben bei Google und in den Antworten von ChatGPT und Perplexity.',
+        detail: {
+          vorspann:
+            'Manchmal ist die Seite in Ordnung und nur niemand findet sie. Dann muss nichts neu gebaut werden. Sichtbarkeit ist eine eigene Arbeit: verstanden werden von Google — und inzwischen genauso von den Antwortmaschinen, die immer mehr Leute statt einer Suche benutzen.',
+          dabei: {
+            titel: 'Was dabei entsteht',
+            punkte: [
+              'Technisches SEO: Struktur, Ladezeit, strukturierte Daten',
+              'Die Begriffe, nach denen in deiner Gegend tatsächlich gesucht wird',
+              'Ein Eintrag bei Google, der zur Seite passt und nicht danebensteht',
+              'Inhalte, aus denen ChatGPT und Perplexity zitieren können',
+              'Messung, damit man sieht, ob es wirkt — nicht nur behauptet',
+            ],
+          },
+          ablauf: {
+            titel: 'Wie es läuft',
+            text: 'Erst eine Bestandsaufnahme mit Zahlen, dann die Eingriffe in der Reihenfolge ihrer Wirkung. Du bekommst die Messung vorher und nachher, nicht nur einen Bericht.',
+          },
+          preis: {
+            titel: 'Dauer und Preis',
+            text: 'Die Bestandsaufnahme dauert wenige Tage. Was danach kommt, hängt vom Befund ab und wird vorher als fester Preis benannt.',
+          },
+        },
       },
     ],
   },
@@ -484,6 +616,18 @@ const DE: HdTexte = {
     telefon: 'Telefon',
     sitz: 'Sitz',
     zurueck: 'Zurück zur Startseite',
+    formular: {
+      titel: 'Schreib mir',
+      leistung: 'Worum geht es?',
+      leistungLeer: 'Weiß ich noch nicht',
+      name: 'Name',
+      epost: 'E-Mail',
+      nachricht: 'Was ist los?',
+      nachrichtHinweis: 'Was ihr macht und was gerade nicht funktioniert. Drei Sätze genügen.',
+      senden: 'Anfrage schreiben',
+      hinweis:
+        'Öffnet deine E-Mail mit allem schon eingetragen. Du siehst, was rausgeht, bevor du es abschickst.',
+    },
   },
 }
 
@@ -590,26 +734,120 @@ const EN: HdTexte = {
     titel: 'Pick whatever hurts most right now.',
     vorspann:
       'You do not have to do everything at once. Usually it is one of these four, and that one already makes the difference.',
+    anfragen: 'Ask without obligation',
+    mehr: 'More details',
     punkte: [
       {
         n: '01',
+        slug: 'neue-website',
         titel: 'A new website',
         text: 'From the first sketch to the day it goes live. It looks as good on a phone as on a desktop, gets found on Google, and sends enquiries straight to you. A landing page in two to three weeks, a multi-page site in four to eight.',
+        detail: {
+          vorspann:
+            'A website that does not just exist but works: gets found, gets understood, brings enquiries. Built by one person, from structure through design to code — nothing handed on, no middle step.',
+          dabei: {
+            titel: 'What you get',
+            punkte: [
+              'Structure and copy worked out together — not delivered by you and pasted in by me',
+              'Its own design instead of a template, thought out for the phone first',
+              'Technical SEO from the start: structure, load time, structured data',
+              'Accessible under the German accessibility act, not bolted on afterwards',
+              'One contact route that reaches you instead of ending nowhere',
+            ],
+          },
+          ablauf: {
+            titel: 'How it works',
+            text: 'One conversation, then a draft you see before you commit. Then it gets built, you see it along the way, and it goes live — with a handover so you can change the copy yourself.',
+          },
+          preis: {
+            titel: 'Time and price',
+            text: 'A landing page in two to three weeks, a multi-page site in four to eight. A fixed price, no timesheet: you know what it costs before it starts.',
+          },
+        },
       },
       {
         n: '02',
+        slug: 'website-ueberarbeiten',
         titel: 'Rework the one you have',
-        text: 'When the structure is fine but nothing else is. A new look without starting from zero, faster, and finally clean on a phone. And accessible under the German accessibility act, which costs more to retrofit than to build in.',
+        text: 'When the structure is fine but nothing else is. A new look without starting from zero, faster, and finally right on a phone. Accessible under the German accessibility act too, which costs more to add later than to build in.',
+        detail: {
+          vorspann:
+            'Not everything has to go. Often the structure stands and what is missing is everything else: the look, the load time, the way it behaves on a phone. That can be reworked without starting from zero — faster and cheaper than a rebuild.',
+          dabei: {
+            titel: 'What you get',
+            punkte: [
+              'A look at what is there: what stays, what goes, what has to be new',
+              'A new look on the existing structure',
+              'Load time brought down — usually the single biggest win',
+              'Right on the phone, instead of designed for desktop and squeezed',
+              'Accessibility brought up to the standard',
+            ],
+          },
+          ablauf: {
+            titel: 'How it works',
+            text: 'First I look at the site and tell you what is worth doing and what is not. Only then do we decide on scope — it may well be that three changes are enough.',
+          },
+          preis: {
+            titel: 'Time and price',
+            text: 'One to four weeks depending on scope. The look at your existing site is free; after that a fixed price for what we agree.',
+          },
+        },
       },
       {
         n: '03',
+        slug: 'automatisierung',
         titel: 'Automate the routine',
-        text: 'Everything you do by hand every week and should not have to. Quotes, invoices, appointment reminders, sorting and answering enquiries.',
+        text: 'Everything you do by hand every week and do not have to. Quotes, invoices, appointment reminders, sorting and answering enquiries.',
+        detail: {
+          vorspann:
+            'Every business has three to five steps that come back every week and belong to nobody. Typing out quotes, reminding people of appointments, sorting enquiries. Those can be handed over — not to a person, but to a process that works the same way every time.',
+          dabei: {
+            titel: 'What you get',
+            punkte: [
+              'Quotes and invoices from a template instead of from memory',
+              'Appointment reminders that go out on their own',
+              'Enquiries pre-sorted, answered, or passed on',
+              'One place where you see what is open — instead of five inboxes',
+              'Connected to what you already use, not another program',
+            ],
+          },
+          ablauf: {
+            titel: 'How it works',
+            text: 'We go through a week of your work and find the steps that repeat. The most expensive one goes first, so the effort pays for itself straight away.',
+          },
+          preis: {
+            titel: 'Time and price',
+            text: 'A single process is usually done in one to two weeks. A fixed price per process, so you decide how many there are.',
+          },
+        },
       },
       {
         n: '04',
+        slug: 'gefunden-werden',
         titel: 'Just get found',
-        text: 'The site stays as it is. It becomes visible anyway: at the top of Google and in the answers of ChatGPT and Perplexity.',
+        text: 'The site stays as it is. It becomes visible anyway: at the top on Google and in the answers from ChatGPT and Perplexity.',
+        detail: {
+          vorspann:
+            'Sometimes the site is fine and nobody finds it. Then nothing needs rebuilding. Visibility is its own job: being understood by Google — and by now just as much by the answer engines more and more people use instead of a search.',
+          dabei: {
+            titel: 'What you get',
+            punkte: [
+              'Technical SEO: structure, load time, structured data',
+              'The terms people in your area actually search for',
+              'A Google listing that matches the site instead of sitting beside it',
+              'Content that ChatGPT and Perplexity can quote from',
+              'Measurement, so you can see whether it works rather than take it on trust',
+            ],
+          },
+          ablauf: {
+            titel: 'How it works',
+            text: 'First a survey with numbers, then the changes in order of effect. You get the measurement before and after, not just a report.',
+          },
+          preis: {
+            titel: 'Time and price',
+            text: 'The survey takes a few days. What follows depends on what it finds and is named as a fixed price beforehand.',
+          },
+        },
       },
     ],
   },
@@ -734,6 +972,18 @@ const EN: HdTexte = {
     telefon: 'Phone',
     sitz: 'Based in',
     zurueck: 'Back to the home page',
+    formular: {
+      titel: 'Write to me',
+      leistung: 'What is it about?',
+      leistungLeer: 'Not sure yet',
+      name: 'Name',
+      epost: 'Email',
+      nachricht: 'What is going on?',
+      nachrichtHinweis: 'What you do and what is not working right now. Three sentences will do.',
+      senden: 'Write the enquiry',
+      hinweis:
+        'Opens your email with everything filled in. You see what goes out before you send it.',
+    },
   },
 }
 
@@ -840,26 +1090,120 @@ const ES: HdTexte = {
     titel: 'Elige lo que más aprieta ahora.',
     vorspann:
       'No hace falta hacerlo todo a la vez. Casi siempre es uno de estos cuatro puntos, y ese ya marca la diferencia.',
+    anfragen: 'Consultar sin compromiso',
+    mehr: 'Más información',
     punkte: [
       {
         n: '01',
+        slug: 'neue-website',
         titel: 'Una web nueva',
-        text: 'Desde el primer boceto hasta el día en que está en marcha. Se ve igual de bien en el móvil que en el ordenador, se encuentra en Google y te envía las solicitudes directamente. Una landing en dos o tres semanas, una web de varias páginas en cuatro a ocho.',
+        text: 'Desde el primer boceto hasta el día en que funciona. Se ve igual de bien en el móvil que en el ordenador, se encuentra en Google y te envía las solicitudes directamente. Una landing en dos o tres semanas, una web de varias páginas en cuatro a ocho.',
+        detail: {
+          vorspann:
+            'Una web que no solo está, sino que trabaja: que se encuentra, que se entiende, que trae solicitudes. Construida por una sola persona, de la estructura al diseño y al código — sin traspasos ni estaciones intermedias.',
+          dabei: {
+            titel: 'Qué se obtiene',
+            punkte: [
+              'Estructura y textos trabajados juntos, no entregados por ti y pegados por mí',
+              'Diseño propio en lugar de plantilla, pensado primero para el móvil',
+              'SEO técnico desde el principio: estructura, tiempo de carga, datos estructurados',
+              'Accesible según la ley alemana, no añadido después',
+              'Una vía de contacto que llega a ti y no acaba en la nada',
+            ],
+          },
+          ablauf: {
+            titel: 'Cómo funciona',
+            text: 'Una conversación, luego un borrador que ves antes de comprometerte. Después se construye, ves los avances, y sale en vivo — con una entrega para que puedas cambiar los textos tú mismo.',
+          },
+          preis: {
+            titel: 'Plazo y precio',
+            text: 'Una landing en dos o tres semanas, una web de varias páginas en cuatro a ocho. Precio cerrado, sin partes de horas: sabes lo que cuesta antes de empezar.',
+          },
+        },
       },
       {
         n: '02',
+        slug: 'website-ueberarbeiten',
         titel: 'Renovar la que ya tienes',
-        text: 'Cuando la base sirve pero ya no encaja nada más. Otro aspecto sin empezar de cero, más rápida y por fin correcta en el móvil. Y accesible según la ley alemana de accesibilidad, algo que cuesta más añadir después que hacerlo desde el principio.',
+        text: 'Cuando la estructura está bien pero nada más lo está. Un aspecto nuevo sin empezar de cero, más rápida y por fin correcta en el móvil. Y accesible según la ley alemana, que después cuesta más que de entrada.',
+        detail: {
+          vorspann:
+            'No hace falta tirarlo todo. A menudo la estructura aguanta y lo que falta es todo lo demás: el aspecto, el tiempo de carga, el comportamiento en el móvil. Eso se puede renovar sin empezar de cero — más rápido y más barato que rehacerla.',
+          dabei: {
+            titel: 'Qué se obtiene',
+            punkte: [
+              'Una revisión de lo que hay: qué se queda, qué se va, qué hay que rehacer',
+              'Aspecto nuevo sobre la estructura existente',
+              'Tiempo de carga reducido — normalmente la mayor ganancia individual',
+              'Correcta en el móvil, en vez de diseñada para escritorio y encajada a la fuerza',
+              'Accesibilidad puesta al día',
+            ],
+          },
+          ablauf: {
+            titel: 'Cómo funciona',
+            text: 'Primero miro la web y te digo qué merece la pena y qué no. Solo después decidimos el alcance — puede que con tres cambios baste.',
+          },
+          preis: {
+            titel: 'Plazo y precio',
+            text: 'De una a cuatro semanas según el alcance. La revisión de tu web actual es gratuita; después, precio cerrado para lo acordado.',
+          },
+        },
       },
       {
         n: '03',
-        titel: 'Automatizar procesos',
-        text: 'Todo lo que haces a mano cada semana sin necesidad. Presupuestos, facturas, recordatorios de cita, clasificar y responder solicitudes.',
+        slug: 'automatisierung',
+        titel: 'Automatizar lo repetitivo',
+        text: 'Todo lo que haces a mano cada semana y no haría falta. Presupuestos, facturas, recordatorios de cita, clasificar y responder solicitudes.',
+        detail: {
+          vorspann:
+            'Toda empresa tiene tres o cinco pasos que vuelven cada semana y no son de nadie. Teclear presupuestos, recordar citas, clasificar solicitudes. Eso se puede delegar — no a una persona, sino a un proceso que funciona igual siempre.',
+          dabei: {
+            titel: 'Qué se obtiene',
+            punkte: [
+              'Presupuestos y facturas desde una plantilla, no de memoria',
+              'Recordatorios de cita que salen solos',
+              'Solicitudes preclasificadas, respondidas o derivadas',
+              'Un solo sitio donde ves lo que está abierto, en vez de cinco buzones',
+              'Conectado a lo que ya usas, sin otro programa más',
+            ],
+          },
+          ablauf: {
+            titel: 'Cómo funciona',
+            text: 'Repasamos una semana de tu trabajo y buscamos los pasos que se repiten. El más caro va primero, para que el esfuerzo se pague enseguida.',
+          },
+          preis: {
+            titel: 'Plazo y precio',
+            text: 'Un proceso suele estar listo en una o dos semanas. Precio cerrado por proceso, para que decidas cuántos son.',
+          },
+        },
       },
       {
         n: '04',
-        titel: 'Solo ganar visibilidad',
-        text: 'La web se queda como está. Aun así se ve: arriba del todo en Google y en las respuestas de ChatGPT y Perplexity.',
+        slug: 'gefunden-werden',
+        titel: 'Solo que te encuentren',
+        text: 'La web se queda como está. Aun así se vuelve visible: arriba en Google y en las respuestas de ChatGPT y Perplexity.',
+        detail: {
+          vorspann:
+            'A veces la web está bien y simplemente nadie la encuentra. Entonces no hay que rehacer nada. La visibilidad es un trabajo propio: que Google te entienda — y a estas alturas también los motores de respuesta que cada vez más gente usa en lugar de buscar.',
+          dabei: {
+            titel: 'Qué se obtiene',
+            punkte: [
+              'SEO técnico: estructura, tiempo de carga, datos estructurados',
+              'Los términos que de verdad se buscan en tu zona',
+              'Una ficha de Google que encaja con la web en vez de ir por su lado',
+              'Contenidos que ChatGPT y Perplexity pueden citar',
+              'Medición, para ver si funciona en vez de creerlo',
+            ],
+          },
+          ablauf: {
+            titel: 'Cómo funciona',
+            text: 'Primero un diagnóstico con cifras, luego los cambios por orden de efecto. Recibes la medición antes y después, no solo un informe.',
+          },
+          preis: {
+            titel: 'Plazo y precio',
+            text: 'El diagnóstico son unos pocos días. Lo que venga después depende del hallazgo y se nombra antes como precio cerrado.',
+          },
+        },
       },
     ],
   },
@@ -984,6 +1328,18 @@ const ES: HdTexte = {
     telefon: 'Teléfono',
     sitz: 'Sede',
     zurueck: 'Volver a la página de inicio',
+    formular: {
+      titel: 'Escríbeme',
+      leistung: '¿De qué se trata?',
+      leistungLeer: 'Aún no lo sé',
+      name: 'Nombre',
+      epost: 'Correo',
+      nachricht: '¿Qué ocurre?',
+      nachrichtHinweis: 'A qué os dedicáis y qué no está funcionando. Con tres frases basta.',
+      senden: 'Redactar la consulta',
+      hinweis:
+        'Abre tu correo con todo ya escrito. Ves lo que sale antes de enviarlo.',
+    },
   },
 }
 

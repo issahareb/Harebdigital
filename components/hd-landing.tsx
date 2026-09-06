@@ -286,6 +286,39 @@ function Zahlenliste({
   )
 }
 
+/* Die beiden Verweise auf jeder Leistungskachel.
+   Unten rechts, wie ueberall auf der Seite die Handlung rechts steht und der
+   Text links. Anfragen fuehrt aufs Formular und gibt die Leistung im
+   Adresszusatz mit, damit sie dort vorbelegt ist; mehr Infos fuehrt auf die
+   Detailseite. Kein Fenster geht auf, beides bleibt auf der Domain. */
+function Kachelverweise({
+  slug,
+  anfragen,
+  mehr,
+}: {
+  slug: string
+  anfragen: string
+  mehr: string
+}) {
+  return (
+    <div className="mt-7 flex flex-wrap items-center justify-end gap-x-6 gap-y-2">
+      <Link
+        href={`/leistungen/${slug}/`}
+        className="text-[15px] text-[color:var(--hd-ink-soft)] underline-offset-4 hover:text-[color:var(--hd-ink)] hover:underline"
+      >
+        {mehr}
+      </Link>
+      <Link
+        href={`/kontakt/?leistung=${slug}`}
+        className="hd-cta px-5 py-2.5 text-[15px]"
+      >
+        {anfragen}
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </Link>
+    </div>
+  )
+}
+
 /* Ein Abschnitt fährt beim Eintreten auf./* Ein Abschnitt fährt beim Eintreten auf. Was es mitteilt: hier fängt etwas
    Neues an. Einmalig, nicht bei jedem Vorbeiscrollen — ein Element, das bei
    jedem Richtungswechsel neu aufblendet, wirkt kaputt, nicht lebendig. */
@@ -556,6 +589,11 @@ function Laufwerk({ t }: { t: HdTexte }) {
                 <p className="mt-4 max-w-[46ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] text-pretty">
                   {l.text}
                 </p>
+                <Kachelverweise
+                  slug={l.slug}
+                  anfragen={t.leistungen.anfragen}
+                  mehr={t.leistungen.mehr}
+                />
               </div>
             </li>
           ))}
@@ -977,6 +1015,13 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <p className="max-w-[56ch] text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:col-span-2 text-pretty">
                     {l.text}
                   </p>
+                  <div className="sm:col-span-2">
+                    <Kachelverweise
+                      slug={l.slug}
+                      anfragen={t.leistungen.anfragen}
+                      mehr={t.leistungen.mehr}
+                    />
+                  </div>
                 </div>
               </Auf>
             ))}
