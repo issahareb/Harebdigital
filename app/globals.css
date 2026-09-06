@@ -3178,3 +3178,46 @@ html[data-perf='low'] .hd-band__reihe {
     display: none;
   }
 }
+
+/* Der Sprachschalter sass fast mittig statt am rechten Rand.
+   Schuld war der Anker daneben: er haelt 44 Pixel fuer den Knopf frei, der
+   aus der Buehne heraufgeflogen kommt, und haelt sie auch dann, wenn der
+   Knopf noch unten steht. Auf dem Telefon sind 44 Pixel plus Abstand ein
+   Viertel der Leiste — der Schalter wurde sichtbar nach innen geschoben.
+
+   `:empty` trifft den Anker genau in dem Zustand, in dem er nichts enthaelt.
+   Sobald der Knopf oben ankommt, hat der Anker ein Kind, die Regel greift
+   nicht mehr und die Breite ist wieder da. Kein Skript noetig. */
+.hd-kartenmenue__rechts > span:empty {
+  width: 0;
+  margin-left: -12px;
+}
+
+/* Die Schlagzeile auf dem Telefon.
+   Sie stand auf `white-space: nowrap`, damit die laengste deutsche Zeile auf
+   320 Pixeln in eine Zeile passt — und musste dafuer auf 5,7vw herunter, auf
+   einem 390er also auf 22 Pixel. Das ist keine Schlagzeile mehr, das ist
+   Fliesstext in fett.
+
+   Umgekehrt herum ist es richtig: die Zeile darf umbrechen, dafuer bekommt
+   sie die Groesse, die eine Buehne braucht. Aus zwei erzwungenen Zeilen
+   werden dann drei oder vier — gelesen wird es trotzdem besser. */
+@media (max-width: 640px) {
+  .hd-held-zeile,
+  /* Der Nachhall setzt sein eigenes `nowrap` — eine Ebene tiefer als die
+     Zeile. Nur die Zeile umzustellen reichte deshalb nicht: gemessen lief
+     die Schlagzeile auf einem 320er um 29 und auf einem 390er um 21 Pixel
+     aus dem Bild. Beide Ebenen muessen umbrechen duerfen. */
+  .hd-held-zeile .echo-text {
+    white-space: normal;
+  }
+
+  .hd-held-zeile {
+    font-size: clamp(1.55rem, 7.6vw, 2.4rem);
+  }
+
+  /* Und Luft unter die Leiste. Die Schlagzeile begann direkt darunter. */
+  .hd-held-text {
+    padding-top: 21svh;
+  }
+}

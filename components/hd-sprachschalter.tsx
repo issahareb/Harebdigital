@@ -54,7 +54,7 @@ export function HdSprachschalter({ lang }: { lang: HdLang }) {
             aria-label={NAMEN[l].lang}
             aria-current={aktiv ? 'true' : undefined}
             onClick={() => umstellen(l)}
-            className={`min-h-8 rounded-full px-2.5 font-label text-[12px] font-medium uppercase tracking-[0.1em] transition-colors ${
+            className={`min-h-7 rounded-full px-2 font-label text-[11px] font-medium uppercase tracking-[0.08em] transition-colors sm:min-h-8 sm:px-2.5 sm:text-[12px] sm:tracking-[0.1em] ${
               aktiv
                 ? 'bg-[color:var(--hd-ink)] text-[color:var(--hd-paper)]'
                 : 'text-[color:var(--hd-ink-soft)] hover:text-[color:var(--hd-ink)]'

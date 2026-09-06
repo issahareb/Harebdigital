@@ -158,7 +158,28 @@ export function HdKartenmenue({
         </button>
 
         <Link href="/" className="hd-kartenmenue__marke">
-          <Image src="/icon-32-v2.png" alt="" width={28} height={28} className="rounded-lg" />
+          {/* 96 Pixel Quelle fuer 28 Pixel Anzeige. Vorher stand hier die
+              32er-Fassung: auf einem Telefon mit dreifacher Pixeldichte
+              braucht ein 28-Pixel-Feld 84 echte Pixel, die Quelle wurde also
+              hochgerechnet und war sichtbar matschig. `unoptimized` steht in
+              der Konfiguration, Next rechnet also nichts nach — die Datei
+              muss selbst die richtige Groesse haben. 2,5 kB. */}
+          <Image
+            src="/icon-96-v2.webp"
+            alt=""
+            width={28}
+            height={28}
+            /* Am Optimierer vorbei, und zwar aus zwei Gruenden. Er waehlt
+               seine Groessen aus einer festen Liste und nimmt fuer ein
+               28-Pixel-Feld die 64er — auf einem Telefon mit dreifacher
+               Dichte fehlen dann zwanzig Pixel, und genau das sah man. Und
+               er liefert JPEG aus, sobald der Browser kein WebP anfragt;
+               JPEG kann keine Transparenz, die runden Ecken bekaemen einen
+               schwarzen Rand. Die Datei ist 2,5 kB — der Umweg spart nichts,
+               er kostet nur Schaerfe. */
+            unoptimized
+            className="rounded-lg"
+          />
           <span className="font-display text-[18px] font-bold tracking-tight">Hareb Digital</span>
         </Link>
 
