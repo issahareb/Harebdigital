@@ -276,7 +276,7 @@ export function HdHeld({
               ))}
             </h1>
 
-            <p className="mt-5 max-w-[46ch] text-pretty text-[17px] leading-[1.6] text-[color:var(--hd-ink-soft)] sm:text-[19px]">
+            <p className="hd-held-vorspann mt-5 max-w-[46ch] text-pretty text-[17px] leading-[1.6] sm:text-[19px]">
               {vorspann}
             </p>
           </div>

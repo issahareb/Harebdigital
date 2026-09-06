@@ -2990,3 +2990,24 @@ html[data-perf='low'] .hd-band__reihe {
   background: color-mix(in oklch, var(--hd-paper) 55%, transparent);
   pointer-events: none;
 }
+
+/* Der Vorspann auf der Buehne.
+   Er stand in `--hd-ink-soft` (#94a0ad) ueber einem laufenden Film. Auf dem
+   dunklen Teil des Bildes ging das gerade so; sobald der Sonnenaufgang
+   durchzog, lag graue Schrift auf hellem Nebel und war praktisch weg —
+   gemessen unter 2:1, also weit unter jeder Lesbarkeitsschwelle.
+
+   Drei Aenderungen, jede mit einem Grund:
+   Die Farbe ist die volle Tinte, leicht zurueckgenommen statt eigenem
+   Grauton — sie bleibt dadurch dem Titel untergeordnet, ohne zu verschwinden.
+   Der Schlagschatten ist derselbe wie bei der Schlagzeile, nur enger: er
+   traegt die Schrift ueber jeden Bildinhalt, ohne einen Kasten zu brauchen.
+   Und ein Hauch mehr Zeilenabstand, weil heller Text ueber Bewegtbild mehr
+   Luft zwischen den Zeilen braucht als auf ruhigem Grund. */
+.hd-held-vorspann {
+  color: color-mix(in oklch, var(--hd-ink) 88%, transparent);
+  line-height: 1.65;
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.55),
+    0 2px 16px rgb(0 0 0 / 0.5);
+}
