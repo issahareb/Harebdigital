@@ -65,6 +65,21 @@ type Props = {
 
 const klemm = (v: number, min = 0, max = 1) => Math.min(Math.max(v, min), max);
 
+/* Ob genug Breite fuer die Ecke unten rechts da ist. Der erste Durchlauf
+   meldet immer false — auf dem Server gibt es kein matchMedia —, das Telefon
+   ist damit der Grundzustand und die Ecke die Zutat. */
+function useBreit(abfrage = "(min-width: 1024px)") {
+  const [an, setAn] = useState(false);
+  useEffect(() => {
+    const m = window.matchMedia(abfrage);
+    const setzen = () => setAn(m.matches);
+    setzen();
+    m.addEventListener("change", setzen);
+    return () => m.removeEventListener("change", setzen);
+  }, [abfrage]);
+  return an;
+}
+
 export function HdHeld({
   sektion,
   titelOben,
@@ -76,6 +91,7 @@ export function HdHeld({
   children,
 }: Props) {
   const reduce = !!useReducedMotion();
+  const breit = useBreit();
   const abschnitt = sektion;
   const film = useRef<HTMLVideoElement>(null);
   const [bereit, setBereit] = useState(false);
@@ -205,6 +221,11 @@ export function HdHeld({
   const textY = useTransform(fortschrittWert, [0, 0.72], [0, -70]);
   const hinweisDeckung = useTransform(fortschrittWert, [0, 0.06], [1, 0]);
 
+  /* Auf dem Telefon uebernimmt die Szene den Platz des Textes: sie kommt,
+     waehrend er geht. Am Rechner steht sie von Anfang an in ihrer Ecke und
+     braucht keinen Auftritt. */
+  const wachstumDeckung = useTransform(fortschrittWert, [0.3, 0.55], [0, 1]);
+
   return (
     <section
       ref={abschnitt}
@@ -291,13 +312,28 @@ export function HdHeld({
               {vorspann}
             </p>
           </div>
-
-            <Wachstum zeile={wachstum.zeile} alt={wachstum.alt} />
           </div>
 
           <div className="flex flex-wrap items-center justify-start gap-3">
             {children}
           </div>
+        </motion.div>
+
+        {/* Die Wachstumsszene als eigene Ebene, nicht in der Textspalte.
+            Am Rechner steht sie unten rechts — die Knoepfe sitzen unten links,
+            die Ecke war leer, und dort stoert sie weder Schlagzeile noch
+            Schreibtisch.
+
+            Auf dem Telefon ist unten rechts kein Platz. Dort erscheint sie
+            stattdessen genau da, wo der Text geht: er blendet zwischen 42 und
+            72 Prozent des Buehnenwegs aus, sie blendet zwischen 30 und 55
+            Prozent ein. Wer weiterscrollt, sieht erst die Ansage und dann das
+            Bild dazu — beides gehoert zur Buehne, nur nicht gleichzeitig. */}
+        <motion.div
+          className="hd-held-wachstum"
+          style={{ opacity: breit ? 1 : wachstumDeckung }}
+        >
+          <Wachstum zeile={wachstum.zeile} alt={wachstum.alt} />
         </motion.div>
 
         <motion.div

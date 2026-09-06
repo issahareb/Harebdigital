@@ -31,10 +31,29 @@ export function Wachstum({ zeile, alt }: { zeile: string; alt: string }) {
       <div className="hd-wachstum__buehne" role="img" aria-label={alt}>
         <span aria-hidden className="hd-wachstum__tuer" />
         <span aria-hidden className="hd-wachstum__schwelle" />
+        {/* `width` und `height` stehen dran, obwohl die Breite aus dem
+            Stilblatt kommt: ohne die Eigenmasse kennt der Browser das
+            Seitenverhaeltnis nicht und reserviert keine Hoehe — die Szene
+            wuerde beim Laden aufspringen. Die Werte sind die echten Masse
+            der freigestellten Dateien. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img aria-hidden alt="" src="/wachstum/ameise.webp" className="hd-wachstum__ameise" />
+        <img
+          aria-hidden
+          alt=""
+          src="/wachstum/ameise.webp"
+          width={420}
+          height={197}
+          className="hd-wachstum__ameise"
+        />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img aria-hidden alt="" src="/wachstum/elefant.webp" className="hd-wachstum__elefant" />
+        <img
+          aria-hidden
+          alt=""
+          src="/wachstum/elefant.webp"
+          width={900}
+          height={766}
+          className="hd-wachstum__elefant"
+        />
       </div>
     </div>
   )
