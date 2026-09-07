@@ -3220,8 +3220,8 @@ select.hd-feld option {
   /* Der Canvas liest beides einmalig aus. `oklch()` versteht die Zeichenfläche
      erst ab Safari 16.4, deshalb steht die Akzentfarbe hier als Hexwert —
      derselbe Ton, nur in einer Schreibweise, die überall ankommt. */
-  --hd-schleife-farbe: #38deda;
-  --hd-schleife-schrift: var(--font-label-face), ui-sans-serif, sans-serif;
+  --hd-zeichen-farbe: #38deda;
+  --hd-zeichen-schrift: var(--font-label-face), ui-sans-serif, sans-serif;
   /* Der abgelesene Verlauf des Standbilds, von oben nach unten. */
   --hd-verst-grau: linear-gradient(
     to bottom,
@@ -3285,52 +3285,18 @@ select.hd-feld option {
   will-change: opacity, transform;
 }
 
-/* Knoten und Falter liegen auf reinem Schwarz. `screen` rechnet das Schwarz
-   heraus, ohne dass eine Alphamaske ins Video musste: was schwarz ist, bleibt
-   der Grund, was leuchtet, kommt durch.
- *
- * Die Mischung steht auf der Huelle und nicht auf dem Film. Auf dem Film
- * hatte sie keine Wirkung, weil die Huelle selbst eine Deckkraft unter eins
- * traegt: das macht aus ihr eine eigene Gruppe, und der Film mischte sich
- * dann mit dem Nichts darin statt mit der Buehne dahinter. Sichtbar war das
- * als schwarzer Kasten um jeden Film. */
-.hd-verst-knoten,
-.hd-verst-falter {
-  mix-blend-mode: screen;
-}
-
-.hd-verst-knoten video,
-.hd-verst-falter video {
-  display: block;
-}
-
-/* Der Kontrast ist kein Geschmack, sondern Rechnerei. H.264 legt Schwarz auf
-   den Wert 16 und nicht auf 0, und `screen` hebt genau diese 16 ueber den
-   Grund — sichtbar als hellerer Kasten um den Film herum. `contrast(1.7)`
-   zieht alles unter 0.2 auf null, und damit verschwindet die Kante. */
-.hd-verst-knoten video {
-  width: min(66svh, 62vw);
-  height: auto;
-  filter: saturate(0.5) contrast(1.7) blur(0.6px);
-}
-
-.hd-verst-falter video {
-  width: min(50svh, 62vw);
-  height: auto;
-  filter: contrast(1.5);
-}
-
-.hd-verst-schleife-huelle {
+.hd-verst-zeichen-huelle {
   display: grid;
   place-items: center;
 }
 
-/* Breiter als hoch, weil die Lemniskate es ist. Im Quadrat blieb ueber und
-   unter ihr genauso viel Luft, wie sie selbst hoch war, und die Ziffern
-   wurden entsprechend klein. */
-.hd-verst-schleife {
-  width: min(58vw, 720px);
-  aspect-ratio: 2.15;
+/* Fast quadratisch, weil die Kleeblattschlinge es ist: gut drei Einheiten
+   breit, gut drei hoch, und die Perspektive schiebt in beiden Richtungen
+   dasselbe drauf. Die flache Lemniskate, die hier vorher stand, brauchte ein
+   Verhaeltnis von 2,15 — der Knoten steht im Raum und nicht auf dem Papier. */
+.hd-verst-zeichen {
+  width: min(46vw, 580px);
+  aspect-ratio: 1.08;
   /* Die Delle soll auf der ganzen Fläche entstehen und nicht nur dort, wo
      gerade eine Ziffer liegt. */
   touch-action: pan-y;
@@ -3615,25 +3581,11 @@ select.hd-feld option {
     padding-bottom: 20svh;
   }
 
-  .hd-verst-schleife {
-    width: 76vw;
+  .hd-verst-zeichen {
+    width: 84vw;
   }
 
-  /* Der Knotenfilm faellt auf dem Telefon ganz weg. Zwei Gruende, beide
-     zaehlen: das Entschluesselungsbudget fuer gleichzeitige Filme ist dort
-     sehr knapp und die Buehne davor haelt schon einen, und auf 390 Pixeln
-     erdrueckt der Knoten die gezeichnete Schleife, um die es hier geht. */
-  .hd-verst-knoten {
-    display: none;
-  }
-
-  .hd-verst-falter video {
-    width: 68vw;
-  }
-
-  .hd-verst-schleife-huelle,
-  .hd-verst-knoten,
-  .hd-verst-falter {
+  .hd-verst-zeichen-huelle {
     opacity: 0.85;
   }
 
@@ -3728,4 +3680,73 @@ select.hd-feld option {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* ─── Der Falter auf den Unterseiten (components/hd-falter.tsx) ─────────────
+ *
+ * Er liegt hinter dem Text, oben rechts, und laeuft ueber den rechten Rand
+ * hinaus. Das ist kein Zufall: mittig hinter einer Textspalte waere er ein
+ * Wasserzeichen, und ein Wasserzeichen liest sich als Vorlage. Angeschnitten
+ * liest er sich als Ausschnitt aus etwas Groesserem.
+ *
+ * Der Film liegt auf reinem Schwarz. `screen` rechnet das Schwarz heraus,
+ * ohne dass eine Alphamaske hineinmusste: was schwarz ist, bleibt der Grund,
+ * was leuchtet, kommt durch. Der Kontrast davor ist Rechnerei und kein
+ * Geschmack — H.264 legt Schwarz je nach Fassung nicht ganz auf null, und
+ * `screen` hebt genau das ueber den Grund.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+.hd-falter {
+  position: absolute;
+  top: clamp(2rem, 6vh, 5rem);
+  right: max(-8vw, -180px);
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+.hd-falter video {
+  display: block;
+  width: clamp(18rem, 34vw, 30rem);
+  height: auto;
+  filter: contrast(1.5) saturate(1.1);
+}
+
+/* Die Seite bekommt einen Bezugspunkt fuer das Motiv und schneidet ab, was
+   ueber den rechten Rand hinauslaeuft — sonst haette die Seite eine
+   waagerechte Bildlaufleiste. */
+.hd-unterseite--motiv {
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Der Inhalt muss darueber liegen und einen eigenen Grund haben. Ohne den
+   Stapelplatz stuende der Text unter dem Motiv statt darauf. */
+.hd-unterseite--motiv > header,
+.hd-unterseite--motiv > main,
+.hd-unterseite--motiv > footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  /* Auf dem Telefon bleibt nur ein Zipfel in der Ecke stehen. Bei -22vw und
+     0,34 lag ein heller Fluegel quer ueber dem Fliesstext, und ein Motiv, das
+     Zeilen frisst, ist kein Motiv mehr, sondern ein Fehler. */
+  .hd-falter {
+    top: 4.5rem;
+    right: -32vw;
+    opacity: 0.28;
+  }
+
+  .hd-falter video {
+    width: 60vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hd-falter {
+    opacity: 0.32;
+  }
 }

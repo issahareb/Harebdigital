@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { HdFalter } from './hd-falter'
 import { PORTFOLIO } from '@/lib/marke'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 
@@ -16,18 +17,27 @@ import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
  * oder einen Rechtstext; ein Scroll-Film davor waere im Weg. Zugehoerigkeit
  * ist eine Frage von Schrift, Farbe und Abstand, nicht davon, dieselben
  * Megabyte noch einmal auszuliefern.
- */
+ *
+ * `motiv` weicht diese Regel an genau einer Stelle auf. Zwischen den Seiten
+ * unter diesem Rahmen liegt ein Unterschied: Kontakt und die vier Leistungen
+ * verkaufen etwas, Impressum und Datenschutz erfuellen eine Pflicht. Die
+ * ersten bekommen deshalb den Falter als ruhiges Motiv im Hintergrund, die
+ * zweiten bleiben, wie sie waren. Ein Rechtstext mit einem flatternden Bild
+ * dahinter ist kein lebendigerer Rechtstext, sondern ein unseriöser. */
 export function HdUnterseite({
   lang,
+  motiv = false,
   children,
 }: {
   lang: HdLang
+  motiv?: boolean
   children: React.ReactNode
 }) {
   const t = HD_TEXTE[lang]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className={`flex min-h-screen flex-col${motiv ? ' hd-unterseite--motiv' : ''}`}>
+      {motiv ? <HdFalter /> : null}
       <header className="hd-rule-unten px-6 py-4">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
           <Link href="/" className="hd-kartenmenue__marke">
@@ -66,13 +76,7 @@ export function HdUnterseite({
 }
 
 /** Ueberschrift und Fliesstext der Rechtsseiten, in der Sprache der Seite. */
-export function Rechtsabschnitt({
-  titel,
-  children,
-}: {
-  titel: string
-  children: React.ReactNode
-}) {
+export function Rechtsabschnitt({ titel, children }: { titel: string; children: React.ReactNode }) {
   return (
     <section>
       <h2 className="font-display text-lg font-bold tracking-tight">{titel}</h2>

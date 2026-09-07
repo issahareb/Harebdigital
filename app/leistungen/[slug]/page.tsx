@@ -67,7 +67,7 @@ export default async function Leistungsseite({
   const t = HD_TEXTE[lang]
 
   return (
-    <HdUnterseite lang={lang}>
+    <HdUnterseite lang={lang} motiv>
       <span className="hd-label">{t.leistungen.label}</span>
       <h1 className="mt-4 font-display text-4xl font-bold leading-[1.1] tracking-tight text-balance sm:text-5xl">
         {l.titel}

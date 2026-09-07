@@ -38,7 +38,7 @@ export default async function Kontaktseite() {
   const t = HD_TEXTE[lang].kontakt
 
   return (
-    <HdUnterseite lang={lang}>
+    <HdUnterseite lang={lang} motiv>
       <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
         {t.titel}
       </h1>
