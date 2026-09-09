@@ -141,12 +141,31 @@ export type HdTexte = {
   }
   probleme: { titel: string; punkte: string[] }
   behauptung: string
+  /* Der Filmabschnitt.
+   *
+   * Der Film lag zuerst auf der Buehne ganz oben und wurde beim Scrollen
+   * durchgefahren. Dort steht jetzt die Statue, und der Film hat einen
+   * eigenen Abschnitt weiter unten bekommen — er verliert dabei nichts,
+   * denn was er zeigt, ist eine Behauptung ueber die Arbeit und keine
+   * Begruessung. */
+  bewegtbild: {
+    label: string
+    titel: string
+    text: string
+    bildAlt: string
+  }
   /* Der Abschnitt "Was ich verstanden habe".
    *
    * Er ist die einzige Stelle der Seite, an der nicht die Arbeit belegt wird,
-   * sondern der Grund dafuer. Drei Akte, die aufeinander aufbauen und deshalb
-   * eine Liste sind und keine drei Felder: die Reihenfolge traegt das
-   * Argument. Kanal misst -> Gewichtung verschiebt sich -> der Mensch bleibt.
+   * sondern der Grund dafuer. Zwei Abschnitte, die aufeinander aufbauen und
+   * deshalb eine Liste sind und keine zwei Felder: die Reihenfolge traegt das
+   * Argument. Der Kanal misst und verschiebt seine Gewichte -> der Mensch
+   * verschiebt sich nicht.
+   *
+   * Jeder Abschnitt bekommt genau ein Motiv und einen eigenen Bildschirm.
+   * Vorher standen alle drei auf einer festgehaltenen Buehne hintereinander;
+   * das las sich als ein einziger langer Abschnitt mit einem Bilderstapel
+   * darin, und genau das war der Einwand.
    *
    * `wortLinks` und `wortRechts` sind die zwei Haelften eines einzigen
    * grossen Wortes. Dazwischen steht das Motiv. Der Trennpunkt muss in jeder
@@ -158,7 +177,11 @@ export type HdTexte = {
       wortLinks: string
       wortRechts: string
       titel: string
-      text: string
+      /* Absaetze, nicht ein Absatz. Der erste Akt traegt zwei Aussagen —
+         wonach sortiert wird, und dass sich das verschiebt — und die gehoeren
+         in denselben Abschnitt, weil die zweite ohne die erste nichts
+         bedeutet. */
+      text: string[]
     }[]
     /* Die Groessen, nach denen sortiert wird. Sie laufen als Schrift auf der
        Unendlichkeitsschleife mit — deshalb kurz, deshalb ohne Punkt. */
@@ -313,7 +336,7 @@ const DE: HdTexte = {
       'Websites und Programme für Betriebe ohne IT-Abteilung. Kein Baukasten, kein Plugin-Stapel, keine Agentur-Kette: du sprichst mit dem, der es baut. Du sagst mir, was dich stört, ich sage dir, was es kostet.',
     arbeitenAnsehen: 'Arbeiten ansehen',
     bildAlt:
-      'Ein Schreibtisch auf einem Berggipfel über dem Nebelmeer, dahinter geht die Sonne über den Tälern auf.',
+      'Eine schwarze Büste mit zurückgelegtem Kopf, das Gesicht von leuchtend grüner Masse überzogen, die am Kinn herabläuft.',
     hinweis: 'Scrollen',
   },
   menue: {
@@ -359,26 +382,32 @@ const DE: HdTexte = {
   },
   behauptung:
     'Genau das ist die Arbeit. Du bekommst keine Präsentation, sondern eine Seite, die läuft. Kein Baukasten, kein Abo, keine Warteschleife. Klemmt etwas, schreibst du mir und nicht einer Hotline.',
+  bewegtbild: {
+    label: 'Wie ich arbeite',
+    titel: 'Der Nebel zieht ab, der Schreibtisch bleibt stehen.',
+    text: 'Am Anfang eines Projekts sieht niemand etwas: nicht du, weil du kein Angebot lesen kannst, das aus Fachbegriffen besteht, und nicht ich, weil ich noch nicht weiß, woran es bei dir wirklich klemmt. Das Bild klärt sich beim Bauen, nicht davor. Scroll — dann siehst du, was ich meine.',
+    bildAlt:
+      'Ein Schreibtisch auf einem Berggipfel über dem Nebelmeer, dahinter geht die Sonne über den Tälern auf.',
+  },
   verstaendnis: {
     label: 'Was ich verstanden habe',
     akte: [
       {
         wortLinks: 'ALGO',
         wortRechts: 'RITHMUS',
-        titel: 'Ich weiß, wonach sortiert wird.',
-        text: 'Kein Kanal zeigt ein Video, weil es gut ist. Er zeigt es, weil Zahlen es sagen: wie lange jemand bleibt, ob er zurückspult, ob er speichert, ob er es weiterschickt. Diese Größen sind kein Geheimnis. Man muss sie nur ernst nehmen, bevor der erste Schnitt sitzt.',
-      },
-      {
-        wortLinks: 'IMMER',
-        wortRechts: 'ANDERS',
-        titel: 'Und dass sie sich verschieben.',
-        text: 'Was diesen Monat oben steht, zählt im nächsten weniger. Die Gewichtung wird geändert, ohne Ankündigung, und jeder Trick, der auf genau eine Einstellung gebaut war, stirbt mit ihr. Deshalb hänge ich nichts an einen Trick.',
+        titel: 'Ich weiß, wonach sortiert wird — und dass es sich verschiebt.',
+        text: [
+          'Kein Kanal zeigt ein Video, weil es gut ist. Er zeigt es, weil Zahlen es sagen: wie lange jemand bleibt, ob er zurückspult, ob er speichert, ob er es weiterschickt. Diese Größen sind kein Geheimnis. Man muss sie nur ernst nehmen, bevor der erste Schnitt sitzt.',
+          'Was diesen Monat oben steht, zählt im nächsten weniger. Die Gewichtung wird geändert, ohne Ankündigung, und jeder Trick, der auf genau eine Einstellung gebaut war, stirbt mit ihr. Deshalb hänge ich nichts an einen Trick.',
+        ],
       },
       {
         wortLinks: 'DREI',
         wortRechts: 'SEKUNDEN',
         titel: 'Der Mensch verschiebt sich nicht.',
-        text: 'Drei Sekunden entscheiden, ob weitergewischt wird. In dieser Zeit liest niemand, er erkennt: ein Gesicht, eine Bewegung, etwas, das nicht aufgeht. Wer das trifft, muss den Algorithmus nicht überlisten. Er liefert ihm genau das Signal, auf das der wartet.',
+        text: [
+          'Drei Sekunden entscheiden, ob weitergewischt wird. In dieser Zeit liest niemand, er erkennt: ein Gesicht, eine Bewegung, etwas, das nicht aufgeht. Wer das trifft, muss den Algorithmus nicht überlisten. Er liefert ihm genau das Signal, auf das der wartet.',
+        ],
       },
     ],
     kriterien: [
@@ -709,7 +738,7 @@ const EN: HdTexte = {
       'Websites and software for businesses without an IT department. No page builder, no stack of plugins, no agency chain: you talk to the person who builds it. You tell me what bothers you, I tell you what it costs.',
     arbeitenAnsehen: 'See the work',
     bildAlt:
-      'A desk on a mountain top above the clouds, with the sun rising over the valleys behind it.',
+      'A black bust with its head tipped back, the face coated in glowing green liquid running down from the chin.',
     hinweis: 'Scroll',
   },
   menue: {
@@ -755,26 +784,32 @@ const EN: HdTexte = {
   },
   behauptung:
     'That is exactly the work. You get a site that runs, not a presentation. No page builder, no subscription, no hold music. If something breaks, you write to me and not to a hotline.',
+  bewegtbild: {
+    label: 'How I work',
+    titel: 'The fog lifts, the desk stays where it is.',
+    text: 'At the start of a project nobody can see anything: not you, because you cannot read a quote made of jargon, and not me, because I do not yet know what actually gets in your way. The picture clears while it is being built, not before. Scroll — then you will see what I mean.',
+    bildAlt:
+      'A desk on a mountain top above the clouds, with the sun rising over the valleys behind it.',
+  },
   verstaendnis: {
     label: 'What I worked out',
     akte: [
       {
         wortLinks: 'ALGO',
         wortRechts: 'RITHM',
-        titel: 'I know what gets measured.',
-        text: 'No platform shows a video because it is good. It shows it because the numbers say so: how long someone stays, whether they rewind, whether they save it, whether they pass it on. Those figures are no secret. They just have to be taken seriously before the first cut lands.',
-      },
-      {
-        wortLinks: 'NEVER',
-        wortRechts: 'THE SAME',
-        titel: 'And that it keeps moving.',
-        text: 'What counts most this month counts less next month. The weighting changes without notice, and every trick built for one exact setting dies with it. So I hang nothing on a trick.',
+        titel: 'I know what gets measured — and that it keeps moving.',
+        text: [
+          'No platform shows a video because it is good. It shows it because the numbers say so: how long someone stays, whether they rewind, whether they save it, whether they pass it on. Those figures are no secret. They just have to be taken seriously before the first cut lands.',
+          'What counts most this month counts less next month. The weighting changes without notice, and every trick built for one exact setting dies with it. So I hang nothing on a trick.',
+        ],
       },
       {
         wortLinks: 'THREE',
         wortRechts: 'SECONDS',
         titel: 'People do not move.',
-        text: 'Three seconds decide whether someone swipes on. In that time nobody reads, they recognise: a face, a movement, something that does not add up. Hit that and you do not need to outsmart the algorithm. You hand it exactly the signal it is waiting for.',
+        text: [
+          'Three seconds decide whether someone swipes on. In that time nobody reads, they recognise: a face, a movement, something that does not add up. Hit that and you do not need to outsmart the algorithm. You hand it exactly the signal it is waiting for.',
+        ],
       },
     ],
     kriterien: [
@@ -1102,7 +1137,7 @@ const ES: HdTexte = {
       'Webs y programas para empresas sin departamento de informática. Sin maquetador, sin pila de plugins, sin cadena de agencia: hablas con quien la construye. Tú me cuentas qué te molesta, yo te digo lo que cuesta.',
     arbeitenAnsehen: 'Ver los trabajos',
     bildAlt:
-      'Un escritorio en la cima de una montaña sobre el mar de nubes, con el sol saliendo tras los valles.',
+      'Un busto negro con la cabeza inclinada hacia atrás y el rostro cubierto por una masa verde luminosa que gotea desde la barbilla.',
     hinweis: 'Desplázate',
   },
   menue: {
@@ -1148,26 +1183,32 @@ const ES: HdTexte = {
   },
   behauptung:
     'Ese es justo el trabajo. No recibes una presentación, sino una web que funciona. Sin plantillas, sin cuota mensual, sin música de espera. Si algo falla, me escribes a mí y no a un centro de atención.',
+  bewegtbild: {
+    label: 'Cómo trabajo',
+    titel: 'La niebla se retira, el escritorio se queda.',
+    text: 'Al principio de un proyecto nadie ve nada: tú no, porque no se puede leer un presupuesto hecho de tecnicismos, y yo tampoco, porque aún no sé qué te bloquea de verdad. La imagen se aclara mientras se construye, no antes. Desplázate y verás a qué me refiero.',
+    bildAlt:
+      'Un escritorio en la cima de una montaña sobre el mar de nubes, con el sol saliendo tras los valles.',
+  },
   verstaendnis: {
     label: 'Lo que he entendido',
     akte: [
       {
         wortLinks: 'ALGO',
         wortRechts: 'RITMO',
-        titel: 'Sé según qué se ordena.',
-        text: 'Ninguna plataforma muestra un vídeo porque sea bueno. Lo muestra porque lo dicen los números: cuánto se queda alguien, si lo rebobina, si lo guarda, si lo reenvía. Esas magnitudes no son ningún secreto. Solo hay que tomárselas en serio antes del primer corte.',
-      },
-      {
-        wortLinks: 'SIEMPRE',
-        wortRechts: 'DISTINTO',
-        titel: 'Y que se desplazan.',
-        text: 'Lo que pesa este mes pesa menos el siguiente. La ponderación cambia sin avisar, y cada truco construido para un ajuste exacto muere con él. Por eso no cuelgo nada de un truco.',
+        titel: 'Sé según qué se ordena, y que eso se desplaza.',
+        text: [
+          'Ninguna plataforma muestra un vídeo porque sea bueno. Lo muestra porque lo dicen los números: cuánto se queda alguien, si lo rebobina, si lo guarda, si lo reenvía. Esas magnitudes no son ningún secreto. Solo hay que tomárselas en serio antes del primer corte.',
+          'Lo que pesa este mes pesa menos el siguiente. La ponderación cambia sin avisar, y cada truco construido para un ajuste exacto muere con él. Por eso no cuelgo nada de un truco.',
+        ],
       },
       {
         wortLinks: 'TRES',
         wortRechts: 'SEGUNDOS',
         titel: 'La persona no se desplaza.',
-        text: 'Tres segundos deciden si alguien sigue deslizando. En ese tiempo nadie lee, reconoce: una cara, un movimiento, algo que no encaja. Quien acierta ahí no necesita burlar al algoritmo. Le entrega justo la señal que está esperando.',
+        text: [
+          'Tres segundos deciden si alguien sigue deslizando. En ese tiempo nadie lee, reconoce: una cara, un movimiento, algo que no encaja. Quien acierta ahí no necesita burlar al algoritmo. Le entrega justo la señal que está esperando.',
+        ],
       },
     ],
     kriterien: [

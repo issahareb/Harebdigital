@@ -11,9 +11,19 @@ import {
 import { EchoText } from "./echo-text";
 
 /**
- * Die Heldenbühne: ein Film, der am Scrollen hängt.
+ * Die grosse Bühne — einmal als Standbild, einmal als Film.
  *
- * Der Abschnitt ist zwei Bildschirme hoch, die Bühne darin klebt oben fest.
+ * `motiv="bild"` ist die Bühne ganz oben: ein einzelnes Standbild, das den
+ * ganzen Bildschirm füllt, mit der Schlagzeile darüber. `motiv="film"` ist
+ * derselbe Aufbau mit dem Film, der am Scrollen hängt — der stand vorher
+ * oben und hat jetzt weiter unten seinen eigenen Abschnitt.
+ *
+ * Warum ein Bauteil und nicht zwei: alles ausser dem Motiv ist identisch —
+ * der Schleier, die Fluchtlinie des Textes, das Zurückziehen der Schrift, der
+ * Hinweis nach unten. Zwei Bauteile hiesse, dieselbe Bühne zweimal zu
+ * pflegen, und beim nächsten Eingriff wäre eine von beiden vergessen.
+ *
+ * Der Filmabschnitt ist zwei Bildschirme hoch, die Bühne darin klebt oben fest.
  * Was man scrollt, ist nicht die Seite, sondern die Laufzeit: Nebel zieht ab,
  * die Sonne kommt über den Grat, der Schreibtisch steht frei. Wer stehen
  * bleibt, bei dem bleibt das Bild stehen.
@@ -46,6 +56,17 @@ import { EchoText } from "./echo-text";
  */
 
 type Props = {
+  /* Was auf der Bühne steht. Das Standbild braucht keine Laufzeit, also
+     entfaellt bei ihm die ganze Filmmechanik — kein Vorladen, kein
+     Nachfuehren, keine zweite Datei fuer schmale Geraete. */
+  motiv: 'bild' | 'film';
+  /* Genau eine Ueberschrift erster Ordnung pro Seite. Die gehoert der Bühne
+     ganz oben; der Filmabschnitt weiter unten ist eine zweiter Ordnung. */
+  rang?: 'h1' | 'h2';
+  /* Der kleine Kicker ueber der Ueberschrift. Die Buehne ganz oben hat
+     keinen — dort ist die Schlagzeile das Erste, was jemand liest. */
+  label?: string;
+  bild?: { src: string; klein?: string };
   /* Der Abschnitt gehoert diesem Bauteil, aber die Kopfzeile und der
      fliegende Knopf messen dagegen. Deshalb kommt der Verweis von aussen und
      wird hier nur eingehaengt. */
@@ -54,7 +75,9 @@ type Props = {
   titelUnten: string;
   vorspann: string;
   bildAlt: string;
-  hinweis: string;
+  /* Der Hinweis nach unten. Nur die Buehne ganz oben hat einen: mitten auf
+     der Seite ist "Scrollen" keine Auskunft, sondern eine Selbstverstaendlichkeit. */
+  hinweis?: string;
   children: React.ReactNode;
 };
 
@@ -62,6 +85,10 @@ const klemm = (v: number, min = 0, max = 1) => Math.min(Math.max(v, min), max);
 
 
 export function HdHeld({
+  motiv,
+  rang = 'h1',
+  label,
+  bild,
   sektion,
   titelOben,
   titelUnten,
@@ -80,7 +107,7 @@ export function HdHeld({
      der Quelle waere der kurze Weg, aber das ist aus der Spezifikation für
      Filme herausgefallen und wird nicht überall gelesen. */
   useEffect(() => {
-    if (reduce) return;
+    if (reduce || motiv !== "film") return;
     const eng = window.matchMedia("(max-width: 900px)");
     const waehlen = () =>
       setQuelle(
@@ -89,7 +116,7 @@ export function HdHeld({
     waehlen();
     eng.addEventListener("change", waehlen);
     return () => eng.removeEventListener("change", waehlen);
-  }, [reduce]);
+  }, [reduce, motiv]);
 
   /* Der Fortschritt der Bühne, von 0 bis 1. Eine einzige Zahl für alles, was
      an ihr hängt: die Laufzeit des Films, das Zurückziehen des Textes, der
@@ -230,6 +257,8 @@ export function HdHeld({
 
   /* Der Text zieht sich zurück, während der Film weiterläuft: das letzte
      Drittel der Bühne gehört dem Bild allein. */
+  const Ueberschrift = rang;
+
   const textDeckung = useTransform(fortschrittWert, [0, 0.42, 0.72], [1, 1, 0]);
   const textY = useTransform(fortschrittWert, [0, 0.72], [0, -70]);
   const hinweisDeckung = useTransform(fortschrittWert, [0, 0.06], [1, 0]);
@@ -237,22 +266,28 @@ export function HdHeld({
   return (
     <section
       ref={abschnitt}
-      className="hd-held"
+      className={[
+        "hd-held",
+        motiv === "bild" ? "hd-held--bild" : "",
+        rang === "h2" ? "hd-held--zweit" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       aria-label={titelOben + " " + titelUnten}
     >
       <div className="hd-held-buehne">
         {/* Zuerst das Standbild. Es ist das LCP-Element dieser Seite und
             deshalb `priority`: der Film darüber hat immer Ladezeit. */}
         <Image
-          src="/videos/hero-berg.jpg"
+          src={bild?.src ?? "/videos/hero-berg.jpg"}
           alt={bildAlt}
           fill
-          priority
+          priority={motiv === "bild"}
           sizes="100vw"
           className="hd-held-bild"
         />
 
-        {quelle && (
+        {motiv === "film" && quelle && (
           <video
             ref={film}
             key={quelle}
@@ -293,8 +328,9 @@ export function HdHeld({
               liest sich dadurch als Schatten und nicht als zweite Schrift.
               Bei abgeschalteter Bewegung fallen die Schatten weg — das
               regelt das Stilblatt, nicht dieses Bauteil. */}
-            <h1 className="font-display font-bold text-[color:var(--hd-ink)]">
-              {[titelOben, titelUnten].map((zeile) => (
+            {label ? <span className="hd-label hd-held-label">{label}</span> : null}
+            <Ueberschrift className="font-display font-bold text-[color:var(--hd-ink)]">
+              {[titelOben, titelUnten].filter(Boolean).map((zeile) => (
                 <span key={zeile} className="hd-held-zeile">
                   <EchoText
                     text={zeile}
@@ -314,7 +350,7 @@ export function HdHeld({
                   />
                 </span>
               ))}
-            </h1>
+            </Ueberschrift>
 
             <p className="hd-held-vorspann mt-5 max-w-[46ch] text-pretty text-[17px] leading-[1.6] sm:text-[19px]">
               {vorspann}
@@ -327,14 +363,16 @@ export function HdHeld({
           </div>
         </motion.div>
 
-        <motion.div
-          className="hd-held-hinweis"
-          style={{ opacity: hinweisDeckung }}
-          aria-hidden
-        >
-          <span>{hinweis}</span>
-          <span />
-        </motion.div>
+        {hinweis ? (
+          <motion.div
+            className="hd-held-hinweis"
+            style={{ opacity: hinweisDeckung }}
+            aria-hidden
+          >
+            <span>{hinweis}</span>
+            <span />
+          </motion.div>
+        ) : null}
       </div>
     </section>
   );

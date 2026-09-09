@@ -634,6 +634,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
      steht hier: die Kopfzeile und der fliegende Knopf müssen wissen, wie weit
      die Bühne durchgescrollt ist. */
   const held = useRef<HTMLElement>(null)
+  /* Der Filmabschnitt misst seinen eigenen Scrollweg und braucht deshalb
+     seinen eigenen Verweis — er teilt sich mit der Bühne oben nur das
+     Bauteil, nicht die Strecke. */
+  const bewegtbild = useRef<HTMLElement>(null)
 
   /* Der Beleg im Arbeitsteil richtet sich beim Hereinscrollen auf: von leicht
      nach hinten gekippt auf gerade. Was es mitteilt: hier liegt etwas auf dem
@@ -789,8 +793,15 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         />
       </header>
 
-      {/* ── Heldenbühne ─────────────────────────────────────────────────── */}
+      {/* ── Bühne: die Statue ───────────────────────────────────────────── */}
+      {/* Bis eben lief hier der Bergfilm. Der steht jetzt weiter unten in
+          seinem eigenen Abschnitt: als Begrüssung war er Atmosphäre, als
+          eigener Abschnitt ist er eine Aussage über die Arbeit. Oben steht
+          dafür das Bild, das am schnellsten sagt, worum es auf dieser Seite
+          geht — und das ist kein Sonnenaufgang. */}
       <HdHeld
+        motiv="bild"
+        bild={{ src: '/verstaendnis/statue-held.webp' }}
         sektion={held}
         titelOben={t.buehne.titelOben}
         titelUnten={t.buehne.titelUnten}
@@ -879,6 +890,25 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           />
         </div>
       </section>
+
+      {/* ── Bewegtbild ──────────────────────────────────────────────────── */}
+      {/* Der Film, der vorher die Begrüssung war. Hier steht er als eigener
+          Bildschirm zwischen den beiden Lesestrecken: davor die Behauptung,
+          danach die Arbeiten. Ein Abschnitt, ein Bild. */}
+      <HdHeld
+        motiv="film"
+        rang="h2"
+        sektion={bewegtbild}
+        label={t.bewegtbild.label}
+        titelOben={t.bewegtbild.titel}
+        titelUnten=""
+        vorspann={t.bewegtbild.text}
+        bildAlt={t.bewegtbild.bildAlt}
+      >
+        <a href="#leistungen" className="hd-cta-ghost px-6 py-3.5 text-[17px]">
+          {t.leistungen.label}
+        </a>
+      </HdHeld>
 
       {/* ── Arbeiten ────────────────────────────────────────────────────── */}
       <section ref={akt} id="arbeiten" className="hd-akt scroll-mt-16">
