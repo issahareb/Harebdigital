@@ -4,13 +4,14 @@ const PERSON_ID = 'https://issahareb.me/#issa-hareb'
 const ORGANIZATION_ID = 'https://issahareb.me/#hareb-digital'
 const PORTFOLIO_URL = 'https://issahareb.me/'
 const HAREB_DIGITAL_URL = 'https://hareb.digital/'
+const GOOGLE_BUSINESS_URL = 'https://share.google/EUZlSQOOkoXIK0AMM'
 const INSTAGRAM_URL = 'https://www.instagram.com/issa3701__/'
 const TIKTOK_URL = 'https://www.tiktok.com/@issa3701'
 
 const COPY: Record<HdLang, { prefix: string; suffix: string; link: string }> = {
   de: {
     prefix: 'Hareb Digital wurde von',
-    suffix: 'gegruendet.',
+    suffix: 'gegründet.',
     link: 'Portfolio und Projekte',
   },
   en: {
@@ -35,7 +36,7 @@ const ENTITY_GRAPH = {
       url: HAREB_DIGITAL_URL,
       founder: { '@id': PERSON_ID },
       employee: { '@id': PERSON_ID },
-      sameAs: [HAREB_DIGITAL_URL],
+      sameAs: [GOOGLE_BUSINESS_URL],
     },
     {
       '@type': 'Person',
@@ -44,10 +45,7 @@ const ENTITY_GRAPH = {
       url: PORTFOLIO_URL,
       jobTitle: 'Founder of Hareb Digital',
       worksFor: { '@id': ORGANIZATION_ID },
-      sameAs: [
-        INSTAGRAM_URL,
-        TIKTOK_URL,
-      ],
+      sameAs: [INSTAGRAM_URL, TIKTOK_URL],
     },
     {
       '@type': 'WebSite',
@@ -87,7 +85,7 @@ export function EntityBridge({ lang }: { lang: HdLang }) {
             className="font-medium text-white/85 underline decoration-white/20 underline-offset-4 transition-colors hover:text-white hover:decoration-white/50"
           >
             Issa Hareb
-          </a>
+          </a>{' '}
           {t.suffix}
         </p>
         <a
