@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { HdLanding } from '@/components/hd-landing'
+import { EntityBridge } from '@/components/entity-bridge'
 import { HD_TEXTE } from '@/lib/hd-texte'
 import { sprache } from '@/lib/sprache'
 
@@ -38,5 +39,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Startseite() {
-  return <HdLanding lang={await sprache()} />
+  const lang = await sprache()
+
+  return (
+    <>
+      <HdLanding lang={lang} />
+      <EntityBridge lang={lang} />
+    </>
+  )
 }
