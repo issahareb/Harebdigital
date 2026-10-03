@@ -66,41 +66,38 @@ export default async function Datenschutz() {
 
           <Rechtsabschnitt titel="Sprachwahl">
             <p>
-              Die Seite erscheint in der Sprache Ihres Browsers. Dafür wird der von Ihrem Browser
-              mitgesendete Kopf <em>Accept-Language</em> ausgewertet; er wird nicht gespeichert.
-              Stellen Sie die Sprache über den Schalter selbst um, wird Ihre Wahl in einem Cookie
-              namens <code>hd-sprache</code> abgelegt (Laufzeit ein Jahr, Inhalt: <code>de</code>,{' '}
-              <code>en</code> oder <code>es</code>). Das Cookie ist für die von Ihnen ausdrücklich
-              gewünschte Funktion erforderlich und deshalb nach § 25 Abs. 2 Nr. 2 TTDSG
-              einwilligungsfrei. Es verfolgt niemanden und wird an niemanden übermittelt; Sie
-              können es jederzeit in Ihrem Browser löschen.
+              Die Sprachversion ergibt sich aus der aufgerufenen Adresse: Deutsch unter der
+              Startadresse, Englisch unter /en/ und Spanisch unter /es/. Der Sprachschalter führt
+              auf die entsprechende Seite. Es werden dafür keine Cookies gesetzt und keine
+              Browser-Sprachangaben ausgewertet.
             </p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Keine Analyse, keine fremden Server">
             <p>
               Diese Seite bindet keine Analysedienste, keine Werbenetzwerke und keine Inhalte
-              fremder Anbieter ein. Die verwendeten Schriften (Source Sans 3, League Spartan,
-              Anton, Oswald) stammen ursprünglich von Google Fonts, werden aber beim Erstellen der
-              Seite heruntergeladen und von dieser Domain ausgeliefert — Ihr Browser stellt
-              deshalb keine Anfrage an Google. Bilder und Filme liegen ebenfalls auf dieser Domain.
+              fremder Anbieter ein. Die verwendeten Schriften (DM Sans und Manrope) stammen
+              ursprünglich von Google Fonts, wird aber beim Erstellen der Seite heruntergeladen und
+              von dieser Domain ausgeliefert — Ihr Browser stellt deshalb keine Anfrage an Google.
+              Bilder und Filme liegen ebenfalls auf dieser Domain.
             </p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Kontaktaufnahme">
             <p>
               Schreiben Sie uns eine E-Mail oder rufen Sie an, verarbeiten wir Ihre Angaben zur
-              Bearbeitung der Anfrage und für den Fall von Anschlussfragen. Rechtsgrundlage ist
-              Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Ein Kontaktformular gibt es auf dieser Seite
-              nicht.
+              Bearbeitung der Anfrage und für den Fall von Anschlussfragen. Rechtsgrundlage ist Art.
+              6 Abs. 1 lit. b bzw. lit. f DSGVO. Das Anfrageformular bereitet lokal eine E-Mail vor
+              und öffnet Ihr E-Mail-Programm. Die Eingaben werden erst übermittelt, wenn Sie die
+              E-Mail dort selbst absenden; die Website versendet sie nicht.
             </p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Ihre Rechte">
             <p>
               Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der
-              Verarbeitung, Datenübertragbarkeit und Widerspruch sowie ein Beschwerderecht bei
-              einer Aufsichtsbehörde.
+              Verarbeitung, Datenübertragbarkeit und Widerspruch sowie ein Beschwerderecht bei einer
+              Aufsichtsbehörde.
             </p>
           </Rechtsabschnitt>
         </div>

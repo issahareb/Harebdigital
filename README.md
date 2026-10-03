@@ -1,86 +1,58 @@
 # Hareb Digital — hareb.digital
 
-Die Landingpage. Dreisprachig, serverseitig gerendert.
+Individuelles Digitalstudio von Issa Hareb in Essen. Next.js 16, React 19 und Tailwind 4. Alle Inhaltsseiten werden beim Build als HTML vorgerendert; `next start` übernimmt die Auslieferung und Bildoptimierung.
 
-Sie lag vorher als `/start` im Portfolio-Repo unter issahareb.me und trug dort
-`noindex` — mit der ausdrücklichen Begründung, dass eine Seite, die erst unter
-einer fremden Domain Bewertungen sammelt und dann umzieht, gegen sich selbst
-anträte. Der Umzug ist passiert. Hier wird indexiert.
-
-## Aufbau
-
-```
-/                Die Landingpage (de/en/es, siehe Sprachen)
-/kontakt         E-Mail, Telefon, Sitz
-/impressum       deutsch, noindex
-/datenschutz     deutsch, noindex
-```
-
-Next.js 16 App Router, Tailwind 4, `motion` für die Bewegung, `gsap` für die
-Galerie. Kein statischer Export mehr — warum, steht in `next.config.mjs`.
-
-## Sprachen
-
-Die Seite wählt ihre Sprache aus drei Quellen, in dieser Reihenfolge: der
-ausdrücklichen Wahl im Schalter (Cookie `hd-sprache`), dem
-`Accept-Language`-Kopf des Browsers, dem Land. **Nicht** aus der Adresse.
-
-Das war unter `noindex` richtig: der Verkehr kam aus Anzeigen, und ein
-Besucher sollte ohne Zwischenklick in seiner Sprache ankommen.
-
-**Mit Index ist es das nicht mehr.** Derselbe Pfad liefert je nach Kopf einen
-anderen Text; ein Crawler bekäme mal die eine und mal die andere Fassung unter
-`/`. Der übliche Ausweg — `Vary: Accept-Language` — steht hier nicht zur
-Verfügung: der App Router schreibt `Vary` für seine eigenen RSC-Anfragen und
-überschreibt dabei alles, was aus `headers()` oder aus einer Middleware kommt.
-Nachgemessen, beides kam nicht an.
-
-Die Lösung sind eigene Adressen je Sprache (`/`, `/en`, `/es`) samt `hreflang`.
-Das ist der nächste Umbau und bewusst nicht Teil des Umzugs.
-
-## Was aus dem Portfolio NICHT mitgekommen ist
-
-`/anfrage` samt Formular. Es reicht seine Eingaben an den L.U.K.A.S.-Server
-weiter und hängt an einem Token, das hier nicht liegt. Der Ruf zur Tat führt
-deshalb auf `/kontakt`. Ein nachgebautes Formular ohne Empfänger wäre die
-schlechtere Lösung: es sähe vollständiger aus und wäre es nicht — der Besucher
-glaubt, er habe Kontakt aufgenommen, und versucht es kein zweites Mal.
-
-Zwei Sätze in `lib/hd-texte.ts` mussten dafür angepasst werden; sie
-beschrieben das Formular („Fünf Felder, eines davon freiwillig").
-
-## Was von der alten Agenturseite geblieben ist
-
-Impressum und Datenschutz — beides Pflicht, beides deutsch, beides jetzt im
-Gewand der Landingpage. Die Datenschutzerklärung stand vorher auf „keine
-Cookies, keine Analyse, keine fremden Server". Der Sprachschalter setzt einen
-Cookie, also stimmt der erste Teil nicht mehr; der Abschnitt „Sprachwahl" ist
-neu.
-
-Alles andere — Startseite, Leistungsseiten, Referenzen, `content/site.ts`,
-`components/bausteine.tsx` — ist entfernt.
-
-## Vor dem Livegang
+## Entwicklung und Prüfung
 
 ```bash
+npm ci
+npm run dev
+npm run build
+npm run typecheck
+npm run start
+# Gegen den laufenden Produktionsserver, standardmäßig localhost:3000:
+npm run check:seo
+# Browserprüfung nach Installation des Testbrowsers:
+npx playwright install chromium
+npm run check:browser
+# Separater Check der tatsächlichen Veröffentlichungsbereitschaft:
 npm run pruefen
 ```
 
-Bricht ab, solange irgendwo `PLATZHALTER` steht: Anschrift, Telefon, USt-ID,
-die ungeprüfte Datenschutzerklärung. Ein Kommentar hält niemanden auf, eine
-Prüfung schon.
+`SEO_BASE_URL` kann für `check:seo` einen anderen Testserver setzen. Der Test prüft die tatsächlich ausgelieferte HTML-Ausgabe aller 18 indexierbaren Seiten: Status, Sprache, genau eine H1, individuelle Titel, Beschreibungen, Canonicals, wechselseitige hreflang-Links, Open Graph, sichtbare FAQ-Inhalte, JSON-LD, Sitemap, Robots, interne Links, Fehlerseiten und Asset-Caching.
 
-**Die Datenschutzerklärung ist ein Gerüst**, kein fertiger Text. Sie deckt den
-aktuellen Stand ab. Sobald etwas dazukommt — ein Formular, Analyse, eine
-Kartenansicht — gehört sie erweitert und von jemandem geprüft, der dafür
-haftet.
+## Adressen und Sprachen
 
-## Befehle
+| Inhalt | Deutsch | Englisch | Spanisch |
+| --- | --- | --- | --- |
+| Startseite | `/` | `/en/` | `/es/` |
+| Kontakt | `/kontakt/` | `/en/kontakt/` | `/es/kontakt/` |
+| Leistungen | `/leistungen/[slug]/` | `/en/leistungen/[slug]/` | `/es/leistungen/[slug]/` |
 
-```bash
-npm run dev         # Entwicklung
-npm run build       # Produktionsbau
-npm run start       # den gebauten Server starten (liest PORT)
-npm run pruefen     # Platzhalter-Prüfung
-npm run build:live  # Prüfung + Bau
-```
+`app/(de)` und `app/[lang]` haben eigene Root-Layouts mit korrektem HTML-Sprachattribut. Die Adresse legt die Sprache fest; Cookies, Geolocation und Accept-Language ändern den Seiteninhalt nicht. Alte deutsche Leistungsadressen bleiben erhalten. Impressum und Datenschutz bleiben deutsch und tragen `noindex, follow`; sie sind crawlbar, damit dieses Signal gelesen werden kann.
+
+Die Sitemap enthält nur die 18 indexierbaren Seiten und deren Sprachen. Kein künstliches `lastmod` bei jedem Build. `public/llms.txt` ist eine zusätzliche Navigationshilfe, kein Ranking-Signal und keine AEO-Garantie.
+
+## Gestaltung und Animation
+
+Warmer Papierton, Anthrazit, zurückhaltendes Citron und ein Travertin-H als Leitmotiv. Die Homepage besteht größtenteils aus Server-Komponenten. Nur Navigation, Scrollbühne und Anfrageformular benötigen Client-JavaScript. Die frühere umfangreiche globale Stylesammlung wurde durch ein auf diese Seite abgestimmtes Stylesheet ersetzt. Alte Motion-/GSAP-Komponenten sind nicht im neuen Seitenbaum eingebunden.
+
+`components/cinematic-hero.tsx` koppelt Verschiebung und Zoom des in Higgsfield erzeugten Motivs an den Scrollfortschritt. Ein einzelner passiver Scroll-Listener wird über `requestAnimationFrame` gebündelt; es gibt keinen ständig laufenden Render-Loop und kein Abfangen des Scrollens. Ein sichtbarer Schalter deaktiviert die Animation, `prefers-reduced-motion` wird berücksichtigt. Ohne JavaScript bleiben die vollständigen Inhalte nutzbar.
+
+Die zwei neuen Bilder wurden über Higgsfield erzeugt. Die Quelle, Job-IDs und die Optimierungsziele stehen in `docs/asset-provenance.json`. Responsive AVIF-/WebP-Dateien liegen versioniert in `public/studio/`. Schriften, Bilder und später mögliche Filme werden über die eigene Domain ausgeliefert.
+
+Die gewünschte individuelle Video-Kamerafahrt konnte wegen fehlender Higgsfield-Credits nicht erzeugt werden. Das ausgelieferte Motiv ist ein scrollanimiertes Standbild, kein generierter Film. Der genaue Videoprompt ist dokumentiert. `CinematicHero` kann später einen lokalen `videoSrc` erhalten; der Download beginnt erst bei Scrollinteraktion und unterbleibt bei reduzierter Bewegung oder Datensparmodus. Vor Verwendung eines Films sind Encoding, Seek-Verhalten und Browserdarstellung gesondert zu prüfen.
+
+## Inhalte und Kontakt
+
+`lib/studio-copy.ts` enthält die neuen redaktionellen Texte und FAQ in drei Sprachen. `lib/hd-texte.ts` enthält die vorhandenen Leistungsdetails, Projekttexte und Formularbeschriftungen. Projektdaten werden nicht als aktuelle Ergebnisse oder garantierte Kundenerfolge ausgegeben. Die Organisation und der Gründer behalten die bereits im Portfolio und im Taxi-Projekt verwendeten Schema-IDs.
+
+Das Formular bereitet eine E-Mail vor und öffnet das E-Mail-Programm. Es sendet nicht automatisch und zeigt keinen erfundenen Versand-Erfolg. Die Auswahl kann mit `?leistung=automatisierung` vorbelegt werden. Ohne JavaScript bleibt ein direkter E-Mail-Link verfügbar.
+
+## Noch offene Angaben vor einer Veröffentlichung
+
+Im Ausgangsrepo fehlen Geschäftsanschrift, Postleitzahl, Telefonnummer und Angaben zur Umsatzsteuer. Auch die rechtliche Prüfung des Datenschutztexts ist als offen markiert. Diese Angaben wurden nicht erfunden. Das bestehende `npm run pruefen` schlägt deshalb weiterhin an; der Produktionsbau für eine lokale Vorschau ist davon getrennt. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
+
+Die Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.webp`, `docs/preview-mobile.webp` und `docs/preview-full.webp`.
+
+Die bestehende Railway-Konfiguration deployt `npm run build`. Deshalb ist die gesonderte Prüfung vor einem Merge/Livegang notwendig. Das Redesign wird auf einem separaten Review-Branch vorbereitet; die Live-Seite wird dadurch nicht verändert.

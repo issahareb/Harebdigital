@@ -1,0 +1,43 @@
+{
+  "createdAt": "2026-10-03",
+  "provider": "Higgsfield",
+  "images": [
+    {
+      "jobId": "f474ba96-9617-4cd6-a4b4-bb16ffb96b3b",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "role": "Cinematic hero: monumental travertine H, charcoal gallery, warm directional light",
+      "files": [
+        "public/studio/h-monolith-v1-768.webp",
+        "public/studio/h-monolith-v1-1280.webp",
+        "public/studio/h-monolith-v1-1920.webp",
+        "public/studio/h-monolith-v2-768.avif",
+        "public/studio/h-monolith-v2-1280.avif",
+        "public/studio/h-monolith-v2-1920.avif",
+        "public/studio/h-monolith-mobile-v2.avif"
+      ],
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261003_123737_f474ba96-9617-4cd6-a4b4-bb16ffb96b3b.png"
+    },
+    {
+      "jobId": "b5aa2948-d635-4ac0-8fe5-e16ab87f7a3e",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "role": "Material detail: travertine crossbar and metal joint",
+      "files": [
+        "public/studio/h-detail-v1.webp"
+      ],
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261003_123737_b5aa2948-d635-4ac0-8fe5-e16ab87f7a3e.png"
+    }
+  ],
+  "video": {
+    "status": "not-generated",
+    "model": "seedance_2_5",
+    "reason": "Out of credits in selected Private workspace",
+    "requestId": "939e2560-5a29-4d8a-b8e8-f57888c3504e",
+    "durationSeconds": 6,
+    "resolution": "1080p",
+    "startImageJobId": "f474ba96-9617-4cd6-a4b4-bb16ffb96b3b",
+    "prompt": "A six-second single continuous precision motion-control architectural shot of the exact travertine H sculpture and gallery shown in the input image. Slow lateral dolly one meter toward the right and gentle 12 percent push-in. Reveal solid depth of the stone and natural parallax across the floor seams. Preserve the empty left half of the composition and maintain the sculpture in the right half, fully visible throughout. Preserve lighting and palette from input. The afternoon light moves subtly across the tactile limestone surface. Uniform smooth camera motion, suitable for frame-by-frame scroll scrubbing. Keep the H rigid, grounded and geometrically identical. Silent. No cuts, transitions, shake, morphing, deformation, typography or new objects.",
+    "implementedFallback": "Scroll-driven transform of the completed high-resolution hero still. No video download, no autoplay, no audio."
+  }
+}

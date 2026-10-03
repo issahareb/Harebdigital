@@ -7,21 +7,7 @@
 const DOMAIN = 'https://hareb.digital'
 const HOST = 'hareb.digital'
 
-/**
- * Kein `output: "export"` mehr — und das ist die eine Entscheidung dieses
- * Umzugs, die man kennen muss.
- *
- * Die Vorgängerseite war ein statischer Export: fertige HTML-Dateien, kein
- * Server, läuft auf jedem Hoster. Die Landingpage aus dem Portfolio kann das
- * nicht, weil sie ihre Sprache aus dem Accept-Language-Kopf und einem Cookie
- * liest — beides gibt es beim Erstellen der Seite noch nicht. Wer die Sprache
- * so wählt, braucht einen Server, der die Anfrage sieht.
- *
- * Die Alternative wäre gewesen, die Sprachwahl in den Browser zu verlegen.
- * Dann stünde beim ersten Bild die falsche Sprache da und `<html lang>` wäre
- * bis zum ersten Skript falsch — für ein Vorleseprogramm ist das kein
- * Schönheitsfehler. Der Server ist der ehrlichere Preis.
- */
+/** Pages are statically prerendered; next start also serves optimised images. */
 
 /**
  * Lange Haltbarkeit für die schweren Dateien.
@@ -109,6 +95,7 @@ const nextConfig = {
           { key: 'Content-Security-Policy-Report-Only', value: CSP_NUR_MELDEN },
         ],
       },
+      { source: '/studio/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       { source: '/videos/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       { source: '/projekte/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       { source: '/social/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
