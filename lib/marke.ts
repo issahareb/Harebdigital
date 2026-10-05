@@ -26,9 +26,9 @@ export const marke = {
      geblieben; die Domain darunter ist neu. */
   email: "info@hareb.org",
   telefon: PLATZHALTER,
-  strasse: PLATZHALTER,
-  plz: PLATZHALTER,
-  ort: "Essen",
+  strasse: "Europaring 90",
+  plz: "53757",
+  ort: "Sankt Augustin",
   land: "DE",
   inhaber: "Issa Hareb",
   portfolio: PORTFOLIO,
