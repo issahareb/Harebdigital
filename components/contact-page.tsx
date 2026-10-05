@@ -1,5 +1,7 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { ART_COPY } from '@/lib/studio-art'
 import { Anfrageformular } from './anfrageformular'
 import { HdUnterseite } from './hd-unterseite'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
@@ -57,7 +59,9 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             </p>
           </noscript>
         </div>
-        <dl className="contact-info">
+        <div className="contact-aside">
+          <Image className="contact-art" src="/studio/impulse/contact-640.webp" alt={ART_COPY[lang].contact} width={640} height={480} sizes="(max-width: 700px) 90vw, 300px" />
+          <dl className="contact-info">
           <div>
             <dt>{t.epost}</dt>
             <dd>
@@ -87,6 +91,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             <dd>{marke.inhaber}</dd>
           </div>
         </dl>
+        </div>
       </div>
       <JsonLd
         data={{

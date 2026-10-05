@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 const output = process.env.QA_OUTPUT_DIR || 'artifacts/qa'
 const base = process.env.SEO_BASE_URL || 'http://localhost:3000'
 await fs.mkdir(output, { recursive: true })
-const browser = await chromium.launch()
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE })
 const results = []
 for (const width of [320, 390, 768, 1920]) {
   for (const locale of ['', 'en/', 'es/']) {

@@ -1,43 +1,151 @@
 {
-  "createdAt": "2026-10-03",
+  "createdAt": "2026-10-05",
+  "concept": "From material architecture to cosmic electric flow: an accelerating camera flight through the corridors, with chartreuse cables becoming light-speed energy currents.",
   "provider": "Higgsfield",
   "images": [
     {
-      "jobId": "f474ba96-9617-4cd6-a4b4-bb16ffb96b3b",
-      "requestedModel": "nano_banana_pro",
-      "reportedModel": "nano_banana_2",
-      "role": "Cinematic hero: monumental travertine H, charcoal gallery, warm directional light",
+      "name": "studio",
+      "jobId": "2bb195aa-ba53-4b3e-8df5-0739602fe969",
+      "requestedModel": "soul_cinematic",
+      "reportedModel": "soul_cinematic",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122034_2bb195aa-ba53-4b3e-8df5-0739602fe969.png",
+      "prompt": "Art direction for the independent digital design studio Hareb Digital. High-end physical set photography, photorealistic materials, refined contemporary design editorial. Palette strictly warm ivory, charcoal graphite, brushed silver aluminium and pale electric chartreuse #d4ed8a. Real micro scratches and paper fibres, soft directional daylight, rich blacks, subtle 35mm grain, controlled highlights, elegant and tactile, avoid the glossy generic AI look. No typography, no letters, no logos, no watermarks, no people, no screens with fake UI, no neon cyberpunk. THE DESIGNER'S PROCESS. Top-down editorial macro still life on a warm ivory table: overlapping sheets of translucent vellum with faint precise pencil grid lines, a single beautifully folded thin brushed-aluminium ribbon prototype, a chartreuse spool of thread that snakes between the layers. Small physical paper maquettes, material samples, one steel ruler partly cropped. Intentionally art-directed, asymmetrical and spacious, strongly raking afternoon sunlight with long shadows. A material study about thought, craft and precision, not a fake photograph of an actual office. 80mm medium-format lens.",
       "files": [
-        "public/studio/h-monolith-v1-768.webp",
-        "public/studio/h-monolith-v1-1280.webp",
-        "public/studio/h-monolith-v1-1920.webp",
-        "public/studio/h-monolith-v2-768.avif",
-        "public/studio/h-monolith-v2-1280.avif",
-        "public/studio/h-monolith-v2-1920.avif",
-        "public/studio/h-monolith-mobile-v2.avif"
-      ],
-      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261003_123737_f474ba96-9617-4cd6-a4b4-bb16ffb96b3b.png"
+        "public/studio/impulse/studio-640.webp",
+        "public/studio/impulse/studio-1200.webp"
+      ]
     },
     {
-      "jobId": "b5aa2948-d635-4ac0-8fe5-e16ab87f7a3e",
+      "name": "design",
+      "jobId": "3209c450-4881-4827-865e-500a2a3ddcd5",
       "requestedModel": "nano_banana_pro",
       "reportedModel": "nano_banana_2",
-      "role": "Material detail: travertine crossbar and metal joint",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122252_3209c450-4881-4827-865e-500a2a3ddcd5.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. WEB DESIGN / FROM IDEA TO STRUCTURE. Three large translucent glass and off-white paper rectangular planes standing upright in an offset editorial grid. Each plane contains only subtle embossed blank modular rectangles, suggesting well-composed page layouts without showing a screen. One slender chartreuse ribbon moves from the foreground into a beautifully ordered stack. Brushed metal base, warm ivory floor and background, architectonic sunlit still life, three-quarter view, spacious framing.",
       "files": [
-        "public/studio/h-detail-v1.webp"
-      ],
-      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261003_123737_b5aa2948-d635-4ac0-8fe5-e16ab87f7a3e.png"
+        "public/studio/impulse/design-640.webp",
+        "public/studio/impulse/design-1200.webp"
+      ]
+    },
+    {
+      "name": "relaunch",
+      "jobId": "c6e403a1-89db-4415-b9f9-f8cd746a8363",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122251_c6e403a1-89db-4415-b9f9-f8cd746a8363.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. RELAUNCH / REFINEMENT. A single sheet of thin aluminium spans the composition: on the left, delicately crumpled organic folds; on the right, it unfolds into a confident smooth architectural arc above warm ivory paper. A single fine chartreuse thread passes through both states. This is one coherent physical sculpture of transformation, not two disconnected objects. Warm ivory backdrop, side light, medium format editorial close-up.",
+      "files": [
+        "public/studio/impulse/relaunch-640.webp",
+        "public/studio/impulse/relaunch-1200.webp"
+      ]
+    },
+    {
+      "name": "automation",
+      "jobId": "9e6b15b3-a1c3-45e2-99f0-33d5b0f280c4",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122251_9e6b15b3-a1c3-45e2-99f0-33d5b0f280c4.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. AUTOMATION / A SYSTEM IN FLOW. Precisely machined brushed-steel rails form an elegant continuous circuit in a graphite studio. Three small pale chartreuse spheres placed at consecutive points travel through the route, connected by the single thin green thread. The track has two graceful bends and exact joints, beautifully simple mechanical choreography. Macro three-quarter view with deep shadows and silver edge lighting. Tactile engineering, no gears, no robot, no diagrams.",
+      "files": [
+        "public/studio/impulse/automation-640.webp",
+        "public/studio/impulse/automation-1200.webp"
+      ]
+    },
+    {
+      "name": "visibility",
+      "jobId": "25cad197-2bd1-45d3-8e1b-c592eb4289f4",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122251_25cad197-2bd1-45d3-8e1b-c592eb4289f4.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. VISIBILITY / A SIGNAL FINDING ITS WAY. A sharply defined single triangular optical glass prism on a charcoal surface, intersected by one fine chartreuse filament of light entering at the left and emerging as a broad soft fan of pale green illumination across the far wall. Physically photographed optical experiment, smoky clear glass, high contrast, generous dark areas, precision and clarity. No rainbow colours, no text.",
+      "files": [
+        "public/studio/impulse/visibility-640.webp",
+        "public/studio/impulse/visibility-1200.webp"
+      ]
+    },
+    {
+      "name": "contact",
+      "jobId": "040359f8-f4eb-4b0b-b0e1-cd6a29174491",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122251_040359f8-f4eb-4b0b-b0e1-cd6a29174491.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. CONNECTION / A CONVERSATION BEGINS. Two separate curved brushed-aluminium sculptures face one another across a narrow gap, one single taut pale chartreuse filament bridges the gap. Intimate close-up of connection, warm ivory background and floor, beautiful long shadows, very minimal physical still-life, off-centre arrangement. The shapes are gentle arcs not letters, hands, rings or logos. In the lower third some thread loosely coils.",
+      "files": [
+        "public/studio/impulse/contact-640.webp",
+        "public/studio/impulse/contact-1200.webp"
+      ]
+    },
+    {
+      "name": "social",
+      "jobId": "cc89d833-138f-4043-bf14-2bb3bd8fec55",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_122252_cc89d833-138f-4043-bf14-2bb3bd8fec55.png",
+      "prompt": "Create a new editorial artwork in the same material language and palette as reference @image1, but with the completely different composition described below. Premium physical set photography for Hareb Digital, a digital design and engineering studio. Warm ivory, charcoal graphite, brushed aluminium, translucent glass, restrained chartreuse #d4ed8a. Believable microtexture, soft directional light, precise geometry, deep real shadows. Museum design editorial, not a glossy 3D stock render. No typography, letters, logos, watermark, people, fake dashboards or sci-fi. REACH / ONE IMPULSE TRAVELS. Fine concentric circular ripples spread across an almost black liquid surface from a tiny pale chartreuse pearl touching the water slightly off-centre. Very subtle green highlights catch each ripple, one ripple becomes a polished silver circular arc. Macro editorial photography, dark ink, high contrast and exquisite fine detail, organic but controlled. A visual metaphor for reach, no text, no metrics.",
+      "files": [
+        "public/studio/impulse/social-640.webp",
+        "public/studio/impulse/social-1200.webp"
+      ]
     }
   ],
-  "video": {
-    "status": "not-generated",
-    "model": "seedance_2_5",
-    "reason": "Out of credits in selected Private workspace",
-    "requestId": "939e2560-5a29-4d8a-b8e8-f57888c3504e",
-    "durationSeconds": 6,
-    "resolution": "1080p",
-    "startImageJobId": "f474ba96-9617-4cd6-a4b4-bb16ffb96b3b",
-    "prompt": "A six-second single continuous precision motion-control architectural shot of the exact travertine H sculpture and gallery shown in the input image. Slow lateral dolly one meter toward the right and gentle 12 percent push-in. Reveal solid depth of the stone and natural parallax across the floor seams. Preserve the empty left half of the composition and maintain the sculpture in the right half, fully visible throughout. Preserve lighting and palette from input. The afternoon light moves subtly across the tactile limestone surface. Uniform smooth camera motion, suitable for frame-by-frame scroll scrubbing. Keep the H rigid, grounded and geometrically identical. Silent. No cuts, transitions, shake, morphing, deformation, typography or new objects.",
-    "implementedFallback": "Scroll-driven transform of the completed high-resolution hero still. No video download, no autoplay, no audio."
-  }
+  "camera": {
+    "model": "cinematic_studio_video_v2",
+    "jobId": "a7fb852a-f99a-4a36-8269-3c729519f4c2",
+    "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261005_125827_a7fb852a-f99a-4a36-8269-3c729519f4c2.mp4",
+    "sourceDurationSeconds": 12.042,
+    "prompt": "ONE UNBROKEN FIRST-PERSON CAMERA FLIGHT. Begin exactly inside the aluminium and glass installation of the start frame. The camera physically FLIES FORWARDS THROUGH THE GANGWAYS between the tall rectangular plates, following the chartreuse cables. Camera stays low within the corridors throughout the first half; no crane up, no orbit around the installation, no sideways showcase. 0-3 seconds: confident forward dolly into the narrow aisle; large near plates sweep out of frame left and right, strong real parallax. 3-6 seconds: forward speed increases rapidly, camera follows one subtle S-bend into the next passage and clears successive glass walls, passing close to the cables. Multiple cables extend along the walls and floor. 6-9 seconds: exponential acceleration, every successive corridor rushes past faster, edges pull into long directional motion streaks, the physical cables begin glowing intensely with pale chartreuse electricity, branch into long luminous strands and stream past the lens. 9-12 seconds: reach impossible LIGHT SPEED; the architecture stretches and dissolves organically into the endless dark cosmic electric space of the end frame, the cables become vast silver-white and pale lime cosmic energy currents surrounding the camera. Finish travelling INSIDE this cosmic flow at maximum speed, NOT slowing down or stopping. The original cable paths continuously become the energy filaments; one physical-to-cosmic metamorphosis in the same shot, no crossfade to an unrelated space image. Start material realism: brushed metal, frosted glass, charcoal floor. End: sophisticated photoreal VFX, deep charcoal space, directional particle streaks, silver and chartreuse plasma rivers, subtle ice-blue mist. Keep the flight path centered for mobile cropping. Physically moving camera with new scenery revealed; strong foreground parallax and motion blur. No zoom on a still, no pullback, no overhead view, no cuts, no logos, no lettering, no circular monograms, no spaceship, no cockpit, no strobe or white-out flash. Cinematic 24mm wide-angle perspective; progressively more pronounced velocity blur as speed rises. Silent.",
+    "startFrame": {
+      "jobId": "ba2f420f-5329-49ef-a956-1d3a422c5e57",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "prompt": "Wide 16:9 architectural photograph for a premium design studio. A physically built abstract landscape, not a letter, not a logo, not a loop: dozens of thin vertical brushed-aluminium fins and translucent glass planes arranged in a precise staggered field on a charcoal floor. One narrow pale chartreuse fibre runs from the bottom centre into the distance, threading BETWEEN the plates. Rectangular flat plates only, no curved bands, no typographic silhouettes, no arches, no circles, no spirals. We are very low at the entrance to the field looking along the fibre, with strong foreground parallax from a large out-of-focus glass edge on far right. Strong single-point perspective; the middle corridor opens toward a soft large ivory light source in the far distance. A tactile miniature architecture that can be explored with a camera. Charcoal, silver, frosted glass, pale lime #d4ed8a only. Finely brushed surfaces and dust detail, subtle film grain, photographic not glossy, 35mm cine lens, beautifully controlled soft side lighting. Sculptural engineering, a digital ecosystem made physical. NO text, no interface, no letters, no logos, no people. Compose a clear path for a camera travelling forwards between the planes."
+    },
+    "endFrame": {
+      "jobId": "71caff28-c477-49f9-9389-6eeb63c0484d",
+      "requestedModel": "nano_banana_pro",
+      "reportedModel": "nano_banana_2",
+      "prompt": "A photorealistic cinematic VFX still, first-person flight at LIGHT SPEED inside vast cosmic electrical currents in deep space. Absolutely NO architecture, walls or buildings. Dark black-charcoal interstellar void with long thin luminous pale-chartreuse and silver-white electrical filaments. They extend from a small deep vanishing point in the centre of the frame outwards past the camera into all four edges. We are INSIDE the current, not viewing a sphere from outside. Several sweeping cable-shaped plasma rivers pass very close to the lens on both sides, countless finer wires behind them create profound layered depth. Blurred directional light streaks radiate along the direction of travel. Subtle pale ice-blue ionised dust clouds curl between the electric filaments. Extreme forward velocity, long exposure motion blur at the outer edges, crisp far central depth. Refined sophisticated visual effects, cinematic 24mm perspective, tactile energy, deep blacks with thin controlled highlights, pale lime #d4ed8a and silver palette with very faint blue. No rings, no planets, no ball of energy, no wormhole circles, no spaceship, no cockpit, no text, no logos, no letters, no UI, no rainbow colours, no white flash, no opaque object blocking the forward path. Landscape 16:9, central focal point at exact image centre. Award-level cinematic cosmic art, enveloping and immersive."
+    },
+    "delivery": {
+      "desktop": {
+        "frames": 120,
+        "width": 960,
+        "height": 540,
+        "bytes": 3199456
+      },
+      "mobile": {
+        "frames": 96,
+        "width": 448,
+        "height": 796,
+        "bytes": 1795104,
+        "crop": "Full-height central portrait crop before downsampling"
+      },
+      "fallback": "Responsive AVIF/WebP poster, used for reduced motion, Save-Data, no JavaScript, and during loading.",
+      "scroll": "Native forward/reverse scroll selects actual movie frames. Four concurrent loads, target-first priority, at most 25 nearby loaded image elements retained. No autoplay, looping, or video seeking."
+    },
+    "settings": {
+      "mode": "pro",
+      "genre": "spectacle",
+      "speedramp": "speedup",
+      "sound": "off",
+      "cfgScale": 0.85
+    }
+  },
+  "supersededExploration": {
+    "reason": "User rejected letter-like shapes and requested a substantial camera journey.",
+    "imageJobId": "141ec551-5f93-40b4-91ce-2beb4acf0dbc",
+    "videoJobId": "181b02b4-1756-41a2-8d28-e287120a6e8c",
+    "laterTests": [
+      {
+        "videoJobId": "ec6cade3-114d-465c-b2c1-5821bbdbd6cf",
+        "endFrameJobId": "29c535e2-d29d-4042-99bf-3bce7df91b4f",
+        "reason": "Superseded by the user's direction to remain inside the corridors, accelerate and transform into cosmic electrical flow."
+      },
+      {
+        "imageJobId": "7fe9cb67-842d-4a45-a8b0-6c0b8451c86b",
+        "reason": "Reference-preserving image retained architecture instead of producing the requested cosmic ending; not used."
+      }
+    ]
+  },
+  "retainedEvidence": "Taxi B&B, GuardianGrid and Instagram proof use the existing real screenshots. Generated artwork is not presented as a customer result or a photograph of the actual studio."
 }

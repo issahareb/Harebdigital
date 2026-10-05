@@ -1,3 +1,4 @@
+import { EditorialMotion } from './editorial-motion'
 import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
 import type { HdLang } from '@/lib/hd-texte'
@@ -18,6 +19,7 @@ export function HdUnterseite({
         {children}
       </main>
       <SiteFooter lang={lang} compact />
+      <EditorialMotion />
     </>
   )
 }

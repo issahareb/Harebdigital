@@ -13,7 +13,8 @@
     "build:live": "node scripts/check-platzhalter.mjs && next build",
     "typecheck": "tsc --noEmit",
     "check:seo": "node scripts/check-seo.mjs",
-    "check:browser": "node scripts/check-browser.mjs && node scripts/check-interactions.mjs"
+    "check:browser": "node scripts/check-browser.mjs && node scripts/check-interactions.mjs",
+    "check:motion": "node scripts/check-motion.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

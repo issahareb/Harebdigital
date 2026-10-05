@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 const output = process.env.QA_OUTPUT_DIR || 'artifacts/qa'
 const base = process.env.SEO_BASE_URL || 'http://localhost:3000'
 await fs.mkdir(output, { recursive: true })
-const browser = await chromium.launch({ headless: true })
+const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE })
 const summary = []
 for (const [name, viewport, url] of [
   ['desktop', { width: 1440, height: 1000 }, '/'],

@@ -12,7 +12,7 @@ export function pageMetadata(
 ): Metadata {
   const url = localizedPath(lang, path)
   const image = {
-    url: '/studio/og-v1.jpg',
+    url: '/studio/impulse/og-impulse.jpg',
     width: 1200,
     height: 630,
     alt: 'Hareb Digital – Webdesign, SEO & Automatisierung',

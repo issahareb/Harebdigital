@@ -49,7 +49,7 @@ for (const lang of languages) {
       `${route}: indexable`,
     )
     assert(
-      meta.find((m) => m.name === 'og:image')?.content === `${origin}/studio/og-v1.jpg`,
+      meta.find((m) => m.name === 'og:image')?.content === `${origin}/studio/impulse/og-impulse.jpg`,
       `${route}: sharing image`,
     )
     const links = [...html.matchAll(/<link\b[^>]*>/g)].map(([tag]) => ({

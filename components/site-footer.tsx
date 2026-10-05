@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { HD_TEXTE } from '@/lib/hd-texte'
@@ -11,7 +12,10 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
   return (
     <footer className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
       {!compact && (
-        <div className="footer-invite wrap">
+        <div className="footer-invite wrap" data-reveal>
+          <div className="footer-art" aria-hidden="true">
+            <Image src="/studio/impulse/contact-640.webp" alt="" width={640} height={480} sizes="(max-width: 600px) 40vw, 230px" />
+          </div>
           <div>
             <span className="eyebrow">{t.project}</span>
             <h2>

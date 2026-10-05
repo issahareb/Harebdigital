@@ -9,6 +9,8 @@ import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
 import { CinematicHero } from './cinematic-hero'
 import { StudioSchema } from './studio-schema'
+import { EditorialMotion } from './editorial-motion'
+import { ART_COPY, SERVICE_ART } from '@/lib/studio-art'
 
 function Lines({ text }: { text: string }) {
   return (
@@ -61,7 +63,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             <span className="small-index">01 /</span>
             <span className="eyebrow">{t.approachLabel}</span>
           </div>
-          <div className="approach-content">
+          <div className="approach-content" data-reveal>
             <h2 id="approach-title">
               {t.approach[0]}
               <br />
@@ -77,7 +79,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         </section>
         <section id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
           <div className="wrap">
-            <div className="section-heading">
+            <div className="section-heading" data-reveal>
               <div>
                 <div className="section-label">
                   <span className="small-index">02 /</span>
@@ -89,7 +91,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </div>
               <p>{t.workIntro}</p>
             </div>
-            <article className="featured-work">
+            <article className="featured-work" data-reveal>
               <a href="https://www.taxibbessen.de/" className="project-visual">
                 <span className="project-browserbar">
                   <i />
@@ -130,7 +132,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 </a>
               </div>
             </article>
-            <div className="secondary-work">
+            <div className="secondary-work" data-reveal>
               <a
                 className="secondary-image"
                 href="https://www.guardiangrid.io/"
@@ -164,7 +166,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           className="services-section wrap section-space"
           aria-labelledby="services-title"
         >
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
               <div className="section-label">
                 <span className="small-index">03 /</span>
@@ -182,8 +184,12 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 href={localizedPath(lang, `/leistungen/${service.slug}/`)}
                 key={service.slug}
                 className="service-row"
+                data-reveal
               >
-                <span className="service-number">{service.n}</span>
+                <span className="service-thumbnail">
+                  <Image src={`/studio/impulse/${SERVICE_ART[i]}-1200.webp`} alt="" width={1200} height={900} sizes="(max-width: 600px) 88vw, (max-width: 1400px) 44vw, 600px" />
+                  <span className="service-number">{service.n}</span>
+                </span>
                 <div>
                   <h3>{t.serviceNames[i]}</h3>
                   <p>{t.serviceTags[i]}</p>
@@ -198,6 +204,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         </section>
         <section className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">
+            <div className="social-art" data-reveal>
+              <Image src="/studio/impulse/social-1200.webp" alt={ART_COPY[lang].social} width={1200} height={675} sizes="(max-width: 700px) 90vw, 45vw" />
+              <span className="image-caption" aria-hidden="true">ONE IMPULSE. WIDER REACH.</span>
+            </div>
             <div>
               <div className="section-label">
                 <span className="small-index">04 /</span>
@@ -243,19 +253,19 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           className="studio-section wrap section-space"
           aria-labelledby="studio-title"
         >
-          <div className="studio-image">
+          <div className="studio-image" data-reveal>
             <Image
-              src="/studio/h-detail-v1.webp"
+              src="/studio/impulse/studio-1200.webp"
               alt={t.studioAlt}
-              width={900}
-              height={1117}
+              width={1200}
+              height={1600}
               sizes="(max-width: 700px) 92vw, 43vw"
             />
             <span className="image-caption" aria-hidden="true">
-              HAREB DIGITAL — STUDY IN FORM
+              {ART_COPY[lang].study}
             </span>
           </div>
-          <div className="studio-copy">
+          <div className="studio-copy" data-reveal>
             <div className="section-label">
               <span className="small-index">05 /</span>
               <span className="eyebrow">{t.nav[2]}</span>
@@ -283,7 +293,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           className="process-section wrap section-space"
           aria-labelledby="process-title"
         >
-          <div className="section-heading">
+          <div className="section-heading" data-reveal>
             <div>
               <div className="section-label">
                 <span className="small-index">06 /</span>
@@ -297,7 +307,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
           <ol className="process-list">
             {original.ablauf.schritte.map((step) => (
-              <li key={step.n}>
+              <li key={step.n} data-reveal>
                 <span>{step.n}</span>
                 <h3>{step.t}</h3>
                 <p>{step.b}</p>
@@ -316,7 +326,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </h2>
             <p>{t.faqIntro}</p>
           </div>
-          <div className="faq-list">
+          <div className="faq-list" data-reveal>
             {t.faq.map((item, i) => (
               <details key={item.question} open={i === 0}>
                 <summary>
@@ -331,6 +341,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
       </main>
       <SiteFooter lang={lang} />
       <StudioSchema lang={lang} />
+      <EditorialMotion />
     </>
   )
 }

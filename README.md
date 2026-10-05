@@ -15,6 +15,7 @@ npm run check:seo
 # Browserprüfung nach Installation des Testbrowsers:
 npx playwright install chromium
 npm run check:browser
+npm run check:motion
 # Separater Check der tatsächlichen Veröffentlichungsbereitschaft:
 npm run pruefen
 ```
@@ -35,13 +36,13 @@ Die Sitemap enthält nur die 18 indexierbaren Seiten und deren Sprachen. Kein k�
 
 ## Gestaltung und Animation
 
-Warmer Papierton, Anthrazit, zurückhaltendes Citron und ein Travertin-H als Leitmotiv. Die Homepage besteht größtenteils aus Server-Komponenten. Nur Navigation, Scrollbühne und Anfrageformular benötigen Client-JavaScript. Die frühere umfangreiche globale Stylesammlung wurde durch ein auf diese Seite abgestimmtes Stylesheet ersetzt. Alte Motion-/GSAP-Komponenten sind nicht im neuen Seitenbaum eingebunden.
+Warmer Papierton, Anthrazit, Glas, Aluminium und limettengrüne Verbindungen bilden die Bildsprache. Die Homepage besteht größtenteils aus Server-Komponenten. Navigation, Scrollfilm, dezente Abschnittsübergänge und Anfrageformular benötigen Client-JavaScript. Alte Motion-/GSAP-Komponenten sind nicht im neuen Seitenbaum eingebunden.
 
-`components/cinematic-hero.tsx` koppelt Verschiebung und Zoom des in Higgsfield erzeugten Motivs an den Scrollfortschritt. Ein einzelner passiver Scroll-Listener wird über `requestAnimationFrame` gebündelt; es gibt keinen ständig laufenden Render-Loop und kein Abfangen des Scrollens. Ein sichtbarer Schalter deaktiviert die Animation, `prefers-reduced-motion` wird berücksichtigt. Ohne JavaScript bleiben die vollständigen Inhalte nutzbar.
+`components/cinematic-hero.tsx` und `components/scroll-film.tsx` koppeln eine in Higgsfield erzeugte Kamerafahrt an den nativen Scrollfortschritt: durch architektonische Gänge, zunehmende Geschwindigkeit, dann Kabel als kosmische Energieströme. Vorwärts- und Rückwärtsscrollen wählen tatsächliche Filmbilder aus. Die Wiedergabe nutzt lokale WebP-Einzelbilder auf Canvas, ohne Video-Seeking oder einen ständig laufenden Render-Loop. Vier gleichzeitige Ladevorgänge und ein Fenster von höchstens 25 gehaltenen Bildern begrenzen die Ressourcen; der aktuelle Frame hat Vorrang. Mobil wird ein hochkant zugeschnittener Satz geladen.
 
-Die zwei neuen Bilder wurden über Higgsfield erzeugt. Die Quelle, Job-IDs und die Optimierungsziele stehen in `docs/asset-provenance.json`. Responsive AVIF-/WebP-Dateien liegen versioniert in `public/studio/`. Schriften, Bilder und später mögliche Filme werden über die eigene Domain ausgeliefert.
+Sieben zusätzliche Motive begleiten Leistungen, Studio, Social Media und Kontakt. Reale Projekt- und Instagram-Nachweise bleiben erhalten. Quellen, Prompts, Job-IDs und Dateigrößen stehen in `docs/asset-provenance.json`. Responsive AVIF-/WebP-Dateien und der Film liegen versioniert in `public/studio/impulse/`. Schriften und Medien werden über die eigene Domain ausgeliefert.
 
-Die gewünschte individuelle Video-Kamerafahrt konnte wegen fehlender Higgsfield-Credits nicht erzeugt werden. Das ausgelieferte Motiv ist ein scrollanimiertes Standbild, kein generierter Film. Der genaue Videoprompt ist dokumentiert. `CinematicHero` kann später einen lokalen `videoSrc` erhalten; der Download beginnt erst bei Scrollinteraktion und unterbleibt bei reduzierter Bewegung oder Datensparmodus. Vor Verwendung eines Films sind Encoding, Seek-Verhalten und Browserdarstellung gesondert zu prüfen.
+Ein sichtbarer Schalter deaktiviert die Animation. Bei `prefers-reduced-motion` und Datensparmodus werden keine Filmbilder geladen. Ohne JavaScript bleiben Poster und Inhalte nutzbar. Das animierte Vollbildmenü nutzt ein natives modales Dialogelement mit Fokusbegrenzung, Escape und Wiederherstellung des Fokus. `check:motion` prüft die tatsächlich gezeichneten Bilder in beide Scrollrichtungen sowie Menü und Fallbacks. Für einen vorhandenen Chromium-Browser kann `PLAYWRIGHT_CHROMIUM_EXECUTABLE` gesetzt werden.
 
 ## Inhalte und Kontakt
 
@@ -51,8 +52,8 @@ Das Formular bereitet eine E-Mail vor und öffnet das E-Mail-Programm. Es sendet
 
 ## Noch offene Angaben vor einer Veröffentlichung
 
-Im Ausgangsrepo fehlen Geschäftsanschrift, Postleitzahl, Telefonnummer und Angaben zur Umsatzsteuer. Auch die rechtliche Prüfung des Datenschutztexts ist als offen markiert. Diese Angaben wurden nicht erfunden. Das bestehende `npm run pruefen` schlägt deshalb weiterhin an; der Produktionsbau für eine lokale Vorschau ist davon getrennt. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
+Die bestätigte Geschäftsanschrift in Sankt Augustin ist im Impressum enthalten. Weitere Angaben werden nicht aus dem Design abgeleitet oder erfunden; `npm run pruefen` meldet die noch offenen Geschäftsdaten und rechtlichen Textprüfungen. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
 
-Die Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.webp`, `docs/preview-mobile.webp` und `docs/preview-full.webp`.
+Die aktuellen Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.png`, `docs/preview-mobile.png`, `docs/preview-flight.png` und `docs/preview-menu.png`.
 
-Die bestehende Railway-Konfiguration deployt `npm run build`. Deshalb ist die gesonderte Prüfung vor einem Merge/Livegang notwendig. Das Redesign wird auf einem separaten Review-Branch vorbereitet; die Live-Seite wird dadurch nicht verändert.
+Die bestehende Railway-Konfiguration deployt `npm run build` aus `main`.

@@ -1,75 +1,14 @@
 {
-  "date": "2026-10-03T13:30:50.350Z",
-  "scope": "Local production build, Chromium. Not a live Seobility audit and not a ranking or legal-compliance certification.",
+  "date": "2026-10-05",
+  "scope": "Production build tested locally in Chromium 153. Mobile viewport emulation; not a physical iPhone/Safari test. No fresh Lighthouse or live Seobility score is claimed.",
   "commands": {
-    "npm run build": "passed",
+    "npm run build": "passed: all 24 routes generated",
     "npm run typecheck": "passed",
     "npm run check:seo": "passed: 18 indexable pages and 20 internal destinations",
     "npm run check:browser": "passed",
+    "npm run check:motion": "passed",
     "git diff --check": "passed",
-    "npm run pruefen": "blocked by 5 pre-existing legal/business placeholders"
-  },
-  "lighthouse": {
-    "desktop": {
-      "version": "13.5.0",
-      "fetchTime": "2026-10-03T13:29:14.775Z",
-      "url": "http://localhost:3000/",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "first-contentful-paint": {
-          "display": "0.2 s",
-          "value": 248.92180000000002
-        },
-        "largest-contentful-paint": {
-          "display": "0.6 s",
-          "value": 603.9217999999998
-        },
-        "total-blocking-time": {
-          "display": "0 ms",
-          "value": 0
-        },
-        "cumulative-layout-shift": {
-          "display": "0.009",
-          "value": 0.009290724629116785
-        }
-      },
-      "accessibleLabelCheck": 1
-    },
-    "mobile": {
-      "version": "13.5.0",
-      "fetchTime": "2026-10-03T13:29:03.773Z",
-      "url": "http://localhost:3000/",
-      "scores": {
-        "performance": 96,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "first-contentful-paint": {
-          "display": "0.9 s",
-          "value": 910.7274
-        },
-        "largest-contentful-paint": {
-          "display": "2.8 s",
-          "value": 2838.7274000000007
-        },
-        "total-blocking-time": {
-          "display": "40 ms",
-          "value": 39
-        },
-        "cumulative-layout-shift": {
-          "display": "0.004",
-          "value": 0.004100974176307345
-        }
-      },
-      "accessibleLabelCheck": 1
-    }
+    "npm run pruefen": "3 existing placeholders remain: legal privacy-text review, VAT status/ID and telephone. Confirmed Sankt Augustin address is retained."
   },
   "browser": [
     {
@@ -215,15 +154,51 @@
     "languageQueryRetention": true,
     "motionToggle": true
   },
-  "additionalChecks": {
-    "noJavaScript": "Spanish HTML and navigation present",
-    "reducedMotion": "Hero transform is none",
-    "video": "Not generated: Higgsfield credits unavailable; scroll animation uses generated still"
+  "motion": [
+    {
+      "name": "desktop",
+      "reversibleCameraFrames": true,
+      "boundedFrameLoading": true,
+      "modalFocus": true,
+      "escapeRestoresFocus": true,
+      "motionOff": true
+    },
+    {
+      "name": "iphone",
+      "reversibleCameraFrames": true,
+      "boundedFrameLoading": true,
+      "modalFocus": true,
+      "escapeRestoresFocus": true,
+      "motionOff": true
+    },
+    {
+      "mode": "reduced-motion",
+      "noFrameDownloads": true
+    },
+    {
+      "mode": "save-data",
+      "noFrameDownloads": true
+    }
+  ],
+  "film": {
+    "sourceDurationSeconds": 12.042,
+    "direction": "Forward corridor flight, increasing velocity, chartreuse cables transform into cosmic electrical currents.",
+    "visualReview": "Opening, ten sampled film positions, mobile crop, final cosmic state and menu screenshots reviewed.",
+    "desktop": {
+      "frames": 120,
+      "bytes": 3199456
+    },
+    "mobile": {
+      "frames": 96,
+      "bytes": 1795104
+    },
+    "initialLoading": "At most 13 nearby frames requested at the opening; four concurrent loads.",
+    "retainedImages": "At most 25 loaded image elements around current position, plus up to four in flight.",
+    "fallback": "Poster only for reduced-motion and Save-Data; verified zero sequence requests."
   },
   "limitations": [
-    "The live domain was not deployed or audited with Seobility.",
-    "Business street address, postal code, phone, VAT status and legal-text review remain unresolved.",
-    "The desired generated camera-move film is pending Higgsfield credits.",
-    "Lighthouse values are lab measurements; hosting, caches, network and devices affect real-world performance."
+    "Browser measurements do not establish real-device Safari performance.",
+    "No new Lighthouse performance score was measured.",
+    "Existing business/legal placeholders are outside this visual revision."
   ]
 }

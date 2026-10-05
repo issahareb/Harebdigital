@@ -75,7 +75,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOff: 'Animation ausschalten',
     motionOn: 'Animation einschalten',
     heroAlt:
-      'Ein monumentales H aus hellem Travertin in einer von Sonnenlicht durchzogenen Galerie.',
+      'Ein Lichtfaden führt durch eine räumliche Landschaft aus Glas und gebürstetem Metall.',
     strip: ['Strategie & Design', 'Entwicklung & Automatisierung', 'SEO & AEO'],
     approachLabel: 'Der Anspruch',
     approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
@@ -111,7 +111,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Eine gute Zusammenarbeit\nhat ein Gesicht.',
     studioText:
       'Ich bin Issa Hareb. Ich gestalte, entwickle und begleite digitale Projekte aus Essen. Du sprichst direkt mit dem Menschen, der deine Website baut – vom ersten Gespräch bis zu den Fragen nach dem Launch.',
-    studioAlt: 'Nahaufnahme der präzisen Verbindung aus Travertin und Metall an der H-Skulptur.',
+    studioAlt: 'Materialstudie aus Papier, Aluminium und grünem Faden im gerichteten Sonnenlicht.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -176,7 +176,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Scroll to explore',
     motionOff: 'Turn animation off',
     motionOn: 'Turn animation on',
-    heroAlt: 'A monumental travertine H in a gallery illuminated by a shaft of sunlight.',
+    heroAlt: 'A light thread leads through a spatial landscape of glass and brushed metal.',
     strip: ['Strategy & design', 'Development & automation', 'SEO & AEO'],
     approachLabel: 'The approach',
     approach: ['Good design draws you in.', 'Good engineering takes you further.'],
@@ -211,7 +211,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Good collaboration\nhas a face.',
     studioText:
       'I’m Issa Hareb. I design, develop and support digital projects from Essen, Germany. You work directly with the person building your website, from the first conversation to questions after launch.',
-    studioAlt: 'Close-up of a precise travertine and metal joint in the H sculpture.',
+    studioAlt: 'A material study in paper, aluminium and green thread in directional sunlight.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -276,7 +276,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Desliza para descubrir',
     motionOff: 'Desactivar animación',
     motionOn: 'Activar animación',
-    heroAlt: 'Una H monumental de travertino en una galería iluminada por la luz del sol.',
+    heroAlt: 'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
     strip: ['Estrategia y diseño', 'Desarrollo y automatización', 'SEO y AEO'],
     approachLabel: 'El enfoque',
     approach: ['El buen diseño atrae.', 'La buena tecnología te lleva más lejos.'],
@@ -312,7 +312,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Una buena colaboración\ntiene un rostro.',
     studioText:
       'Soy Issa Hareb. Diseño, desarrollo y acompaño proyectos digitales desde Essen, Alemania. Hablas directamente con quien construye tu web, desde la primera conversación hasta las dudas después del lanzamiento.',
-    studioAlt: 'Detalle de una unión precisa de travertino y metal en la escultura H.',
+    studioAlt: 'Estudio de materiales con papel, aluminio e hilo verde bajo luz natural.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',
