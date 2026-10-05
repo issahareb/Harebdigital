@@ -1,0 +1,26 @@
+# Hareb Digital
+
+> Independent digital studio of Issa Hareb, based in Essen, Germany. Services: bespoke web design and development, website redesign, technical SEO, Answer Engine Optimization (AEO) and workflow automation.
+
+## Canonical website and languages
+- [Deutsch](https://hareb.digital/): Primary German home page, services, selected work and visible questions and answers.
+- [English](https://hareb.digital/en/): English home page.
+- [Español](https://hareb.digital/es/): Spanish home page.
+
+## Services
+- [Webdesign & Entwicklung](https://hareb.digital/leistungen/neue-website/): Bespoke websites, responsive design and technical SEO.
+- [Website-Relaunch](https://hareb.digital/leistungen/website-ueberarbeiten/): Review and improve an existing website.
+- [Automatisierung](https://hareb.digital/leistungen/automatisierung/): Connect recurring business workflows and existing tools.
+- [SEO & AEO](https://hareb.digital/leistungen/gefunden-werden/): Technical discoverability, site structure and clear answers.
+
+## Contact and identity
+- [Contact](https://hareb.digital/kontakt/): Project enquiries. Email: info@hareb.org. The form prepares a message in the visitor's email application; it does not send automatically.
+- [Founder portfolio](https://issahareb.me/): Issa Hareb, founder, designer and developer.
+- [Legal notice](https://hareb.digital/impressum/)
+- [Privacy](https://hareb.digital/datenschutz/)
+
+## Selected work
+- [Taxi B&B Essen](https://www.taxibbessen.de/): Client website with booking flow, management tools, automated emails and local SEO.
+- [GuardianGrid](https://www.guardiangrid.io/): Own software product; not a client testimonial.
+
+Project scope, timing and price are agreed individually. Search rankings, AI-answer mentions and future client outcomes are not guaranteed. This file is a navigation aid, not a substitute for the visible pages.

@@ -1,19 +1,4 @@
-/**
- * Die Texte der Landingpage von Hareb Digital, in drei Sprachen.
- *
- * Eigenes Wörterbuch, nicht das des Portfolios. Die beiden Seiten sprechen
- * bewusst verschieden: das Portfolio spricht zu Auftraggebern, die Websites
- * schon einordnen können, die Landingpage zu Betrieben ohne IT-Abteilung.
- * Ein gemeinsames Wörterbuch hätte den Ton der einen an den der anderen
- * gebunden.
- *
- * Die Auswahl trifft der Browser des Besuchers über den Accept-Language-Kopf,
- * nicht die Adresse. Das wäre auf einer indexierten Seite falsch — ein
- * Crawler bekäme je nach Laune eine andere Fassung unter derselben Adresse.
- * Diese Seite trägt `noindex`, solange sie unter issahareb.me liegt, und
- * bekommt ihren Verkehr aus Anzeigen. Für sie zählt, dass der Besucher in
- * seiner Sprache landet, ohne vorher etwas anklicken zu müssen.
- */
+/** Shared service, contact and project copy. Public language selection is URL-based; see lib/locale.ts. */
 
 export const HD_SPRACHEN = ['de', 'en', 'es'] as const
 export type HdLang = (typeof HD_SPRACHEN)[number]
@@ -488,7 +473,7 @@ const DE: HdTexte = {
               'Struktur und Texte, gemeinsam erarbeitet — nicht von dir geliefert und von mir eingefügt',
               'Eigenes Design statt Vorlage, auf dem Handy zuerst gedacht',
               'Technisches SEO von Anfang an: Struktur, Ladezeit, strukturierte Daten',
-              'Barrierefrei nach BFSG, nicht nachträglich draufgesetzt',
+              'Barrierearme Bedienung: semantische Struktur, Tastaturnavigation und geprüfte Kontraste',
               'Ein Kontaktweg, der bei dir ankommt und nicht im Nichts endet',
             ],
           },
@@ -506,8 +491,8 @@ const DE: HdTexte = {
         n: '02',
         slug: 'website-ueberarbeiten',
         titel: 'Die bestehende überarbeiten',
-        text: 'Wenn das Grundgerüst steht, aber nichts davon mehr stimmt. Neues Aussehen ohne bei null anzufangen, schneller, endlich sauber auf dem Handy. Und barrierefrei nach dem Barrierefreiheitsstärkungsgesetz, was nachträglich aufwendiger ist als gleich mitgemacht.',
-          detail: {
+        text: 'Wenn das Grundgerüst steht, aber nichts davon mehr stimmt. Neues Aussehen ohne bei null anzufangen, schneller, endlich sauber auf dem Handy. Zugänglichkeit wird im vereinbarten Projektumfang geprüft und verbessert.',
+        detail: {
           vorspann:
             'Nicht alles muss weg. Oft steht die Struktur, und was fehlt, ist alles andere: das Aussehen, die Ladezeit, die Bedienung auf dem Handy. Das lässt sich überarbeiten, ohne bei null anzufangen — und es geht schneller und kostet weniger als ein Neubau.',
           dabei: {
@@ -517,7 +502,7 @@ const DE: HdTexte = {
               'Neues Aussehen auf der bestehenden Struktur',
               'Ladezeit heruntergeholt — meistens der größte einzelne Gewinn',
               'Sauber auf dem Handy, statt am Rechner entworfen und dort gequetscht',
-              'Barrierefrei nach BFSG nachgezogen',
+              'Prüfung und Verbesserung der Zugänglichkeit im vereinbarten Projektumfang',
             ],
           },
           ablauf: {
@@ -562,7 +547,7 @@ const DE: HdTexte = {
         n: '04',
         slug: 'gefunden-werden',
         titel: 'Nur gefunden werden',
-        text: 'Die Seite bleibt, wie sie ist. Sichtbar wird sie trotzdem: ganz oben bei Google und in den Antworten von ChatGPT und Perplexity.',
+        text: 'Eine bessere Grundlage für Sichtbarkeit: technische SEO, klare Inhalte und strukturierte Daten für Suchmaschinen und Antwortsysteme.',
         detail: {
           vorspann:
             'Manchmal ist die Seite in Ordnung und nur niemand findet sie. Dann muss nichts neu gebaut werden. Sichtbarkeit ist eine eigene Arbeit: verstanden werden von Google — und inzwischen genauso von den Antwortmaschinen, die immer mehr Leute statt einer Suche benutzen.',
@@ -887,7 +872,7 @@ const EN: HdTexte = {
               'Structure and copy worked out together — not delivered by you and pasted in by me',
               'Its own design instead of a template, thought out for the phone first',
               'Technical SEO from the start: structure, load time, structured data',
-              'Accessible under the German accessibility act, not bolted on afterwards',
+              'Accessible foundations: semantic structure, keyboard navigation and checked colour contrast',
               'One contact route that reaches you instead of ending nowhere',
             ],
           },
@@ -905,7 +890,7 @@ const EN: HdTexte = {
         n: '02',
         slug: 'website-ueberarbeiten',
         titel: 'Rework the one you have',
-        text: 'When the structure is fine but nothing else is. A new look without starting from zero, faster, and finally right on a phone. Accessible under the German accessibility act too, which costs more to add later than to build in.',
+        text: 'When the structure is fine but nothing else is. A new look without starting from zero, faster, and finally right on a phone. Accessibility is reviewed and improved within the agreed scope.',
         detail: {
           vorspann:
             'Not everything has to go. Often the structure stands and what is missing is everything else: the look, the load time, the way it behaves on a phone. That can be reworked without starting from zero — faster and cheaper than a rebuild.',
@@ -916,7 +901,7 @@ const EN: HdTexte = {
               'A new look on the existing structure',
               'Load time brought down — usually the single biggest win',
               'Right on the phone, instead of designed for desktop and squeezed',
-              'Accessibility brought up to the standard',
+              'Accessibility reviewed and improved within the agreed project scope',
             ],
           },
           ablauf: {
@@ -961,7 +946,7 @@ const EN: HdTexte = {
         n: '04',
         slug: 'gefunden-werden',
         titel: 'Just get found',
-        text: 'The site stays as it is. It becomes visible anyway: at the top on Google and in the answers from ChatGPT and Perplexity.',
+        text: 'Build a better foundation for visibility with technical SEO, clear content and structured data for search and answer systems.',
         detail: {
           vorspann:
             'Sometimes the site is fine and nobody finds it. Then nothing needs rebuilding. Visibility is its own job: being understood by Google — and by now just as much by the answer engines more and more people use instead of a search.',
@@ -1286,7 +1271,7 @@ const ES: HdTexte = {
               'Estructura y textos trabajados juntos, no entregados por ti y pegados por mí',
               'Diseño propio en lugar de plantilla, pensado primero para el móvil',
               'SEO técnico desde el principio: estructura, tiempo de carga, datos estructurados',
-              'Accesible según la ley alemana, no añadido después',
+              'Bases accesibles: estructura semántica, navegación con teclado y contraste revisado',
               'Una vía de contacto que llega a ti y no acaba en la nada',
             ],
           },
@@ -1304,7 +1289,7 @@ const ES: HdTexte = {
         n: '02',
         slug: 'website-ueberarbeiten',
         titel: 'Renovar la que ya tienes',
-        text: 'Cuando la estructura está bien pero nada más lo está. Un aspecto nuevo sin empezar de cero, más rápida y por fin correcta en el móvil. Y accesible según la ley alemana, que después cuesta más que de entrada.',
+        text: 'Cuando la estructura está bien pero nada más lo está. Un aspecto nuevo sin empezar de cero, más rápida y por fin correcta en el móvil. Se revisa y mejora la accesibilidad dentro del alcance acordado.',
         detail: {
           vorspann:
             'No hace falta tirarlo todo. A menudo la estructura aguanta y lo que falta es todo lo demás: el aspecto, el tiempo de carga, el comportamiento en el móvil. Eso se puede renovar sin empezar de cero — más rápido y más barato que rehacerla.',
@@ -1315,7 +1300,7 @@ const ES: HdTexte = {
               'Aspecto nuevo sobre la estructura existente',
               'Tiempo de carga reducido — normalmente la mayor ganancia individual',
               'Correcta en el móvil, en vez de diseñada para escritorio y encajada a la fuerza',
-              'Accesibilidad puesta al día',
+              'Revisión y mejora de la accesibilidad dentro del alcance acordado',
             ],
           },
           ablauf: {
@@ -1360,7 +1345,7 @@ const ES: HdTexte = {
         n: '04',
         slug: 'gefunden-werden',
         titel: 'Solo que te encuentren',
-        text: 'La web se queda como está. Aun así se vuelve visible: arriba en Google y en las respuestas de ChatGPT y Perplexity.',
+        text: 'Una mejor base para la visibilidad: SEO técnico, contenidos claros y datos estructurados para buscadores y sistemas de respuesta.',
         detail: {
           vorspann:
             'A veces la web está bien y simplemente nadie la encuentra. Entonces no hay que rehacer nada. La visibilidad es un trabajo propio: que Google te entienda — y a estas alturas también los motores de respuesta que cada vez más gente usa en lugar de buscar.',
@@ -1516,8 +1501,7 @@ const ES: HdTexte = {
       nachricht: '¿Qué ocurre?',
       nachrichtHinweis: 'A qué os dedicáis y qué no está funcionando. Con tres frases basta.',
       senden: 'Redactar la consulta',
-      hinweis:
-        'Abre tu correo con todo ya escrito. Ves lo que sale antes de enviarlo.',
+      hinweis: 'Abre tu correo con todo ya escrito. Ves lo que sale antes de enviarlo.',
     },
   },
 }

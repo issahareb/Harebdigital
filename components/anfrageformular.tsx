@@ -26,18 +26,25 @@ import type { HdTexte } from '@/lib/hd-texte'
  * dastehen.
  */
 
-export function Anfrageformular({ t, epost }: { t: HdTexte; epost: string }) {
-  const f = t.kontakt.formular
+export function Anfrageformular({
+  f,
+  services,
+  epost,
+}: {
+  f: HdTexte['kontakt']['formular']
+  services: { slug: string; titel: string }[]
+  epost: string
+}) {
   const parameter = useSearchParams()
   const ausAdresse = parameter.get('leistung') ?? ''
-  const bekannt = t.leistungen.punkte.some((l) => l.slug === ausAdresse)
+  const bekannt = services.some((l) => l.slug === ausAdresse)
 
   const [leistung, setLeistung] = useState(bekannt ? ausAdresse : '')
   const [name, setName] = useState('')
   const [absender, setAbsender] = useState('')
   const [nachricht, setNachricht] = useState('')
 
-  const gewaehlt = t.leistungen.punkte.find((l) => l.slug === leistung)
+  const gewaehlt = services.find((l) => l.slug === leistung)
 
   const absenden = (e: React.FormEvent) => {
     e.preventDefault()
@@ -74,7 +81,7 @@ export function Anfrageformular({ t, epost }: { t: HdTexte; epost: string }) {
           className="hd-feld"
         >
           <option value="">{f.leistungLeer}</option>
-          {t.leistungen.punkte.map((l) => (
+          {services.map((l) => (
             <option key={l.slug} value={l.slug}>
               {l.titel}
             </option>
@@ -119,12 +126,15 @@ export function Anfrageformular({ t, epost }: { t: HdTexte; epost: string }) {
 
       <div>
         <label htmlFor="nachricht" className="hd-feld-label">
-          {f.nachricht}
+          {f.nachricht} *
         </label>
         <textarea
           id="nachricht"
           name="nachricht"
           rows={5}
+          required
+          minLength={10}
+          maxLength={5000}
           placeholder={f.nachrichtHinweis}
           value={nachricht}
           onChange={(e) => setNachricht(e.target.value)}
