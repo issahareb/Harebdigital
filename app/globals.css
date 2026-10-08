@@ -534,22 +534,21 @@ h3 {
 .approach h2 > span {
   color: #787a6f;
 }
+.scroll-accent-word {
+  color: #787a6f;
+  color: color-mix(in srgb, #787a6f, var(--hd-accent) calc(var(--word-reveal, 0) * 100%));
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-accent-word { color: var(--hd-accent); }
+}
 .approach-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
   margin-top: 38px;
 }
 .approach-bottom > p {
-  width: min(450px, 80%);
+  width: min(450px, 100%);
   font-size: 15px;
   line-height: 1.8;
   color: var(--muted);
-}
-.asterisk {
-  font-size: 62px;
-  line-height: 1;
-  color: #667546;
 }
 .work-section {
   background: #e6e8de;
@@ -1548,15 +1547,11 @@ textarea.hd-feld {
     line-height: 1.25;
   }
   .approach-bottom {
-    gap: 25px;
     margin-top: 27px;
   }
   .approach-bottom > p {
     font-size: 13px;
     width: auto;
-  }
-  .asterisk {
-    font-size: 40px;
   }
   .project-visual {
     padding: 24px 20px 87px;

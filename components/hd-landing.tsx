@@ -10,6 +10,7 @@ import { SiteFooter } from './site-footer'
 import { CinematicHero } from './cinematic-hero'
 import { StudioSchema } from './studio-schema'
 import { EditorialMotion } from './editorial-motion'
+import { ScrollAccent } from './scroll-accent'
 import { ART_COPY, SERVICE_ART } from '@/lib/studio-art'
 
 function Lines({ text }: { text: string }) {
@@ -63,16 +64,13 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             <span className="small-index">01 /</span>
             <span className="eyebrow">{t.approachLabel}</span>
           </div>
-          <div className="approach-content" data-reveal>
+          <div className="approach-content">
             <h2 id="approach-title">
               {t.approach[0]}
               <br />
-              <span>{t.approach[1]}</span>
+              <ScrollAccent text={t.approach[1]} />
             </h2>
             <div className="approach-bottom">
-              <span className="asterisk" aria-hidden="true">
-                ✳
-              </span>
               <p>{t.approachText}</p>
             </div>
           </div>

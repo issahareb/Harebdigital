@@ -44,7 +44,9 @@ Sieben zusätzliche Motive begleiten Leistungen, Studio, Social Media und Kontak
 
 Beim ersten Scrollen öffnet sich der eingerahmte Hero über einen weich interpolierten Ausschnitt auf die gesamte Bildschirmfläche. Zurückscrollen stellt denselben Ausschnitt wieder her. Die Navigation fährt mit dem oberen Rand aus dem Bild, kehrt nach dem Hero zurück und bleibt per Tastatur erreichbar. Die Filmtexte erläutern SEO/AEO und automatisierte Anfragen. `check:motion` prüft den kontinuierlichen Übergang, alle vier Vollbildecken, die Umkehr und die Rückkehr der Navigation zusätzlich zur Kamerafahrt.
 
-Ein sichtbarer Schalter deaktiviert die Animation. Bei `prefers-reduced-motion` und Datensparmodus werden keine Filmbilder geladen. Ohne JavaScript bleiben Poster und Inhalte nutzbar. Das animierte Vollbildmenü nutzt ein natives modales Dialogelement mit Fokusbegrenzung, Escape und Wiederherstellung des Fokus. `check:motion` prüft auch Menü und Fallbacks. Für einen vorhandenen Chromium-Browser kann `PLAYWRIGHT_CHROMIUM_EXECUTABLE` gesetzt werden.
+Ein sichtbarer Schalter deaktiviert den Hero-Film. Bei `prefers-reduced-motion` und Datensparmodus werden keine Filmbilder geladen. Ohne JavaScript bleiben Poster und Inhalte nutzbar. Das animierte Vollbildmenü nutzt ein natives modales Dialogelement mit Fokusbegrenzung, Escape und Wiederherstellung des Fokus. `check:motion` prüft auch Menü und Fallbacks. Für einen vorhandenen Chromium-Browser kann `PLAYWRIGHT_CHROMIUM_EXECUTABLE` gesetzt werden.
+
+In „Der Anspruch“ färbt `components/scroll-accent.tsx` die zweite Überschriftszeile beim Scrollen Wort für Wort von Grau zum grünen Textakzent. Der Scrollstand bestimmt die Farbe auch beim Zurückscrollen. Die vollständige Überschrift bleibt im HTML; bei reduzierter Bewegung erscheint die zweite Zeile statisch grün. Das dekorative Sternsymbol entfällt. Vorschau: `docs/preview-approach.webp`.
 
 ## Inhalte und Kontakt
 
