@@ -34,7 +34,6 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         <CinematicHero
           lang={lang}
           copy={{
-            eyebrow: t.eyebrow,
             headline: t.headline,
             intro: t.intro,
             project: t.project,
@@ -43,6 +42,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             motionOff: t.motionOff,
             motionOn: t.motionOn,
             heroAlt: t.heroAlt,
+            heroChapters: t.heroChapters,
           }}
         />
         <div className="discipline-strip wrap">
@@ -217,8 +217,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 <Lines text={t.socialTitle} />
               </h2>
               <p>{t.socialText}</p>
-              <a href="https://www.instagram.com/dailyraphood/" className="text-link">
-                @dailyraphood
+              <span className="social-profile-label">TikTok · @issa3701</span>
+              <a href="https://www.tiktok.com/@issa3701" className="text-link">
+                Mr Han
                 <ArrowUpRight size={17} aria-hidden />
               </a>
             </div>
