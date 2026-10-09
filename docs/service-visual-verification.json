@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-09",
+  "scope": "Service-image correction on a local production build in Chromium. Desktop and mobile viewport emulation; not a physical Safari test or a Seobility measurement.",
+  "commands": {
+    "npm run build": "passed: 24 routes generated",
+    "npm run typecheck": "passed",
+    "npm run check:seo": "passed: 18 indexable pages and 20 internal destinations",
+    "npm run check:browser": "passed: five accessibility scans and 12 viewport/locale interaction combinations",
+    "npm run check:motion": "passed: fullscreen expansion, reversal, camera frames, focus, pause and motion fallbacks",
+    "git diff --check": "passed"
+  },
+  "layout": {
+    "totalPageViewportCombinations": 39,
+    "languages": [
+      "de",
+      "en",
+      "es"
+    ],
+    "homepageWidths": [
+      320,
+      390,
+      820,
+      1001,
+      1440
+    ],
+    "servicePages": 12,
+    "servicePageWidths": [
+      320,
+      1440
+    ],
+    "horizontalOverflow": 0,
+    "diagramLabelOverlaps": 0,
+    "missingImages": 0,
+    "supersededMaterialImagesRendered": 0,
+    "javascriptErrors": 0
+  },
+  "accessibility": [
+    {
+      "page": "desktop",
+      "width": 1440,
+      "axeViolations": 0
+    },
+    {
+      "page": "mobile",
+      "width": 390,
+      "axeViolations": 0
+    },
+    {
+      "page": "english",
+      "width": 1440,
+      "axeViolations": 0
+    },
+    {
+      "page": "service",
+      "width": 1440,
+      "axeViolations": 0
+    },
+    {
+      "page": "contact",
+      "width": 390,
+      "axeViolations": 0
+    }
+  ],
+  "content": {
+    "newScreenCaptures": 4,
+    "newImageBytes": 263392,
+    "social": "Archived TikTok profile and historical Instagram reach explicitly separated. Mr Han links to @issa3701; no dailyraphood link.",
+    "sources": "docs/service-visual-provenance.json",
+    "generation": "No new AI-generated material images or fabricated website screenshots."
+  },
+  "visualReview": [
+    "Desktop and mobile service grid",
+    "All four desktop service-detail graphics",
+    "320 px Spanish diagrams and text wrapping",
+    "Studio development evidence",
+    "Social profile evidence and source labels"
+  ],
+  "artifacts": "artifacts/qa/service-visuals (local, ignored by git)",
+  "limitations": [
+    "No new Lighthouse or Seobility score was measured.",
+    "No physical device or Safari measurement was made."
+  ]
+}

@@ -11,7 +11,8 @@ import { CinematicHero } from './cinematic-hero'
 import { StudioSchema } from './studio-schema'
 import { EditorialMotion } from './editorial-motion'
 import { ScrollAccent } from './scroll-accent'
-import { ART_COPY, SERVICE_ART } from '@/lib/studio-art'
+import { VISUAL_COPY } from '@/lib/service-visuals'
+import { ServiceVisual, StudioEvidence } from './service-visual'
 
 function Lines({ text }: { text: string }) {
   return (
@@ -184,11 +185,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 className="service-row"
                 data-reveal
               >
-                <span className="service-thumbnail">
-                  <Image src={`/studio/impulse/${SERVICE_ART[i]}-1200.webp`} alt="" width={1200} height={900} sizes="(max-width: 600px) 88vw, (max-width: 1400px) 44vw, 600px" />
-                  <span className="service-number">{service.n}</span>
-                </span>
-                <div>
+                <div className="service-thumbnail">
+                  <ServiceVisual index={i} lang={lang} decorative />
+                </div>
+                <div className="service-summary">
                   <h3>{t.serviceNames[i]}</h3>
                   <p>{t.serviceTags[i]}</p>
                 </div>
@@ -202,10 +202,16 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         </section>
         <section className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">
-            <div className="social-art" data-reveal>
-              <Image src="/studio/impulse/social-1200.webp" alt={ART_COPY[lang].social} width={1200} height={675} sizes="(max-width: 700px) 90vw, 45vw" />
-              <span className="image-caption" aria-hidden="true">ONE IMPULSE. WIDER REACH.</span>
-            </div>
+            <figure className="social-art" data-reveal>
+              <Image
+                src="/social/mrhan-profil.webp"
+                alt={VISUAL_COPY[lang].socialAlt}
+                width={1125}
+                height={542}
+                sizes="(max-width: 700px) 90vw, 45vw"
+              />
+              <figcaption>{VISUAL_COPY[lang].socialArchive}</figcaption>
+            </figure>
             <div>
               <div className="section-label">
                 <span className="small-index">04 /</span>
@@ -222,6 +228,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </a>
             </div>
             <div className="social-proof">
+              <span className="social-proof-label">{VISUAL_COPY[lang].socialProofLabel}</span>
               <div className="social-stat">
                 <strong>
                   {lang === 'en' ? '1.3' : '1,3'}
@@ -252,18 +259,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           className="studio-section wrap section-space"
           aria-labelledby="studio-title"
         >
-          <div className="studio-image" data-reveal>
-            <Image
-              src="/studio/impulse/studio-1200.webp"
-              alt={t.studioAlt}
-              width={1200}
-              height={1600}
-              sizes="(max-width: 700px) 92vw, 43vw"
-            />
-            <span className="image-caption" aria-hidden="true">
-              {ART_COPY[lang].study}
-            </span>
-          </div>
+          <StudioEvidence lang={lang} />
           <div className="studio-copy" data-reveal>
             <div className="section-label">
               <span className="small-index">05 /</span>

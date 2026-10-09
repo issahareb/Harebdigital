@@ -13,7 +13,8 @@
       "files": [
         "public/studio/impulse/studio-640.webp",
         "public/studio/impulse/studio-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "design",
@@ -25,7 +26,8 @@
       "files": [
         "public/studio/impulse/design-640.webp",
         "public/studio/impulse/design-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "relaunch",
@@ -37,7 +39,8 @@
       "files": [
         "public/studio/impulse/relaunch-640.webp",
         "public/studio/impulse/relaunch-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "automation",
@@ -49,7 +52,8 @@
       "files": [
         "public/studio/impulse/automation-640.webp",
         "public/studio/impulse/automation-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "visibility",
@@ -61,7 +65,8 @@
       "files": [
         "public/studio/impulse/visibility-640.webp",
         "public/studio/impulse/visibility-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "contact",
@@ -73,7 +78,8 @@
       "files": [
         "public/studio/impulse/contact-640.webp",
         "public/studio/impulse/contact-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     },
     {
       "name": "social",
@@ -85,7 +91,8 @@
       "files": [
         "public/studio/impulse/social-640.webp",
         "public/studio/impulse/social-1200.webp"
-      ]
+      ],
+      "status": "Superseded on 2026-10-09; no longer rendered. See service-visual-provenance.json."
     }
   ],
   "camera": {
