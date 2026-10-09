@@ -42,11 +42,17 @@ Warmer Papierton, Anthrazit, Glas, Aluminium und limettengrüne Verbindungen bil
 
 Sieben zusätzliche Motive begleiten Leistungen, Studio, Social Media und Kontakt. Reale Projekt- und Instagram-Nachweise bleiben erhalten. Quellen, Prompts, Job-IDs und Dateigrößen stehen in `docs/asset-provenance.json`. Responsive AVIF-/WebP-Dateien und der Film liegen versioniert in `public/studio/impulse/`. Schriften und Medien werden über die eigene Domain ausgeliefert.
 
-Ein sichtbarer Schalter deaktiviert die Animation. Bei `prefers-reduced-motion` und Datensparmodus werden keine Filmbilder geladen. Ohne JavaScript bleiben Poster und Inhalte nutzbar. Das animierte Vollbildmenü nutzt ein natives modales Dialogelement mit Fokusbegrenzung, Escape und Wiederherstellung des Fokus. `check:motion` prüft die tatsächlich gezeichneten Bilder in beide Scrollrichtungen sowie Menü und Fallbacks. Für einen vorhandenen Chromium-Browser kann `PLAYWRIGHT_CHROMIUM_EXECUTABLE` gesetzt werden.
+Beim ersten Scrollen öffnet sich der eingerahmte Hero über einen weich interpolierten Ausschnitt auf die gesamte Bildschirmfläche. Zurückscrollen stellt denselben Ausschnitt wieder her. Die Navigation fährt mit dem oberen Rand aus dem Bild, kehrt nach dem Hero zurück und bleibt per Tastatur erreichbar. Die Filmtexte erläutern SEO/AEO und automatisierte Anfragen. `check:motion` prüft den kontinuierlichen Übergang, alle vier Vollbildecken, die Umkehr und die Rückkehr der Navigation zusätzlich zur Kamerafahrt.
+
+Ein sichtbarer Schalter deaktiviert den Hero-Film. Bei `prefers-reduced-motion` und Datensparmodus werden keine Filmbilder geladen. Ohne JavaScript bleiben Poster und Inhalte nutzbar. Das animierte Vollbildmenü nutzt ein natives modales Dialogelement mit Fokusbegrenzung, Escape und Wiederherstellung des Fokus. `check:motion` prüft auch Menü und Fallbacks. Für einen vorhandenen Chromium-Browser kann `PLAYWRIGHT_CHROMIUM_EXECUTABLE` gesetzt werden.
+
+In „Der Anspruch“ färbt `components/scroll-accent.tsx` die zweite Überschriftszeile beim Scrollen Wort für Wort von Grau zum grünen Textakzent. Der Scrollstand bestimmt die Farbe auch beim Zurückscrollen. Die vollständige Überschrift bleibt im HTML; bei reduzierter Bewegung erscheint die zweite Zeile statisch grün. Das dekorative Sternsymbol entfällt. Vorschau: `docs/preview-approach.webp`.
 
 ## Inhalte und Kontakt
 
 `lib/studio-copy.ts` enthält die neuen redaktionellen Texte und FAQ in drei Sprachen. `lib/hd-texte.ts` enthält die vorhandenen Leistungsdetails, Projekttexte und Formularbeschriftungen. Projektdaten werden nicht als aktuelle Ergebnisse oder garantierte Kundenerfolge ausgegeben. Die Organisation und der Gründer behalten die bereits im Portfolio und im Taxi-Projekt verwendeten Schema-IDs.
+
+Die Social-Nachweise stammen vom ehemaligen Instagram-Account dailyraphood und sind entsprechend als Archiv gekennzeichnet. Der sichtbare Profil-Link „Mr Han“ führt zu TikTok (`@issa3701`).
 
 Das Formular bereitet eine E-Mail vor und öffnet das E-Mail-Programm. Es sendet nicht automatisch und zeigt keinen erfundenen Versand-Erfolg. Die Auswahl kann mit `?leistung=automatisierung` vorbelegt werden. Ohne JavaScript bleibt ein direkter E-Mail-Link verfügbar.
 
@@ -54,6 +60,6 @@ Das Formular bereitet eine E-Mail vor und öffnet das E-Mail-Programm. Es sendet
 
 Die bestätigte Geschäftsanschrift in Sankt Augustin ist im Impressum enthalten. Weitere Angaben werden nicht aus dem Design abgeleitet oder erfunden; `npm run pruefen` meldet die noch offenen Geschäftsdaten und rechtlichen Textprüfungen. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
 
-Die aktuellen Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.png`, `docs/preview-mobile.png`, `docs/preview-flight.png` und `docs/preview-menu.png`.
+Die aktuellen Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.png`, `docs/preview-mobile.png`, `docs/preview-flight.png`, `docs/preview-fullscreen.webp` und `docs/preview-menu.png`.
 
 Die bestehende Railway-Konfiguration deployt `npm run build` aus `main`.

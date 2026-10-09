@@ -10,6 +10,7 @@ import { SiteFooter } from './site-footer'
 import { CinematicHero } from './cinematic-hero'
 import { StudioSchema } from './studio-schema'
 import { EditorialMotion } from './editorial-motion'
+import { ScrollAccent } from './scroll-accent'
 import { ART_COPY, SERVICE_ART } from '@/lib/studio-art'
 
 function Lines({ text }: { text: string }) {
@@ -34,7 +35,6 @@ export function HdLanding({ lang }: { lang: HdLang }) {
         <CinematicHero
           lang={lang}
           copy={{
-            eyebrow: t.eyebrow,
             headline: t.headline,
             intro: t.intro,
             project: t.project,
@@ -43,6 +43,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             motionOff: t.motionOff,
             motionOn: t.motionOn,
             heroAlt: t.heroAlt,
+            heroChapters: t.heroChapters,
           }}
         />
         <div className="discipline-strip wrap">
@@ -63,16 +64,13 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             <span className="small-index">01 /</span>
             <span className="eyebrow">{t.approachLabel}</span>
           </div>
-          <div className="approach-content" data-reveal>
+          <div className="approach-content">
             <h2 id="approach-title">
               {t.approach[0]}
               <br />
-              <span>{t.approach[1]}</span>
+              <ScrollAccent text={t.approach[1]} />
             </h2>
             <div className="approach-bottom">
-              <span className="asterisk" aria-hidden="true">
-                ✳
-              </span>
               <p>{t.approachText}</p>
             </div>
           </div>
@@ -217,8 +215,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 <Lines text={t.socialTitle} />
               </h2>
               <p>{t.socialText}</p>
-              <a href="https://www.instagram.com/dailyraphood/" className="text-link">
-                @dailyraphood
+              <span className="social-profile-label">TikTok · @issa3701</span>
+              <a href="https://www.tiktok.com/@issa3701" className="text-link">
+                Mr Han
                 <ArrowUpRight size={17} aria-hidden />
               </a>
             </div>

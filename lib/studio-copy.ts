@@ -9,7 +9,6 @@ export type StudioCopy = {
   nav: [string, string, string]
   project: string
   language: string
-  eyebrow: string
   headline: [string, string]
   intro: string
   workLink: string
@@ -17,6 +16,7 @@ export type StudioCopy = {
   motionOff: string
   motionOn: string
   heroAlt: string
+  heroChapters: { label: string; title: string }[]
   strip: [string, string, string]
   approachLabel: string
   approach: [string, string]
@@ -66,7 +66,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     nav: ['Arbeiten', 'Leistungen', 'Studio'],
     project: 'Projekt anfragen',
     language: 'Sprache wählen',
-    eyebrow: 'Unabhängiges Digitalstudio · Essen',
     headline: ['Webdesign.', 'Mit Substanz.'],
     intro:
       'Ein Auftritt, der zu dir passt. Technik, die mitdenkt. Ich entwickle Websites, die Eindruck machen und deinem Unternehmen Arbeit abnehmen.',
@@ -76,6 +75,10 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOn: 'Animation einschalten',
     heroAlt:
       'Ein Lichtfaden führt durch eine räumliche Landschaft aus Glas und gebürstetem Metall.',
+    heroChapters: [
+      { label: 'SEO & AEO', title: 'Dein Angebot.\nKlar erklärt, leicht zu finden.' },
+      { label: 'Automatisierung', title: 'Von der Anfrage\nbis zur Bestätigung.' },
+    ],
     strip: ['Strategie & Design', 'Entwicklung & Automatisierung', 'SEO & AEO'],
     approachLabel: 'Der Anspruch',
     approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
@@ -103,9 +106,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     moreWork: 'Eigenes Produkt · GuardianGrid',
     socialTitle: 'Aufmerksamkeit\nbeginnt vor dem Klick.',
     socialText:
-      'Auch die ersten Sekunden eines Videos brauchen eine Idee. Meine eigenen Social-Media-Projekte sind ein Experimentierfeld für Einstiege, Erzählweise und organische Reichweite.',
+      'Mit meinem ehemaligen Instagram-Account dailyraphood habe ich Erfahrung mit Video-Einstiegen, Erzählweise und organischer Reichweite gesammelt. Auf TikTok findest du mich als Mr Han unter @issa3701.',
     socialSource:
-      'Dokumentierter Stand aus dem Instagram-Projekt dailyraphood. Eigene Projekte, keine Prognose für Kundenergebnisse.',
+      'Archivierter Nachweis aus meinem ehemaligen Instagram-Account dailyraphood: Reichweite eines einzelnen Beitrags ohne Werbebudget.',
     reach: 'erreichte Konten mit einem Beitrag',
     budget: 'Werbebudget',
     studioTitle: 'Eine gute Zusammenarbeit\nhat ein Gesicht.',
@@ -168,7 +171,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     nav: ['Work', 'Services', 'Studio'],
     project: 'Start a project',
     language: 'Choose language',
-    eyebrow: 'Independent digital studio · Essen',
     headline: ['Digital.', 'With substance.'],
     intro:
       'A presence that feels like you. Technology that thinks ahead. I build websites that make an impression and take work off your desk.',
@@ -177,6 +179,10 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOff: 'Turn animation off',
     motionOn: 'Turn animation on',
     heroAlt: 'A light thread leads through a spatial landscape of glass and brushed metal.',
+    heroChapters: [
+      { label: 'SEO & AEO', title: 'What you offer.\nClear and easy to find.' },
+      { label: 'Automation', title: 'From the first enquiry\nto the confirmation.' },
+    ],
     strip: ['Strategy & design', 'Development & automation', 'SEO & AEO'],
     approachLabel: 'The approach',
     approach: ['Good design draws you in.', 'Good engineering takes you further.'],
@@ -203,9 +209,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     moreWork: 'Own product · GuardianGrid',
     socialTitle: 'Attention starts\nbefore the click.',
     socialText:
-      'Even the first seconds of a video need an idea. My own social projects are a testing ground for openings, storytelling and organic reach.',
+      'My former Instagram account dailyraphood gave me hands-on experience with video openings, storytelling and organic reach. On TikTok, you can find me as Mr Han at @issa3701.',
     socialSource:
-      'Documented results from the dailyraphood Instagram project. Own projects, not a forecast of client results.',
+      'Archived evidence from my former Instagram account dailyraphood: the reach of a single post with no advertising spend.',
     reach: 'accounts reached with one post',
     budget: 'advertising spend',
     studioTitle: 'Good collaboration\nhas a face.',
@@ -268,7 +274,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     nav: ['Proyectos', 'Servicios', 'Estudio'],
     project: 'Iniciar un proyecto',
     language: 'Elegir idioma',
-    eyebrow: 'Estudio digital independiente · Essen',
     headline: ['Digital.', 'Con sustancia.'],
     intro:
       'Una presencia que te representa. Tecnología que piensa más allá. Desarrollo webs que dejan huella y facilitan el trabajo de tu empresa.',
@@ -277,6 +282,10 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOff: 'Desactivar animación',
     motionOn: 'Activar animación',
     heroAlt: 'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
+    heroChapters: [
+      { label: 'SEO y AEO', title: 'Lo que ofreces.\nClaro y fácil de encontrar.' },
+      { label: 'Automatización', title: 'Desde la primera consulta\nhasta la confirmación.' },
+    ],
     strip: ['Estrategia y diseño', 'Desarrollo y automatización', 'SEO y AEO'],
     approachLabel: 'El enfoque',
     approach: ['El buen diseño atrae.', 'La buena tecnología te lleva más lejos.'],
@@ -304,9 +313,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     moreWork: 'Producto propio · GuardianGrid',
     socialTitle: 'La atención empieza\nantes del clic.',
     socialText:
-      'Los primeros segundos de un vídeo también necesitan una idea. Mis proyectos en redes son un espacio para probar introducciones, narrativas y alcance orgánico.',
+      'Con mi antigua cuenta de Instagram dailyraphood adquirí experiencia en inicios de vídeo, narrativa y alcance orgánico. En TikTok puedes encontrarme como Mr Han en @issa3701.',
     socialSource:
-      'Resultados documentados del proyecto de Instagram dailyraphood. Proyectos propios, no una previsión de resultados para clientes.',
+      'Datos archivados de mi antigua cuenta de Instagram dailyraphood: alcance de una sola publicación sin inversión publicitaria.',
     reach: 'cuentas alcanzadas con una publicación',
     budget: 'inversión publicitaria',
     studioTitle: 'Una buena colaboración\ntiene un rostro.',

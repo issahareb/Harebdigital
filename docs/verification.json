@@ -1,14 +1,13 @@
 {
-  "date": "2026-10-05",
-  "scope": "Production build tested locally in Chromium 153. Mobile viewport emulation; not a physical iPhone/Safari test. No fresh Lighthouse or live Seobility score is claimed.",
+  "date": "2026-10-08",
+  "scope": "Fullscreen hero and word-by-word heading refinement tested against a local production build in Chromium. Desktop and mobile viewport emulation; not a physical Safari test. No fresh Lighthouse or live Seobility score is claimed.",
   "commands": {
     "npm run build": "passed: all 24 routes generated",
     "npm run typecheck": "passed",
     "npm run check:seo": "passed: 18 indexable pages and 20 internal destinations",
     "npm run check:browser": "passed",
-    "npm run check:motion": "passed",
-    "git diff --check": "passed",
-    "npm run pruefen": "3 existing placeholders remain: legal privacy-text review, VAT status/ID and telephone. Confirmed Sankt Augustin address is retained."
+    "npm run check:motion": "passed: continuous fullscreen expansion, four-corner coverage, exact reversal, navigation recovery, camera frames, keyboard access and motion fallbacks",
+    "git diff --check": "passed"
   },
   "browser": [
     {
@@ -157,6 +156,10 @@
   "motion": [
     {
       "name": "desktop",
+      "reversibleFullscreen": true,
+      "immediateExpansion": true,
+      "navigationReturn": true,
+      "keyboardNavigationDuringFilm": true,
       "reversibleCameraFrames": true,
       "boundedFrameLoading": true,
       "modalFocus": true,
@@ -165,6 +168,10 @@
     },
     {
       "name": "iphone",
+      "reversibleFullscreen": true,
+      "immediateExpansion": true,
+      "navigationReturn": true,
+      "keyboardNavigationDuringFilm": true,
       "reversibleCameraFrames": true,
       "boundedFrameLoading": true,
       "modalFocus": true,
@@ -200,5 +207,108 @@
     "Browser measurements do not establish real-device Safari performance.",
     "No new Lighthouse performance score was measured.",
     "Existing business/legal placeholders are outside this visual revision."
-  ]
+  ],
+  "refinement": [
+    {
+      "locale": "de",
+      "landscapeContrast": true,
+      "formerAccountHasNoLink": true,
+      "tiktokProfile": "Mr Han — @issa3701"
+    },
+    {
+      "locale": "en/",
+      "landscapeContrast": true,
+      "formerAccountHasNoLink": true,
+      "tiktokProfile": "Mr Han — @issa3701"
+    },
+    {
+      "locale": "es/",
+      "landscapeContrast": true,
+      "formerAccountHasNoLink": true,
+      "tiktokProfile": "Mr Han — @issa3701"
+    }
+  ],
+  "smallViewports": {
+    "viewports": [
+      "320x568",
+      "375x667",
+      "844x390",
+      "768x600"
+    ],
+    "languages": [
+      "de",
+      "en",
+      "es"
+    ],
+    "overflows": 0,
+    "heroControlCollisions": 0
+  },
+  "scrollAccent": {
+    "textColor": "Existing green text accent #4f642b on the light background",
+    "results": [
+      {
+        "locale": "de",
+        "width": 1440,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "locale": "en/",
+        "width": 1440,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "locale": "es/",
+        "width": 1440,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "locale": "de",
+        "width": 390,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "locale": "en/",
+        "width": 390,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "locale": "es/",
+        "width": 390,
+        "smoothIntermediateColors": true,
+        "wordOrder": true,
+        "reverse": true,
+        "allGreenAtEnd": true,
+        "symbolRemoved": true
+      },
+      {
+        "mode": "reduced",
+        "readableSentence": true
+      },
+      {
+        "mode": "no-js",
+        "readableSentence": true
+      }
+    ],
+    "finalInlineLayout": "Verified ordering, intermediate colors, reverse scrolling, intact heading text, no overflow and section accessibility on desktop/mobile in all three languages."
+  }
 }
