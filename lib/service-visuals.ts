@@ -1,0 +1,107 @@
+import type { HdLang } from './hd-texte'
+
+/** Labels describe actual captures or explicitly illustrative workflows, not results. */
+export const VISUAL_COPY = {
+  de: {
+    labels: [
+      'Kundenprojekt · Taxi B&B Essen',
+      'Eigene Website · hareb.digital',
+      'Beispiel · Buchungsanfrage',
+      'Suchvorschau · eigene Website',
+    ],
+    captions: [
+      'Eine Website. Auf jedem Bildschirm.',
+      'Gleicher Absender. Neuer Auftritt.',
+      'Von der Anfrage bis zur Bestätigung.',
+      'Klare Angaben. Verständliche Antworten.',
+    ],
+    descriptions: [
+      'Die echte Website von Taxi B&B Essen in einer Desktop- und einer mobilen Ansicht.',
+      'Hareb Digital vor und nach dem Relaunch, anhand zweier echter Bildschirmaufnahmen.',
+      'Beispielablauf: Eine Anfrage geht ein, wird von einem Menschen freigegeben, im Kalender eingetragen und per E-Mail bestätigt.',
+      'Suchvorschau mit Titel und Beschreibung von Hareb Digital sowie einer klar beantworteten Preisfrage. Keine gemessene Suchplatzierung.',
+    ],
+    before: 'Vorher',
+    after: 'Nachher',
+    flow: [
+      ['Anfrage', 'Formular empfangen'],
+      ['Freigabe', 'Von dir geprüft'],
+      ['Kalender', 'Termin eintragen'],
+      ['Bestätigung', 'E-Mail versenden'],
+    ],
+    faqLabel: 'Frage & Antwort',
+    socialArchive: 'Archivierte Profilansicht · TikTok',
+    socialProofLabel: 'Ehemaliger Instagram-Account · dailyraphood',
+    socialAlt: 'Archivierter Screenshot des TikTok-Profils Mr Han mit dem Benutzernamen @issa3701.',
+    studioLabel: 'Diese Website · Einblick in die Entwicklung',
+    codeLabel: 'Wortweise Farbänderung beim Scrollen',
+  },
+  en: {
+    labels: [
+      'Client project · Taxi B&B Essen',
+      'Our own website · hareb.digital',
+      'Example · Booking enquiry',
+      'Search preview · our website',
+    ],
+    captions: [
+      'One website. Every screen.',
+      'Same business. A new presence.',
+      'From enquiry to confirmation.',
+      'Clear information. Useful answers.',
+    ],
+    descriptions: [
+      'The real Taxi B&B Essen website in desktop and mobile views.',
+      'Hareb Digital before and after its redesign, using two actual screenshots.',
+      'Example workflow: receive an enquiry, obtain human approval, add it to the calendar and send an email confirmation.',
+      'Search preview using the Hareb Digital page title and description, with a clearly answered pricing question. Not a measured search ranking.',
+    ],
+    before: 'Before',
+    after: 'After',
+    flow: [
+      ['Enquiry', 'Receive the form'],
+      ['Approval', 'Reviewed by you'],
+      ['Calendar', 'Add the booking'],
+      ['Confirmation', 'Send the email'],
+    ],
+    faqLabel: 'Question & answer',
+    socialArchive: 'Archived profile view · TikTok',
+    socialProofLabel: 'Former Instagram account · dailyraphood',
+    socialAlt: 'Archived screenshot of the Mr Han TikTok profile with the username @issa3701.',
+    studioLabel: 'This website · Inside the development',
+    codeLabel: 'Word-by-word colour change on scroll',
+  },
+  es: {
+    labels: [
+      'Proyecto real · Taxi B&B Essen',
+      'Nuestra web · hareb.digital',
+      'Ejemplo · Solicitud de reserva',
+      'Vista previa de búsqueda · nuestra web',
+    ],
+    captions: [
+      'Una web. En cada pantalla.',
+      'Mismo negocio. Nueva presencia.',
+      'De la solicitud a la confirmación.',
+      'Información clara. Respuestas útiles.',
+    ],
+    descriptions: [
+      'La web real de Taxi B&B Essen en vistas de escritorio y móvil.',
+      'Hareb Digital antes y después del rediseño, con dos capturas reales de pantalla.',
+      'Ejemplo de proceso: recibir una solicitud, obtener la aprobación de una persona, añadir la reserva al calendario y enviar la confirmación por correo.',
+      'Vista previa de búsqueda con el título y la descripción de Hareb Digital y una respuesta clara sobre precios. No indica una posición medida en buscadores.',
+    ],
+    before: 'Antes',
+    after: 'Después',
+    flow: [
+      ['Solicitud', 'Recibir el formulario'],
+      ['Aprobación', 'Revisada por ti'],
+      ['Calendario', 'Añadir la reserva'],
+      ['Confirmación', 'Enviar el correo'],
+    ],
+    faqLabel: 'Pregunta y respuesta',
+    socialArchive: 'Vista de perfil archivada · TikTok',
+    socialProofLabel: 'Antigua cuenta de Instagram · dailyraphood',
+    socialAlt: 'Captura archivada del perfil de TikTok Mr Han con el nombre de usuario @issa3701.',
+    studioLabel: 'Esta web · Una mirada al desarrollo',
+    codeLabel: 'Cambio de color por palabra al desplazarse',
+  },
+} satisfies Record<HdLang, object>

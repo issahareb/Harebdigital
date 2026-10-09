@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { SERVICE_ART, ART_COPY } from '@/lib/studio-art'
+import { ServiceVisual } from './service-visual'
 import { notFound } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
@@ -59,8 +58,13 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       <h1 className="mt-5">{t.serviceNames[i]}</h1>
       <p className="service-detail-lead">{service.detail.vorspann}</p>
       <figure className="service-detail-art" data-reveal>
-        <Image src={`/studio/impulse/${SERVICE_ART[i]}-1200.webp`} alt={ART_COPY[lang].services[i]} width={1200} height={900} sizes="(max-width: 700px) 90vw, 1050px" />
-        <figcaption><span>0{i + 1} / {t.serviceNames[i]}</span><span>HAREB DIGITAL</span></figcaption>
+        <ServiceVisual index={i} lang={lang} />
+        <figcaption>
+          <span>
+            0{i + 1} / {t.serviceNames[i]}
+          </span>
+          <span>HAREB DIGITAL</span>
+        </figcaption>
       </figure>
       <div className="service-detail-grid" data-reveal>
         <section>
@@ -135,7 +139,12 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
                   name: t.home,
                   item: `${DOMAIN}${localizedPath(lang)}`,
                 },
-                { '@type': 'ListItem', position: 2, name: t.serviceNames[i], item: url },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: t.serviceNames[i],
+                  item: url,
+                },
               ],
             },
           ],

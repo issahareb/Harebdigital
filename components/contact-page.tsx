@@ -1,7 +1,5 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { ART_COPY } from '@/lib/studio-art'
 import { Anfrageformular } from './anfrageformular'
 import { HdUnterseite } from './hd-unterseite'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
@@ -60,37 +58,36 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           </noscript>
         </div>
         <div className="contact-aside">
-          <Image className="contact-art" src="/studio/impulse/contact-640.webp" alt={ART_COPY[lang].contact} width={640} height={480} sizes="(max-width: 700px) 90vw, 300px" />
           <dl className="contact-info">
-          <div>
-            <dt>{t.epost}</dt>
-            <dd>
-              <a href={`mailto:${marke.email}`}>{marke.email}</a>
-            </dd>
-          </div>
-          {telephone && (
             <div>
-              <dt>{t.telefon}</dt>
+              <dt>{t.epost}</dt>
               <dd>
-                <a href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
+                <a href={`mailto:${marke.email}`}>{marke.email}</a>
               </dd>
             </div>
-          )}
-          <div>
-            <dt>{t.sitz}</dt>
-            <dd>{marke.ort}, Deutschland</dd>
-          </div>
-          <div>
-            <dt>
-              {lang === 'de'
-                ? 'Dein Ansprechpartner'
-                : lang === 'en'
-                  ? 'Your contact'
-                  : 'Tu contacto'}
-            </dt>
-            <dd>{marke.inhaber}</dd>
-          </div>
-        </dl>
+            {telephone && (
+              <div>
+                <dt>{t.telefon}</dt>
+                <dd>
+                  <a href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
+                </dd>
+              </div>
+            )}
+            <div>
+              <dt>{t.sitz}</dt>
+              <dd>{marke.ort}, Deutschland</dd>
+            </div>
+            <div>
+              <dt>
+                {lang === 'de'
+                  ? 'Dein Ansprechpartner'
+                  : lang === 'en'
+                    ? 'Your contact'
+                    : 'Tu contacto'}
+              </dt>
+              <dd>{marke.inhaber}</dd>
+            </div>
+          </dl>
         </div>
       </div>
       <JsonLd

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-09",
+  "purpose": "Replace material still lifes with literal evidence of digital services on all three language versions and service detail pages.",
+  "screenshots": [
+    {
+      "file": "public/studio/evidence/taxi-desktop-20261009.webp",
+      "source": "https://www.taxibbessen.de/",
+      "viewport": "1440x940",
+      "capture": "Live website in Chromium, German locale; optional cookies declined through the site's own button and banner dismissal awaited. No form submitted."
+    },
+    {
+      "file": "public/studio/evidence/taxi-mobile-20261009.webp",
+      "source": "https://www.taxibbessen.de/",
+      "viewport": "390x844",
+      "capture": "Live website in Chromium mobile viewport, German locale; optional cookies declined and banner dismissal awaited."
+    },
+    {
+      "file": "public/studio/evidence/hareb-before-20261009.webp",
+      "source": "Repository archive at ae8b756, served locally",
+      "viewport": "1440x1000",
+      "capture": "Original German homepage with reduced motion. Next.js development overlay excluded from capture; page content unmodified."
+    },
+    {
+      "file": "public/studio/evidence/hareb-after-20261009.webp",
+      "source": "Local production build at 082e840f358076bff15e295b2603f49dace00591",
+      "viewport": "1440x1000",
+      "capture": "Current German homepage with reduced motion. Hero content unmodified by this revision."
+    }
+  ],
+  "processing": "Screenshots encoded as WebP at quality 88. No generated interface text or invented client work. Browser and phone frames are native HTML/CSS; screenshot contents retain their original aspect ratios.",
+  "diagrams": {
+    "automation": "Illustrative booking workflow, explicitly labelled as an example. Enquiry -> human approval -> calendar entry -> email confirmation. No claim that this is a captured running system.",
+    "seoAeo": "Explicitly labelled search preview using the actual localized homepage title, metadata description and pricing FAQ. No ranking or score claims."
+  },
+  "otherSections": {
+    "social": "Existing user-supplied /social/mrhan-profil.webp displayed as an archived TikTok profile screenshot. Historical Instagram reach remains separately attributed to the former dailyraphood account. Mr Han links to TikTok @issa3701.",
+    "studio": "Current website screenshot and a faithfully formatted excerpt from components/scroll-accent.tsx. No invented portrait or office.",
+    "contactAndFooter": "Decorative material images removed; contact details and project CTA retained."
+  },
+  "supersededAssets": ["design", "relaunch", "automation", "visibility", "social", "studio", "contact"],
+  "retainedHero": "Approved Higgsfield hero, menu image and scroll film are unchanged. Their historical generation provenance remains in asset-provenance.json."
+}
