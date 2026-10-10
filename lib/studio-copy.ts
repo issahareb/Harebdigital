@@ -40,7 +40,6 @@ export type StudioCopy = {
   budget: string
   studioTitle: string
   studioText: string
-  studioAlt: string
   studioLink: string
   processTitle: string
   faqTitle: string
@@ -114,7 +113,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Dein Projekt.\nDirekt mit Issa.',
     studioText:
       'Ich bin Issa Hareb. Ich gestalte, entwickle und begleite digitale Projekte aus Essen. Du sprichst direkt mit dem Menschen, der deine Website baut – vom ersten Gespräch bis zu den Fragen nach dem Launch.',
-    studioAlt: 'Bildschirmaufnahme dieser Website: Hareb Digital mit der Überschrift Webdesign. Mit Substanz.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -217,7 +215,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Your project.\nBuilt with Issa.',
     studioText:
       'I’m Issa Hareb. I design, develop and support digital projects from Essen, Germany. You work directly with the person building your website, from the first conversation to questions after launch.',
-    studioAlt: 'Screenshot of this website: the German Hareb Digital homepage.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -321,7 +318,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     studioTitle: 'Tu proyecto.\nDirectamente con Issa.',
     studioText:
       'Soy Issa Hareb. Diseño, desarrollo y acompaño proyectos digitales desde Essen, Alemania. Hablas directamente con quien construye tu web, desde la primera conversación hasta las dudas después del lanzamiento.',
-    studioAlt: 'Captura de esta web: la página de inicio de Hareb Digital en alemán.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',

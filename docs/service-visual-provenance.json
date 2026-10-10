@@ -37,6 +37,15 @@
     "studio": "Current website screenshot and a faithfully formatted excerpt from components/scroll-accent.tsx. No invented portrait or office.",
     "contactAndFooter": "Decorative material images removed; contact details and project CTA retained."
   },
-  "supersededAssets": ["design", "relaunch", "automation", "visibility", "social", "studio", "contact"],
-  "retainedHero": "Approved Higgsfield hero, menu image and scroll film are unchanged. Their historical generation provenance remains in asset-provenance.json."
+  "supersededAssets": [
+    "design",
+    "relaunch",
+    "automation",
+    "visibility",
+    "social",
+    "studio",
+    "contact"
+  ],
+  "retainedHero": "Approved Higgsfield hero, menu image and scroll film are unchanged. Their historical generation provenance remains in asset-provenance.json.",
+  "status": "Historical revision, superseded by distinct-service-visuals-20261010.json"
 }
