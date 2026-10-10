@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-10",
+  "request": "Move the mobile Taxi B&B capture into the first client-project image; use distinct imagery below it, newly generated with Higgsfield or taken from the former hareb.digital website.",
+  "provider": "Higgsfield",
+  "finalAssets": [
+    {
+      "purpose": "Web development",
+      "file": "public/studio/services-20261010/web-development-1200.webp",
+      "jobId": "b4675cc4-312f-4491-8264-40e131a3f5ed",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102835_b4675cc4-312f-4491-8264-40e131a3f5ed.png",
+      "initialJobId": "c9df0eda-050d-4b21-a691-280cb5498606",
+      "description": "Fictional FORM responsive website concept with clear page structure. Mobile navigation and small card text corrected before use."
+    },
+    {
+      "purpose": "Relaunch",
+      "file": "public/studio/evidence/hareb-before-20261009.webp",
+      "source": "Original German site at repository commit ae8b756; captured 2026-10-09. See service-visual-provenance.json.",
+      "description": "One archive view only. No repeat of the current hero and no claimed before/after pair."
+    },
+    {
+      "purpose": "Automation",
+      "file": "public/studio/services-20261010/automation-1200.webp",
+      "jobId": "85b599ae-503a-4df7-91b6-ef10754c957d",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102836_85b599ae-503a-4df7-91b6-ef10754c957d.png",
+      "initialJobId": "fad1ca1c-728c-4625-b4d0-e92a784cb910",
+      "description": "Request -> human approval -> calendar entry -> email confirmation. Garbled calendar text removed before use."
+    },
+    {
+      "purpose": "SEO and AEO",
+      "file": "public/studio/services-20261010/search-answers-1200.webp",
+      "jobId": "260bd497-0970-47ee-97db-f7d7e471a79b",
+      "sourceUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102505_260bd497-0970-47ee-97db-f7d7e471a79b.png",
+      "description": "Search result and sourced answer supported by title, content and FAQ. Illustration, not a measured ranking or real search screenshot."
+    }
+  ],
+  "initialGenerations": [
+    {
+      "index": 0,
+      "job_id": "c9df0eda-050d-4b21-a691-280cb5498606",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102504_c9df0eda-050d-4b21-a691-280cb5498606.png",
+      "name": "web-development",
+      "prompt": "Create one premium digital product illustration for a German web development studio. Landscape 4:3. Sophisticated editorial visual design, extremely crisp and intentional interface geometry, precise typography, deep charcoal #202820, warm ivory #f3f1eb, restrained pale lime #d4ed8a accents. Nearly front-facing composition with only slight depth and soft shadows, ample clear space around the main content. It must read immediately as a DIGITAL SERVICE, not architecture, interior design or an abstract art object. No foil, metal ribbons, string, wood, stone, glass prisms, floating blank slabs, marbles, leaves, hands, people, logos, watermarks, stock photos, neon lights, fake analytics numbers or success percentages. No tiny illegible paragraph text; use only the few exact short English labels specified. This is a designed concept illustration, not a screenshot of an existing client. SUBJECT: RESPONSIVE WEB DEVELOPMENT. A carefully laid out web development canvas filling most of the frame. On the left a narrow dark structural panel with exactly three legible rows '<header>', '<main>', '<footer>'. In the center a large light browser preview of a new, minimalist fictional editorial website titled 'FORM', with a typographic hero 'Made to fit.', a simple navigation, clear rectangular content layout, and one pale lime call-to-action button labelled 'Explore'. Its lower content is three neatly aligned content cards. On the right a slimmer mobile preview showing that SAME fictional FORM layout correctly reflowed to one column. A thin pale-lime guide aligns the desktop grid to the mobile grid. Header above the canvas: 'DESIGN → BUILD'. The image is about page structure, responsive layout and implementation. The screens contain an actual coherent legible interface, not glossy blank blocks or an operating-system desktop. No taxis, no Hareb website, no giant photographic hero. Design quality of a real premium product studio case study.",
+      "model": "recraft_v4_1",
+      "resolution": "2k",
+      "model_type": "utility"
+    },
+    {
+      "index": 2,
+      "job_id": "fad1ca1c-728c-4625-b4d0-e92a784cb910",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102503_fad1ca1c-728c-4625-b4d0-e92a784cb910.png",
+      "name": "automation",
+      "prompt": "Create one premium digital product illustration for a German web development studio. Landscape 4:3. Sophisticated editorial visual design, extremely crisp and intentional interface geometry, precise typography, deep charcoal #202820, warm ivory #f3f1eb, restrained pale lime #d4ed8a accents. Nearly front-facing composition with only slight depth and soft shadows, ample clear space around the main content. It must read immediately as a DIGITAL SERVICE, not architecture, interior design or an abstract art object. No foil, metal ribbons, string, wood, stone, glass prisms, floating blank slabs, marbles, leaves, hands, people, logos, watermarks, stock photos, neon lights, fake analytics numbers or success percentages. No tiny illegible paragraph text; use only the few exact short English labels specified. This is a designed concept illustration, not a screenshot of an existing client. SUBJECT: BUSINESS PROCESS AUTOMATION. A clean software workflow canvas with FOUR large well-spaced nodes connected by an unambiguous directional path. Starting at upper left: a form/document node labelled 'REQUEST'. Arrow right into a user-check node labelled 'APPROVAL'. From APPROVAL a path with a downward arrow reaches the lower-right calendar node labelled 'CALENDAR'. Arrow left reaches the lower-left outgoing email/envelope node labelled 'CONFIRMATION'. The calendar shows a simple weekly grid with ONE highlighted pale lime appointment. The form has three clear field outlines, the approval node a recognisable person/check symbol, the email a recognizable envelope and a check. Each node has a small number 01, 02, 03, 04 respectively, so the order is clear. Four nodes ONLY, no dead ends, no decorative connections, no branching that bypasses the human approval. Display the entire path clearly. The exact labels are large and legible. Header 'WORKFLOW'. Render this as a carefully designed software-interface editorial, with shallow layered depth, one active lime connector and high contrast ivory typography. No laptop photo, no fake dashboard metrics.",
+      "model": "recraft_v4_1",
+      "resolution": "2k",
+      "model_type": "utility"
+    },
+    {
+      "index": 3,
+      "job_id": "260bd497-0970-47ee-97db-f7d7e471a79b",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102505_260bd497-0970-47ee-97db-f7d7e471a79b.png",
+      "name": "search-answers",
+      "prompt": "Create one premium digital product illustration for a German web development studio. Landscape 4:3. Sophisticated editorial visual design, extremely crisp and intentional interface geometry, precise typography, deep charcoal #202820, warm ivory #f3f1eb, restrained pale lime #d4ed8a accents. Nearly front-facing composition with only slight depth and soft shadows, ample clear space around the main content. It must read immediately as a DIGITAL SERVICE, not architecture, interior design or an abstract art object. No foil, metal ribbons, string, wood, stone, glass prisms, floating blank slabs, marbles, leaves, hands, people, logos, watermarks, stock photos, neon lights, fake analytics numbers or success percentages. No tiny illegible paragraph text; use only the few exact short English labels specified. This is a designed concept illustration, not a screenshot of an existing client. SUBJECT: SEARCH OPTIMISATION AND ANSWER ENGINE OPTIMISATION. An elegant composition of two distinct, readable digital interfaces sitting side by side, connected by one precise short line. Left: a large browser search panel titled 'SEARCH', containing a search field with magnifying glass and the exact query 'Web design', then two clearly structured search-result snippets with title, URL line and short muted text-shaped lines. The FIRST result is titled exactly 'Your website' and has a restrained pale lime outline, WITHOUT any rank number, stars, traffic graph, score or achievement badge. Right: a slightly smaller answer-engine panel titled 'ANSWERS', containing the exact question 'What do you offer?' and below it exactly 'Websites. SEO. Automation.' with one citation chip 'Source'. Below the panels, three precise page-structure chips labelled 'TITLE', 'CONTENT', 'FAQ', with tidy lines upwards showing that page information supports search results and clear answers. The image must literally depict discoverable content and sourced answers. Clean large typography, no invented brand or search engine logo, no gibberish paragraphs. No nature scenes or abstract prisms.",
+      "model": "recraft_v4_1",
+      "resolution": "2k",
+      "model_type": "utility"
+    }
+  ],
+  "targetedEdits": [
+    {
+      "index": 10,
+      "job_id": "b4675cc4-312f-4491-8264-40e131a3f5ed",
+      "status": "completed",
+      "type": "image",
+      "model": "nano_banana_flash",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102835_b4675cc4-312f-4491-8264-40e131a3f5ed.png",
+      "name": "web-development-final",
+      "source": "c9df0eda-050d-4b21-a691-280cb5498606",
+      "prompt": "Precisely edit this digital web-development concept illustration. Preserve its composition, palette, desktop website, heading DESIGN → BUILD, FORM brand, Made to fit. headline, and Explore buttons. Correct ONLY these defects: 1) In the MOBILE website, remove ALL navigation words to the right of FORM, including the duplicate Contact entries, and replace them with ONE clean three-line hamburger icon at top right. Leave FORM top left. 2) The mobile content cards should show only the exact titles 'Editorial Design', 'Minimalist Typography', 'Clean Layouts', one per card in a vertical stack. Remove all tiny subtitles and every garbled small word from these mobile cards; empty space beneath a title is correct. 3) Remove the vertical pale line hanging down below the desktop browser in the bottom center; it leads nowhere. 4) Ensure the desktop card titles read exactly 'Editorial Design', 'Minimalist Typography', 'Clean Layouts'. Do not add text, decorative objects, new navigation, or new diagram connections. Keep clean contours and crisp typography. The result should be a polished, logically consistent responsive website concept.",
+      "requestedModel": "nano_banana_2",
+      "reportedModel": "nano_banana_flash"
+    },
+    {
+      "index": 12,
+      "job_id": "85b599ae-503a-4df7-91b6-ef10754c957d",
+      "status": "completed",
+      "type": "image",
+      "model": "nano_banana_flash",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/hf_20261010_102836_85b599ae-503a-4df7-91b6-ef10754c957d.png",
+      "name": "automation-final",
+      "source": "fad1ca1c-728c-4625-b4d0-e92a784cb910",
+      "prompt": "Make a precise small correction to this workflow illustration and preserve EVERYTHING else: same four nodes, composition, arrows, REQUEST 01, APPROVAL 02, CALENDAR 03, CONFIRMATION 04, WORKFLOW title, colours, stroke thickness and dark background. Inside the CALENDAR node, remove ALL tiny letters, weekday names and small words inside or above the calendar grid. Keep the CALENDAR title and the large 03 below the grid. The calendar itself must be only a clean blank matrix of seven columns and four rows, with ONE pale lime highlighted appointment cell and all other cells dark. No text or numerals inside the calendar matrix. The rest of the illustration is already correct and should remain identical.",
+      "requestedModel": "nano_banana_2",
+      "reportedModel": "nano_banana_flash"
+    }
+  ],
+  "processing": "Final PNG outputs resized proportionally into 1200x900 WebP at quality 88, without cropping. Thin background padding accommodates minor provider aspect-ratio differences.",
+  "caseStudy": "Existing real Taxi B&B desktop and mobile captures now appear together exclusively in the first client-project image.",
+  "studio": "Repeated current-homepage screenshot removed. The actual code excerpt remains.",
+  "localization": "Concept/archive labels, captions, image descriptions and Taxi screenshot alt text supplied in DE/EN/ES. Text inside generated illustrations is English.",
+  "truthfulness": "Generated website and workflow illustrations are labelled as concepts. No invented client outcomes, search ranks or score guarantees.",
+  "verification": {
+    "environment": "Local production build in Chromium; desktop/mobile viewport emulation.",
+    "commands": {
+      "npm run build": "passed, 24 routes",
+      "npm run typecheck": "passed",
+      "npm run check:seo": "passed, 18 indexable pages and 20 internal destinations",
+      "npm run check:browser": "passed, five accessibility scans and 12 viewport/locale interaction cases",
+      "git diff --check": "passed"
+    },
+    "layoutCases": 39,
+    "languages": [
+      "de",
+      "en",
+      "es"
+    ],
+    "homepageWidths": [
+      320,
+      390,
+      820,
+      1001,
+      1440
+    ],
+    "servicePages": 12,
+    "servicePageWidths": [
+      320,
+      1440
+    ],
+    "results": {
+      "missingImages": 0,
+      "browserErrors": 0,
+      "horizontalOverflow": 0,
+      "overlappingCaptions": 0,
+      "repeatedTaxiImagesInServices": 0,
+      "repeatedCurrentHeroScreenshots": 0,
+      "axeViolations": 0
+    },
+    "taxi": "One desktop image plus one mobile image in the first project; mobile device stays inside the composition at all checked widths.",
+    "visualInspection": "Desktop and mobile Taxi composition, all four service images at native resolution and rendered in the page, corrected mobile navigation and calendar text.",
+    "newAssetBytes": 72916,
+    "scoreLimit": "No new Lighthouse or Seobility score measured."
+  }
+}
