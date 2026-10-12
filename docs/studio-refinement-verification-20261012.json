@@ -1,0 +1,217 @@
+{
+  "date": "2026-10-12",
+  "scope": "Studio refinement and locally hosted motion film. Production build with desktop/mobile Chromium emulation; no physical iPhone/Safari or Lighthouse score claimed.",
+  "hero": "Scroll geometry, expansion, duration, text choreography and navigation preserved. Higher-resolution desktop frames only.",
+  "commands": {
+    "build": "passed",
+    "typecheck": "passed",
+    "check:seo": "21 indexable pages, 25 internal destinations",
+    "check:browser": "passed",
+    "check:motion": "passed",
+    "check:showreel": "passed"
+  },
+  "browser": [
+    {
+      "name": "desktop",
+      "lang": "de",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": [
+        "Webdesign. Mit Substanz."
+      ],
+      "title": "Webdesign Essen, SEO & Automatisierung | Hareb Digital",
+      "canonical": "https://hareb.digital/",
+      "brokenImages": [],
+      "errors": [],
+      "violations": []
+    },
+    {
+      "name": "mobile",
+      "lang": "de",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": [
+        "Webdesign. Mit Substanz."
+      ],
+      "title": "Webdesign Essen, SEO & Automatisierung | Hareb Digital",
+      "canonical": "https://hareb.digital/",
+      "brokenImages": [],
+      "errors": [],
+      "violations": []
+    },
+    {
+      "name": "english",
+      "lang": "en",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": [
+        "Digital. With substance."
+      ],
+      "title": "Web Design, SEO & Automation in Essen | Hareb Digital",
+      "canonical": "https://hareb.digital/en/",
+      "brokenImages": [],
+      "errors": [],
+      "violations": []
+    },
+    {
+      "name": "service",
+      "lang": "de",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "h1": [
+        "Webdesign & Entwicklung"
+      ],
+      "title": "Webdesign & Entwicklung in Essen | Hareb Digital",
+      "canonical": "https://hareb.digital/leistungen/neue-website/",
+      "brokenImages": [],
+      "errors": [],
+      "violations": []
+    },
+    {
+      "name": "contact",
+      "lang": "de",
+      "width": 390,
+      "scrollWidth": 390,
+      "h1": [
+        "Projekt anfragen"
+      ],
+      "title": "Projekt anfragen | Hareb Digital Essen",
+      "canonical": "https://hareb.digital/kontakt/",
+      "brokenImages": [],
+      "errors": [],
+      "violations": []
+    }
+  ],
+  "interactions": {
+    "viewports": [
+      {
+        "locale": "de",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "locale": "en/",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "locale": "es/",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "locale": "en/",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "locale": "es/",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "locale": "en/",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "locale": "es/",
+        "width": 768,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "width": 1920,
+        "passed": true
+      },
+      {
+        "locale": "en/",
+        "width": 1920,
+        "passed": true
+      },
+      {
+        "locale": "es/",
+        "width": 1920,
+        "passed": true
+      }
+    ],
+    "keyboard": true,
+    "mobileMenu": true,
+    "anchor": true,
+    "faq": true,
+    "servicePreselection": true,
+    "nativeFormValidation": true,
+    "languageQueryRetention": true,
+    "motionToggle": true
+  },
+  "heroMotion": [
+    {
+      "name": "desktop",
+      "reversibleFullscreen": true,
+      "immediateExpansion": true,
+      "navigationReturn": true,
+      "keyboardNavigationDuringFilm": true,
+      "reversibleCameraFrames": true,
+      "boundedFrameLoading": true,
+      "modalFocus": true,
+      "escapeRestoresFocus": true,
+      "motionOff": true
+    },
+    {
+      "name": "iphone",
+      "reversibleFullscreen": true,
+      "immediateExpansion": true,
+      "navigationReturn": true,
+      "keyboardNavigationDuringFilm": true,
+      "reversibleCameraFrames": true,
+      "boundedFrameLoading": true,
+      "modalFocus": true,
+      "escapeRestoresFocus": true,
+      "motionOff": true
+    },
+    {
+      "mode": "reduced-motion",
+      "noFrameDownloads": true
+    },
+    {
+      "mode": "save-data",
+      "noFrameDownloads": true
+    }
+  ],
+  "showreel": [
+    "lazy local media",
+    "muted inline autoplay upon visibility",
+    "loop",
+    "sound control",
+    "pause outside viewport",
+    "resume on return",
+    "manual pause respected",
+    "reduced-motion explicit playback"
+  ],
+  "contactTests": [
+    "client form validation",
+    "service preselection",
+    "failure retains message",
+    "success only on positive response",
+    "server validation and header-injection rejection",
+    "honeypot",
+    "rate limit",
+    "fixed sender and recipient",
+    "provider failure handling"
+  ],
+  "pending": [
+    "SMTP or Resend credentials absent. Direct delivery not activated or tested with real email. Clearly labelled mail-app fallback remains.",
+    "Original legal pages still require operator details and review. Placeholder gate is preserved.",
+    "No authentic portrait asset found. Typographic identity is used."
+  ]
+}

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ServiceVisual } from './service-visual'
+import { MotionShowcase } from './motion-showcase'
 import { notFound } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
@@ -16,25 +17,35 @@ const descriptions: Record<HdLang, string[]> = {
     'Website-Relaunch mit Hareb Digital: bestehende Inhalte bewahren, Design verbessern und Ladezeiten senken. Klare Planung und ein fester Ansprechpartner in Essen.',
     'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital aus Essen verbindet Abläufe mit deinen bestehenden Werkzeugen.',
     'Technisches SEO und AEO aus Essen: klare Seitenstruktur, lokale Sichtbarkeit und verständliche Antworten. Hareb Digital prüft und verbessert deine Website.',
+    'Social Media und Ads aus Essen: Konzepte, Reels, Motion Graphics und Werbemittel von Hareb Digital. Passend zu deiner Marke, Zielgruppe und Landingpage.',
   ],
   en: [
     'Bespoke web design from Essen: content, responsive development and technical SEO. Plan your new website directly with Issa Hareb at Hareb Digital.',
     'Redesign your website with Hareb Digital: preserve useful content, improve the design and reduce loading times. Clear planning and one point of contact.',
     'Automate recurring tasks, from quotes and appointment reminders to enquiries. Hareb Digital connects workflows with the tools your business already uses.',
     'Technical SEO and AEO from Essen: clear site structure, local visibility and useful answers. Hareb Digital reviews and improves your existing website.',
+    'Social content and ads from Essen: concepts, reels, motion graphics and advertising assets by Hareb Digital, aligned with your brand and landing page.',
   ],
   es: [
     'Diseño web a medida desde Essen: contenidos, desarrollo adaptable y SEO técnico. Planifica tu nueva web directamente con Issa Hareb en Hareb Digital.',
     'Rediseña tu web con Hareb Digital: conserva los contenidos útiles, mejora el diseño y reduce los tiempos de carga. Planificación clara y contacto directo.',
     'Automatiza tareas recurrentes, presupuestos, recordatorios y consultas. Hareb Digital conecta procesos con las herramientas que tu empresa ya utiliza.',
     'SEO técnico y AEO desde Essen: estructura clara, visibilidad local y respuestas útiles. Hareb Digital analiza y mejora tu sitio web actual.',
+    'Contenido social y anuncios desde Essen: conceptos, reels, motion graphics y piezas publicitarias de Hareb Digital para tu marca y tu landing page.',
   ],
 }
 export function serviceMetadata(lang: HdLang, slug: string) {
-  const index = HD_TEXTE[lang].leistungen.punkte.findIndex((l) => l.slug === slug)
+  const index = HD_TEXTE[lang].leistungen.punkte.findIndex(
+    (l) => l.slug === slug,
+  )
   if (index < 0) notFound()
   const title = `${STUDIO_COPY[lang].serviceNames[index]}${lang === 'de' ? ' in Essen' : ''} | Hareb Digital`
-  return pageMetadata(lang, `/leistungen/${slug}/`, title, descriptions[lang][index])
+  return pageMetadata(
+    lang,
+    `/leistungen/${slug}/`,
+    title,
+    descriptions[lang][index],
+  )
 }
 export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
   const t = STUDIO_COPY[lang]
@@ -57,15 +68,19 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       </span>
       <h1 className="mt-5">{t.serviceNames[i]}</h1>
       <p className="service-detail-lead">{service.detail.vorspann}</p>
-      <figure className="service-detail-art" data-reveal>
-        <ServiceVisual index={i} lang={lang} />
-        <figcaption>
-          <span>
-            0{i + 1} / {t.serviceNames[i]}
-          </span>
-          <span>HAREB DIGITAL</span>
-        </figcaption>
-      </figure>
+      {i === 4 ? (
+        <MotionShowcase lang={lang} />
+      ) : (
+        <figure className="service-detail-art" data-reveal>
+          <ServiceVisual index={i} lang={lang} />
+          <figcaption>
+            <span>
+              0{i + 1} / {t.serviceNames[i]}
+            </span>
+            <span>HAREB DIGITAL</span>
+          </figcaption>
+        </figure>
+      )}
       <div className="service-detail-grid" data-reveal>
         <section>
           <h2>{service.detail.dabei.titel}</h2>

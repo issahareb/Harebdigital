@@ -1,39 +1,67 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
-import type { HdTexte } from '@/lib/hd-texte'
+import type { HdLang, HdTexte } from '@/lib/hd-texte'
 
-/**
- * Das Anfrageformular.
- *
- * Es hat keinen eigenen Empfaenger. Es setzt eine E-Mail auf und uebergibt
- * sie dem Mailprogramm des Besuchers.
- *
- * Das ist eine Entscheidung und kein Provisorium: einen eigenen Versand gibt
- * es auf dieser Domain noch nicht, und ein Formular, das "danke" sagt und die
- * Nachricht verwirft, ist schlechter als gar keines — der Absender glaubt,
- * er habe Kontakt aufgenommen, und versucht es kein zweites Mal. So sieht er,
- * was rausgeht, hat es im eigenen Postausgang, und nichts geht still
- * verloren. Sobald ein Versand steht, wird hier nur das Absenden getauscht.
- *
- * Die Vorauswahl kommt aus der Adresse: `/kontakt/?leistung=automatisierung`.
- * Wer auf einer Kachel oder einer Detailseite auf "anfragen" geklickt hat,
- * findet die Leistung bereits ausgewaehlt vor. Passt der Wert zu keiner
- * Leistung, bleibt die leere Auswahl stehen statt einer falschen — eine
- * Adresse laesst sich von Hand tippen, und dann darf nichts Erfundenes
- * dastehen.
- */
+const COPY = {
+  de: {
+    send: 'Anfrage senden',
+    sending: 'Wird gesendet …',
+    mail: 'E-Mail vorbereiten',
+    checking: 'Wird vorbereitet …',
+    direct: 'Deine Anfrage wird direkt an Issa gesendet.',
+    fallback:
+      'Öffnet dein Mailprogramm mit der vorbereiteten Anfrage. Dort kannst du sie versenden.',
+    success: 'Deine Anfrage ist angekommen. Ich melde mich persönlich bei dir.',
+    error:
+      'Die Anfrage konnte gerade nicht versendet werden. Deine Angaben bleiben erhalten. Versuche es erneut oder bereite eine E-Mail vor.',
+    required: '* Pflichtfelder',
+    privacy: 'Datenschutz',
+    website: 'Website (bitte leer lassen)',
+  },
+  en: {
+    send: 'Send enquiry',
+    sending: 'Sending …',
+    mail: 'Prepare email',
+    checking: 'Preparing …',
+    direct: 'Your enquiry is sent directly to Issa.',
+    fallback: 'Opens your email app with a prepared enquiry for you to send.',
+    success: 'Your enquiry has arrived. I will reply personally.',
+    error:
+      'Your enquiry could not be sent just now. Your details are still here. Try again or prepare an email.',
+    required: '* Required fields',
+    privacy: 'Privacy',
+    website: 'Website (leave empty)',
+  },
+  es: {
+    send: 'Enviar consulta',
+    sending: 'Enviando …',
+    mail: 'Preparar correo',
+    checking: 'Preparando …',
+    direct: 'Tu consulta se envía directamente a Issa.',
+    fallback:
+      'Abre tu aplicación de correo con la consulta preparada para que la envíes.',
+    success: 'Tu consulta ha llegado. Te responderé personalmente.',
+    error:
+      'No se ha podido enviar la consulta. Tus datos siguen aquí. Inténtalo de nuevo o prepara un correo.',
+    required: '* Campos obligatorios',
+    privacy: 'Privacidad',
+    website: 'Sitio web (dejar vacío)',
+  },
+}
 
 export function Anfrageformular({
   f,
   services,
   epost,
+  lang,
 }: {
   f: HdTexte['kontakt']['formular']
   services: { slug: string; titel: string }[]
   epost: string
+  lang: HdLang
 }) {
   const parameter = useSearchParams()
   const ausAdresse = parameter.get('leistung') ?? ''
@@ -44,30 +72,85 @@ export function Anfrageformular({
   const [absender, setAbsender] = useState('')
   const [nachricht, setNachricht] = useState('')
 
-  const gewaehlt = services.find((l) => l.slug === leistung)
-
-  const absenden = (e: React.FormEvent) => {
-    e.preventDefault()
-    const betreff = gewaehlt ? `${f.titel}: ${gewaehlt.titel}` : f.titel
-    /* Die Leistung steht im Betreff UND im Text. Betreffzeilen werden in
-       Postfaechern abgeschnitten; der Text nicht. */
-    const koerper = [
-      gewaehlt ? `${f.leistung} ${gewaehlt.titel}` : '',
-      name ? `${f.name}: ${name}` : '',
-      absender ? `${f.epost}: ${absender}` : '',
-      '',
-      nachricht,
-    ]
-      .filter((z, i, alle) => z !== '' || alle[i + 1] !== undefined)
-      .join('\n')
-    window.location.href = `mailto:${epost}?subject=${encodeURIComponent(
-      betreff,
-    )}&body=${encodeURIComponent(koerper)}`
+  const [website, setWebsite] = useState('')
+  const [available, setAvailable] = useState<boolean | null>(null)
+  const [status, setStatus] = useState<
+    'idle' | 'sending' | 'success' | 'error'
+  >('idle')
+  const t = COPY[lang]
+  useEffect(() => {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 8000)
+    let active = true
+    fetch('/api/contact', { signal: controller.signal, cache: 'no-store' })
+      .then((r) => (r.ok ? r.json() : { available: false }))
+      .then((data) => {
+        if (active) setAvailable(data.available === true)
+      })
+      .catch(() => {
+        if (active) setAvailable(false)
+      })
+      .finally(() => clearTimeout(timeout))
+    return () => {
+      active = false
+      controller.abort()
+      clearTimeout(timeout)
+    }
+  }, [])
+  const selected = services.find((s) => s.slug === leistung)
+  const subject = selected ? `${f.titel}: ${selected.titel}` : f.titel
+  const body = [
+    selected ? `${f.leistung}: ${selected.titel}` : '',
+    `${f.name}: ${name}`,
+    `${f.epost}: ${absender}`,
+    '',
+    nachricht,
+  ].join('\n')
+  const mailto = `mailto:${epost}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  const absenden = async (event: React.FormEvent) => {
+    event.preventDefault()
+    if (
+      website ||
+      status === 'sending' ||
+      status === 'success' ||
+      available === null
+    )
+      return
+    if (!available) {
+      window.location.href = mailto
+      return
+    }
+    setStatus('sending')
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email: absender,
+          message: nachricht,
+          service: leistung,
+          language: lang,
+          website,
+        }),
+        signal: AbortSignal.timeout(20000),
+      })
+      const data = await response.json()
+      if (!response.ok || data.ok !== true) throw new Error('Delivery failed')
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
-    <form onSubmit={absenden} className="mt-12 max-w-xl space-y-6">
-      <h2 className="font-display text-xl font-bold tracking-tight">{f.titel}</h2>
+    <form
+      onSubmit={absenden}
+      className="contact-form"
+      aria-busy={status === 'sending'}
+    >
+      <h2>{f.titel}</h2>
+      <p className="form-note">{t.required}</p>
 
       <div>
         <label htmlFor="leistung" className="hd-feld-label">
@@ -89,16 +172,19 @@ export function Anfrageformular({
         </select>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="contact-field-grid">
         <div>
           <label htmlFor="name" className="hd-feld-label">
-            {f.name}
+            {f.name} *
           </label>
           <input
             id="name"
             name="name"
             type="text"
             autoComplete="name"
+            required
+            minLength={2}
+            maxLength={100}
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="hd-feld"
@@ -106,7 +192,7 @@ export function Anfrageformular({
         </div>
         <div>
           <label htmlFor="epost" className="hd-feld-label">
-            {f.epost}
+            {f.epost} *
           </label>
           <input
             id="epost"
@@ -114,6 +200,8 @@ export function Anfrageformular({
             type="email"
             inputMode="email"
             autoComplete="email"
+            required
+            maxLength={254}
             /* Adressen tippt niemand als Prosa — die Rechtschreibpruefung
                unterringelt sie nur. */
             spellCheck={false}
@@ -131,7 +219,7 @@ export function Anfrageformular({
         <textarea
           id="nachricht"
           name="nachricht"
-          rows={5}
+          rows={6}
           required
           minLength={10}
           maxLength={5000}
@@ -142,14 +230,52 @@ export function Anfrageformular({
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <button type="submit" className="hd-cta px-7 py-3.5 text-[17px]">
-          {f.senden}
-          <ArrowRight className="h-5 w-5" aria-hidden />
+      <div className="form-honeypot" aria-hidden="true">
+        <label htmlFor="contact-website">{t.website}</label>
+        <input
+          id="contact-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
+      <div className="form-actions">
+        <button
+          type="submit"
+          className="hd-cta px-7 py-3.5 text-[17px]"
+          disabled={
+            available === null || status === 'sending' || status === 'success'
+          }
+        >
+          {status === 'sending'
+            ? t.sending
+            : available === null
+              ? t.checking
+              : available
+                ? t.send
+                : t.mail}
+          <ArrowRight size={18} aria-hidden />
         </button>
-        <p className="max-w-[34ch] text-[14px] leading-snug text-[color:var(--hd-ink-soft)]">
-          {f.hinweis}
+        <p className="form-note">
+          {available ? t.direct : t.fallback}{' '}
+          <a className="form-fallback-link" href="/datenschutz/">
+            {t.privacy}
+          </a>
         </p>
+      </div>
+      <div aria-live="polite" aria-atomic="true">
+        {(status === 'success' || status === 'error') && (
+          <div className="form-status" data-error={status === 'error'}>
+            <p>{status === 'success' ? t.success : t.error}</p>
+            {status === 'error' && (
+              <a className="form-fallback-link" href={mailto}>
+                {t.mail}
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </form>
   )

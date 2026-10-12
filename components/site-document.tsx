@@ -4,6 +4,7 @@ import type { HdLang } from '@/lib/hd-texte'
 import { DOMAIN } from '@/lib/marke'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import '@/app/globals.css'
+import '@/app/refinement.css'
 
 const display = Manrope({ subsets: ['latin'], variable: '--font-heading-face', display: 'swap' })
 

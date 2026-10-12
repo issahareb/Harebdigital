@@ -16,9 +16,10 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     const context = surface.getContext('2d', { alpha: false })
     if (!context) return
     const mobile = matchMedia('(max-width: 700px)').matches
+    const highResolution = !mobile && (innerWidth >= 1200 || devicePixelRatio > 1)
     const count = mobile ? 96 : 120
-    surface.width = mobile ? 448 : 960
-    surface.height = mobile ? 796 : 540
+    surface.width = mobile ? 448 : highResolution ? 1280 : 960
+    surface.height = mobile ? 796 : highResolution ? 720 : 540
     const images: (HTMLImageElement | undefined)[] = Array(count)
     const requested = new Set<number>()
     let alive = true
@@ -30,7 +31,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     const clamp = (value: number) => Math.max(0, Math.min(1, value))
     const ease = (value: number) => value * value * (3 - 2 * value)
     if (header) header.dataset.heroMotion = 'true'
-    const folder = mobile ? 'mobile' : 'desktop'
+    const folder = mobile ? 'mobile' : highResolution ? 'desktop-hq-v1' : 'desktop'
     const draw = () => {
       let nearest = target
       if (!images[nearest]) {

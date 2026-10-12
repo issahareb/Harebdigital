@@ -1,4 +1,5 @@
 /** Shared service, contact and project copy. Public language selection is URL-based; see lib/locale.ts. */
+import { SOCIAL_SERVICES } from './refinement-copy'
 
 export const HD_SPRACHEN = ['de', 'en', 'es'] as const
 export type HdLang = (typeof HD_SPRACHEN)[number]
@@ -655,7 +656,7 @@ const DE: HdTexte = {
       {
         n: '02',
         t: 'Ich sage, was geht',
-        b: 'Innerhalb von 24 Stunden: ein fester Preis statt eines Stundenzettels, wie lange es dauert, ob es sich lohnt. Auch wenn die Antwort nein ist.',
+        b: 'In der Regel innerhalb eines Werktags bekommst du eine erste Einschätzung. Umfang, Zeitplan und Festpreis klären wir vor dem Start.',
       },
       {
         n: '03',
@@ -1054,7 +1055,7 @@ const EN: HdTexte = {
       {
         n: '02',
         t: 'I tell you what is possible',
-        b: 'Within 24 hours: a fixed price rather than a timesheet, how long it takes, whether it is worth it. Including when the answer is no.',
+        b: 'You usually receive an initial assessment within one business day. We agree the scope, timeline and fixed price before starting.',
       },
       {
         n: '03',
@@ -1453,7 +1454,7 @@ const ES: HdTexte = {
       {
         n: '02',
         t: 'Yo te digo qué se puede',
-        b: 'En menos de 24 horas: un precio cerrado en lugar de una hoja de horas, lo que tarda y si merece la pena. También cuando la respuesta es no.',
+        b: 'Normalmente recibes una primera valoración en un día laborable. Acordamos alcance, plazos y precio cerrado antes de empezar.',
       },
       {
         n: '03',
@@ -1506,4 +1507,8 @@ const ES: HdTexte = {
   },
 }
 
-export const HD_TEXTE: Record<HdLang, HdTexte> = { de: DE, en: EN, es: ES }
+export const HD_TEXTE: Record<HdLang, HdTexte> = {
+  de: { ...DE, leistungen: { ...DE.leistungen, punkte: [...DE.leistungen.punkte, SOCIAL_SERVICES.de] } },
+  en: { ...EN, leistungen: { ...EN.leistungen, punkte: [...EN.leistungen.punkte, SOCIAL_SERVICES.en] } },
+  es: { ...ES, leistungen: { ...ES.leistungen, punkte: [...ES.leistungen.punkte, SOCIAL_SERVICES.es] } },
+}

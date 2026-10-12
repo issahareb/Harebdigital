@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-12",
+  "showreel": {
+    "source": "Hareb-Digital-Final.mp4",
+    "version": 5,
+    "libraryFileId": "libfile_ef3a898a5a9c8191900a8b3b001900c6",
+    "output": "public/studio/showreel/hareb-digital-final-v5.mp4",
+    "sha256": "17dcac20030a920a0193bceb0a59680da57e06cc8998b80eb0bedb98e6cee5e8",
+    "dimensions": [
+      910,
+      512
+    ],
+    "durationSeconds": 24.166667,
+    "modification": "Lossless stream copy with faststart. Original H.264 video and AAC audio retained.",
+    "poster": "Original frame at 22 seconds, WebP quality 92."
+  },
+  "hero": {
+    "source": "public/studio/impulse/camera-flight.mp4",
+    "sourceDimensions": [
+      1280,
+      714
+    ],
+    "output": "public/studio/impulse/sequence/desktop-hq-v1/",
+    "dimensions": [
+      1280,
+      720
+    ],
+    "frameCount": 120,
+    "note": "Source-resolution export; no claim of 4K. Existing 960x540 and mobile variants retained."
+  },
+  "serviceIllustrations": "Native HTML/CSS and existing real site screenshots replace raster concept illustrations. No fabricated client metrics."
+}

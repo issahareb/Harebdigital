@@ -8,6 +8,7 @@ import { localizedPath } from '@/lib/locale'
 import { DOMAIN, marke } from '@/lib/marke'
 import { JsonLd, ORGANIZATION_ID } from './studio-schema'
 import { pageMetadata } from '@/lib/seo'
+import { REFINEMENT } from '@/lib/refinement-copy'
 
 export function contactMetadata(lang: HdLang) {
   return pageMetadata(
@@ -20,7 +21,9 @@ export function contactMetadata(lang: HdLang) {
 export function ContactPage({ lang }: { lang: HdLang }) {
   const t = HD_TEXTE[lang].kontakt
   const copy = STUDIO_COPY[lang]
-  const telephone = /^[+\d][\d\s()/.-]+$/.test(marke.telefon) ? marke.telefon : null
+  const telephone = /^[+\d][\d\s()/.-]+$/.test(marke.telefon)
+    ? marke.telefon
+    : null
   return (
     <HdUnterseite lang={lang} motiv>
       <nav className="breadcrumbs" aria-label={copy.breadcrumb}>
@@ -31,6 +34,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
       <span className="eyebrow">HAREB DIGITAL · ESSEN</span>
       <h1 className="mt-5">{t.titel}</h1>
       <p className="service-detail-lead">{copy.contactText}</p>
+      <p className="contact-reassurance">{REFINEMENT[lang].reply}</p>
       <div className="contact-columns">
         <div>
           <Suspense
@@ -41,11 +45,14 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             }
           >
             <Anfrageformular
+              lang={lang}
               f={t.formular}
-              services={HD_TEXTE[lang].leistungen.punkte.map(({ slug, titel }) => ({
-                slug,
-                titel,
-              }))}
+              services={HD_TEXTE[lang].leistungen.punkte.map(
+                ({ slug, titel }) => ({
+                  slug,
+                  titel,
+                }),
+              )}
               epost={marke.email}
             />
           </Suspense>
@@ -69,13 +76,20 @@ export function ContactPage({ lang }: { lang: HdLang }) {
               <div>
                 <dt>{t.telefon}</dt>
                 <dd>
-                  <a href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
+                  <a href={`tel:${telephone.replace(/\s/g, '')}`}>
+                    {telephone}
+                  </a>
                 </dd>
               </div>
             )}
             <div>
               <dt>{t.sitz}</dt>
-              <dd>{marke.ort}, Deutschland</dd>
+              <dd>
+                {marke.ort}
+                <span className="contact-location-note">
+                  {REFINEMENT[lang].seatNote}
+                </span>
+              </dd>
             </div>
             <div>
               <dt>

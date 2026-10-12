@@ -9,6 +9,7 @@ const paths = [
   '/leistungen/website-ueberarbeiten/',
   '/leistungen/automatisierung/',
   '/leistungen/gefunden-werden/',
+  '/leistungen/social-media-ads/',
 ]
 const languages = ['de', 'en', 'es']
 const at = (lang, path) => (lang === 'de' ? path : `/${lang}${path}`)
@@ -99,7 +100,7 @@ for (const lang of languages) {
 for (const path of internal)
   assert.equal((await fetch(`${base}${path}`)).status, 200, `Broken internal link: ${path}`)
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text()
-assert.equal((sitemap.match(/<loc>/g) || []).length, 18, '18 localized sitemap URLs')
+assert.equal((sitemap.match(/<loc>/g) || []).length, 21, '21 localized sitemap URLs')
 assert(!sitemap.includes('<lastmod>'), 'No fabricated lastmod dates')
 const robots = await (await fetch(`${base}/robots.txt`)).text()
 assert(robots.includes(`Sitemap: ${origin}/sitemap.xml`), 'Sitemap declaration')

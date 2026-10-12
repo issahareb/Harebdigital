@@ -1,55 +1,308 @@
-/* Dedicated Higgsfield concepts and one archive capture; no repeated project artwork. */
+/* Service concepts are native layouts: sharp at every density, localised and scalable. */
 .service-visual {
   container-type: inline-size;
   width: 100%;
-  color: #202820;
-  background: #e8e9e2;
+  color: #edf0e6;
+  background: #20261f;
+  overflow: hidden;
 }
-.service-visual-inner {
+.native-art {
+  min-width: 0;
+  padding: 4.5cqw;
+}
+.art-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #bbc5ad;
+  font-size: clamp(8px, 1.65cqw, 12px);
+  letter-spacing: 0.05em;
+  margin-bottom: 6cqw;
+}
+.art-topline > span:last-child {
+  white-space: nowrap;
+}
+.responsive-art {
+  position: relative;
+  padding: 0 9cqw 0 1cqw;
+  min-height: 40cqw;
+}
+.art-browser {
+  width: 90%;
+  background: #f3f1eb;
+  color: #23271f;
+  box-shadow: 0 12px 28px #0003;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.art-browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 4cqw;
+  min-height: 17px;
+  background: #e3e5db;
+  padding: 0 2cqw;
+}
+.art-browser-chrome i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #a4ad98;
+}
+.art-browser-chrome > span {
+  margin: auto;
+  font-size: 1.3cqw;
+}
+.art-website {
+  padding: 3cqw;
+}
+.art-site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2cqw;
+}
+.art-site-nav b span {
+  color: #66813d;
+}
+.art-site-hero {
+  padding: 5cqw 0 3cqw;
   display: grid;
-  gap: 14px;
-  padding: clamp(14px, 3.2cqw, 24px);
+  gap: 1.6cqw;
 }
-.visual-kicker,
-.visual-caption {
-  font-size: clamp(10px, 1.85cqw, 14px);
-  line-height: 1.5;
+.art-site-hero small {
+  font-size: 1.25cqw;
+  letter-spacing: 0.16em;
+}
+.art-site-hero strong {
+  font-size: 5.2cqw;
+  font-weight: 500;
+  letter-spacing: -0.065em;
+}
+.art-site-hero > span {
+  font-size: 1.9cqw;
+}
+.art-fake-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  gap: 3cqw;
+  background: #d4ed8a;
+  padding: 1.3cqw 1.8cqw;
+  font-size: 1.6cqw;
+}
+.art-content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3cqw;
+}
+.art-content-grid span {
+  height: 6cqw;
+  background: #dedfd5;
+  border-top: 1px solid #b5bf9e;
+}
+.art-phone {
+  position: absolute;
+  right: 1cqw;
+  bottom: -1cqw;
+  width: 23cqw;
+  padding: 2.5cqw;
+  background: #f3f1eb;
+  color: #23271f;
+  border: 3px solid #87917e;
+  border-radius: 2.8cqw;
+  display: grid;
+  gap: 2.2cqw;
+  box-shadow: 0 10px 20px #0004;
+}
+.art-phone-speaker {
+  width: 6cqw;
+  height: 2px;
+  background: #b4b9ae;
+  margin: -1cqw auto 0;
+  border-radius: 3px;
+}
+.art-phone > b {
+  font-size: 1.7cqw;
+}
+.art-phone > strong {
+  font-size: 3.7cqw;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+.art-phone > span {
+  font-size: 1.7cqw;
+}
+.art-phone .art-fake-button {
+  font-size: 1.4cqw;
+}
+.art-phone-card {
+  height: 6cqw;
+  background: #dedfd5;
+}
+.relaunch-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.8cqw;
+  padding-block: 2cqw 4cqw;
+  min-height: 40cqw;
+  align-items: center;
+}
+.relaunch-pair > div > span {
+  display: block;
+  font-size: 2.2cqw;
+  margin-bottom: 2cqw;
+  color: #d4ed8a;
+}
+.relaunch-pair img {
+  width: 100%;
+  height: 30cqw;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid #a0ab8e40;
+}
+.automation-art {
+  min-height: 40cqw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5cqw;
+  padding-block: 1cqw 3cqw;
+}
+.flow-caption {
+  font-size: 3.6cqw;
+  letter-spacing: -0.045em;
+}
+.flow-nodes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3cqw;
+}
+.flow-node {
+  position: relative;
+  border: 1px solid #72825c;
+  padding: 2.2cqw 1.3cqw;
+  display: grid;
+  gap: 2cqw;
+  justify-items: center;
+  background: #293226;
+}
+.flow-node > svg:not(.flow-connector) {
+  width: 5cqw;
+  height: 5cqw;
+  color: #d4ed8a;
+}
+.flow-node > strong {
+  font-size: clamp(8px, 1.8cqw, 14px);
   font-weight: 500;
 }
-.visual-kicker {
+.flow-step {
+  color: #a9b89a;
+  font-size: 1.6cqw;
+}
+.flow-connector {
+  position: absolute;
+  right: -2.9cqw;
+  top: 50%;
+  width: 2.6cqw;
+  color: #d4ed8a;
+}
+.flow-complete {
   display: flex;
-  align-items: baseline;
-  gap: 18px;
+  gap: 1.5cqw;
+  align-items: center;
+  font-size: 2cqw;
+  color: #bfcea9;
 }
-.visual-kicker > span:first-child {
-  color: #4f642b;
-  font-variant-numeric: tabular-nums;
-}
-.visual-caption {
-  border-top: 1px solid #bfc6b8;
-  padding-top: 12px;
-}
-.service-art-media {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: #201e1d;
-}
-.service-art-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.service-art-media--archive {
+.search-art {
+  min-height: 40cqw;
   display: grid;
-  place-items: center;
-  background: #202320;
+  align-content: center;
+  gap: 4cqw;
 }
-.service-art-media--archive img {
-  height: auto;
+.search-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3cqw;
 }
-
-/* The real Taxi B&B screenshots are shown together, exclusively in the case study. */
+.search-panel,
+.answer-panel {
+  background: #f3f1eb;
+  color: #263021;
+  padding: 3cqw;
+  min-width: 0;
+}
+.search-panel-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2cqw;
+  margin-bottom: 3cqw;
+}
+.search-input {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  align-items: center;
+  font-size: 1.6cqw;
+  border-bottom: 1px solid #c3cbb8;
+  padding-bottom: 1.5cqw;
+  margin-bottom: 2.5cqw;
+}
+.search-panel strong {
+  font-size: 2.2cqw;
+  display: block;
+}
+.search-panel small {
+  font-size: 1.4cqw;
+  color: #61704f;
+}
+.search-panel p,
+.answer-panel p {
+  font-size: 1.8cqw;
+  line-height: 1.6;
+  margin: 1.4cqw 0 2cqw;
+}
+.search-placeholder {
+  height: 1cqw;
+  background: #d7ddce;
+  margin-top: 1cqw;
+}
+.search-placeholder.short {
+  width: 70%;
+}
+.answer-panel > strong {
+  font-size: 2.5cqw;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.answer-spark {
+  font-size: 3cqw;
+  color: #66813d;
+}
+.answer-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 1cqw;
+  font-size: 1.45cqw;
+  background: #dce8c2;
+  padding: 1cqw;
+}
+.search-structure {
+  display: flex;
+  justify-content: center;
+  gap: 2cqw;
+}
+.search-structure span {
+  font-size: 1.8cqw;
+  color: #d4ed8a;
+  padding: 1cqw 3cqw;
+  border: 1px solid #72825c;
+  border-radius: 30px;
+}
+/* Real project screenshots remain distinct from illustrative service concepts. */
 .project-visual--responsive {
   container-type: inline-size;
 }
@@ -91,67 +344,11 @@
 .project-visual.project-visual--responsive:hover .project-screenshot {
   transform: none;
 }
-
-.studio-evidence {
-  min-width: 0;
-  container-type: inline-size;
-  background: #e2e6d9;
-  padding: 24px;
-}
-.studio-code {
-  display: grid;
-  gap: 8px;
-  background: #253026;
-  color: #f0f3e9;
-  padding: 5cqw;
-}
-.studio-code-file {
-  font: 500 12px/1.4 monospace;
-  color: #d4ed8a;
-}
-.studio-code-description {
-  font-size: 11px;
-  color: #c5d2bd;
-}
-.studio-code pre {
-  margin: 12px 0 0;
-  font: 400 clamp(10px, 2.6cqw, 14px) / 1.6 monospace;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.code-keyword {
-  color: #cbb6ee;
-}
-.code-string {
-  color: #d4ed8a;
-}
-.studio-evidence figcaption {
-  font-size: 11px;
-  padding-top: 18px;
-  color: #495343;
-  line-height: 1.5;
-}
-@media (max-width: 1000px) and (min-width: 601px) {
-  .services-section .service-list {
-    grid-template-columns: 1fr;
-  }
-}
 @media (max-width: 600px) {
-  .studio-evidence {
-    padding: 18px;
-  }
   .project-desktop-view .project-browserbar > svg {
     width: 11px;
-    height: 11px;
   }
   .project-desktop-view .project-browserbar > span {
     font-size: 7px;
   }
-}
-.social-proof-label {
-  display: block;
-  margin-bottom: 24px;
-  color: #c1c7b7;
-  font-size: 11px;
-  line-height: 1.5;
 }

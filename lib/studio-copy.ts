@@ -75,8 +75,14 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     heroAlt:
       'Ein Lichtfaden führt durch eine räumliche Landschaft aus Glas und gebürstetem Metall.',
     heroChapters: [
-      { label: 'SEO & AEO', title: 'Dein Angebot.\nKlar erklärt, leicht zu finden.' },
-      { label: 'Automatisierung', title: 'Von der Anfrage\nbis zur Bestätigung.' },
+      {
+        label: 'SEO & AEO',
+        title: 'Dein Angebot.\nKlar erklärt, leicht zu finden.',
+      },
+      {
+        label: 'Automatisierung',
+        title: 'Von der Anfrage\nbis zur Bestätigung.',
+      },
     ],
     strip: ['Strategie & Design', 'Entwicklung & Automatisierung', 'SEO & AEO'],
     approachLabel: 'Der Anspruch',
@@ -85,8 +91,14 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Deine Website soll mehr können als gut aussehen. Sie soll erklären, was dich besonders macht, gefunden werden und aus Interesse eine konkrete Anfrage machen. Dafür bringe ich Gestaltung, Entwicklung und Sichtbarkeit zusammen.',
     servicesTitle: 'Was dein nächster\nSchritt braucht.',
     servicesIntro:
-      'Vier Leistungen. Ein Ansprechpartner. Wir starten dort, wo es für deinen Betrieb den größten Unterschied macht.',
-    serviceNames: ['Webdesign & Entwicklung', 'Website-Relaunch', 'Automatisierung', 'SEO & AEO'],
+      'Websites, Sichtbarkeit und Automatisierung. Ein Ansprechpartner. Wir starten dort, wo es für deinen Betrieb den größten Unterschied macht.',
+    serviceNames: [
+      'Webdesign & Entwicklung',
+      'Website-Relaunch',
+      'Automatisierung',
+      'SEO & AEO',
+      'Social Media & Ads',
+    ],
     serviceTags: [
       'Von der ersten Idee bis zum Launch',
       'Bestehendes gezielt besser machen',
@@ -121,7 +133,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Was macht Hareb Digital?',
         answer:
-          'Hareb Digital ist das unabhängige Digitalstudio von Issa Hareb in Essen. Das Angebot umfasst individuelle Websites, die Überarbeitung bestehender Seiten, technische Suchmaschinenoptimierung (SEO), Answer Engine Optimization (AEO) und die Automatisierung wiederkehrender Abläufe.',
+          'Hareb Digital ist das unabhängige Digitalstudio von Issa Hareb in Essen. Das Angebot umfasst individuelle Websites, die Überarbeitung bestehender Seiten, technische Suchmaschinenoptimierung (SEO), Answer Engine Optimization (AEO), die Automatisierung wiederkehrender Abläufe sowie Social Content und Werbemittel.',
       },
       {
         question: 'Wie viel kostet eine Website?',
@@ -176,20 +188,33 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Scroll to explore',
     motionOff: 'Turn animation off',
     motionOn: 'Turn animation on',
-    heroAlt: 'A light thread leads through a spatial landscape of glass and brushed metal.',
+    heroAlt:
+      'A light thread leads through a spatial landscape of glass and brushed metal.',
     heroChapters: [
       { label: 'SEO & AEO', title: 'What you offer.\nClear and easy to find.' },
-      { label: 'Automation', title: 'From the first enquiry\nto the confirmation.' },
+      {
+        label: 'Automation',
+        title: 'From the first enquiry\nto the confirmation.',
+      },
     ],
     strip: ['Strategy & design', 'Development & automation', 'SEO & AEO'],
     approachLabel: 'The approach',
-    approach: ['Good design draws you in.', 'Good engineering takes you further.'],
+    approach: [
+      'Good design draws you in.',
+      'Good engineering takes you further.',
+    ],
     approachText:
       'Your website should do more than look good. It should explain what makes you different, be discoverable and turn interest into an enquiry. I bring design, development and visibility together to make that happen.',
     servicesTitle: 'What your next\nstep needs.',
     servicesIntro:
-      'Four services. One point of contact. We start where it makes the greatest difference for your business.',
-    serviceNames: ['Web design & development', 'Website redesign', 'Automation', 'SEO & AEO'],
+      'Websites, visibility and automation. One point of contact. We start where it makes the greatest difference for your business.',
+    serviceNames: [
+      'Web design & development',
+      'Website redesign',
+      'Automation',
+      'SEO & AEO',
+      'Social media & ads',
+    ],
     serviceTags: [
       'From the first idea to launch',
       'Make what exists work better',
@@ -197,7 +222,8 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'For search and clear answers',
     ],
     workTitle: 'Designed. Built.\nOut in the world.',
-    workIntro: 'Selected work. Real requirements, concrete solutions and a look at the result.',
+    workIntro:
+      'Selected work. Real requirements, concrete solutions and a look at the result.',
     caseType: 'Client project · Mobility',
     caseTitle: 'One city.\nA direct connection.',
     caseText:
@@ -223,7 +249,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'What does Hareb Digital do?',
         answer:
-          'Hareb Digital is Issa Hareb’s independent digital studio in Essen, Germany. Services include bespoke websites, website redesign, technical search engine optimisation (SEO), Answer Engine Optimization (AEO) and automation of recurring workflows.',
+          'Hareb Digital is Issa Hareb’s independent digital studio in Essen, Germany. Services include bespoke websites, website redesign, technical search engine optimisation (SEO), Answer Engine Optimization (AEO), workflow automation, social content and ad creative.',
       },
       {
         question: 'How much does a website cost?',
@@ -278,20 +304,36 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Desliza para descubrir',
     motionOff: 'Desactivar animación',
     motionOn: 'Activar animación',
-    heroAlt: 'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
+    heroAlt:
+      'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
     heroChapters: [
-      { label: 'SEO y AEO', title: 'Lo que ofreces.\nClaro y fácil de encontrar.' },
-      { label: 'Automatización', title: 'Desde la primera consulta\nhasta la confirmación.' },
+      {
+        label: 'SEO y AEO',
+        title: 'Lo que ofreces.\nClaro y fácil de encontrar.',
+      },
+      {
+        label: 'Automatización',
+        title: 'Desde la primera consulta\nhasta la confirmación.',
+      },
     ],
     strip: ['Estrategia y diseño', 'Desarrollo y automatización', 'SEO y AEO'],
     approachLabel: 'El enfoque',
-    approach: ['El buen diseño atrae.', 'La buena tecnología te lleva más lejos.'],
+    approach: [
+      'El buen diseño atrae.',
+      'La buena tecnología te lleva más lejos.',
+    ],
     approachText:
       'Tu web debe hacer más que verse bien. Debe explicar qué te hace diferente, ser fácil de encontrar y convertir el interés en una consulta. Para lograrlo, uno diseño, desarrollo y visibilidad.',
     servicesTitle: 'Lo que necesita\ntu siguiente paso.',
     servicesIntro:
-      'Cuatro servicios. Una persona de contacto. Empezamos donde más se note la diferencia para tu negocio.',
-    serviceNames: ['Diseño y desarrollo web', 'Rediseño web', 'Automatización', 'SEO y AEO'],
+      'Webs, visibilidad y automatización. Una persona de contacto. Empezamos donde más se note la diferencia para tu negocio.',
+    serviceNames: [
+      'Diseño y desarrollo web',
+      'Rediseño web',
+      'Automatización',
+      'SEO y AEO',
+      'Redes sociales y publicidad',
+    ],
     serviceTags: [
       'De la primera idea al lanzamiento',
       'Mejorar lo que ya existe',
@@ -326,7 +368,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: '¿Qué hace Hareb Digital?',
         answer:
-          'Hareb Digital es el estudio digital independiente de Issa Hareb en Essen, Alemania. Ofrece webs a medida, rediseño, optimización técnica para buscadores (SEO), optimización para motores de respuesta (AEO) y automatización de tareas recurrentes.',
+          'Hareb Digital es el estudio digital independiente de Issa Hareb en Essen, Alemania. Ofrece webs a medida, rediseño, optimización técnica para buscadores (SEO), optimización para motores de respuesta (AEO), automatización de tareas, contenido social y piezas publicitarias.',
       },
       {
         question: '¿Cuánto cuesta una web?',

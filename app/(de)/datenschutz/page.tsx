@@ -10,29 +10,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 }
 
-/*
- * ACHTUNG — das ist ein GERÜST, keine fertige Datenschutzerklärung.
- *
- * Der Text stand vorher schon hier und deckte eine Seite ab, die nichts tat
- * ausser Inhalte auszuliefern: keine Cookies, keine Analyse, keine fremden
- * Schriften, kein Formular. Mit der Landingpage aus dem Portfolio stimmt das
- * an drei Stellen nicht mehr, und alle drei stehen jetzt unten:
- *
- *   1. Der Sprachschalter setzt einen Keks (`hd-sprache`). Er ist
- *      zustimmungsfrei nach § 25 Abs. 2 Nr. 2 TTDSG — er speichert eine
- *      Einstellung, die der Besucher selbst vorgenommen hat —, aber er ist da,
- *      und ein Satz "diese Seite setzt keine Cookies" wäre schlicht falsch.
- *   2. Die Seite wird bei jedem Aufruf gerendert, weil sie den
- *      Accept-Language-Kopf liest. Der Kopf wird ausgewertet und nicht
- *      gespeichert; das gehört trotzdem dazu.
- *   3. Vier Schriftfamilien von Google Fonts — von `next/font` beim Build
- *      heruntergeladen und von dieser Domain ausgeliefert, es geht also keine
- *      Anfrage des Besuchers an Google. Genau deshalb ist es erwähnenswert.
- *
- * Sobald etwas dazukommt — ein Kontaktformular, das Lukas-Widget, Analyse,
- * eine Kartenansicht — muss dieser Text erweitert werden, und dann gehoert er
- * von jemandem geprueft, der dafuer haftet. Ich bin das nicht.
- */
+/* Legal review remains outstanding. Keep this notice until reviewed. */
 export default async function Datenschutz() {
   return (
     <HdUnterseite lang={await sprache()}>
@@ -76,7 +54,7 @@ export default async function Datenschutz() {
           <Rechtsabschnitt titel="Keine Analyse, keine fremden Server">
             <p>
               Diese Seite bindet keine Analysedienste, keine Werbenetzwerke und keine Inhalte
-              fremder Anbieter ein. Die verwendeten Schriften (DM Sans und Manrope) stammen
+              fremder Anbieter ein. Die verwendete Schrift Manrope stammt
               ursprünglich von Google Fonts, wird aber beim Erstellen der Seite heruntergeladen und
               von dieser Domain ausgeliefert — Ihr Browser stellt deshalb keine Anfrage an Google.
               Bilder und Filme liegen ebenfalls auf dieser Domain.

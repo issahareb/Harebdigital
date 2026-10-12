@@ -44,6 +44,8 @@ assert.equal(await p.locator('#faq details').nth(1).getAttribute('open'), '')
 await p.goto(base + '/kontakt/?leistung=automatisierung', { waitUntil: 'networkidle' })
 assert.equal(await p.locator('#leistung').inputValue(), 'automatisierung')
 assert.equal(await p.locator('form').evaluate((el) => el.checkValidity()), false)
+await p.locator('#name').fill('QA Test')
+await p.locator('#epost').fill('qa@example.com')
 await p.locator('#nachricht').fill('Bitte meine Buchungsanfragen automatisieren.')
 assert.equal(await p.locator('form').evaluate((el) => el.checkValidity()), true)
 assert.equal(
