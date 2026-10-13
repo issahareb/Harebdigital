@@ -36,6 +36,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
               addressLocality: marke.ort,
               addressCountry: marke.land,
             },
+            areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'Country', name: 'Germany' }],
             sameAs: ['https://share.google/EUZlSQOOkoXIK0AMM', PORTFOLIO],
           },
           {

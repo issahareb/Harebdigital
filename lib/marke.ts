@@ -28,7 +28,8 @@ export const marke = {
   telefon: PLATZHALTER,
   strasse: "Europaring 90",
   plz: "53757",
-  ort: "Sankt Augustin",
+  ort: "Sankt Augustin", // Geschäftssitz für rechtliche Angaben
+  arbeitsort: "Essen",
   land: "DE",
   inhaber: "Issa Hareb",
   portfolio: PORTFOLIO,

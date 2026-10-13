@@ -75,9 +75,9 @@ export function ContactPage({ lang }: { lang: HdLang }) {
               </div>
             )}
             <div>
-              <dt>{t.sitz}</dt>
+              <dt>{lang === 'de' ? 'Arbeitsort' : lang === 'en' ? 'Working from' : 'Lugar de trabajo'}</dt>
               <dd>
-                {marke.ort}, {lang === 'de' ? 'Deutschland' : lang === 'en' ? 'Germany' : 'Alemania'}
+                {marke.arbeitsort}, {lang === 'de' ? 'Deutschland' : lang === 'en' ? 'Germany' : 'Alemania'}
               </dd>
             </div>
             <div>

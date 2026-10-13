@@ -141,7 +141,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Arbeitest du nur mit Unternehmen aus Essen?',
         answer:
-          'Hareb Digital sitzt in Essen und arbeitet auch überregional. Planung, Entwürfe und Abstimmungen können digital stattfinden. Für eine gute Zusammenarbeit zählen ein klarer Ansprechpartner und kurze Wege.',
+          'Ich arbeite von Essen aus und betreue auch überregionale Projekte. Planung, Entwürfe und Abstimmungen können digital stattfinden. Für eine gute Zusammenarbeit zählen ein klarer Ansprechpartner und kurze Wege.',
       },
       {
         question: 'Kann meine bestehende Website erhalten bleiben?',
@@ -243,7 +243,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Do you only work with businesses in Essen?',
         answer:
-          'The studio is based in Essen and also works remotely with businesses elsewhere. Planning, design reviews and discussions can all happen online.',
+          'I work from Essen and also collaborate remotely with businesses elsewhere. Planning, design reviews and discussions can all happen online.',
       },
       {
         question: 'Can my existing website be preserved?',
@@ -346,7 +346,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: '¿Solo trabajas con empresas de Essen?',
         answer:
-          'El estudio está en Essen y también trabaja a distancia con empresas de otras ciudades. La planificación, las revisiones y las conversaciones pueden realizarse online.',
+          'Trabajo desde Essen y también colaboro a distancia con empresas de otras ciudades. La planificación, las revisiones y las conversaciones pueden realizarse online.',
       },
       {
         question: '¿Se puede conservar mi web actual?',

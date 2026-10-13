@@ -10,6 +10,7 @@ const display = Manrope({ subsets: ['latin'], variable: '--font-heading-face', d
 export const siteMetadata: Metadata = {
   metadataBase: new URL(DOMAIN),
   applicationName: 'Hareb Digital',
+  verification: { google: 'oH9Qez4V7zOGeKLuPsRSlkHTJR9rrxAnXCHqjjbEiEY' },
   robots: {
     index: true,
     follow: true,
