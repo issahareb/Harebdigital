@@ -1,4 +1,5 @@
 import { AiDiscovery } from './ai-discovery'
+import { WebdesignDetails } from './webdesign-details'
 import Link from 'next/link'
 import { ServiceVisual } from './service-visual'
 import { notFound } from 'next/navigation'
@@ -13,7 +14,7 @@ import { JsonLd, ORGANIZATION_ID } from './studio-schema'
 
 const descriptions: Record<HdLang, string[]> = {
   de: [
-    'Individuelles Webdesign aus Essen: Struktur, Texte, responsive Entwicklung und technisches SEO. Eine neue Website mit Issa Hareb von Hareb Digital planen.',
+    'Website erstellen lassen in Essen: individuelles Design, Webentwicklung, klare Inhalte und passende Anfragewege. Leistungen, Ablauf und Kundenprojekt ansehen.',
     'Website-Relaunch mit Hareb Digital: bestehende Inhalte bewahren, Design verbessern und Ladezeiten senken. Klare Planung und ein fester Ansprechpartner in Essen.',
     'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital aus Essen verbindet Abläufe mit deinen bestehenden Werkzeugen.',
     'Technisches SEO und AEO aus Essen: klare Seitenstruktur, lokale Sichtbarkeit und verständliche Antworten. Hareb Digital prüft und verbessert deine Website.',
@@ -34,7 +35,9 @@ const descriptions: Record<HdLang, string[]> = {
 export function serviceMetadata(lang: HdLang, slug: string) {
   const index = HD_TEXTE[lang].leistungen.punkte.findIndex((l) => l.slug === slug)
   if (index < 0) notFound()
-  const title = `${STUDIO_COPY[lang].serviceNames[index]}${lang === 'de' ? ' in Essen' : ''} | Hareb Digital`
+  const title = lang === 'de' && index === 0
+    ? 'Website erstellen lassen in Essen | Hareb Digital'
+    : `${STUDIO_COPY[lang].serviceNames[index]}${lang === 'de' ? ' in Essen' : ''} | Hareb Digital`
   return pageMetadata(lang, `/leistungen/${slug}/`, title, descriptions[lang][index])
 }
 export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
@@ -56,8 +59,10 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       <span className="eyebrow">
         {service.n} / {t.nav[1]}
       </span>
-      <h1 className="mt-5">{t.serviceNames[i]}</h1>
-      <p className="service-detail-lead">{service.detail.vorspann}</p>
+      <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen in Essen' : t.serviceNames[i]}</h1>
+      <p className="service-detail-lead">{lang === 'de' && i === 0
+        ? 'Ich bin Issa Hareb, Webdesigner und Webentwickler aus Essen. Ich plane, gestalte und entwickle deine Unternehmenswebsite: mit verständlichen Inhalten, einer passenden mobilen Ansicht und Kontaktwegen, die zu deinem Betrieb passen.'
+        : service.detail.vorspann}</p>
       <figure className="service-detail-art" data-reveal>
         <ServiceVisual index={i} lang={lang} />
         <figcaption>
@@ -87,6 +92,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           </section>
         </div>
       </div>
+      {lang === 'de' && i === 0 && <WebdesignDetails />}
       {i === 3 && <AiDiscovery lang={lang} />}
       <div className="mt-12 flex flex-wrap items-center gap-6">
         <Link
@@ -117,7 +123,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
                 name: 'Hareb Digital',
                 url: `${DOMAIN}/`,
               },
-              areaServed: { '@type': 'Country', name: 'Germany' },
+              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'Country', name: 'Germany' }],
               availableChannel: {
                 '@type': 'ServiceChannel',
                 serviceUrl: `${DOMAIN}${localizedPath(lang, '/kontakt/')}`,

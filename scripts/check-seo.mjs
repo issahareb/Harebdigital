@@ -99,7 +99,13 @@ for (const lang of languages) {
 for (const path of internal)
   assert.equal((await fetch(`${base}${path}`)).status, 200, `Broken internal link: ${path}`)
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text()
-assert.equal((sitemap.match(/<loc>/g) || []).length, 18, '18 localized sitemap URLs')
+const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => decode(m[1]))
+const expectedUrls = [
+  ...languages.flatMap((lang) => paths.map((path) => `${origin}${at(lang, path)}`)),
+  ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/projekte/taxi-bb-essen/'].map((path) => `${origin}${path}`),
+]
+assert.equal(sitemapUrls.length, new Set(sitemapUrls).size, 'No duplicate sitemap URLs')
+assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'All public landing pages in sitemap')
 assert(!sitemap.includes('<lastmod>'), 'No fabricated lastmod dates')
 const robots = await (await fetch(`${base}/robots.txt`)).text()
 assert(robots.includes(`Sitemap: ${origin}/sitemap.xml`), 'Sitemap declaration')

@@ -56,18 +56,18 @@ export type StudioCopy = {
 
 export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
-    title: 'Webdesign, Webanwendungen & Social Media | Hareb Digital',
+    title: 'Webdesign Essen & Webentwicklung | Hareb Digital',
     description:
-      'Webdesign, individuelle Webanwendungen, Automatisierung und Social Media Marketing mit Issa Hareb. Ein Ansprechpartner für Gestaltung, Technik und Inhalte.',
+      'Webdesign und Webentwicklung aus Essen: individuelle Websites, Webanwendungen und Automatisierung. Plane dein Projekt direkt mit Issa Hareb von Hareb Digital.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
     nav: ['Arbeiten', 'Leistungen', 'Studio'],
     project: 'Projekt anfragen',
     language: 'Sprache wählen',
-    headline: ['Webdesign.', 'Mit Substanz.'],
+    headline: ['Webdesign.', 'Aus Essen.'],
     intro:
-      'Webdesign, individuelle Webanwendungen, Automatisierung und Social-Media-Inhalte aus einer Hand. Ich verbinde Gestaltung und Technik, damit dein Angebot verständlich wird und Interessenten leichter anfragen.',
+      'Du möchtest eine Website erstellen lassen? Als Webdesigner und Webentwickler aus Essen verbinde ich Gestaltung, Inhalte und Technik. Für Unternehmen, die ihr Angebot klar zeigen und Kunden den Weg zur Anfrage erleichtern möchten.',
     workLink: 'Arbeiten entdecken',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
@@ -83,9 +83,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
     approachText:
       'Was suchen deine Kunden? Welche Informationen brauchen sie, bevor sie anfragen? Daraus entwickle ich die Struktur deiner Website. Gestaltung und Technik sorgen dafür, dass sie auf dem Handy und am Rechner einfach zu bedienen ist.',
-    servicesTitle: 'Die passende Lösung.\nFür deinen Betrieb.',
+    servicesTitle: 'Websites entwickeln.\nAbläufe vereinfachen.',
     servicesIntro:
-      'Eine neue Website, eine individuelle Anwendung, automatisierte Abläufe oder Social-Media-Inhalte: Wir klären gemeinsam, was dich weiterbringt.',
+      'Webdesign und Webentwicklung für Unternehmen in Essen und darüber hinaus. Dazu kommen individuelle Anwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.',
     serviceNames: ['Webdesign & Entwicklung', 'Website-Relaunch', 'Automatisierung', 'SEO & AEO'],
     serviceTags: [
       'Von der ersten Idee bis zur Veröffentlichung',
@@ -110,7 +110,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Archivierte Instagram-Statistik von dailyraphood: Ein Beitrag erreichte rund 1,3 Millionen Konten ohne Werbebudget.',
     reach: 'erreichte Konten mit einem Beitrag',
     budget: 'Werbebudget',
-    studioTitle: 'Dein Projekt.\nDirekt mit Issa.',
+    studioTitle: 'Dein Webentwickler.\nDirekt aus Essen.',
     studioText:
       'Ich bin Issa Hareb und entwickle digitale Projekte aus Essen. Konzept, Gestaltung und technische Umsetzung liegen bei mir. So kannst du Fragen direkt mit dem klären, der dein Projekt umsetzt.',
     studioLink: 'Mehr über Issa',

@@ -211,7 +211,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <ServiceVisual index={i} lang={lang} decorative />
                 </div>
                 <div className="service-summary">
-                  <h3>{t.serviceNames[i]}</h3>
+                  <h3>{lang === 'de' && i === 0 ? 'Webdesign & Webentwicklung in Essen' : t.serviceNames[i]}</h3>
                   <p>{t.serviceTags[i]}</p>
                 </div>
                 <span className="service-description">{service.detail.vorspann}</span>
@@ -221,7 +221,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </Link>
             ))}
           </div>
-          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>Leistung kennenlernen ↗</Link></section>)}</div>}
+          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
         <MotionFeature lang={lang} />
