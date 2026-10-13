@@ -2023,3 +2023,30 @@ main:has(> .cinematic-stage) { display: flow-root; }
   .cinematic-stage[data-motion], .cinematic-stage[data-motion] .cinematic-frame { position: static; height: auto; min-height: 0; margin: 0; clip-path: none; }
   .hero-copy { opacity: 1; transform: none; }
 }
+
+/* Let the dark social chapter dissolve into the studio's paper surface. */
+.social-section {
+  position: relative;
+  padding-bottom: clamp(150px,18vw,240px);
+}
+.social-section::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: auto 0 -1px;
+  height: clamp(100px,12vw,180px);
+  background: linear-gradient(to bottom, #24282000 0%, #41453b 18%, #74796a 42%, #b3b6a9 67%, #deded3 84%, var(--paper) 100%);
+}
+.social-section + .studio-section { padding-top: clamp(36px,6vw,80px); }
+.studio-statement { overflow: visible; }
+.scroll-accent--expressive { display: block; line-height: 1.12; }
+.scroll-accent--expressive .scroll-accent-word {
+  display: inline-block;
+  color: color-mix(in srgb,#9ba58d,var(--hd-accent) calc(var(--word-reveal,1) * 100%));
+  opacity: calc(.18 + var(--word-reveal,1) * .82);
+  transform: translateY(calc((1 - var(--word-reveal,1)) * .65em)) rotateX(calc((1 - var(--word-reveal,1)) * 28deg));
+  transform-origin: 50% 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-accent--expressive .scroll-accent-word { opacity: 1; transform: none; color: var(--hd-accent); }
+}
