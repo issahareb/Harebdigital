@@ -40,6 +40,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const scrollLocked = useRef(false)
   const path = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/'
   const isLegal = /^\/(impressum|datenschutz)/.test(path)
+  const germanOnly = /^\/(leistungen\/(social-media-marketing|webanwendungen)|projekte\/taxi-bb-essen)\/?$/.test(path)
   const home = localizedPath(lang)
   const links = [
     { href: `${home}#arbeiten`, label: t.nav[0] },
@@ -84,7 +85,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const languages = (panel = false) => (
     <nav className={`language-nav${panel ? ' menu-languages' : ''}`} aria-label={t.language}>
       {(['de', 'en', 'es'] as const).map(l => (
-        <a key={l} href={`${localizedPath(l, isLegal ? '/' : path)}${isLegal ? '' : query}`}
+        <a key={l} href={`${localizedPath(l, isLegal || (germanOnly && l !== 'de') ? '/' : path)}${isLegal ? '' : query}`}
           lang={l} hrefLang={l} aria-current={lang === l ? 'page' : undefined}
           aria-label={{ de: 'Deutsch', en: 'English', es: 'Español' }[l]}>
           {panel ? { de: 'Deutsch', en: 'English', es: 'Español' }[l] : l.toUpperCase()}
