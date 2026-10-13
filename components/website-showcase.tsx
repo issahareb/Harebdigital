@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { SHOWCASE_COPY, WEBSITE_CLIPS } from '@/lib/website-clips'
@@ -25,9 +25,10 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   const [visible, setVisible] = useState(false)
   const [manualPlayback, setManualPlayback] = useState(false)
   const [blocked, setBlocked] = useState(false)
+  const [decoded, setDecoded] = useState<Record<string, boolean>>({})
   const [failed, setFailed] = useState<Record<string, boolean>>({})
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = section.current
     const frame = stage.current
     const strip = rail.current
@@ -40,23 +41,34 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
 
     const draw = () => {
       request = 0
+      const rect = root.getBoundingClientRect()
+      const enter = clamp((innerHeight * 0.8 - rect.top) / (innerHeight * 0.65))
+      const leave = clamp((rect.bottom - 120) / (innerHeight * 0.65))
+      root.style.setProperty('--showcase-focus', String(preference.matches ? 0 : Math.min(enter, leave)))
       if (!enabled) return
       const top = parseFloat(getComputedStyle(frame).top) || 0
-      const amount = clamp((top - root.getBoundingClientRect().top) / Math.max(1, distance.current))
+      const amount = clamp((top - rect.top) / Math.max(1, distance.current))
       strip.style.transform = `translate3d(${-amount * distance.current}px, 0, 0)`
       progress.current?.style.setProperty('--showcase-progress', String(amount))
       setEdges(previous => {
         const start = amount <= 0.001, end = amount >= 0.999
         return previous.start === start && previous.end === end ? previous : { start, end }
       })
-      const index = Math.round(amount * (WEBSITE_CLIPS.length - 1))
-      if (index !== position.current) { position.current = index; setActive(index) }
+      Array.from(strip.children).forEach((card, index) => {
+        (card as HTMLElement).style.setProperty('--clip-focus', String(clamp(1 - Math.abs(amount * (WEBSITE_CLIPS.length - 1) - index))))
+      })
+      const slidePosition = amount * (WEBSITE_CLIPS.length - 1)
+      const index = Math.round(slidePosition)
+      // Small finger movements around a midpoint must not repeatedly restart playback.
+      if (index !== position.current && Math.abs(slidePosition - position.current) > 0.58) {
+        position.current = index; setActive(index)
+      }
     }
     const schedule = () => { if (!request) request = requestAnimationFrame(draw) }
     const measure = () => {
       // On very short screens and with reduced motion, keep a native swipe carousel.
       enabled = !preference.matches && innerHeight >= 540
-      distance.current = Math.max(0, strip.scrollWidth - windowEl.clientWidth)
+      distance.current = Math.max(0, (strip.lastElementChild as HTMLElement)?.offsetLeft || 0)
       root.style.setProperty('--showcase-distance', `${distance.current}px`)
       root.dataset.pinned = String(enabled)
       setPinned(enabled)
@@ -69,11 +81,11 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
         progress.current?.style.setProperty('--showcase-progress', String(index / (WEBSITE_CLIPS.length - 1)))
         setEdges({ start: windowEl.scrollLeft <= 1, end: windowEl.scrollLeft >= distance.current - 1 })
       } else windowEl.scrollLeft = 0
-      schedule()
+      draw()
     }
     const resize = new ResizeObserver(measure)
     resize.observe(windowEl)
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.25 })
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.1), { threshold: [0, 0.1] })
     observer.observe(frame)
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', measure)
@@ -90,12 +102,20 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
 
   useEffect(() => {
     let disposed = false
+    // Prepare adjacent clips before they enter. Keep each source and decoded frame
+    // mounted: switching slides must not reload media or reveal an empty video layer.
+    if (visible && !manualPlayback) videos.current.forEach((video, index) => {
+      if (video && Math.abs(index - active) <= 1 && !video.getAttribute('src')) {
+        video.preload = 'auto'
+        video.src = WEBSITE_CLIPS[index].src
+      }
+    })
     const sync = () => {
       videos.current.forEach((video, index) => {
         if (!video) return
         if (index === active && visible && !paused && !manualPlayback && !document.hidden) {
           const clip = WEBSITE_CLIPS[index]
-          if (!video.getAttribute('src')) { video.src = clip.src; video.load() }
+          if (!video.getAttribute('src')) { video.src = clip.src }
           video.muted = true
           video.play().then(() => { if (!disposed) setBlocked(false) }).catch(() => {
             if (!disposed && !video.paused) return
@@ -106,8 +126,10 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     }
     sync()
     document.addEventListener('visibilitychange', sync)
-    return () => { disposed = true; document.removeEventListener('visibilitychange', sync); videos.current.forEach(video => video?.pause()) }
+    return () => { disposed = true; document.removeEventListener('visibilitychange', sync) }
   }, [active, visible, paused, manualPlayback])
+
+  useEffect(() => () => { videos.current.forEach(video => video?.pause()) }, [])
 
   const moveTo = (index: number) => {
     const next = Math.max(0, Math.min(WEBSITE_CLIPS.length - 1, index))
@@ -124,7 +146,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     const video = videos.current[active]
     if (!video) return
     if (paused || manualPlayback || blocked) {
-      if (!video.getAttribute('src')) { video.src = WEBSITE_CLIPS[active].src; video.load() }
+      if (!video.getAttribute('src')) { video.src = WEBSITE_CLIPS[active].src }
       video.muted = true
       setPaused(false); setManualPlayback(false)
       video.play().then(() => setBlocked(false)).catch(() => setBlocked(true))
@@ -132,7 +154,8 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   }
 
   return (
-    <section ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned="false">
+    <section ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned="true">
+      <div className="showcase-surround" aria-hidden />
       <div ref={stage} className="showcase-stage">
         <div className="showcase-heading wrap">
           <div><span className="eyebrow">{copy.label}</span><h2 id="showcase-title">{copy.title}</h2></div>
@@ -152,9 +175,18 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
           }}>
           <div ref={rail} className="showcase-rail">
             {WEBSITE_CLIPS.map((clip, index) => (
-              <article key={clip.id} className="showcase-card" aria-label={`${index + 1} / ${WEBSITE_CLIPS.length}: ${clip.title}`}>
+              <article key={clip.id} className="showcase-card" data-active={index === active} aria-label={`${index + 1} / ${WEBSITE_CLIPS.length}: ${clip.title}`}>
                 <div className="showcase-media" style={{ backgroundColor: clip.color }}>
-                  <video ref={element => { videos.current[index] = element }} poster={clip.poster} muted loop playsInline preload="none" aria-label={clip.title}
+                  {/* A separate poster remains until the first frame has actually been presented. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img className="showcase-poster" src={clip.poster} alt="" aria-hidden />
+                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} poster={clip.poster} muted loop playsInline preload="none" aria-label={clip.title}
+                    onPlaying={event => {
+                      const video = event.currentTarget
+                      const reveal = () => setDecoded(previous => previous[clip.id] ? previous : { ...previous, [clip.id]: true })
+                      if ('requestVideoFrameCallback' in video) video.requestVideoFrameCallback(reveal)
+                      else reveal()
+                    }}
                     onError={() => setFailed(previous => ({ ...previous, [clip.id]: true }))} />
                   {failed[clip.id] && <span className="showcase-video-fallback">{copy.unavailable}</span>}
                 </div>
@@ -175,7 +207,10 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
           </div>
           <a className="showcase-continue" href="#leistungen">{copy.continue}<ArrowDown size={15} aria-hidden /></a>
         </div>
-        <noscript><p className="showcase-no-js wrap">{copy.noJs}</p></noscript>
+        <noscript>
+          <style>{`.website-showcase{height:auto!important}.showcase-stage{position:static!important;height:auto!important}.showcase-viewport{overflow-x:auto!important;scroll-snap-type:x mandatory!important}.showcase-surround{display:none}`}</style>
+          <p className="showcase-no-js wrap">{copy.noJs}</p>
+        </noscript>
       </div>
     </section>
   )
