@@ -1,0 +1,23 @@
+.motion-feature { position: relative; padding-block: clamp(64px, 9vw, 130px); background: #101410; color: #f2f3eb; overflow: hidden; }
+.motion-feature::before { content: ''; position: absolute; width: 70vw; height: 70vw; top: 5%; left: 45%; background: radial-gradient(ellipse, #829b2824, transparent 65%); pointer-events: none; }
+.motion-feature .wrap { position: relative; }
+.motion-feature-heading { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: end; margin-bottom: 56px; }
+.motion-feature .eyebrow { color: #c3ceae; }
+.motion-feature h2 { margin-top: 24px; font-size: clamp(52px, 7.8vw, 112px); line-height: .98; letter-spacing: -.065em; font-weight: 500; }
+.motion-feature h2 span { color: #d4ed8a; }
+.motion-feature-copy { max-width: 370px; padding-bottom: 6px; }
+.motion-feature-copy p { font-size: clamp(14px, 1.3vw, 17px); line-height: 1.8; color: #bfc6b7; }
+.motion-feature-cta { display: inline-flex; gap: 26px; align-items: center; margin-top: 28px; padding: 17px 22px; background: #d4ed8a; color: #172012; font-size: 13px; font-weight: 600; }
+.motion-feature-screen { position: relative; aspect-ratio: 910 / 512; width: 100%; background: #050705; box-shadow: 0 30px 100px #0009; isolation: isolate; }
+.motion-feature-screen video, .motion-feature-poster { display: block; width: 100%; height: 100%; object-fit: contain; }
+.motion-feature-poster { position: absolute; inset: 0; }
+.motion-feature-screen video { position: relative; opacity: 0; transition: opacity .35s; }
+.motion-feature-screen video[data-decoded='true'] { opacity: 1; }
+.motion-feature-player { position: absolute; right: 20px; bottom: 20px; display: flex; gap: 8px; }
+.motion-feature-player button { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 15px; border: 1px solid #ffffff35; border-radius: 30px; background: #101410df; color: #f2f3eb; font-size: 11px; }
+.motion-feature-player button:hover { background: #34402a; }
+.motion-feature-caption { display: flex; justify-content: space-between; gap: 24px; margin-top: 24px; font-size: 11px; color: #acb5a3; }
+.motion-feature-caption ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; padding: 0; margin: 0; }
+@media (max-width: 800px) { .motion-feature-heading { grid-template-columns: 1fr; gap: 26px; margin-bottom: 36px; } .motion-feature-copy { max-width: 520px; } .motion-feature h2 { font-size: clamp(48px, 9.5vw, 76px); } }
+@media (max-width: 600px) { .motion-feature-screen { width: calc(100% + 32px); margin-inline: -16px; } .motion-feature-player { right: 12px; bottom: 12px; } .motion-feature-player button { padding: 9px 12px; } .motion-feature-caption { flex-direction: column; gap: 14px; } .motion-feature h2 { font-size: clamp(46px, 12vw, 68px); } }
+@media (prefers-reduced-motion: reduce) { .motion-feature-screen video { transition: none; } }

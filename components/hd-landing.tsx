@@ -1,3 +1,4 @@
+import { MotionFeature } from './motion-feature'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react'
@@ -218,6 +219,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             ))}
           </div>
         </section>
+        <MotionFeature lang={lang} />
         <section className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">
             <figure className="social-art" data-reveal>

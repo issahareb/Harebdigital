@@ -5,14 +5,14 @@
   --showcase-focus: 0;
   --showcase-card-width: min(1120px, calc(100vw - 112px), calc((100svh - 420px) * 1.6));
   position: relative;
-  z-index: 60;
   background: color-mix(in srgb, #111610 calc(var(--showcase-focus) * 100%), #e8e9e2);
   color: color-mix(in srgb, #f3f4ed calc(var(--showcase-focus) * 100%), #202820);
   margin-block: 28px 0;
 }
-.showcase-surround { position: fixed; inset: 0; background: #070b08; opacity: calc(var(--showcase-focus) * .78); pointer-events: none; z-index: -1; }
+.showcase-surround { position: fixed; inset: 0; background: #070b08; opacity: calc(var(--showcase-focus) * .78); pointer-events: none; z-index: 55; }
 .showcase-stage {
-  z-index: 1;
+  position: relative;
+  z-index: 60;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,7 +110,7 @@
 }
 @media (max-height: 539px), (prefers-reduced-motion: reduce) {
   .website-showcase { height: auto !important; }
-  .showcase-stage { position: static !important; height: auto !important; }
+  .showcase-stage { position: relative !important; height: auto !important; }
   .showcase-viewport { width: min(1120px, calc(100% - 32px)); overflow-x: auto !important; scroll-snap-type: x mandatory !important; }
   .showcase-rail { transform: none !important; will-change: auto !important; }
   .showcase-card:not([data-active='true']) { --clip-focus: .4; }
