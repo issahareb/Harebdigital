@@ -51,7 +51,7 @@ export function StudioEvidence({ lang }: { lang: HdLang }) {
   const t = VISUAL_COPY[lang]
   return (
     <p className="studio-statement">
-      <ScrollAccent text={t.demoText} expressive />
+      <ScrollAccent text={t.demoText} />
     </p>
   )
 }
