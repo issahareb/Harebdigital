@@ -19,6 +19,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   const position = useRef(0)
   const distance = useRef(0)
   const [active, setActive] = useState(0)
+  const [edges, setEdges] = useState({ start: true, end: false })
   const [pinned, setPinned] = useState(false)
   const [paused, setPaused] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -44,6 +45,10 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
       const amount = clamp((top - root.getBoundingClientRect().top) / Math.max(1, distance.current))
       strip.style.transform = `translate3d(${-amount * distance.current}px, 0, 0)`
       progress.current?.style.setProperty('--showcase-progress', String(amount))
+      setEdges(previous => {
+        const start = amount <= 0.001, end = amount >= 0.999
+        return previous.start === start && previous.end === end ? previous : { start, end }
+      })
       const index = Math.round(amount * (WEBSITE_CLIPS.length - 1))
       if (index !== position.current) { position.current = index; setActive(index) }
     }
@@ -62,6 +67,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
         const index = Math.min(WEBSITE_CLIPS.length - 1, Math.round(windowEl.scrollLeft / cardWidth))
         position.current = index; setActive(index)
         progress.current?.style.setProperty('--showcase-progress', String(index / (WEBSITE_CLIPS.length - 1)))
+        setEdges({ start: windowEl.scrollLeft <= 1, end: windowEl.scrollLeft >= distance.current - 1 })
       } else windowEl.scrollLeft = 0
       schedule()
     }
@@ -141,6 +147,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
             const width = (rail.current.children[1] as HTMLElement)?.offsetLeft || 1
             const index = Math.min(WEBSITE_CLIPS.length - 1, Math.round(viewport.current.scrollLeft / width))
             position.current = index; setActive(index)
+            setEdges({ start: viewport.current.scrollLeft <= 1, end: viewport.current.scrollLeft >= distance.current - 1 })
             progress.current?.style.setProperty('--showcase-progress', String(index / (WEBSITE_CLIPS.length - 1)))
           }}>
           <div ref={rail} className="showcase-rail">
@@ -162,9 +169,9 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
         <div className="showcase-controls wrap">
           <div className="showcase-status"><span>{String(active + 1).padStart(2, '0')} / {String(WEBSITE_CLIPS.length).padStart(2, '0')}</span><span ref={progress} className="showcase-progress" aria-hidden><i /></span></div>
           <div className="showcase-buttons">
-            <button type="button" onClick={() => moveTo(active - 1)} disabled={active === 0} aria-label={copy.previous}><ArrowLeft size={18} aria-hidden /></button>
+            <button type="button" onClick={() => moveTo(active - 1)} disabled={edges.start} aria-label={copy.previous}><ArrowLeft size={18} aria-hidden /></button>
             <button type="button" onClick={togglePlayback} aria-label={paused || manualPlayback || blocked ? copy.play : copy.pause}>{paused || manualPlayback || blocked ? <Play size={16} aria-hidden /> : <Pause size={16} aria-hidden />}</button>
-            <button type="button" onClick={() => moveTo(active + 1)} disabled={active === WEBSITE_CLIPS.length - 1} aria-label={copy.next}><ArrowRight size={18} aria-hidden /></button>
+            <button type="button" onClick={() => moveTo(active + 1)} disabled={edges.end} aria-label={copy.next}><ArrowRight size={18} aria-hidden /></button>
           </div>
           <a className="showcase-continue" href="#leistungen">{copy.continue}<ArrowDown size={15} aria-hidden /></a>
         </div>
