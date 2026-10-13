@@ -25,5 +25,8 @@
 .ai-chat-scroll::-webkit-scrollbar-track { background: #edece5; }
 .ai-chat-scroll::-webkit-scrollbar-thumb { background: #7c896d; border: 2px solid #edece5; border-radius: 8px; }
 .ai-chat-scroll img { user-select: none; }
+/* The displayed excerpt ends after the online profiles, before Einordnung. */
+.ai-chat-excerpt { position: relative; width: 100%; aspect-ratio: 728 / 1840; overflow: hidden; }
+.ai-chat-excerpt img { position: absolute; inset: 0 auto auto 0; }
 .ai-chat-full { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 12px; color: var(--hd-accent); }
 @media (max-width: 800px) { .ai-discovery-proof { max-width: 100%; } .ai-chat-scroll { height: clamp(320px, 58svh, 500px); } }

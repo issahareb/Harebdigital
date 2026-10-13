@@ -12,8 +12,8 @@ const COPY = {
     questions: ['Wer ist Issa Hareb?', 'Was ist Hareb Digital und welche Leistungen bietet das Unternehmen an?'],
     open: 'In ChatGPT fragen', copy: 'Frage kopieren', copied: 'Kopiert', error: 'Bitte die Frage oben markieren und kopieren.',
     other: 'Auch in Gemini oder Claude ausprobieren: Frage kopieren und dort einfügen.',
-    caption: 'ChatGPT-Antwort vom 13.10.2026. Aus zwei Aufnahmen zusammengefügt.',
-    scroll: 'Im Chat scrollen oder wischen', full: 'Ganzes Bild öffnen', region: 'ChatGPT-Antwort, scrollbar',
+    caption: 'Auszug aus einer ChatGPT-Antwort vom 13.10.2026. Aus zwei Aufnahmen zusammengefügt.',
+    scroll: 'Im Chat scrollen oder wischen', full: 'Vollständige Aufnahme öffnen', region: 'ChatGPT-Antwort, scrollbar',
     note: 'Eine Beispielantwort. Ergebnisse können je nach Frage, Modell und Websuche variieren.',
     alt: 'Gespeicherte ChatGPT-Antwort auf „Wer ist Issa Hareb?“: nennt Webentwicklung, Automatisierung, KI-Agenten und L.U.K.A.S. mit Quellenverweisen auf das Portfolio.',
   },
@@ -23,8 +23,8 @@ const COPY = {
     questions: ['Who is Issa Hareb?', 'What is Hareb Digital and what services does the business offer?'],
     open: 'Ask ChatGPT', copy: 'Copy question', copied: 'Copied', error: 'Please select and copy the question above.',
     other: 'Try Gemini or Claude too: copy the question and paste it there.',
-    caption: 'ChatGPT answer from 13 October 2026, in German. Combined from two captures.',
-    scroll: 'Scroll or swipe inside the chat', full: 'Open full image', region: 'Scrollable ChatGPT answer',
+    caption: 'Excerpt from a German ChatGPT answer dated 13 October 2026. Combined from two captures.',
+    scroll: 'Scroll or swipe inside the chat', full: 'Open complete capture', region: 'Scrollable ChatGPT answer',
     note: 'One example answer. Results may vary by question, model and web search.',
     alt: 'Saved German ChatGPT answer about Issa Hareb, mentioning web development, automation, AI agents and L.U.K.A.S., with portfolio sources.',
   },
@@ -34,8 +34,8 @@ const COPY = {
     questions: ['¿Quién es Issa Hareb?', '¿Qué es Hareb Digital y qué servicios ofrece?'],
     open: 'Preguntar a ChatGPT', copy: 'Copiar pregunta', copied: 'Copiado', error: 'Selecciona y copia la pregunta de arriba.',
     other: 'Prueba también Gemini o Claude: copia la pregunta y pégala allí.',
-    caption: 'Respuesta de ChatGPT del 13 de octubre de 2026, en alemán. Dos capturas combinadas.',
-    scroll: 'Desliza dentro del chat', full: 'Abrir imagen completa', region: 'Respuesta de ChatGPT desplazable',
+    caption: 'Extracto de una respuesta de ChatGPT del 13 de octubre de 2026, en alemán. Dos capturas combinadas.',
+    scroll: 'Desliza dentro del chat', full: 'Abrir captura completa', region: 'Respuesta de ChatGPT desplazable',
     note: 'Una respuesta de ejemplo. Los resultados pueden variar según la pregunta, el modelo y la búsqueda web.',
     alt: 'Respuesta guardada en alemán de ChatGPT sobre Issa Hareb: desarrollo web, automatización, agentes de IA y L.U.K.A.S., con fuentes del portfolio.',
   },
@@ -84,7 +84,9 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
       <figure className="ai-discovery-proof">
         <div className="ai-chat-toolbar"><span>ChatGPT</span><span>{t.scroll}<ArrowDown size={14} aria-hidden /></span></div>
         <div className="ai-chat-scroll" tabIndex={0} role="region" aria-label={t.region}>
-          <Image src="/studio/evidence/chatgpt-issa-hareb-full.webp" alt={t.alt} width={728} height={2160} sizes="(max-width: 800px) 90vw, 560px" draggable={false} />
+          <div className="ai-chat-excerpt">
+            <Image src="/studio/evidence/chatgpt-issa-hareb-full.webp" alt={t.alt} width={728} height={2160} sizes="(max-width: 800px) 90vw, 560px" draggable={false} />
+          </div>
         </div>
         <a className="ai-chat-full" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a>
         <figcaption>{t.caption}<span>{t.note}</span></figcaption>
