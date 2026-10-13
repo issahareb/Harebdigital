@@ -58,7 +58,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
     title: 'Webdesign Essen, SEO & Automatisierung | Hareb Digital',
     description:
-      'Hareb Digital aus Essen: individuelles Webdesign, technische SEO, AEO und Automatisierung. Direkt mit Issa Hareb – von der ersten Idee bis zum laufenden Betrieb.',
+      'Hareb Digital aus Essen: individuelles Webdesign, SEO und Automatisierung. Plane deine Website direkt mit Issa Hareb, von der ersten Idee bis zur Veröffentlichung.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
@@ -67,7 +67,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     language: 'Sprache wählen',
     headline: ['Webdesign.', 'Mit Substanz.'],
     intro:
-      'Ein Auftritt, der zu dir passt. Technik, die mitdenkt. Ich entwickle Websites, die Eindruck machen und deinem Unternehmen Arbeit abnehmen.',
+      'Ich entwickle Websites, die dein Angebot verständlich machen und Kunden den Weg zur Anfrage erleichtern. Passende Automationen nehmen dir wiederkehrende Aufgaben ab.',
     workLink: 'Arbeiten entdecken',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
@@ -82,37 +82,37 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'Der Anspruch',
     approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
     approachText:
-      'Deine Website soll mehr können als gut aussehen. Sie soll erklären, was dich besonders macht, gefunden werden und aus Interesse eine konkrete Anfrage machen. Dafür bringe ich Gestaltung, Entwicklung und Sichtbarkeit zusammen.',
-    servicesTitle: 'Was dein nächster\nSchritt braucht.',
+      'Was suchen deine Kunden? Welche Informationen brauchen sie, bevor sie anfragen? Daraus entwickle ich die Struktur deiner Website. Gestaltung und Technik sorgen dafür, dass sie auf dem Handy und am Rechner einfach zu bedienen ist.',
+    servicesTitle: 'Die passende Lösung.\nFür deinen Betrieb.',
     servicesIntro:
-      'Vier Leistungen. Ein Ansprechpartner. Wir starten dort, wo es für deinen Betrieb den größten Unterschied macht.',
+      'Eine neue Website, eine gezielte Überarbeitung oder ein automatisierter Ablauf: Wir klären gemeinsam, was dich weiterbringt.',
     serviceNames: ['Webdesign & Entwicklung', 'Website-Relaunch', 'Automatisierung', 'SEO & AEO'],
     serviceTags: [
-      'Von der ersten Idee bis zum Launch',
+      'Von der ersten Idee bis zur Veröffentlichung',
       'Bestehendes gezielt besser machen',
       'Weniger Routine. Mehr Freiraum.',
-      'Für Suchmaschinen und klare Antworten',
+      'Sichtbarkeit in Suchmaschinen und KI-Antworten',
     ],
     workTitle: 'Nicht nur entworfen.\nIn Betrieb.',
     workIntro:
-      'Ausgewählte Arbeit. Echte Anforderungen, konkrete Lösungen und ein Blick auf das Ergebnis.',
+      'Ein Kundenprojekt und eine eigene Webanwendung zeigen, wie ich Gestaltung und Funktionen auf konkrete Aufgaben abstimme.',
     caseType: 'Kundenprojekt · Mobilität',
-    caseTitle: 'Eine Stadt.\nEin direkter Weg.',
+    caseTitle: 'Taxi anfragen.\nEinfach online.',
     caseText:
-      'Für Taxi B&B Essen: eine Website mit Buchungsstrecke, Verwaltungsbereich, automatischen E-Mails und einer klaren Struktur für die lokale Suche.',
-    caseTags: ['Webdesign', 'Buchungssystem', 'Local SEO'],
+      'Fahrgäste können ihre Fahrt online anfragen. Taxi B&B Essen verwaltet die Buchungen über einen eigenen Bereich und versendet automatische E-Mails. Die Seitenstruktur ist auf die lokale Suche ausgerichtet.',
+    caseTags: ['Webdesign', 'Buchungssystem', 'Lokale Suche'],
     caseLink: 'Taxi B&B Essen besuchen',
     moreWork: 'Eigenes Produkt · GuardianGrid',
     socialTitle: 'Aufmerksamkeit\nbeginnt vor dem Klick.',
     socialText:
-      'Mit meinem ehemaligen Instagram-Account dailyraphood habe ich Erfahrung mit Video-Einstiegen, Erzählweise und organischer Reichweite gesammelt. Auf TikTok findest du mich als Mr Han unter @issa3701.',
+      'Video-Einstiege, Schnitt und Erzählweise prägen, ob Menschen weiterschauen. Damit habe ich auf meinem früheren Instagram-Account dailyraphood und meinem TikTok-Profil Mr Han praktische Erfahrung gesammelt. Diese Erfahrung fließt in die Konzeption von Social-Media-Inhalten und Werbevideos ein.',
     socialSource:
-      'Archivierter Nachweis aus meinem ehemaligen Instagram-Account dailyraphood: Reichweite eines einzelnen Beitrags ohne Werbebudget.',
+      'Archivierte Instagram-Statistik von dailyraphood: Ein Beitrag erreichte rund 1,3 Millionen Konten ohne Werbebudget.',
     reach: 'erreichte Konten mit einem Beitrag',
     budget: 'Werbebudget',
     studioTitle: 'Dein Projekt.\nDirekt mit Issa.',
     studioText:
-      'Ich bin Issa Hareb. Ich gestalte, entwickle und begleite digitale Projekte aus Essen. Du sprichst direkt mit dem Menschen, der deine Website baut – vom ersten Gespräch bis zu den Fragen nach dem Launch.',
+      'Ich bin Issa Hareb und entwickle digitale Projekte aus Essen. Konzept, Gestaltung und technische Umsetzung liegen bei mir. So kannst du Fragen direkt mit dem klären, der dein Projekt umsetzt.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -121,22 +121,22 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Was macht Hareb Digital?',
         answer:
-          'Hareb Digital ist das unabhängige Digitalstudio von Issa Hareb in Essen. Das Angebot umfasst individuelle Websites, die Überarbeitung bestehender Seiten, technische Suchmaschinenoptimierung (SEO), Answer Engine Optimization (AEO) und die Automatisierung wiederkehrender Abläufe.',
+          'Hareb Digital ist mein unabhängiges Digitalstudio. Ich entwickle Websites, überarbeite bestehende Seiten und automatisiere wiederkehrende Aufgaben. Mit Suchmaschinenoptimierung (SEO) und klar aufbereiteten Inhalten für KI-Antwortsysteme (AEO) verbessere ich die Grundlagen deiner Online-Sichtbarkeit.',
       },
       {
         question: 'Wie viel kostet eine Website?',
         answer:
-          'Der Preis hängt von Seitenumfang, Gestaltung und Funktionen ab. Nach einem ersten Gespräch erhältst du ein Angebot mit klar definiertem Umfang und festem Preis. Eine pauschale Zahl ohne Blick auf dein Projekt wäre wenig hilfreich.',
+          'Der Preis hängt vom Seitenumfang, der Gestaltung und den Funktionen ab. Sobald wir die Anforderungen geklärt haben, erhältst du ein Angebot mit festem Preis und klar beschriebenen Leistungen. Mögliche laufende Kosten, etwa für Hosting oder Betreuung, klären wir ebenfalls vorab.',
       },
       {
         question: 'Wie lange dauert die Umsetzung?',
         answer:
-          'Für eine Landingpage sind meist zwei bis drei Wochen vorgesehen, für eine mehrseitige Website vier bis acht Wochen. Der konkrete Zeitplan hängt von Inhalt, Funktionen und Abstimmungen ab und wird vor dem Start vereinbart.',
+          'Als Orientierung gelten zwei bis drei Wochen für eine einzelne Landingpage und vier bis acht Wochen für eine Website mit mehreren Seiten. Funktionen, verfügbare Inhalte und Abstimmungen beeinflussen die Dauer. Den konkreten Zeitplan vereinbaren wir vor dem Start.',
       },
       {
         question: 'Was ist der Unterschied zwischen SEO und AEO?',
         answer:
-          'SEO hilft Suchmaschinen, Seiten zu finden, zu verstehen und passenden Suchanfragen zuzuordnen. AEO bereitet Inhalte so auf, dass Antwortsysteme klare, nachvollziehbare Informationen finden: mit direkten Antworten, eindeutigen Unternehmensangaben und passenden strukturierten Daten. Rankings oder Nennungen in KI-Antworten lassen sich nicht garantieren.',
+          'SEO verbessert die Voraussetzungen dafür, dass deine Website bei passenden Suchanfragen gefunden wird. AEO steht für Answer Engine Optimization: Inhalte werden so aufbereitet, dass KI-Antwortsysteme wie ChatGPT sie leichter verstehen und als Quelle nutzen können. Dazu gehören klare Antworten und eindeutige Unternehmensangaben. Platzierungen oder Nennungen lassen sich nicht garantieren.',
       },
       {
         question: 'Arbeitest du nur mit Unternehmen aus Essen?',
@@ -149,9 +149,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'Ja. Bei einem Relaunch prüfe ich zuerst, welche Inhalte, Adressen und Funktionen erhalten bleiben können. Sinnvolle Bestandteile werden weitergenutzt; notwendige URL-Änderungen werden mit Weiterleitungen geplant.',
       },
     ],
-    contactTitle: ['Dein nächstes Kapitel.', 'Fangen wir an.'],
+    contactTitle: ['Was hast du vor?', 'Lass uns sprechen.'],
     contactText:
-      'Erzähl mir, was du vorhast. Ein paar Sätze zu deinem Unternehmen und deiner Idee genügen für den Anfang.',
+      'Erzähl mir kurz von deinem Unternehmen und davon, was du erreichen oder verbessern möchtest. Wenn du bereits eine Website hast, schick gern den Link mit.',
     footerLine: 'Gestaltung mit Haltung. Technik mit Verstand.',
     home: 'Startseite',
     breadcrumb: 'Brotkrumennavigation',
@@ -171,7 +171,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     language: 'Choose language',
     headline: ['Digital.', 'With substance.'],
     intro:
-      'A presence that feels like you. Technology that thinks ahead. I build websites that make an impression and take work off your desk.',
+      'I build websites that explain what you offer and make it easy for customers to enquire. Tailored automation takes recurring tasks off your hands.',
     workLink: 'Explore the work',
     scroll: 'Scroll to explore',
     motionOff: 'Turn animation off',
@@ -185,36 +185,36 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'The approach',
     approach: ['Good design draws you in.', 'Good engineering takes you further.'],
     approachText:
-      'Your website should do more than look good. It should explain what makes you different, be discoverable and turn interest into an enquiry. I bring design, development and visibility together to make that happen.',
-    servicesTitle: 'What your next\nstep needs.',
+      'What are your customers looking for? What do they need to know before getting in touch? Those questions shape the structure of your website. Design and development make it easy to use on mobile and desktop.',
+    servicesTitle: 'The right solution.\nFor your business.',
     servicesIntro:
-      'Four services. One point of contact. We start where it makes the greatest difference for your business.',
+      'A new website, a focused redesign or an automated workflow: together, we work out what will help your business.',
     serviceNames: ['Web design & development', 'Website redesign', 'Automation', 'SEO & AEO'],
     serviceTags: [
       'From the first idea to launch',
       'Make what exists work better',
       'Less routine. More room to grow.',
-      'For search and clear answers',
+      'Visibility in search engines and AI answers',
     ],
     workTitle: 'Designed. Built.\nOut in the world.',
-    workIntro: 'Selected work. Real requirements, concrete solutions and a look at the result.',
+    workIntro: 'A client project and my own web application show how I connect design and functionality to practical needs.',
     caseType: 'Client project · Mobility',
-    caseTitle: 'One city.\nA direct connection.',
+    caseTitle: 'Request a taxi.\nSimply online.',
     caseText:
-      'For Taxi B&B Essen: a website with a booking flow, management dashboard, automated emails and a clear structure for local search.',
+      'Passengers can request a ride online. Taxi B&B Essen manages bookings through a dedicated dashboard and sends automated emails. The website structure supports local search.',
     caseTags: ['Web design', 'Booking system', 'Local SEO'],
     caseLink: 'Visit Taxi B&B Essen',
     moreWork: 'Own product · GuardianGrid',
     socialTitle: 'Attention starts\nbefore the click.',
     socialText:
-      'My former Instagram account dailyraphood gave me hands-on experience with video openings, storytelling and organic reach. On TikTok, you can find me as Mr Han at @issa3701.',
+      'Video openings, editing and storytelling shape whether people keep watching. I gained hands-on experience through my former Instagram account dailyraphood and my TikTok profile Mr Han. That experience informs how I plan social media content and promotional videos.',
     socialSource:
-      'Archived evidence from my former Instagram account dailyraphood: the reach of a single post with no advertising spend.',
+      'Archived Instagram statistics from dailyraphood: one post reached around 1.3 million accounts with no advertising spend.',
     reach: 'accounts reached with one post',
     budget: 'advertising spend',
     studioTitle: 'Your project.\nBuilt with Issa.',
     studioText:
-      'I’m Issa Hareb. I design, develop and support digital projects from Essen, Germany. You work directly with the person building your website, from the first conversation to questions after launch.',
+      'I’m Issa Hareb, and I develop digital projects from Essen, Germany. I handle planning, design and development, so you can discuss questions directly with the person building your project.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -223,22 +223,22 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'What does Hareb Digital do?',
         answer:
-          'Hareb Digital is Issa Hareb’s independent digital studio in Essen, Germany. Services include bespoke websites, website redesign, technical search engine optimisation (SEO), Answer Engine Optimization (AEO) and automation of recurring workflows.',
+          'Hareb Digital is my independent digital studio. I build websites, improve existing sites and automate recurring tasks. Search engine optimisation (SEO) and content prepared for AI answer systems (AEO) help strengthen the foundations of your online visibility.',
       },
       {
         question: 'How much does a website cost?',
         answer:
-          'The cost depends on the number of pages, design and functionality. After an initial conversation, you receive a proposal with a defined scope and a fixed price. A blanket figure without understanding your project would not be useful.',
+          'The cost depends on the number of pages, design and features. Once we have clarified the requirements, you receive a fixed-price proposal with a defined scope. We also discuss any ongoing costs, such as hosting or support, before work begins.',
       },
       {
         question: 'How long does a website take?',
         answer:
-          'A landing page usually takes two to three weeks; a multi-page website four to eight weeks. The schedule depends on content, functionality and feedback and is agreed before work starts.',
+          'As a guide, a single landing page takes two to three weeks and a multi-page website four to eight. Features, available content and feedback affect the schedule. We agree on the timeline before work starts.',
       },
       {
         question: 'What is the difference between SEO and AEO?',
         answer:
-          'SEO helps search engines find, understand and match pages to relevant searches. AEO makes information clear for answer systems, using direct answers, consistent business details and appropriate structured data. Rankings and mentions in AI answers cannot be guaranteed.',
+          'SEO helps your website become discoverable for relevant searches. AEO stands for Answer Engine Optimization: it prepares content so AI answer systems such as ChatGPT can understand it and use it as a source. This includes clear answers and consistent business details. Rankings and mentions cannot be guaranteed.',
       },
       {
         question: 'Do you only work with businesses in Essen?',
@@ -251,9 +251,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'Yes. A redesign begins by reviewing which content, URLs and features should be retained. Useful elements are reused, and necessary URL changes are planned with redirects.',
       },
     ],
-    contactTitle: ['Your next chapter.', 'Let’s begin.'],
+    contactTitle: ['What do you have in mind?', 'Let’s talk.'],
     contactText:
-      'Tell me what you have in mind. A few lines about your business and your idea are enough to start.',
+      'Tell me a little about your business and what you want to achieve or improve. If you already have a website, include the link.',
     footerLine: 'Considered design. Thoughtful engineering.',
     home: 'Home',
     breadcrumb: 'Breadcrumb',
@@ -273,7 +273,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     language: 'Elegir idioma',
     headline: ['Digital.', 'Con sustancia.'],
     intro:
-      'Una presencia que te representa. Tecnología que piensa más allá. Desarrollo webs que dejan huella y facilitan el trabajo de tu empresa.',
+      'Desarrollo webs que explican lo que ofreces y facilitan que tus clientes te contacten. Las automatizaciones a medida se encargan de las tareas repetitivas.',
     workLink: 'Explorar proyectos',
     scroll: 'Desliza para descubrir',
     motionOff: 'Desactivar animación',
@@ -287,37 +287,37 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'El enfoque',
     approach: ['El buen diseño atrae.', 'La buena tecnología te lleva más lejos.'],
     approachText:
-      'Tu web debe hacer más que verse bien. Debe explicar qué te hace diferente, ser fácil de encontrar y convertir el interés en una consulta. Para lograrlo, uno diseño, desarrollo y visibilidad.',
-    servicesTitle: 'Lo que necesita\ntu siguiente paso.',
+      '¿Qué buscan tus clientes? ¿Qué necesitan saber antes de contactarte? Estas preguntas definen la estructura de tu web. El diseño y el desarrollo hacen que resulte fácil de usar tanto en el móvil como en la computadora.',
+    servicesTitle: 'La solución adecuada.\nPara tu negocio.',
     servicesIntro:
-      'Cuatro servicios. Una persona de contacto. Empezamos donde más se note la diferencia para tu negocio.',
+      'Una web nueva, una renovación puntual o un proceso automatizado: juntos definimos qué necesita tu negocio.',
     serviceNames: ['Diseño y desarrollo web', 'Rediseño web', 'Automatización', 'SEO y AEO'],
     serviceTags: [
       'De la primera idea al lanzamiento',
       'Mejorar lo que ya existe',
       'Menos rutina. Más tiempo.',
-      'Para búsquedas y respuestas claras',
+      'Visibilidad en buscadores y respuestas de IA',
     ],
     workTitle: 'Diseñado. Desarrollado.\nEn funcionamiento.',
     workIntro:
-      'Proyectos seleccionados. Necesidades reales, soluciones concretas y resultados visibles.',
+      'Un proyecto para un cliente y una aplicación propia muestran cómo adapto el diseño y las funciones a necesidades concretas.',
     caseType: 'Proyecto de cliente · Movilidad',
-    caseTitle: 'Una ciudad.\nUna conexión directa.',
+    caseTitle: 'Solicita tu taxi.\nFácil y en línea.',
     caseText:
-      'Para Taxi B&B Essen: una web con reservas, panel de gestión, correos automatizados y una estructura clara para las búsquedas locales.',
+      'Los pasajeros pueden solicitar un viaje en línea. Taxi B&B Essen gestiona las reservas desde un panel propio y envía correos automáticos. La estructura de la web está orientada a las búsquedas locales.',
     caseTags: ['Diseño web', 'Sistema de reservas', 'SEO local'],
     caseLink: 'Visitar Taxi B&B Essen',
     moreWork: 'Producto propio · GuardianGrid',
     socialTitle: 'La atención empieza\nantes del clic.',
     socialText:
-      'Con mi antigua cuenta de Instagram dailyraphood adquirí experiencia en inicios de vídeo, narrativa y alcance orgánico. En TikTok puedes encontrarme como Mr Han en @issa3701.',
+      'El inicio de un video, la edición y la narrativa influyen en que la gente siga mirando. Adquirí experiencia práctica con mi antigua cuenta de Instagram dailyraphood y mi perfil de TikTok Mr Han. Esa experiencia guía la creación de conceptos para redes sociales y videos publicitarios.',
     socialSource:
-      'Datos archivados de mi antigua cuenta de Instagram dailyraphood: alcance de una sola publicación sin inversión publicitaria.',
+      'Estadísticas archivadas de Instagram de dailyraphood: una publicación alcanzó alrededor de 1,3 millones de cuentas sin inversión publicitaria.',
     reach: 'cuentas alcanzadas con una publicación',
     budget: 'inversión publicitaria',
     studioTitle: 'Tu proyecto.\nDirectamente con Issa.',
     studioText:
-      'Soy Issa Hareb. Diseño, desarrollo y acompaño proyectos digitales desde Essen, Alemania. Hablas directamente con quien construye tu web, desde la primera conversación hasta las dudas después del lanzamiento.',
+      'Soy Issa Hareb y desarrollo proyectos digitales desde Essen, Alemania. Me encargo de la planificación, el diseño y el desarrollo. Así puedes resolver tus dudas directamente con quien realiza tu proyecto.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',
@@ -326,22 +326,22 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: '¿Qué hace Hareb Digital?',
         answer:
-          'Hareb Digital es el estudio digital independiente de Issa Hareb en Essen, Alemania. Ofrece webs a medida, rediseño, optimización técnica para buscadores (SEO), optimización para motores de respuesta (AEO) y automatización de tareas recurrentes.',
+          'Hareb Digital es mi estudio digital independiente. Desarrollo webs, mejoro sitios existentes y automatizo tareas repetitivas. La optimización para buscadores (SEO) y los contenidos preparados para sistemas de respuesta con IA (AEO) refuerzan las bases de tu visibilidad en línea.',
       },
       {
         question: '¿Cuánto cuesta una web?',
         answer:
-          'El precio depende del número de páginas, el diseño y las funciones. Tras una primera conversación recibes una propuesta con alcance definido y precio fijo. Una cifra genérica sin conocer el proyecto no sería útil.',
+          'El precio depende de la cantidad de páginas, el diseño y las funciones. Una vez definidos los requisitos, recibes una propuesta con precio fijo y alcance detallado. También aclaramos de antemano los posibles costos recurrentes, como alojamiento o mantenimiento.',
       },
       {
         question: '¿Cuánto tarda el desarrollo?',
         answer:
-          'Una landing page suele necesitar entre dos y tres semanas; una web con varias páginas, entre cuatro y ocho. El calendario depende de contenidos, funciones y revisiones, y se acuerda antes de empezar.',
+          'Como orientación, una landing page requiere de dos a tres semanas y una web con varias páginas de cuatro a ocho. Las funciones, los contenidos disponibles y las revisiones influyen en el plazo. Acordamos el calendario antes de empezar.',
       },
       {
         question: '¿Cuál es la diferencia entre SEO y AEO?',
         answer:
-          'SEO ayuda a los buscadores a encontrar, comprender y relacionar páginas con búsquedas relevantes. AEO organiza la información para los sistemas de respuesta mediante respuestas directas, datos empresariales coherentes y datos estructurados apropiados. No se pueden garantizar posiciones ni menciones en respuestas de IA.',
+          'El SEO ayuda a que tu web pueda encontrarse en búsquedas relevantes. AEO significa Answer Engine Optimization: prepara los contenidos para que sistemas de respuesta con IA, como ChatGPT, puedan comprenderlos y usarlos como fuente. Incluye respuestas claras y datos coherentes de la empresa. No se pueden garantizar posiciones ni menciones.',
       },
       {
         question: '¿Solo trabajas con empresas de Essen?',
@@ -354,9 +354,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'Sí. Un rediseño comienza revisando qué contenidos, URLs y funciones conviene conservar. Se reutilizan los elementos útiles y se planifican redirecciones para los cambios de URL necesarios.',
       },
     ],
-    contactTitle: ['Tu próximo capítulo.', 'Empecemos.'],
+    contactTitle: ['¿Qué tienes en mente?', 'Hablemos.'],
     contactText:
-      'Cuéntame qué tienes en mente. Unas líneas sobre tu empresa y tu idea bastan para empezar.',
+      'Cuéntame brevemente sobre tu empresa y qué te gustaría lograr o mejorar. Si ya tienes una web, puedes incluir el enlace.',
     footerLine: 'Diseño con criterio. Tecnología con sentido.',
     home: 'Inicio',
     breadcrumb: 'Ruta de navegación',

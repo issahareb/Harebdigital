@@ -10,7 +10,7 @@ export const VISUAL_COPY = {
       'Konzept · Suche & Antworten',
     ],
     captions: [
-      'Vom Entwurf zur responsiven Website.',
+      'Vom Entwurf zur fertigen Website.',
       'Bestehendes prüfen. Gezielt erneuern.',
       'Von der Anfrage bis zur Bestätigung.',
       'Klare Angaben. Verständliche Antworten.',
@@ -38,7 +38,7 @@ export const VISUAL_COPY = {
       'Concept · Search & answers',
     ],
     captions: [
-      'From design to a responsive website.',
+      'From design to a finished website.',
       'Review what exists. Improve what matters.',
       'From enquiry to confirmation.',
       'Clear information. Useful answers.',
@@ -66,7 +66,7 @@ export const VISUAL_COPY = {
       'Concepto · Búsqueda y respuestas',
     ],
     captions: [
-      'Del diseño a una web adaptable.',
+      'Del diseño a una web terminada.',
       'Revisar lo existente. Mejorar lo necesario.',
       'De la solicitud a la confirmación.',
       'Información clara. Respuestas útiles.',
