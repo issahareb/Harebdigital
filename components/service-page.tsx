@@ -1,3 +1,4 @@
+import { AiDiscovery } from './ai-discovery'
 import Link from 'next/link'
 import { ServiceVisual } from './service-visual'
 import { notFound } from 'next/navigation'
@@ -86,6 +87,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           </section>
         </div>
       </div>
+      {i === 3 && <AiDiscovery lang={lang} />}
       <div className="mt-12 flex flex-wrap items-center gap-6">
         <Link
           href={`${localizedPath(lang, '/kontakt/')}?leistung=${service.slug}`}

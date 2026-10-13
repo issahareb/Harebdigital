@@ -1,3 +1,4 @@
+import { AiDiscovery } from './ai-discovery'
 import { MotionFeature } from './motion-feature'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -218,6 +219,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </Link>
             ))}
           </div>
+          <AiDiscovery lang={lang} />
         </section>
         <MotionFeature lang={lang} />
         <section className="social-section section-space" aria-labelledby="social-title">
