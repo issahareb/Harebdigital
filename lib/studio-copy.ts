@@ -56,9 +56,9 @@ export type StudioCopy = {
 
 export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
-    title: 'Webdesign Essen, SEO & Automatisierung | Hareb Digital',
+    title: 'Webdesign, Webanwendungen & Social Media | Hareb Digital',
     description:
-      'Hareb Digital aus Essen: individuelles Webdesign, SEO und Automatisierung. Plane deine Website direkt mit Issa Hareb, von der ersten Idee bis zur Veröffentlichung.',
+      'Webdesign, individuelle Webanwendungen, Automatisierung und Social Media Marketing mit Issa Hareb. Ein Ansprechpartner für Gestaltung, Technik und Inhalte.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
@@ -67,7 +67,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     language: 'Sprache wählen',
     headline: ['Webdesign.', 'Mit Substanz.'],
     intro:
-      'Ich entwickle Websites, die dein Angebot verständlich machen und Kunden den Weg zur Anfrage erleichtern. Passende Automationen nehmen dir wiederkehrende Aufgaben ab.',
+      'Webdesign, individuelle Webanwendungen, Automatisierung und Social-Media-Inhalte aus einer Hand. Ich verbinde Gestaltung und Technik, damit dein Angebot verständlich wird und Interessenten leichter anfragen.',
     workLink: 'Arbeiten entdecken',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
@@ -85,7 +85,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Was suchen deine Kunden? Welche Informationen brauchen sie, bevor sie anfragen? Daraus entwickle ich die Struktur deiner Website. Gestaltung und Technik sorgen dafür, dass sie auf dem Handy und am Rechner einfach zu bedienen ist.',
     servicesTitle: 'Die passende Lösung.\nFür deinen Betrieb.',
     servicesIntro:
-      'Eine neue Website, eine gezielte Überarbeitung oder ein automatisierter Ablauf: Wir klären gemeinsam, was dich weiterbringt.',
+      'Eine neue Website, eine individuelle Anwendung, automatisierte Abläufe oder Social-Media-Inhalte: Wir klären gemeinsam, was dich weiterbringt.',
     serviceNames: ['Webdesign & Entwicklung', 'Website-Relaunch', 'Automatisierung', 'SEO & AEO'],
     serviceTags: [
       'Von der ersten Idee bis zur Veröffentlichung',
@@ -121,7 +121,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Was macht Hareb Digital?',
         answer:
-          'Hareb Digital ist mein unabhängiges Digitalstudio. Ich entwickle Websites, überarbeite bestehende Seiten und automatisiere wiederkehrende Aufgaben. Mit Suchmaschinenoptimierung (SEO) und klar aufbereiteten Inhalten für KI-Antwortsysteme (AEO) verbessere ich die Grundlagen deiner Online-Sichtbarkeit.',
+          'Hareb Digital ist mein unabhängiges Digitalstudio. Ich verbinde Webdesign und Webentwicklung mit individuellen Webanwendungen, Automatisierung und Social Media Marketing. Dazu gehören die Konzeption von Social-Media-Inhalten sowie Video- und Werbemittelproduktion. Mit Suchmaschinenoptimierung (SEO) und klar aufbereiteten Inhalten für KI-Antwortsysteme (AEO) verbessere ich die Grundlagen deiner Online-Sichtbarkeit.',
       },
       {
         question: 'Wie viel kostet eine Website?',

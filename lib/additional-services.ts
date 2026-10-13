@@ -1,0 +1,26 @@
+export const ADDITIONAL_SERVICES = [
+  {
+    slug: 'social-media-marketing',
+    title: 'Social Media Marketing & Content',
+    description: 'Social-Media-Konzeption, Kurzvideos und Werbevideos für Unternehmen. Hareb Digital verbindet Inhalte, Gestaltung und passende Landingpages.',
+    lead: 'Dein Angebot verständlich zeigen, Aufmerksamkeit gewinnen und Interessenten zur passenden Seite führen. Ich konzipiere Social-Media-Inhalte und produziere Videos und Werbemittel für dein Unternehmen.',
+    items: ['Zielgruppe, Themen und Content-Formate gemeinsam festlegen', 'Video-Einstiege, Skripte, Schnitt und kurze Videos für Social Media', 'Werbevideos und visuelle Inhalte passend zu deiner Marke', 'Landingpages und Anfragewege auf die Inhalte abstimmen', 'Messziele und Auswertung passend zum vereinbarten Projekt festlegen'],
+    process: 'Wir klären Ziel, Kanäle und vorhandenes Material. Danach folgen Konzept, Produktion und Abstimmung. Im Angebot steht konkret, welche Inhalte entstehen und wer Veröffentlichung, Anzeigenkonto und laufende Betreuung übernimmt.',
+    proofTitle: 'Eigene Erfahrung transparent einordnen',
+    proof: 'Auf dem früheren eigenen Instagram-Account dailyraphood erreichte ein Beitrag laut archivierter Statistik rund 1,3 Millionen Konten ohne Werbebudget. Das ist Erfahrung aus einem eigenen Projekt, kein Kundenresultat und keine Reichweitenprognose für dein Unternehmen.',
+    proofHref: '/#social',
+    proofLabel: 'Eigene Social-Media-Arbeiten ansehen',
+  },
+  {
+    slug: 'webanwendungen',
+    title: 'Individuelle Webanwendungen',
+    description: 'Individuelle Webanwendungen mit UI/UX-Design: Buchungsanfragen, Verwaltungsbereiche, Schnittstellen und Automatisierung mit Hareb Digital.',
+    lead: 'Wenn eine Website mehr können soll als informieren: Ich gestalte und entwickle Webanwendungen für konkrete Arbeitsabläufe. Oberfläche, Programmierung und angebundene Prozesse werden gemeinsam geplant.',
+    items: ['Bedienoberflächen und Abläufe für Mobilgeräte und Desktop', 'Anfrage- und Buchungsformulare mit klaren Bearbeitungszuständen', 'Geschützte Verwaltungsbereiche und passende Zugriffsrechte', 'Schnittstellen, Datenverarbeitung und automatische Benachrichtigungen', 'Gemeinsame Abnahme, Veröffentlichung und vereinbarte Wartung'],
+    process: 'Wir beschreiben zuerst Nutzer, Aufgaben und Daten. Ein überschaubarer erster Funktionsumfang wird gestaltet, entwickelt und getestet. Erweiterungen, laufende Kosten und Verantwortlichkeiten werden vorab geklärt.',
+    proofTitle: 'Ein veröffentlichtes Kundenprojekt',
+    proof: 'Bei Taxi B&B Essen können Fahrgäste Fahrten online anfragen. Ein geschützter Verwaltungsbereich unterstützt die Bearbeitung, automatische E-Mails melden neue Anfragen. GuardianGrid ist eine weitere, eigene Webanwendung und wird als eigenes Produkt ausgewiesen.',
+    proofHref: '/projekte/taxi-bb-essen/',
+    proofLabel: 'Projekt Taxi B&B Essen ansehen',
+  },
+] as const

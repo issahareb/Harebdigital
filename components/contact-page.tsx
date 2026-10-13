@@ -1,3 +1,4 @@
+import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { Suspense } from 'react'
 import Link from 'next/link'
 import { Anfrageformular } from './anfrageformular'
@@ -42,10 +43,10 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           >
             <Anfrageformular
               f={t.formular}
-              services={HD_TEXTE[lang].leistungen.punkte.map(({ slug, titel }) => ({
+              services={[...HD_TEXTE[lang].leistungen.punkte.map(({ slug, titel }) => ({
                 slug,
                 titel,
-              }))}
+              })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({slug:s.slug,titel:s.title})) : [])]}
               epost={marke.email}
             />
           </Suspense>
