@@ -1,3 +1,4 @@
+import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
 import { MotionFeature } from './motion-feature'
 import Image from 'next/image'
@@ -148,6 +149,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   {t.caseLink}
                   <ArrowUpRight size={17} aria-hidden />
                 </a>
+                {lang === 'de' && <Link className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen ↗</Link>}
               </div>
             </article>
             <div className="secondary-work" data-reveal>
@@ -219,10 +221,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </Link>
             ))}
           </div>
+          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>Leistung kennenlernen ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
         <MotionFeature lang={lang} />
-        <section className="social-section section-space" aria-labelledby="social-title">
+        <section id="social" className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">
             <figure className="social-art" data-reveal>
               <Image
@@ -243,6 +246,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 <Lines text={t.socialTitle} />
               </h2>
               <p>{t.socialText}</p>
+              {lang === 'de' && <Link className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen ↗</Link>}
               <span className="social-profile-label">TikTok · @issa3701</span>
               <a href="https://www.tiktok.com/@issa3701" className="text-link">
                 Mr Han

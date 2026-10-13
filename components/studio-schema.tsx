@@ -1,3 +1,4 @@
+import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { DOMAIN, marke, PORTFOLIO } from '@/lib/marke'
@@ -69,7 +70,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
             '@type': 'OfferCatalog',
             '@id': `${url}#services`,
             name: HD_TEXTE[lang].leistungen.label,
-            itemListElement: HD_TEXTE[lang].leistungen.punkte.map((service, i) => ({
+            itemListElement: [...HD_TEXTE[lang].leistungen.punkte.map((service, i) => ({
               '@type': 'Offer',
               itemOffered: {
                 '@type': 'Service',
@@ -78,7 +79,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
                 url: `${DOMAIN}${localizedPath(lang, `/leistungen/${service.slug}/`)}`,
                 provider: { '@id': ORGANIZATION_ID },
               },
-            })),
+            })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({'@type':'Offer',itemOffered:{'@type':'Service',name:s.title,description:s.description,url:`${DOMAIN}/leistungen/${s.slug}/`,provider:{'@id':ORGANIZATION_ID}}})) : [])],
           },
           {
             '@type': 'FAQPage',

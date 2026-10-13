@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/kontakt/',
   ]
   // lastModified is intentionally omitted: a build date is not a content change.
-  return paths.flatMap((path) =>
+  return [...paths.flatMap((path) =>
     HD_SPRACHEN.map((lang) => ({
       url: `${DOMAIN}${localizedPath(lang, path)}`,
       alternates: {
@@ -19,5 +19,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ),
       },
     })),
-  )
+  ), ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/projekte/taxi-bb-essen/'].map(path => ({url:`${DOMAIN}${path}`}))]
 }
