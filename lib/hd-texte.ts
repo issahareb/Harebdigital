@@ -518,24 +518,23 @@ const DE: HdTexte = {
       {
         n: '03',
         slug: 'automatisierung',
-        titel: 'Automatisierung',
-        text: 'Wiederkehrende Aufgaben verbinden und vereinfachen, zum Beispiel Anfragen sortieren, Angebote vorbereiten oder an Termine erinnern.',
+        titel: "Automatisierung",
+        text: "Vom Kauf bis zum Versand: Ich verbinde Shop, E-Mail, Buchhaltung und weitere Systeme zu passenden Abläufen.",
         detail: {
-          vorspann:
-            'Anfragen sortieren, Angebote vorbereiten, an Termine erinnern: Solche Aufgaben kosten im Alltag Zeit. Ich verbinde geeignete Schritte zu automatisierten Abläufen und lege mit dir fest, wo du selbst prüfst oder freigibst.',
+          vorspann: "Nach einem Kauf erhält dein Kunde automatisch eine Bestätigungsmail. Im Hintergrund können Zahlung, Rechnung, Lagerbestand und Versand zusammenspielen. Ich verbinde deine Systeme zu einfachen oder komplexen Abläufen und lege mit dir fest, wann sie selbstständig laufen und wo du freigibst.",
           dabei: {
-            titel: 'Mögliche Abläufe',
+            titel: "Konkrete Beispiele für deinen Betrieb",
             punkte: [
-              'Angebote und Rechnungsentwürfe aus vorhandenen Daten und abgestimmten Vorlagen vorbereiten',
-              'Terminerinnerungen zu festgelegten Zeitpunkten versenden',
-              'Anfragen nach vereinbarten Regeln sortieren und weiterleiten oder Antworten vorbereiten',
-              'Offene Aufgaben und den Bearbeitungsstand in einer Übersicht zusammenführen',
-              'Vorhandene Programme über verfügbare Schnittstellen verbinden',
+              "Online-Shop: Nach Eingang der Bestellung eine Bestätigungsmail mit den Bestelldaten versenden; nach bestätigter Zahlung die nächsten Schritte auslösen.",
+              "Auftragsabwicklung: Rechnungen aus Bestelldaten erstellen, an die Buchhaltung übergeben und den Lagerbestand abgleichen. Fehlende Artikel lösen eine interne Aufgabe aus.",
+              "Versand: Bezahlte, lieferbare Bestellungen an den Versand übergeben und Kunden die Sendungsverfolgung schicken, sobald eine Sendungsnummer vorliegt.",
+              "Anfragen und Angebote: Formulardaten prüfen, im Kundensystem speichern, dem passenden Ansprechpartner zuweisen und einen Angebotsentwurf zur Freigabe vorbereiten.",
+              "Termine und offene Vorgänge: Buchungen mit dem Kalender abgleichen, Erinnerungen versenden und dein Team auf ausstehende Rückmeldungen hinweisen.",
             ],
           },
           ablauf: {
-            titel: 'Wie es läuft',
-            text: 'Wir sehen uns an, welche Aufgaben regelmäßig anfallen. Dann wählen wir einen Ablauf nach Zeitaufwand, Nutzen und technischer Machbarkeit aus. Vor dem Einsatz testen wir ihn mit typischen Fällen und legen fest, wie Ausnahmen behandelt werden.',
+            titel: "Was im Hintergrund passiert",
+            text: "Ein Ereignis startet den Ablauf, etwa eine neue Bestellung oder eine bestätigte Zahlung. Über Schnittstellen tauschen die beteiligten Programme Daten aus. Der Ablauf prüft Pflichtangaben und Bedingungen: Ist bezahlt? Ist der Artikel verfügbar? Danach führt er die passenden Schritte in der richtigen Reihenfolge aus und speichert den Bearbeitungsstand. Doppelte Meldungen werden abgefangen, damit nicht zweimal dieselbe Rechnung entsteht. Schlägt ein Schritt fehl, kann er erneut versucht oder mit einer Meldung an dein Team zur Prüfung angehalten werden. Welche Verbindungen möglich sind und welche Schritte du freigibst, klären wir vorab und testen den Ablauf einschließlich typischer Ausnahmen.",
           },
           preis: {
             titel: 'Dauer und Preis',
@@ -917,24 +916,23 @@ const EN: HdTexte = {
       {
         n: '03',
         slug: 'automatisierung',
-        titel: 'Automation',
-        text: 'Connect and simplify recurring tasks, such as sorting enquiries, preparing quotes or sending appointment reminders.',
+        titel: "Automation",
+        text: "From purchase to dispatch: I connect your shop, email, accounting and other systems into practical workflows.",
         detail: {
-          vorspann:
-            'Sorting enquiries, preparing quotes and sending appointment reminders take time. I connect suitable steps into automated workflows and agree with you where a review or approval is needed.',
+          vorspann: "After a purchase, your customer automatically receives a confirmation email. Behind the scenes, payment, invoicing, stock and dispatch can work together. I connect your systems into simple or complex workflows and agree with you where they run independently and where approval is needed.",
           dabei: {
-            titel: 'Possible workflows',
+            titel: "Practical examples for your business",
             punkte: [
-              'Prepare quotes and draft invoices from existing data and agreed templates',
-              'Send appointment reminders at agreed times',
-              'Sort and route enquiries using agreed rules, or prepare replies',
-              'Bring open tasks and their status together in one overview',
-              'Connect existing software through available integrations',
+              "Online shop: Send an order confirmation with the order details, then trigger the next steps once payment is confirmed.",
+              "Order processing: Create invoices from order data, transfer them to accounting and reconcile stock. Missing items trigger an internal task.",
+              "Dispatch: Pass paid, available orders to fulfilment and send tracking details to customers once a tracking number is available.",
+              "Enquiries and quotes: Validate form data, save it in your customer system, assign the right contact and prepare a quote for approval.",
+              "Appointments and open tasks: Sync bookings with your calendar, send reminders and flag outstanding responses to your team.",
             ],
           },
           ablauf: {
-            titel: 'How it works',
-            text: 'We review the tasks that come up regularly, then select a workflow based on time spent, potential benefit and technical feasibility. Before use, we test typical cases and decide how exceptions should be handled.',
+            titel: "What happens behind the scenes",
+            text: "An event starts the workflow, such as a new order or a confirmed payment. Integrations let the connected systems exchange data. The workflow checks required information and conditions: Has payment arrived? Is the item available? It then carries out the relevant steps in order and records their status. Duplicate events are caught to avoid creating the same invoice twice. If a step fails, it can be retried or paused for review with a notification to your team. Before implementation, we check which integrations are available, agree on approval steps and test the workflow, including common exceptions.",
           },
           preis: {
             titel: 'Time and price',
@@ -1316,24 +1314,23 @@ const ES: HdTexte = {
       {
         n: '03',
         slug: 'automatisierung',
-        titel: 'Automatización',
-        text: 'Conectar y simplificar tareas repetitivas, como clasificar consultas, preparar presupuestos o enviar recordatorios de citas.',
+        titel: "Automatización",
+        text: "De la compra al envío: conecto tu tienda, correo, contabilidad y otros sistemas en procesos coordinados.",
         detail: {
-          vorspann:
-            'Clasificar consultas, preparar presupuestos y recordar citas lleva tiempo. Conecto los pasos adecuados en procesos automatizados y definimos juntos dónde necesitas revisar o aprobar.',
+          vorspann: "Tras una compra, tu cliente recibe automáticamente un correo de confirmación. En segundo plano, el pago, la factura, el inventario y el envío pueden trabajar juntos. Conecto tus sistemas en procesos simples o complejos y acordamos cuándo funcionan solos y dónde necesitas aprobar un paso.",
           dabei: {
-            titel: 'Posibles procesos',
+            titel: "Ejemplos concretos para tu negocio",
             punkte: [
-              'Preparar presupuestos y borradores de facturas con datos existentes y plantillas acordadas',
-              'Enviar recordatorios de citas en los momentos definidos',
-              'Clasificar y derivar consultas según reglas acordadas o preparar respuestas',
-              'Reunir las tareas pendientes y su estado en una sola vista',
-              'Conectar programas existentes mediante las integraciones disponibles',
+              "Tienda online: Enviar una confirmación con los datos del pedido e iniciar los siguientes pasos cuando se confirme el pago.",
+              "Gestión de pedidos: Crear facturas con los datos de compra, enviarlas a contabilidad y sincronizar el inventario. Si falta un artículo, generar una tarea interna.",
+              "Envíos: Pasar los pedidos pagados y disponibles al servicio de envíos y comunicar el seguimiento al cliente cuando exista un número de envío.",
+              "Consultas y presupuestos: Validar formularios, guardar los datos en el sistema de clientes, asignar un responsable y preparar un presupuesto para su aprobación.",
+              "Citas y tareas pendientes: Sincronizar reservas con el calendario, enviar recordatorios y avisar al equipo de respuestas pendientes.",
             ],
           },
           ablauf: {
-            titel: 'Cómo funciona',
-            text: 'Revisamos las tareas habituales y elegimos un proceso según el tiempo que consume, su utilidad y su viabilidad técnica. Antes de ponerlo en marcha, probamos casos habituales y definimos cómo gestionar las excepciones.',
+            titel: "Qué ocurre en segundo plano",
+            text: "Un evento inicia el proceso, como un pedido nuevo o un pago confirmado. Las integraciones permiten que los sistemas intercambien datos. El proceso comprueba la información necesaria y las condiciones: ¿Se ha recibido el pago? ¿Hay existencias? Después ejecuta los pasos correspondientes en orden y registra su estado. Detecta eventos duplicados para evitar crear la misma factura dos veces. Si falla un paso, puede reintentarse o detenerse para revisión con un aviso al equipo. Antes de empezar, comprobamos las conexiones disponibles, acordamos las aprobaciones y probamos el proceso con las excepciones habituales.",
           },
           preis: {
             titel: 'Plazo y precio',

@@ -92,58 +92,19 @@
   transform: none;
 }
 
-.studio-evidence {
+.studio-statement {
   min-width: 0;
-  container-type: inline-size;
-  background: #e2e6d9;
-  padding: 24px;
-}
-.studio-demo {
-  display: grid;
-  gap: 36px;
-  min-height: 390px;
-  align-content: space-between;
-  background: #253026;
-  color: #f0f3e9;
-  padding: 8cqw;
-  --hd-accent: #d4ed8a;
-}
-.studio-demo-top,
-.studio-demo-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #c5d2bd;
-}
-.studio-demo-mark {
-  width: 22px;
-  height: 22px;
-  border: 1px solid #d4ed8a;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 5px #253026, inset 0 0 0 6px #d4ed8a;
-}
-.studio-demo-text {
-  font-size: clamp(32px, 10.5cqw, 58px);
-  line-height: 1.16;
+  margin: 0;
+  font-size: clamp(40px, 5.4vw, 78px);
+  font-weight: 400;
+  line-height: 1.08;
   letter-spacing: -0.055em;
   white-space: pre-line;
 }
-.studio-demo-bottom {
-  padding-top: 24px;
-  border-top: 1px solid #4b5848;
-}
-.studio-demo-bottom > span:last-child {
-  color: #d4ed8a;
-  font-size: 24px;
-}
-.studio-evidence figcaption {
-  font-size: 11px;
-  padding-top: 18px;
-  color: #495343;
-  line-height: 1.5;
+@media (max-width: 600px) {
+  .studio-statement {
+    font-size: clamp(42px, 10.5vw, 62px);
+  }
 }
 @media (max-width: 1000px) and (min-width: 601px) {
   .services-section .service-list {
@@ -151,9 +112,6 @@
   }
 }
 @media (max-width: 600px) {
-  .studio-evidence {
-    padding: 18px;
-  }
   .project-desktop-view .project-browserbar > svg {
     width: 11px;
     height: 11px;

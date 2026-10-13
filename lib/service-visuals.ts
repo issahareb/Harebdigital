@@ -27,9 +27,7 @@ export const VISUAL_COPY = {
     socialArchive: 'Archivierte Profilansicht · TikTok',
     socialProofLabel: 'Ehemaliger Instagram-Account · dailyraphood',
     socialAlt: 'Archivierter Screenshot des TikTok-Profils Mr Han mit dem Benutzernamen @issa3701.',
-    studioLabel: 'Gestaltung, die auf Bewegung reagiert.',
-    demoLabel: 'Scrollen & entdecken',
-    demoText: 'Aus einer Idee.\nWird ein Erlebnis.',
+    demoText: 'Aus einer Idee\nwird ein Erlebnis.',
   },
   en: {
     labels: [
@@ -56,9 +54,7 @@ export const VISUAL_COPY = {
     socialArchive: 'Archived profile view · TikTok',
     socialProofLabel: 'Former Instagram account · dailyraphood',
     socialAlt: 'Archived screenshot of the Mr Han TikTok profile with the username @issa3701.',
-    studioLabel: 'Design that responds to movement.',
-    demoLabel: 'Scroll to discover',
-    demoText: 'From an idea.\nTo an experience.',
+    demoText: 'From an idea\nto an experience.',
   },
   es: {
     labels: [
@@ -84,8 +80,6 @@ export const VISUAL_COPY = {
     socialArchive: 'Vista de perfil archivada · TikTok',
     socialProofLabel: 'Antigua cuenta de Instagram · dailyraphood',
     socialAlt: 'Captura archivada del perfil de TikTok Mr Han con el nombre de usuario @issa3701.',
-    studioLabel: 'Diseño que responde al movimiento.',
-    demoLabel: 'Desliza y descubre',
-    demoText: 'De una idea.\nA una experiencia.',
+    demoText: 'De una idea\na una experiencia.',
   },
 } satisfies Record<HdLang, object>

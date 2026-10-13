@@ -50,13 +50,8 @@ export function ServiceVisual({
 export function StudioEvidence({ lang }: { lang: HdLang }) {
   const t = VISUAL_COPY[lang]
   return (
-    <figure className="studio-evidence" data-reveal>
-      <div className="studio-demo">
-        <div className="studio-demo-top"><span className="studio-demo-mark" aria-hidden /><span>{t.demoLabel}</span></div>
-        <p className="studio-demo-text"><ScrollAccent text={t.demoText} /></p>
-        <div className="studio-demo-bottom" aria-hidden><span>hareb digital.</span><span>↓</span></div>
-      </div>
-      <figcaption>{t.studioLabel}</figcaption>
-    </figure>
+    <p className="studio-statement">
+      <ScrollAccent text={t.demoText} />
+    </p>
   )
 }
