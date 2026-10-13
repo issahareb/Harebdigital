@@ -16,3 +16,14 @@
 .ai-discovery-proof figcaption { font-size: 11px; line-height: 1.6; color: var(--muted); margin-top: 14px; }
 .ai-discovery-proof figcaption span { display: block; margin-top: 5px; }
 @media (max-width: 800px) { .ai-discovery { grid-template-columns: 1fr; margin-top: 55px; padding-top: 45px; gap: 28px; } .ai-discovery-proof { max-width: 480px; } }
+
+.ai-chat-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 16px; background: #fff; border-bottom: 1px solid var(--line); font-size: 12px; }
+.ai-chat-toolbar > span:last-child { display: inline-flex; gap: 6px; align-items: center; font-size: 11px; color: var(--muted); }
+.ai-chat-scroll { height: clamp(360px, 65svh, 600px); overflow-y: auto; overflow-x: hidden; scrollbar-gutter: stable; scrollbar-width: auto; scrollbar-color: #7c896d #edece5; background: #fff; -webkit-overflow-scrolling: touch; }
+.ai-chat-scroll:focus-visible { outline: 2px solid var(--hd-accent); outline-offset: 3px; }
+.ai-chat-scroll::-webkit-scrollbar { width: 9px; }
+.ai-chat-scroll::-webkit-scrollbar-track { background: #edece5; }
+.ai-chat-scroll::-webkit-scrollbar-thumb { background: #7c896d; border: 2px solid #edece5; border-radius: 8px; }
+.ai-chat-scroll img { user-select: none; }
+.ai-chat-full { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 12px; color: var(--hd-accent); }
+@media (max-width: 800px) { .ai-discovery-proof { max-width: 100%; } .ai-chat-scroll { height: clamp(320px, 58svh, 500px); } }
