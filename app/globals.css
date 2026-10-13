@@ -1837,6 +1837,16 @@ main:has(> .cinematic-stage) { display: flow-root; }
   text-shadow: 0 2px 28px #000;
 }
 .journey-caption small { display: block; font-size: 10px; letter-spacing: .16em; margin-bottom: 18px; color: var(--accent); }
+.journey-description {
+  display: block;
+  max-width: 38em;
+  margin-top: 18px;
+  font-size: clamp(14px, 1.4vw, 18px);
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: normal;
+  color: #e5e7df;
+}
 .cinematic-stage[data-chapter='1'] [data-scene='1'], .cinematic-stage[data-chapter='2'] [data-scene='2'] { opacity: 1; transform: none; }
 .journey-progress { position: absolute; bottom: calc(var(--hero-gutter) * (1 - var(--hero-expansion))); left: 0; right: 0; height: 3px; background: #ffffff20; }
 .journey-progress span { display: block; height: 100%; background: var(--accent); transform: scaleX(var(--journey)); transform-origin: left; }

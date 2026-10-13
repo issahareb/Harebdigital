@@ -89,6 +89,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
             <span key={chapter.label} data-scene={i + 1}>
               <small>{chapter.label}</small>
               {chapter.title}
+              <span className="journey-description">{chapter.description}</span>
             </span>
           ))}
         </div>

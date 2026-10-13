@@ -16,7 +16,7 @@ export type StudioCopy = {
   motionOff: string
   motionOn: string
   heroAlt: string
-  heroChapters: { label: string; title: string }[]
+  heroChapters: { label: string; title: string; description: string }[]
   strip: [string, string, string]
   approachLabel: string
   approach: [string, string]
@@ -75,8 +75,8 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     heroAlt:
       'Ein Lichtfaden führt durch eine räumliche Landschaft aus Glas und gebürstetem Metall.',
     heroChapters: [
-      { label: 'SEO & AEO', title: 'Dein Angebot.\nKlar erklärt, leicht zu finden.' },
-      { label: 'Automatisierung', title: 'Von der Anfrage\nbis zur Bestätigung.' },
+      { label: 'SEO & AEO', title: 'Bei Google sichtbarer.\nAuch in KI-Antworten.', description: 'Damit Kunden dich auch über ChatGPT, Gemini und Claude entdecken.' },
+      { label: 'Automatisierung', title: 'Bestellung da.\nBestätigung schon raus.', description: 'Verbinde Zahlung, Rechnung und Versand zu einem automatisierten Ablauf.' },
     ],
     strip: ['Strategie & Design', 'Entwicklung & Automatisierung', 'SEO & AEO'],
     approachLabel: 'Der Anspruch',
@@ -178,8 +178,8 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOn: 'Turn animation on',
     heroAlt: 'A light thread leads through a spatial landscape of glass and brushed metal.',
     heroChapters: [
-      { label: 'SEO & AEO', title: 'What you offer.\nClear and easy to find.' },
-      { label: 'Automation', title: 'From the first enquiry\nto the confirmation.' },
+      { label: 'SEO & AEO', title: 'More visible on Google.\nAnd in AI answers.', description: 'Help customers discover you through ChatGPT, Gemini and Claude, too.' },
+      { label: 'Automation', title: 'Order received.\nConfirmation sent.', description: 'Connect payments, invoices and shipping in one automated workflow.' },
     ],
     strip: ['Strategy & design', 'Development & automation', 'SEO & AEO'],
     approachLabel: 'The approach',
@@ -280,8 +280,8 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     motionOn: 'Activar animación',
     heroAlt: 'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
     heroChapters: [
-      { label: 'SEO y AEO', title: 'Lo que ofreces.\nClaro y fácil de encontrar.' },
-      { label: 'Automatización', title: 'Desde la primera consulta\nhasta la confirmación.' },
+      { label: 'SEO y AEO', title: 'Más visible en Google.\nY en respuestas de IA.', description: 'Para que tus clientes también te descubran en ChatGPT, Gemini y Claude.' },
+      { label: 'Automatización', title: 'Pedido recibido.\nConfirmación enviada.', description: 'Conecta pagos, facturas y envíos en un proceso automatizado.' },
     ],
     strip: ['Estrategia y diseño', 'Desarrollo y automatización', 'SEO y AEO'],
     approachLabel: 'El enfoque',
