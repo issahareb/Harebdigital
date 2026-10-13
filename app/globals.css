@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './service-visuals.css';
+@import './website-showcase.css';
 
 @theme inline {
   --font-display: var(--font-heading-face), Arial, sans-serif;

@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import type { HdLang } from '@/lib/hd-texte'
 import { VISUAL_COPY } from '@/lib/service-visuals'
+import { ScrollAccent } from './scroll-accent'
 
 const SERVICE_IMAGES = [
   { src: '/studio/services-20261010/web-development-1200.webp', width: 1200, height: 900 },
-  { src: '/studio/evidence/hareb-before-20261009.webp', width: 1440, height: 1000 },
+  { src: '/videos/schau-1.jpg', width: 720, height: 450 },
   { src: '/studio/services-20261010/automation-1200.webp', width: 1200, height: 900 },
   { src: '/studio/services-20261010/search-answers-1200.webp', width: 1200, height: 900 },
 ] as const
@@ -50,19 +51,10 @@ export function StudioEvidence({ lang }: { lang: HdLang }) {
   const t = VISUAL_COPY[lang]
   return (
     <figure className="studio-evidence" data-reveal>
-      <div className="studio-code">
-        <span className="studio-code-file">scroll-accent.tsx</span>
-        <span className="studio-code-description">{t.codeLabel}</span>
-        <pre>
-          <code>
-            <span className="code-keyword">const</span>
-            {' amount = clamp(\n  progress * words.length - index\n)\n'}
-            <span className="code-keyword">const</span>
-            {' eased =\n  amount * amount * (3 - 2 * amount)\n\nword.style.setProperty(\n  '}
-            <span className="code-string">{"'--word-reveal'"}</span>
-            {', String(eased)\n)'}
-          </code>
-        </pre>
+      <div className="studio-demo">
+        <div className="studio-demo-top"><span className="studio-demo-mark" aria-hidden /><span>{t.demoLabel}</span></div>
+        <p className="studio-demo-text"><ScrollAccent text={t.demoText} /></p>
+        <div className="studio-demo-bottom" aria-hidden><span>hareb digital.</span><span>↓</span></div>
       </div>
       <figcaption>{t.studioLabel}</figcaption>
     </figure>

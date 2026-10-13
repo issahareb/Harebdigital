@@ -13,6 +13,7 @@ import { EditorialMotion } from './editorial-motion'
 import { ScrollAccent } from './scroll-accent'
 import { VISUAL_COPY } from '@/lib/service-visuals'
 import { ServiceVisual, StudioEvidence } from './service-visual'
+import { WebsiteShowcase } from './website-showcase'
 
 function Lines({ text }: { text: string }) {
   return (
@@ -176,6 +177,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </div>
           </div>
         </section>
+        <WebsiteShowcase lang={lang} />
         <section
           id="leistungen"
           className="services-section wrap section-space"
