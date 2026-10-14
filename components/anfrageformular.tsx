@@ -1,40 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import type { HdTexte } from '@/lib/hd-texte'
 
-/**
- * Das Anfrageformular.
- *
- * Es hat keinen eigenen Empfaenger. Es setzt eine E-Mail auf und uebergibt
- * sie dem Mailprogramm des Besuchers.
- *
- * Das ist eine Entscheidung und kein Provisorium: einen eigenen Versand gibt
- * es auf dieser Domain noch nicht, und ein Formular, das "danke" sagt und die
- * Nachricht verwirft, ist schlechter als gar keines — der Absender glaubt,
- * er habe Kontakt aufgenommen, und versucht es kein zweites Mal. So sieht er,
- * was rausgeht, hat es im eigenen Postausgang, und nichts geht still
- * verloren. Sobald ein Versand steht, wird hier nur das Absenden getauscht.
- *
- * Die Vorauswahl kommt aus der Adresse: `/kontakt/?leistung=automatisierung`.
- * Wer auf einer Kachel oder einer Detailseite auf "anfragen" geklickt hat,
- * findet die Leistung bereits ausgewaehlt vor. Passt der Wert zu keiner
- * Leistung, bleibt die leere Auswahl stehen statt einer falschen — eine
- * Adresse laesst sich von Hand tippen, und dann darf nichts Erfundenes
- * dastehen.
- */
-
+/** Sends through our own API. A success message requires provider acceptance. */
 export function Anfrageformular({
   f,
   services,
   epost,
+  privacyPath,
 }: {
   f: HdTexte['kontakt']['formular']
   services: { slug: string; titel: string }[]
   epost: string
+  privacyPath: string
 }) {
   const parameter = useSearchParams()
   const ausAdresse = parameter.get('leistung') ?? ''
@@ -45,31 +27,60 @@ export function Anfrageformular({
   const [absender, setAbsender] = useState('')
   const [nachricht, setNachricht] = useState('')
 
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [error, setError] = useState('')
+  const [website, setWebsite] = useState('')
+  const inFlight = useRef(false)
+  const submission = useRef<{ body: string; id: string } | null>(null)
   const gewaehlt = services.find((l) => l.slug === leistung)
+  const fallback = `mailto:${epost}?subject=${encodeURIComponent(f.titel)}&body=${encodeURIComponent(
+    `${f.name}: ${name}\n${f.epost}: ${absender}\n${f.leistung} ${gewaehlt?.titel ?? ''}\n\n${nachricht}`,
+  )}`
 
-  const absenden = (e: React.FormEvent) => {
+  const absenden = async (e: React.FormEvent) => {
     e.preventDefault()
-    const betreff = gewaehlt ? `${f.titel}: ${gewaehlt.titel}` : f.titel
-    /* Die Leistung steht im Betreff UND im Text. Betreffzeilen werden in
-       Postfaechern abgeschnitten; der Text nicht. */
-    const koerper = [
-      gewaehlt ? `${f.leistung} ${gewaehlt.titel}` : '',
-      name ? `${f.name}: ${name}` : '',
-      absender ? `${f.epost}: ${absender}` : '',
-      '',
-      nachricht,
-    ]
-      .filter((z, i, alle) => z !== '' || alle[i + 1] !== undefined)
-      .join('\n')
-    window.location.href = `mailto:${epost}?subject=${encodeURIComponent(
-      betreff,
-    )}&body=${encodeURIComponent(koerper)}`
+    if (inFlight.current) return
+    inFlight.current = true
+    setStatus('sending')
+    setError('')
+    const values = { name: name.trim(), email: absender.trim(), message: nachricht.trim(), service: gewaehlt?.titel ?? '', website }
+    const body = JSON.stringify(values)
+    // Reuse the key after an uncertain network failure to avoid duplicate emails.
+    if (submission.current?.body !== body) submission.current = { body, id: crypto.randomUUID() }
+    try {
+      const response = await fetch('/api/kontakt/', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, requestId: submission.current.id }),
+        signal: AbortSignal.timeout(22000),
+      })
+      const result = await response.json()
+      if (!response.ok || result.ok !== true) {
+        setError(response.status === 429 ? f.zuViele : f.fehler)
+        setStatus('error')
+        return
+      }
+      setStatus('sent')
+    } catch {
+      setError(f.fehler)
+      setStatus('error')
+    } finally { inFlight.current = false }
   }
 
+  if (status === 'sent') return (
+    <div className="hd-surface mt-12 max-w-xl p-6" role="status" aria-live="polite">
+      <h2 className="font-display text-xl font-bold">{f.erfolgTitel}</h2>
+      <p className="mt-3">{f.erfolgText}</p>
+    </div>
+  )
+
   return (
-    <form onSubmit={absenden} className="mt-12 max-w-xl space-y-6">
+    <form onSubmit={absenden} className="mt-12 max-w-xl space-y-6" aria-busy={status === 'sending'}>
       <h2 className="font-display text-xl font-bold tracking-tight">{f.titel}</h2>
 
+      <div hidden aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input id="website" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+      </div>
       <div>
         <label htmlFor="leistung" className="hd-feld-label">
           {f.leistung}
@@ -93,12 +104,15 @@ export function Anfrageformular({
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="hd-feld-label">
-            {f.name}
+            {f.name} *
           </label>
           <input
             id="name"
             name="name"
             type="text"
+            required
+            minLength={2}
+            maxLength={120}
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -107,12 +121,14 @@ export function Anfrageformular({
         </div>
         <div>
           <label htmlFor="epost" className="hd-feld-label">
-            {f.epost}
+            {f.epost} *
           </label>
           <input
             id="epost"
             name="epost"
             type="email"
+            required
+            maxLength={254}
             inputMode="email"
             autoComplete="email"
             /* Adressen tippt niemand als Prosa — die Rechtschreibpruefung
@@ -143,18 +159,24 @@ export function Anfrageformular({
         />
       </div>
 
+      <p className="text-sm leading-relaxed text-[color:var(--hd-ink-soft)]">
+        {f.datenschutzText} <Link href={privacyPath} className="underline underline-offset-4">{f.datenschutzLink}</Link>
+      </p>
+      {status === 'error' && (
+        <div role="alert" className="hd-surface p-4">
+          <p>{error}</p>
+          <a href={fallback} className="mt-2 inline-block underline underline-offset-4">{f.alternativ}</a>
+        </div>
+      )}
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <button type="submit" className="hd-cta px-7 py-3.5 text-[17px]">
-          {f.senden}
+        <button type="submit" disabled={status === 'sending'} className="hd-cta px-7 py-3.5 text-[17px] disabled:opacity-60 disabled:cursor-wait">
+          {status === 'sending' ? f.sendet : f.senden}
           <ArrowRight className="h-5 w-5" aria-hidden />
         </button>
         <p className="max-w-[34ch] text-[14px] leading-snug text-[color:var(--hd-ink-soft)]">
           {f.hinweis}
         </p>
       </div>
-      <p className="text-sm text-[color:var(--hd-ink-soft)]">
-        <Link href="/datenschutz/" className="underline">Datenschutz / Privacy / Privacidad</Link>
-      </p>
     </form>
   )
 }

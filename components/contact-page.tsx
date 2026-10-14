@@ -48,6 +48,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
                 titel,
               })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({slug:s.slug,titel:s.title})) : [])]}
               epost={marke.kontaktEmail}
+              privacyPath="/datenschutz/"
             />
           </Suspense>
           <noscript>
