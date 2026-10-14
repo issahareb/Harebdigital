@@ -285,14 +285,6 @@ export type HdTexte = {
     telefon: string
     sitz: string
     zurueck: string
-    /* Das Formular.
-     *
-     * Es traegt keinen eigenen Empfaenger: es setzt eine E-Mail auf und
-     * uebergibt sie dem Mailprogramm des Besuchers. Das ist bewusst so —
-     * ein Formular, das "danke" sagt und die Nachricht verwirft, ist
-     * schlechter als keines, und einen Versand ueber einen eigenen Dienst
-     * gibt es hier noch nicht. So sieht der Absender, was rausgeht, hat es
-     * selbst im Postausgang, und nichts kann still verlorengehen. */
     formular: {
       titel: string
       leistung: string
@@ -302,6 +294,14 @@ export type HdTexte = {
       nachricht: string
       nachrichtHinweis: string
       senden: string
+      sendet: string
+      erfolgTitel: string
+      erfolgText: string
+      fehler: string
+      zuViele: string
+      alternativ: string
+      datenschutzText: string
+      datenschutzLink: string
       hinweis: string
     }
   }
@@ -701,9 +701,16 @@ const DE: HdTexte = {
       epost: 'E-Mail',
       nachricht: 'Dein Vorhaben',
       nachrichtHinweis: 'Was macht dein Unternehmen? Was möchtest du erreichen oder verbessern? Den Link zu deiner bisherigen Website kannst du hier ergänzen.',
-      senden: 'E-Mail vorbereiten',
-      hinweis:
-        'Öffnet dein E-Mail-Programm mit deiner Anfrage. Prüfe die Nachricht und sende sie dort ab.',
+      senden: 'Anfrage senden',
+      sendet: 'Wird gesendet …',
+      erfolgTitel: 'Deine Anfrage ist unterwegs.',
+      erfolgText: 'Danke! Ich melde mich persönlich bei dir. In der Regel innerhalb von 24 Stunden.',
+      fehler: 'Die Anfrage konnte gerade nicht bestätigt werden. Deine Eingaben bleiben erhalten. Bitte versuche es erneut.',
+      zuViele: 'Bitte warte 15 Minuten, bevor du es erneut versuchst. Alternativ kannst du mir eine E-Mail schreiben.',
+      alternativ: 'Anfrage per E-Mail senden',
+      datenschutzText: 'Deine Angaben werden zur Bearbeitung deiner Anfrage verwendet.',
+      datenschutzLink: 'Datenschutzerklärung',
+      hinweis: 'Direkt an Issa. Eine Antwort erhältst du in der Regel innerhalb von 24 Stunden.',
     },
   },
 }
@@ -1099,9 +1106,16 @@ const EN: HdTexte = {
       epost: 'Email',
       nachricht: 'Your project',
       nachrichtHinweis: 'What does your business do? What would you like to achieve or improve? You can include a link to your existing website.',
-      senden: 'Prepare email',
-      hinweis:
-        'Opens your email app with your enquiry. Review the message and send it from there.',
+      senden: 'Send enquiry',
+      sendet: 'Sending …',
+      erfolgTitel: 'Your enquiry is on its way.',
+      erfolgText: 'Thank you! I will reply personally, usually within 24 hours.',
+      fehler: 'We could not confirm your enquiry just now. Your details have been kept. Please try again.',
+      zuViele: 'Please wait 15 minutes before trying again. Alternatively, send me an email.',
+      alternativ: 'Send enquiry by email',
+      datenschutzText: 'Your details are used to respond to your enquiry.',
+      datenschutzLink: 'Privacy policy (German)',
+      hinweis: 'Directly to Issa. I usually reply within 24 hours.',
     },
   },
 }
@@ -1497,8 +1511,17 @@ const ES: HdTexte = {
       epost: 'Correo',
       nachricht: 'Tu proyecto',
       nachrichtHinweis: '¿A qué se dedica tu empresa? ¿Qué te gustaría lograr o mejorar? Puedes incluir un enlace a tu web actual.',
-      senden: 'Preparar correo',
-      hinweis: 'Abre tu aplicación de correo con la consulta preparada. Revisa el mensaje y envíalo desde allí.',
+      senden: 'Enviar consulta',
+      sendet: 'Enviando …',
+      erfolgTitel: 'Tu consulta está en camino.',
+      erfolgText: '¡Gracias! Te responderé personalmente, normalmente en un plazo de 24 horas.',
+      fehler: 'No se pudo confirmar tu consulta. Tus datos se han conservado. Inténtalo de nuevo.',
+      zuViele: 'Espera 15 minutos antes de volver a intentarlo. También puedes escribirme por correo.',
+      alternativ: 'Enviar consulta por correo',
+      datenschutzText: 'Tus datos se utilizarán para responder a tu consulta.',
+      datenschutzLink: 'Política de privacidad (alemán)',
+      hinweis: 'Directamente a Issa. Suelo responder en un plazo de 24 horas.',
+
     },
   },
 }

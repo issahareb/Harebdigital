@@ -47,7 +47,8 @@ export function ContactPage({ lang }: { lang: HdLang }) {
                 slug,
                 titel,
               })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({slug:s.slug,titel:s.title})) : [])]}
-              epost={marke.email}
+              epost="issa@hareb.org"
+              privacyPath={localizedPath('de', '/datenschutz/')}
             />
           </Suspense>
           <noscript>

@@ -73,7 +73,7 @@ export default async function Datenschutz() {
             </p>
           </Rechtsabschnitt>
 
-          <Rechtsabschnitt titel="Keine Analyse, keine fremden Server">
+          <Rechtsabschnitt titel="Keine Analyse, lokal bereitgestellte Inhalte">
             <p>
               Diese Seite bindet keine Analysedienste, keine Werbenetzwerke und keine Inhalte
               fremder Anbieter ein. Die verwendeten Schriften (DM Sans und Manrope) stammen
@@ -87,9 +87,14 @@ export default async function Datenschutz() {
             <p>
               Schreiben Sie uns eine E-Mail oder rufen Sie an, verarbeiten wir Ihre Angaben zur
               Bearbeitung der Anfrage und für den Fall von Anschlussfragen. Rechtsgrundlage ist Art.
-              6 Abs. 1 lit. b bzw. lit. f DSGVO. Das Anfrageformular bereitet lokal eine E-Mail vor
-              und öffnet Ihr E-Mail-Programm. Die Eingaben werden erst übermittelt, wenn Sie die
-              E-Mail dort selbst absenden; die Website versendet sie nicht.
+              6 Abs. 1 lit. b bzw. lit. f DSGVO. Wenn Sie das Kontaktformular absenden, werden
+              Ihr Name, Ihre E-Mail-Adresse, die ausgewählte Leistung und Ihre Nachricht über
+              unseren Server an den E-Mail-Versanddienst Resend übermittelt und ausschließlich
+              an Issa Hareb bei Hareb Digital zugestellt. Ihre E-Mail-Adresse wird als
+              Antwortadresse verwendet. Es erfolgt kein Versand an TaxiBB oder andere Kunden.
+              Zur Begrenzung automatisierter Anfragen wird ein Hash Ihrer IP-Adresse für bis zu
+              15 Minuten im Arbeitsspeicher des Servers verarbeitet. Formularinhalte werden
+              nicht in den Anwendungslogs gespeichert.
             </p>
           </Rechtsabschnitt>
 
