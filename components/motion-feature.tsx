@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
-import { ArrowUpRight, Pause, Play, Volume2, VolumeX } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import { PlaybackIcon, SoundIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
 
 const COPY = {
@@ -102,11 +103,11 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)}
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
         <div className="motion-feature-player">
-          <button type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}>{playing ? <Pause size={18} aria-hidden /> : <Play size={18} aria-hidden />}</button>
-          <button type="button" onClick={() => { const el = video.current; if (!el) return; el.muted = !el.muted; setMuted(el.muted); if (el.paused) togglePlay() }} aria-label={muted ? t.sound : t.mute}>{muted ? <VolumeX size={18} aria-hidden /> : <Volume2 size={18} aria-hidden />}<span>{muted ? t.sound : t.mute}</span></button>
+          <button type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
+          <button type="button" onClick={() => { const el = video.current; if (!el) return; el.muted = !el.muted; setMuted(el.muted); if (el.paused) togglePlay() }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
         </div>
       </div>
-      <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}>{motionPaused ? <Play size={14} aria-hidden /> : <Pause size={14} aria-hidden />}{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
+      <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
     </div>
   </section>
 }

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowDown, ArrowUpRight, Pause, Play } from 'lucide-react'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { PlaybackIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
 import type { StudioCopy } from '@/lib/studio-copy'
 import { localizedPath } from '@/lib/locale'
@@ -108,7 +109,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
               aria-label={active ? t.motionOff : t.motionOn}
               onClick={() => setEnabled(!enabled)}
             >
-              {active ? <Pause size={14} aria-hidden /> : <Play size={14} aria-hidden />}
+              <PlaybackIcon playing={active} size={14} />
             </button>
           )}
         </div>

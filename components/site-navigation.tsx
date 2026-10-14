@@ -36,6 +36,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const dialog = useRef<HTMLDialogElement>(null)
   const toggle = useRef<HTMLButtonElement>(null)
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const openingFrame = useRef(0)
   const previousOverflow = useRef('')
   const scrollLocked = useRef(false)
   const path = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/'
@@ -56,6 +57,7 @@ export function SiteNavigation({ lang, copy: t }: {
   }
   const finishClose = () => { dialog.current?.close(); unlock() }
   const closeMenu = (immediate = false) => {
+    cancelAnimationFrame(openingFrame.current)
     setOpen(false)
     if (timer.current) clearTimeout(timer.current)
     if (immediate || matchMedia('(prefers-reduced-motion: reduce)').matches) finishClose()
@@ -69,13 +71,17 @@ export function SiteNavigation({ lang, copy: t }: {
     }
     document.documentElement.style.overflow = 'hidden'
     dialog.current?.showModal()
-    setOpen(true)
+    // Paint the closed glyph once before morphing the dialog button into X.
+    openingFrame.current = requestAnimationFrame(() => {
+      openingFrame.current = requestAnimationFrame(() => setOpen(true))
+    })
   }
 
   useEffect(() => {
     const desktop = matchMedia('(min-width: 801px)')
     const closeOnDesktop = () => {
       if (!desktop.matches) return
+      cancelAnimationFrame(openingFrame.current)
       if (timer.current) clearTimeout(timer.current)
       dialog.current?.close()
       setOpen(false)
@@ -90,6 +96,7 @@ export function SiteNavigation({ lang, copy: t }: {
     const panel = dialog.current
     return () => {
       if (timer.current) clearTimeout(timer.current)
+      cancelAnimationFrame(openingFrame.current)
       panel?.close()
       unlock()
     }

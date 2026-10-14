@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react'
+import { PlaybackIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
 import { SHOWCASE_COPY, WEBSITE_CLIPS } from '@/lib/website-clips'
 
@@ -202,7 +203,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
           <div className="showcase-status"><span>{String(active + 1).padStart(2, '0')} / {String(WEBSITE_CLIPS.length).padStart(2, '0')}</span><span ref={progress} className="showcase-progress" aria-hidden><i /></span></div>
           <div className="showcase-buttons">
             <button type="button" onClick={() => moveTo(active - 1)} disabled={edges.start} aria-label={copy.previous}><ArrowLeft size={18} aria-hidden /></button>
-            <button type="button" onClick={togglePlayback} aria-label={paused || manualPlayback || blocked ? copy.play : copy.pause}>{paused || manualPlayback || blocked ? <Play size={16} aria-hidden /> : <Pause size={16} aria-hidden />}</button>
+            <button type="button" onClick={togglePlayback} aria-label={paused || manualPlayback || blocked ? copy.play : copy.pause}><PlaybackIcon playing={!(paused || manualPlayback || blocked)} size={16} /></button>
             <button type="button" onClick={() => moveTo(active + 1)} disabled={edges.end} aria-label={copy.next}><ArrowRight size={18} aria-hidden /></button>
           </div>
           <a className="showcase-continue" href="#leistungen">{copy.continue}<ArrowDown size={15} aria-hidden /></a>

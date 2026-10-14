@@ -2032,3 +2032,36 @@ main:has(> .cinematic-stage) { display: flow-root; }
 @media (min-width: 801px) {
   .header-actions > .menu-toggle { display: none; }
 }
+
+/* Shared tactile controls: the same easing and persistent shapes in every state. */
+body :is(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta) {
+  transition: transform .25s, opacity .25s, scale .22s cubic-bezier(.22,1,.36,1), background-color .25s, border-color .25s, color .25s, box-shadow .25s;
+  -webkit-tap-highlight-color: transparent;
+}
+:where(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta):not(:disabled):active { scale: .94; }
+:where(button, .button, .header-cta, .hd-cta, .round-link):focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.control-playback { position: relative; display: inline-block; flex: 0 0 auto; vertical-align: middle; }
+.control-playback i { position: absolute; inset: 0; display: block; background: currentColor; transition: clip-path .38s cubic-bezier(.22,1,.36,1); }
+.control-playback i:first-child { clip-path: polygon(29% 17%,54% 33%,54% 67%,29% 83%); }
+.control-playback i:last-child { clip-path: polygon(54% 33%,83% 50%,83% 50%,54% 67%); }
+.control-playback[data-playing='true'] i:first-child { clip-path: polygon(25% 17%,42% 17%,42% 83%,25% 83%); }
+.control-playback[data-playing='true'] i:last-child { clip-path: polygon(58% 17%,75% 17%,75% 83%,58% 83%); }
+.control-sound { flex: 0 0 auto; }
+.control-sound-waves, .control-sound-mute { transform-origin: 17px 12px; transition: opacity .25s, transform .38s cubic-bezier(.22,1,.36,1); }
+.control-sound-waves { opacity: 1; transform: scaleX(1); }
+.control-sound-mute { opacity: 0; transform: rotate(-45deg) scale(.5); }
+.control-sound[data-muted='true'] .control-sound-waves { opacity: 0; transform: scaleX(.35); }
+.control-sound[data-muted='true'] .control-sound-mute { opacity: 1; transform: rotate(0) scale(1); }
+.control-confirm { position: relative; width: 16px; height: 16px; display: inline-block; }
+.control-confirm svg { position: absolute; inset: 0; transition: opacity .2s, transform .38s cubic-bezier(.22,1,.36,1); }
+.control-confirm svg:last-child { opacity: 0; transform: rotate(-35deg) scale(.5); }
+.control-confirm[data-confirmed='true'] svg:first-child { opacity: 0; transform: rotate(35deg) scale(.5); }
+.control-confirm[data-confirmed='true'] svg:last-child { opacity: 1; transform: rotate(0) scale(1); }
+.menu-glyph i { transition: transform .38s cubic-bezier(.22,1,.36,1), opacity .25s, width .38s; }
+@media (hover: hover) {
+  :where(.motion-toggle, .menu-toggle, .showcase-buttons button, .motion-feature-player button):not(:disabled):hover { box-shadow: 0 0 0 4px color-mix(in srgb,currentColor 8%,transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta), .control-playback i, .control-sound g, .control-confirm svg, .menu-glyph i { transition: none !important; }
+  :where(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta):active { scale: 1; }
+}
