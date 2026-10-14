@@ -43,7 +43,12 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
           <a href={PORTFOLIO} rel="me">
             Issa Hareb
           </a>{' '}
-          · Essen
+          <br />
+          {lang === 'de'
+            ? 'Geschäftssitz Sankt Augustin · Tätig in Essen und im Ruhrgebiet'
+            : lang === 'en'
+              ? 'Business address in Sankt Augustin · Working in Essen and the Ruhr region'
+              : 'Domicilio comercial en Sankt Augustin · Actividad en Essen y la región del Ruhr'}
         </p>
         <nav
           aria-label={

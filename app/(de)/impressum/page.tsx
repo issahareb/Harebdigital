@@ -11,15 +11,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 }
 
-/*
- * Deutsch, auch wenn die Seite darum herum drei Sprachen spricht.
- *
- * Das ist kein Versäumnis: die Anbieterkennzeichnung nach § 5 DDG richtet sich
- * nach dem Recht am Sitz des Anbieters, und der ist Essen. Eine übersetzte
- * Fassung wäre keine zweite Rechtsgrundlage, sondern nur eine zweite Stelle,
- * an der ein Zahlendreher stehen kann. Der Rahmen bleibt in der Sprache des
- * Besuchers, der Text selbst trägt sein eigenes `lang`.
- */
+/** Einheitliche deutsche Anbieterkennzeichnung für alle Sprachversionen. */
 export default async function Impressum() {
   return (
     <HdUnterseite lang={await sprache()}>
@@ -36,19 +28,25 @@ export default async function Impressum() {
               {marke.strasse}
               <br />
               {marke.plz} {marke.ort}
+              <br />
+              Deutschland
             </p>
+          </Rechtsabschnitt>
+
+          <Rechtsabschnitt titel="Geschäftssitz und Tätigkeitsgebiet">
+            <p>Geschäftssitz in Sankt Augustin, persönlich in Essen und im Ruhrgebiet tätig. Betreuung von Projekten auch überregional.</p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Kontakt">
             <p>
-              Telefon: {marke.telefon}
+              Telefon: <a href={`tel:${marke.telefon.replace(/\s/g, '')}`}>{marke.telefon}</a>
               <br />
-              E-Mail: {marke.email}
+              E-Mail: <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
             </p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Umsatzsteuer">
-            <p>PLATZHALTER_USTID</p>
+            <p>Gemäß § 19 UStG wird keine Umsatzsteuer berechnet (Kleinunternehmerregelung).</p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">

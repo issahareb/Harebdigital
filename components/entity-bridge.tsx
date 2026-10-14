@@ -1,4 +1,5 @@
 import type { HdLang } from '@/lib/hd-texte'
+import { marke } from '@/lib/marke'
 
 const PERSON_ID = 'https://issahareb.me/#issa-hareb'
 const ORGANIZATION_ID = 'https://issahareb.me/#hareb-digital'
@@ -34,6 +35,11 @@ const ENTITY_GRAPH = {
       '@id': ORGANIZATION_ID,
       name: 'Hareb Digital',
       url: HAREB_DIGITAL_URL,
+      telephone: marke.telefon,
+      email: marke.kontaktEmail,
+      foundingDate: marke.gruendungsjahr,
+      address: { '@type': 'PostalAddress', streetAddress: marke.strasse, postalCode: marke.plz, addressLocality: marke.ort, addressCountry: marke.land },
+      areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'Place', name: 'Ruhrgebiet' }],
       founder: { '@id': PERSON_ID },
       employee: { '@id': PERSON_ID },
       sameAs: [GOOGLE_BUSINESS_URL],

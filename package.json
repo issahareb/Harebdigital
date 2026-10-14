@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/check-platzhalter.mjs && next build",
     "start": "next start",
     "pruefen": "node scripts/check-platzhalter.mjs",
     "build:live": "node scripts/check-platzhalter.mjs && next build",

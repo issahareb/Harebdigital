@@ -71,9 +71,14 @@ export function ContactPage({ lang }: { lang: HdLang }) {
                 <dt>{t.telefon}</dt>
                 <dd>
                   <a href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
+                  <p className="mt-2 text-sm">{lang === 'de' ? 'KI-Telefonassistenz LUKAS' : lang === 'en' ? 'LUKAS AI phone assistant' : 'Asistente telefónico de IA LUKAS'}</p>
                 </dd>
               </div>
             )}
+            <div>
+              <dt>{lang === 'de' ? 'Geschäftsanschrift' : lang === 'en' ? 'Business address' : 'Dirección comercial'}</dt>
+              <dd>{marke.strasse}<br />{marke.plz} {marke.ort}</dd>
+            </div>
             <div>
               <dt>{lang === 'de' ? 'Arbeitsort' : lang === 'en' ? 'Working from' : 'Lugar de trabajo'}</dt>
               <dd>

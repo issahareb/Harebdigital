@@ -47,10 +47,10 @@ if (treffer.length > 0) {
   console.error(`\n${treffer.length} Platzhalter — die Seite ist noch nicht startbereit:\n`);
   for (const t of treffer) console.error(`  ${t.datei}:${t.zeile}  ${t.text}`);
   console.error(
-    "\nBitte in lib/marke.ts eintragen: Anschrift, Telefon, USt-ID." +
-      "\nDie Datenschutzerklärung gehört vorher geprüft — sie ist ein Gerüst, kein fertiger Text.\n",
+    "\nBitte die angezeigten Angaben vervollständigen. Eine USt-ID nur eintragen, wenn sie tatsächlich zugeteilt wurde." +
+      "\nDatenschutzhinweise müssen zur tatsächlichen Datenverarbeitung passen.\n",
   );
   process.exit(1);
 }
 
-console.log("OK — keine Platzhalter mehr, die Seite ist startbereit.");
+console.log("OK — keine Platzhalter in den geprüften Quelldateien.");

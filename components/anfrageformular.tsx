@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import type { HdTexte } from '@/lib/hd-texte'
@@ -151,6 +152,9 @@ export function Anfrageformular({
           {f.hinweis}
         </p>
       </div>
+      <p className="text-sm text-[color:var(--hd-ink-soft)]">
+        <Link href="/datenschutz/" className="underline">Datenschutz / Privacy / Privacidad</Link>
+      </p>
     </form>
   )
 }

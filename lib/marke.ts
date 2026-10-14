@@ -1,18 +1,4 @@
-/*
- * Die Angaben, die auf den Rechtsseiten stehen — an einer Stelle.
- *
- * Sie sind das, was vom bisherigen `content/site.ts` übrig ist. Die
- * Agenturseite mit ihren Leistungs-, Referenz- und Kontaktseiten ist der
- * Landingpage aus dem Portfolio gewichen; deren Texte stehen in
- * `lib/hd-texte.ts`, dreisprachig. Hier bleibt nur, was Impressum und
- * Datenschutzerklärung brauchen: dieselben Angaben, die vorher auch schon
- * hier standen, damit sie nicht an zwei Stellen auseinanderlaufen.
- *
- * Was noch fehlt, steht als PLATZHALTER da — und scripts/check-platzhalter.mjs
- * lässt den Build scheitern, solange davon etwas übrig ist.
- */
-export const PLATZHALTER = "PLATZHALTER";
-
+/** Zentrale, vom Inhaber bestätigte Unternehmens- und Kontaktdaten. */
 /** Die eigene Domain. Steht in metadataBase, robots.txt und der Sitemap. */
 export const DOMAIN = "https://hareb.digital";
 
@@ -24,7 +10,8 @@ export const marke = {
   domain: DOMAIN,
   email: "info@hareb.digital",
   kontaktEmail: "kontakt@hareb.digital",
-  telefon: PLATZHALTER,
+  telefon: "+49 201 85393123",
+  gruendungsjahr: "2026",
   strasse: "Europaring 90",
   plz: "53757",
   ort: "Sankt Augustin", // Geschäftssitz für rechtliche Angaben
