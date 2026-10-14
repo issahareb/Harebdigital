@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight, Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
@@ -13,6 +13,12 @@ const COPY = {
 
 export function MotionFeature({ lang }: { lang: HdLang }) {
   const t = COPY[lang]
+  const section = useRef<HTMLElement>(null)
+  const [visible, setVisible] = useState(false)
+  const [entered, setEntered] = useState(false)
+  const [motionAllowed, setMotionAllowed] = useState(false)
+  const [motionPaused, setMotionPaused] = useState(false)
+  const motionLabel = lang === 'de' ? 'Animation im Bereich' : lang === 'en' ? 'Section animation' : 'Animación de la sección'
   const video = useRef<HTMLVideoElement>(null)
   const screen = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
@@ -50,6 +56,26 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     return () => { prepare.disconnect(); observer.disconnect(); el.pause(); document.removeEventListener('visibilitychange', sync); reduced.removeEventListener('change', sync) }
   }, [])
 
+  useEffect(() => {
+    const area = section.current
+    if (!area) return
+    const preference = matchMedia('(prefers-reduced-motion: reduce)')
+    const hero = document.querySelector('.cinematic-stage')
+    const sync = () => setMotionAllowed(!preference.matches && hero?.getAttribute('data-motion') !== 'false')
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting)
+      if (entry.isIntersecting) setEntered(true)
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' })
+    const heroObserver = new MutationObserver(sync)
+    if (hero) heroObserver.observe(hero, { attributes: true, attributeFilter: ['data-motion'] })
+    const visibility = () => { if (document.hidden) setVisible(false); else setVisible(area.getBoundingClientRect().bottom > 0 && area.getBoundingClientRect().top < innerHeight) }
+    observer.observe(area)
+    preference.addEventListener('change', sync)
+    document.addEventListener('visibilitychange', visibility)
+    sync()
+    return () => { observer.disconnect(); heroObserver.disconnect(); preference.removeEventListener('change', sync); document.removeEventListener('visibilitychange', visibility) }
+  }, [])
+
   const togglePlay = () => {
     const el = video.current
     if (!el) return
@@ -60,10 +86,13 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     } else { userPaused.current = true; el.pause() }
   }
 
-  return <section id="motion-design" className="motion-feature" aria-labelledby="motion-title">
+  return <section ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
+    <div className="motion-orbits" aria-hidden="true"><i /><i /><i /></div>
     <div className="wrap">
       <div className="motion-feature-heading">
-        <div><span className="eyebrow">{t.label}</span><h2 id="motion-title">{t.title}<br /><span>{t.accent}</span></h2></div>
+        <div className="motion-feature-title"><span className="eyebrow"><i className="motion-signal" aria-hidden="true" />{t.label}</span>
+          <h2 id="motion-title" aria-label={`${t.title} ${t.accent}`}><span className="motion-title-line" aria-hidden="true">{t.title}</span><span className="motion-accent" aria-hidden="true">{t.accent.split(' ').map((word, wi) => <span className="motion-word" key={wi}>{[...word].map((letter, i) => <span className="motion-letter" key={i} style={{ '--letter': i + t.accent.split(' ').slice(0, wi).join(' ').length + wi } as CSSProperties}>{letter}</span>)}{wi < t.accent.split(' ').length - 1 ? '\u00a0' : ''}</span>)}</span></h2>
+        </div>
         <div className="motion-feature-copy"><p>{t.text}</p><Link href={lang === 'de' ? '/kontakt/' : `/${lang}/kontakt/`} className="motion-feature-cta">{t.cta}<ArrowUpRight size={20} aria-hidden /></Link></div>
       </div>
       <div ref={screen} className="motion-feature-screen">
@@ -77,7 +106,7 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
           <button type="button" onClick={() => { const el = video.current; if (!el) return; el.muted = !el.muted; setMuted(el.muted); if (el.paused) togglePlay() }} aria-label={muted ? t.sound : t.mute}>{muted ? <VolumeX size={18} aria-hidden /> : <Volume2 size={18} aria-hidden />}<span>{muted ? t.sound : t.mute}</span></button>
         </div>
       </div>
-      <div className="motion-feature-caption"><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
+      <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}>{motionPaused ? <Play size={14} aria-hidden /> : <Pause size={14} aria-hidden />}{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
     </div>
   </section>
 }
