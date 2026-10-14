@@ -1,5 +1,5 @@
 .motion-feature { position: relative; padding-block: clamp(64px, 9vw, 130px); background: #101410; color: #f2f3eb; overflow: hidden; }
-.motion-feature::before { content: ''; position: absolute; width: 70vw; height: 70vw; top: 5%; left: 45%; background: radial-gradient(ellipse, #829b2824, transparent 65%); pointer-events: none; }
+.motion-feature::before { content: ''; position: absolute; width: 70vw; height: 70vw; top: 5%; left: 45%; background: radial-gradient(ellipse, #a6ca3e42, transparent 65%); pointer-events: none; }
 .motion-feature .wrap { position: relative; }
 .motion-feature-heading { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: end; margin-bottom: 56px; }
 .motion-feature .eyebrow { color: #c3ceae; }
@@ -29,11 +29,11 @@
 .motion-feature-title .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
 .motion-signal { width: 7px; height: 7px; border-radius: 50%; background: #d4ed8a; box-shadow: 0 0 16px #d4ed8a80; animation: motion-signal-pulse 3.6s ease-in-out infinite; }
 .motion-title-line, .motion-accent { display: block; }
-.motion-accent { margin-top: .08em; transform-origin: left center; animation: motion-word-breathe 3.6s ease-in-out infinite; }
+.motion-accent { margin-top: .2em; transform-origin: left center; animation: motion-word-breathe 2.8s ease-in-out infinite; }
 .motion-word { display: inline-block; white-space: nowrap; }
-.motion-letter { display: inline-block; animation: motion-letter-wave 3.6s cubic-bezier(.45,0,.3,1) infinite; animation-delay: calc(var(--letter) * 55ms); }
+.motion-letter { display: inline-block; animation: motion-letter-wave 2.8s cubic-bezier(.45,0,.3,1) infinite; animation-delay: calc(var(--letter) * 85ms); }
 .motion-orbits { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
-.motion-orbits i { position: absolute; top: 4%; right: -12%; width: clamp(300px, 48vw, 760px); aspect-ratio: 1; border: 1px solid #d4ed8a18; border-radius: 50%; animation: motion-orbit-drift 12s ease-in-out infinite alternate; }
+.motion-orbits i { position: absolute; top: 4%; right: -12%; width: clamp(300px, 48vw, 760px); aspect-ratio: 1; border: 1px solid #d4ed8a35; border-radius: 50%; animation: motion-orbit-drift 12s ease-in-out infinite alternate; }
 .motion-orbits i:nth-child(2) { width: clamp(380px, 60vw, 920px); top: 0; right: -18%; animation-delay: -4s; }
 .motion-orbits i:nth-child(3) { width: clamp(460px, 72vw, 1080px); top: -4%; right: -24%; animation-delay: -8s; }
 .motion-feature[data-entered='true'][data-motion-allowed='true'] .motion-feature-title,
@@ -57,8 +57,8 @@
 .motion-feature:not([data-animate='true']) .motion-signal { animation-play-state: paused; }
 .motion-feature[data-motion-allowed='false'] .motion-accent,
 .motion-feature[data-motion-allowed='false'] .motion-letter { animation: none; }
-@keyframes motion-letter-wave { 0%, 55%, 100% { transform: translateY(0) rotate(0); } 22% { transform: translateY(-.07em) rotate(-1.5deg); } 38% { transform: translateY(.018em) rotate(.5deg); } }
-@keyframes motion-word-breathe { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.018); } }
+@keyframes motion-letter-wave { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-.18em) rotate(-3deg); } 60% { transform: translateY(.045em) rotate(1.5deg); } }
+@keyframes motion-word-breathe { 0%, 100% { transform: scale(1); text-shadow: 0 0 0 transparent; } 45% { transform: scale(1.035); text-shadow: 0 0 24px #d4ed8a50; } }
 @keyframes motion-signal-pulse { 0%, 100% { opacity: .55; transform: scale(.8); } 45% { opacity: 1; transform: scale(1.2); } }
 @keyframes motion-light-drift { from { transform: translate(-5%, -3%) scale(.9); opacity: .6; } to { transform: translate(8%, 8%) scale(1.15); opacity: 1; } }
 @keyframes motion-orbit-drift { from { transform: translate(0,0) scale(.95); opacity: .35; } to { transform: translate(-25px,30px) scale(1.08); opacity: .9; } }
