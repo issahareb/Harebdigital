@@ -22,9 +22,8 @@ export const PORTFOLIO = "https://issahareb.me";
 export const marke = {
   name: "Hareb Digital",
   domain: DOMAIN,
-  /* Die Adresse, die auf der Landingpage im Fuss steht. Sie ist dieselbe
-     geblieben; die Domain darunter ist neu. */
-  email: "info@hareb.org",
+  email: "info@hareb.digital",
+  kontaktEmail: "kontakt@hareb.digital",
   telefon: PLATZHALTER,
   strasse: "Europaring 90",
   plz: "53757",

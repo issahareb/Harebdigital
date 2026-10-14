@@ -14,7 +14,7 @@
 - [SEO & AEO](https://hareb.digital/leistungen/gefunden-werden/): Technical discoverability, site structure and clear answers.
 
 ## Contact and identity
-- [Contact](https://hareb.digital/kontakt/): Project enquiries. Email: info@hareb.org. The form prepares a message in the visitor's email application; it does not send automatically.
+- [Contact](https://hareb.digital/kontakt/): Project enquiries. Email: kontakt@hareb.digital. The form prepares a message in the visitor's email application; it does not send automatically.
 - [Founder portfolio](https://issahareb.me/): Issa Hareb, founder, designer and developer.
 - [Legal notice](https://hareb.digital/impressum/)
 - [Privacy](https://hareb.digital/datenschutz/)

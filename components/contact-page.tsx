@@ -37,7 +37,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           <Suspense
             fallback={
               <p className="mt-12">
-                <a href={`mailto:${marke.email}`}>{marke.email}</a>
+                <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
               </p>
             }
           >
@@ -47,13 +47,13 @@ export function ContactPage({ lang }: { lang: HdLang }) {
                 slug,
                 titel,
               })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({slug:s.slug,titel:s.title})) : [])]}
-              epost={marke.email}
+              epost={marke.kontaktEmail}
             />
           </Suspense>
           <noscript>
             <p className="mt-8">
-              <a className="text-link" href={`mailto:${marke.email}`}>
-                {marke.email}
+              <a className="text-link" href={`mailto:${marke.kontaktEmail}`}>
+                {marke.kontaktEmail}
               </a>
             </p>
           </noscript>
@@ -63,7 +63,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             <div>
               <dt>{t.epost}</dt>
               <dd>
-                <a href={`mailto:${marke.email}`}>{marke.email}</a>
+                <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
               </dd>
             </div>
             {telephone && (
@@ -105,7 +105,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             '@type': 'Organization',
             '@id': ORGANIZATION_ID,
             name: marke.name,
-            email: marke.email,
+            email: marke.kontaktEmail,
             url: DOMAIN,
           },
         }}

@@ -26,8 +26,8 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
               {t.project}
               <ArrowUpRight size={20} aria-hidden />
             </Link>
-            <a className="footer-email" href={`mailto:${marke.email}`}>
-              {marke.email}
+            <a className="footer-email" href={`mailto:${marke.kontaktEmail}`}>
+              {marke.kontaktEmail}
             </a>
           </div>
         </div>
@@ -56,7 +56,7 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
         >
           <Link href="/impressum/">{HD_TEXTE[lang].fuss.impressum}</Link>
           <Link href="/datenschutz/">{HD_TEXTE[lang].fuss.datenschutz}</Link>
-          <a href={`mailto:${marke.email}`}>
+          <a href={`mailto:${marke.kontaktEmail}`}>
             {lang === 'de' ? 'Kontakt' : lang === 'es' ? 'Contacto' : 'Contact'}
             <ArrowUpRight size={13} aria-hidden />
           </a>
