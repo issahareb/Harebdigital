@@ -5,7 +5,7 @@ export const VISUAL_COPY = {
   de: {
     labels: [
       'Konzept · Webentwicklung',
-      'Inspiration · Webdesign',
+      'Gestaltung · Webdesign',
       'Konzept · Automatisierung',
       'Konzept · Suche & Antworten',
     ],
@@ -17,7 +17,7 @@ export const VISUAL_COPY = {
     ],
     descriptions: [
       'Konzeptillustration zur Webentwicklung: Seitenstruktur und der fiktive Website-Entwurf FORM auf Desktop und Handy.',
-      'Designinspiration: IRIS AI mit animierter dreidimensionaler Gestaltung.',
+      'Designvorschau: IRIS AI mit animierter dreidimensionaler Gestaltung.',
       'Konzeptillustration eines Ablaufs von der Anfrage über die persönliche Freigabe und den Kalendereintrag bis zur E-Mail-Bestätigung.',
       'Konzeptillustration für SEO und AEO: Seiteninhalte verbinden Suchergebnisse mit einer Antwort samt Quellenangabe.',
     ],
@@ -32,7 +32,7 @@ export const VISUAL_COPY = {
   en: {
     labels: [
       'Concept · Web development',
-      'Inspiration · Web design',
+      'Creative design · Web design',
       'Concept · Automation',
       'Concept · Search & answers',
     ],
@@ -44,7 +44,7 @@ export const VISUAL_COPY = {
     ],
     descriptions: [
       'Web development concept: page structure and the fictional FORM website design on desktop and mobile.',
-      'Design inspiration: IRIS AI with animated three-dimensional artwork.',
+      'Design preview: IRIS AI with animated three-dimensional artwork.',
       'Workflow concept showing an enquiry, human approval, a calendar entry and an email confirmation.',
       'SEO and AEO concept: page content connects search results to an answer with a source citation.',
     ],
@@ -59,7 +59,7 @@ export const VISUAL_COPY = {
   es: {
     labels: [
       'Concepto · Desarrollo web',
-      'Inspiración · Diseño web',
+      'Creatividad · Diseño web',
       'Concepto · Automatización',
       'Concepto · Búsqueda y respuestas',
     ],
@@ -71,7 +71,7 @@ export const VISUAL_COPY = {
     ],
     descriptions: [
       'Concepto de desarrollo web: estructura de página y diseño de la web ficticia FORM en escritorio y móvil.',
-      'Inspiración de diseño: IRIS AI con elementos tridimensionales animados.',
+      'Vista previa de diseño: IRIS AI con elementos tridimensionales animados.',
       'Concepto de proceso: solicitud, aprobación de una persona, entrada en el calendario y confirmación por correo.',
       'Concepto de SEO y AEO: el contenido conecta resultados de búsqueda con una respuesta que cita su fuente.',
     ],

@@ -1,0 +1,15 @@
+.hosting-care .section-heading > p { max-width:390px; font-size:16px; }
+.hosting-care-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; }
+.hosting-care-grid article { padding:32px 0 12px; border-top:1px solid var(--line); }
+.hosting-care-grid svg { color:#59673c; margin-bottom:28px; }
+.hosting-care-grid h3 { font-size:clamp(25px,2.3vw,34px); letter-spacing:-.045em; line-height:1.15; margin-bottom:20px; }
+.hosting-care-grid p,.hosting-care-grid li { font-size:15px; line-height:1.75; color:var(--muted); }
+.hosting-care-grid ul { list-style:none; padding:0; margin:24px 0 0; }
+.hosting-care-grid li { position:relative; padding-left:20px; margin-top:12px; }
+.hosting-care-grid li::before { content:''; width:5px; height:5px; background:#667740; border-radius:50%; position:absolute; left:0; top:.75em; }
+.hosting-care-commitment { margin-top:46px; display:flex; align-items:center; justify-content:space-between; gap:36px; padding:30px 34px; background:#d4ed8a24; border-radius:18px; }
+.hosting-care-commitment h3 { font-size:clamp(24px,2.2vw,32px); line-height:1.2; letter-spacing:-.035em; }
+.hosting-care-commitment p { max-width:650px; font-size:15px; line-height:1.75; color:var(--muted); margin-top:14px; }
+.hosting-care-commitment .text-link { flex-shrink:0; max-width:100%; }
+.hosting-care-scope { margin-top:24px; max-width:920px; font-size:13px; line-height:1.8; color:var(--muted); }
+@media(max-width:800px) { .hosting-care-grid { grid-template-columns:1fr; gap:24px; } .hosting-care-grid article { padding-top:26px; } .hosting-care-grid svg { margin-bottom:20px; } .hosting-care-commitment { flex-direction:column; align-items:flex-start; padding:26px 22px; gap:22px; } }

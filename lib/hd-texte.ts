@@ -664,7 +664,7 @@ const DE: HdTexte = {
       {
         n: '04',
         t: 'Dein Projekt geht online',
-        b: 'Nach der gemeinsamen Prüfung veröffentliche ich dein Projekt und übergebe es dir. Wartung, Überwachung und weitere Betreuung vereinbaren wir passend zu deinem Bedarf.',
+        b: 'Nach der gemeinsamen Prüfung geht dein Projekt online. Wenn ich deine Website hoste, betreue und entwickle ich sie laufend weiter. Umfang und Kosten für Hosting, Wartung und Weiterentwicklung vereinbaren wir vorab.',
       },
     ],
   },
@@ -1062,7 +1062,7 @@ const EN: HdTexte = {
       {
         n: '04',
         t: 'Your project goes live',
-        b: 'After our joint review, I launch and hand over your project. We agree on maintenance, monitoring and further support to suit your needs.',
+        b: 'After our joint review, your project goes live. If I host your website, I continue to maintain and develop it. We agree on the scope and costs of hosting, maintenance and ongoing development in advance.',
       },
     ],
   },
@@ -1460,7 +1460,7 @@ const ES: HdTexte = {
       {
         n: '04',
         t: 'Tu proyecto se publica',
-        b: 'Después de revisarlo juntos, publico el proyecto y te lo entrego. Acordamos el mantenimiento, la supervisión y el soporte posterior según tus necesidades.',
+        b: 'Después de revisarlo juntos, tu proyecto se publica. Si alojo tu web, sigo cuidándola y desarrollándola. Acordamos de antemano el alcance y los costos del alojamiento, mantenimiento y desarrollo continuo.',
       },
     ],
   },

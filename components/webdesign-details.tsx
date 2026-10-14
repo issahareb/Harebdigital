@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { HOSTING_COPY } from '@/lib/hosting-copy'
 
 const questions = [
   {
@@ -23,8 +24,9 @@ const questions = [
   },
   {
     question: 'Was passiert nach der Veröffentlichung?',
-    answer: 'Du erhältst eine Übergabe der vereinbarten Funktionen. Wie Inhalte geändert werden und welche Wartung, Updates oder Unterstützung du brauchst, klären wir im Projekt. Laufende Betreuung wird mit einem eigenen Leistungsumfang vereinbart.',
+    answer: 'Du erhältst eine Übergabe der vereinbarten Funktionen. Wenn du deine Website bei mir hostest, betreue ich den Betrieb, die Wartung und die laufende Weiterentwicklung. So bleibt dein Auftritt auch nach dem Start technisch und gestalterisch aktuell. Leistungsumfang und laufende Kosten vereinbaren wir vorab.',
   },
+  ...HOSTING_COPY.de.faq,
 ]
 
 export function WebdesignDetails() {

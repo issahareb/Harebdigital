@@ -1,3 +1,4 @@
+import { HOSTING_COPY } from './hosting-copy'
 import type { HdLang } from './hd-texte'
 
 export type StudioCopy = {
@@ -148,6 +149,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
         answer:
           'Ja. Bei einem Relaunch prüfe ich zuerst, welche Inhalte, Adressen und Funktionen erhalten bleiben können. Sinnvolle Bestandteile werden weitergenutzt; notwendige URL-Änderungen werden mit Weiterleitungen geplant.',
       },
+      ...HOSTING_COPY.de.faq,
     ],
     contactTitle: ['Was hast du vor?', 'Lass uns sprechen.'],
     contactText:
@@ -250,6 +252,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
         answer:
           'Yes. A redesign begins by reviewing which content, URLs and features should be retained. Useful elements are reused, and necessary URL changes are planned with redirects.',
       },
+      ...HOSTING_COPY.en.faq,
     ],
     contactTitle: ['What do you have in mind?', 'Let’s talk.'],
     contactText:
@@ -353,6 +356,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
         answer:
           'Sí. Un rediseño comienza revisando qué contenidos, URLs y funciones conviene conservar. Se reutilizan los elementos útiles y se planifican redirecciones para los cambios de URL necesarios.',
       },
+      ...HOSTING_COPY.es.faq,
     ],
     contactTitle: ['¿Qué tienes en mente?', 'Hablemos.'],
     contactText:

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { SHOWCASE_COPY, WEBSITE_CLIPS } from '@/lib/website-clips'
 
@@ -192,7 +192,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
                 </div>
                 <div className="showcase-caption">
                   <div><span className="showcase-number">0{index + 1}</span><h3>{clip.title}</h3></div>
-                  {clip.source ? <a href={clip.source} target="_blank" rel="noopener noreferrer" tabIndex={pinned && index !== active ? -1 : 0}>{copy.source}<ArrowUpRight size={14} aria-hidden /></a> : <span>{copy.reference}</span>}
+                  <span>{copy.reference}</span>
                 </div>
               </article>
             ))}

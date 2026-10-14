@@ -3,6 +3,7 @@
 @import './website-showcase.css';
 @import './motion-feature.css';
 @import './ai-discovery.css';
+@import './hosting-care.css';
 
 @theme inline {
   --font-display: var(--font-heading-face), Arial, sans-serif;

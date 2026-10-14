@@ -1,5 +1,6 @@
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
+import { HostingCare } from './hosting-care'
 import { MotionFeature } from './motion-feature'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -336,10 +337,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             ))}
           </ol>
         </section>
+        <HostingCare lang={lang} />
         <section id="faq" className="faq-section wrap section-space" aria-labelledby="faq-title">
           <div>
             <div className="section-label">
-              <span className="small-index">07 /</span>
+              <span className="small-index">08 /</span>
               <span className="eyebrow">FAQ</span>
             </div>
             <h2 id="faq-title">
