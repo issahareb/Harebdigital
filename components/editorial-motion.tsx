@@ -17,8 +17,8 @@ export function EditorialMotion() {
           entry.target.removeAttribute('data-reveal-pending')
           observer?.unobserve(entry.target)
         }
-      }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' })
-      for (const el of elements) if (el.getBoundingClientRect().top > innerHeight) {
+      }, { threshold: 0, rootMargin: '160px 0px 240px 0px' })
+      for (const el of elements) if (el.getBoundingClientRect().top > innerHeight + 240) {
         el.setAttribute('data-reveal-pending', '')
         observer.observe(el)
       }

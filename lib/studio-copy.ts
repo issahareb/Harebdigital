@@ -103,7 +103,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Fahrgäste können ihre Fahrt online anfragen. Taxi B&B Essen verwaltet die Buchungen über einen eigenen Bereich und versendet automatische E-Mails. Die Seitenstruktur ist auf die lokale Suche ausgerichtet.',
     caseTags: ['Webdesign', 'Buchungssystem', 'Lokale Suche'],
     caseLink: 'Taxi B&B Essen besuchen',
-    moreWork: 'Eigenes Produkt · GuardianGrid',
+    moreWork: 'Experiment & eigenes Produkt',
     socialTitle: 'Aufmerksamkeit\nbeginnt vor dem Klick.',
     socialText:
       'Video-Einstiege, Schnitt und Erzählweise prägen, ob Menschen weiterschauen. Damit habe ich auf meinem früheren Instagram-Account dailyraphood und meinem TikTok-Profil Mr Han praktische Erfahrung gesammelt. Diese Erfahrung fließt in die Konzeption von Social-Media-Inhalten und Werbevideos ein.',
@@ -113,7 +113,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'Werbebudget',
     studioTitle: 'Dein Webentwickler.\nDirekt aus Essen.',
     studioText:
-      'Ich bin Issa Hareb und entwickle digitale Projekte aus Essen. Konzept, Gestaltung und technische Umsetzung liegen bei mir. So kannst du Fragen direkt mit dem klären, der dein Projekt umsetzt.',
+      'Ich bin Issa Hareb und entwickle digitale Projekte aus Essen. Konzept, Gestaltung und technische Umsetzung liegen bei mir. So kannst du Fragen direkt mit dem klären, der dein Projekt umsetzt. Mein Arbeitsort ist Essen, der Geschäftssitz von Hareb Digital liegt in Sankt Augustin.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -206,7 +206,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Passengers can request a ride online. Taxi B&B Essen manages bookings through a dedicated dashboard and sends automated emails. The website structure supports local search.',
     caseTags: ['Web design', 'Booking system', 'Local SEO'],
     caseLink: 'Visit Taxi B&B Essen',
-    moreWork: 'Own product · GuardianGrid',
+    moreWork: 'Experiment & independent product',
     socialTitle: 'Attention starts\nbefore the click.',
     socialText:
       'Video openings, editing and storytelling shape whether people keep watching. I gained hands-on experience through my former Instagram account dailyraphood and my TikTok profile Mr Han. That experience informs how I plan social media content and promotional videos.',
@@ -216,7 +216,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'advertising spend',
     studioTitle: 'Your project.\nBuilt with Issa.',
     studioText:
-      'I’m Issa Hareb, and I develop digital projects from Essen, Germany. I handle planning, design and development, so you can discuss questions directly with the person building your project.',
+      'I’m Issa Hareb, and I develop digital projects from Essen, Germany. I handle planning, design and development, so you can discuss questions directly with the person building your project. I work from Essen; Hareb Digital’s registered business address is in Sankt Augustin.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -310,7 +310,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Los pasajeros pueden solicitar un viaje en línea. Taxi B&B Essen gestiona las reservas desde un panel propio y envía correos automáticos. La estructura de la web está orientada a las búsquedas locales.',
     caseTags: ['Diseño web', 'Sistema de reservas', 'SEO local'],
     caseLink: 'Visitar Taxi B&B Essen',
-    moreWork: 'Producto propio · GuardianGrid',
+    moreWork: 'Experimento y producto propio',
     socialTitle: 'La atención empieza\nantes del clic.',
     socialText:
       'El inicio de un video, la edición y la narrativa influyen en que la gente siga mirando. Adquirí experiencia práctica con mi antigua cuenta de Instagram dailyraphood y mi perfil de TikTok Mr Han. Esa experiencia guía la creación de conceptos para redes sociales y videos publicitarios.',
@@ -320,7 +320,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'inversión publicitaria',
     studioTitle: 'Tu proyecto.\nDirectamente con Issa.',
     studioText:
-      'Soy Issa Hareb y desarrollo proyectos digitales desde Essen, Alemania. Me encargo de la planificación, el diseño y el desarrollo. Así puedes resolver tus dudas directamente con quien realiza tu proyecto.',
+      'Soy Issa Hareb y desarrollo proyectos digitales desde Essen, Alemania. Me encargo de la planificación, el diseño y el desarrollo. Así puedes resolver tus dudas directamente con quien realiza tu proyecto. Trabajo desde Essen; el domicilio comercial de Hareb Digital está en Sankt Augustin.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',

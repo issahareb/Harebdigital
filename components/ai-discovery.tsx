@@ -13,8 +13,9 @@ const COPY = {
     open: 'In ChatGPT fragen', copy: 'Frage kopieren', copied: 'Kopiert', error: 'Bitte die Frage oben markieren und kopieren.',
     other: 'Auch in Gemini oder Claude ausprobieren: Frage kopieren und dort einfügen.',
     caption: 'Auszug aus einer ChatGPT-Antwort vom 13.10.2026. Aus zwei Aufnahmen zusammengefügt.',
+    archive: 'Archiv · 13.10.2026',
     scroll: 'Im Chat scrollen oder wischen', full: 'Vollständige Aufnahme öffnen', region: 'ChatGPT-Antwort, scrollbar',
-    note: 'Eine Beispielantwort. Ergebnisse können je nach Frage, Modell und Websuche variieren.',
+    note: 'Historisches Beispiel, keine Live-Abfrage. Für den aktuellen Stand nutze „In ChatGPT fragen“. Antworten können je nach Frage, Modell und Websuche variieren.',
     alt: 'Gespeicherte ChatGPT-Antwort auf „Wer ist Issa Hareb?“: nennt Webentwicklung, Automatisierung, KI-Agenten und L.U.K.A.S. mit Quellenverweisen auf das Portfolio.',
   },
   en: {
@@ -24,8 +25,9 @@ const COPY = {
     open: 'Ask ChatGPT', copy: 'Copy question', copied: 'Copied', error: 'Please select and copy the question above.',
     other: 'Try Gemini or Claude too: copy the question and paste it there.',
     caption: 'Excerpt from a German ChatGPT answer dated 13 October 2026. Combined from two captures.',
+    archive: 'Archive · 13 Oct 2026',
     scroll: 'Scroll or swipe inside the chat', full: 'Open complete capture', region: 'Scrollable ChatGPT answer',
-    note: 'One example answer. Results may vary by question, model and web search.',
+    note: 'A historical example, not a live result. Use “Ask ChatGPT” for a current answer. Results may vary by question, model and web search.',
     alt: 'Saved German ChatGPT answer about Issa Hareb, mentioning web development, automation, AI agents and L.U.K.A.S., with portfolio sources.',
   },
   es: {
@@ -35,8 +37,9 @@ const COPY = {
     open: 'Preguntar a ChatGPT', copy: 'Copiar pregunta', copied: 'Copiado', error: 'Selecciona y copia la pregunta de arriba.',
     other: 'Prueba también Gemini o Claude: copia la pregunta y pégala allí.',
     caption: 'Extracto de una respuesta de ChatGPT del 13 de octubre de 2026, en alemán. Dos capturas combinadas.',
+    archive: 'Archivo · 13 oct 2026',
     scroll: 'Desliza dentro del chat', full: 'Abrir captura completa', region: 'Respuesta de ChatGPT desplazable',
-    note: 'Una respuesta de ejemplo. Los resultados pueden variar según la pregunta, el modelo y la búsqueda web.',
+    note: 'Ejemplo histórico, no una consulta en directo. Usa «Preguntar a ChatGPT» para una respuesta actual. Los resultados pueden variar según la pregunta, el modelo y la búsqueda web.',
     alt: 'Respuesta guardada en alemán de ChatGPT sobre Issa Hareb: desarrollo web, automatización, agentes de IA y L.U.K.A.S., con fuentes del portfolio.',
   },
 }
@@ -82,7 +85,7 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
         <span className="ai-discovery-status" role="status">{error || (copied !== null ? t.copied : '')}</span>
       </div>
       <figure className="ai-discovery-proof">
-        <div className="ai-chat-toolbar"><span>ChatGPT</span><span>{t.scroll}<ArrowDown size={14} aria-hidden /></span></div>
+        <div className="ai-chat-toolbar"><span>ChatGPT · {t.archive}</span><span>{t.scroll}<ArrowDown size={14} aria-hidden /></span></div>
         <div className="ai-chat-scroll" tabIndex={0} role="region" aria-label={t.region}>
           <div className="ai-chat-excerpt">
             <Image src="/studio/evidence/chatgpt-issa-hareb-full.webp" alt={t.alt} width={728} height={2160} sizes="(max-width: 800px) 90vw, 560px" draggable={false} />

@@ -72,6 +72,19 @@ export function SiteNavigation({ lang, copy: t }: {
     setOpen(true)
   }
 
+  useEffect(() => {
+    const desktop = matchMedia('(min-width: 801px)')
+    const closeOnDesktop = () => {
+      if (!desktop.matches) return
+      if (timer.current) clearTimeout(timer.current)
+      dialog.current?.close()
+      setOpen(false)
+      unlock()
+    }
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => desktop.removeEventListener('change', closeOnDesktop)
+  }, [])
+
   useEffect(() => { setQuery(window.location.search) }, [pathname])
   useEffect(() => {
     const panel = dialog.current

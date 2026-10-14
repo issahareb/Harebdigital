@@ -95,7 +95,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </div>
               <p>{t.workIntro}</p>
             </div>
-            <article className="featured-work" data-reveal>
+            <article className="featured-work">
               <a
                 href="https://www.taxibbessen.de/"
                 className="project-visual project-visual--responsive"
@@ -241,7 +241,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             <div>
               <div className="section-label">
                 <span className="small-index">04 /</span>
-                <span className="eyebrow">Social & Content</span>
+                <span className="eyebrow">{lang === 'de' ? 'Eigene Content-Experimente' : lang === 'en' ? 'Independent content experiments' : 'Experimentos propios de contenido'}</span>
               </div>
               <h2 id="social-title">
                 <Lines text={t.socialTitle} />
