@@ -42,9 +42,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           lang={lang}
           copy={{
             headline: t.headline,
+            kicker: t.kicker,
             intro: t.intro,
             project: t.project,
-            workLink: t.workLink,
             scroll: t.scroll,
             motionOff: t.motionOff,
             motionOn: t.motionOn,
