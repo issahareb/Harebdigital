@@ -24,13 +24,12 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'Organization',
+            '@type': 'ProfessionalService',
             '@id': ORGANIZATION_ID,
             name: marke.name,
             url: `${DOMAIN}/`,
             logo: `${DOMAIN}/studio/logo-v1.png`,
             email: marke.kontaktEmail,
-            telephone: marke.telefon,
             foundingDate: marke.gruendungsjahr,
             founder: { '@id': PERSON_ID },
             address: {
@@ -41,7 +40,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
               addressLocality: marke.ort,
               addressCountry: marke.land,
             },
-            areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
+            areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'City', name: 'Bonn' }, { '@type': 'AdministrativeArea', name: 'Rhein-Sieg-Kreis' }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
             sameAs: ['https://share.google/EUZlSQOOkoXIK0AMM', PORTFOLIO],
           },
           {

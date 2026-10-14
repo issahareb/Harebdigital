@@ -8,7 +8,7 @@ export const PORTFOLIO = "https://issahareb.me";
 export const marke = {
   name: "Hareb Digital",
   domain: DOMAIN,
-  email: "info@hareb.digital",
+  email: "kontakt@hareb.digital",
   kontaktEmail: "kontakt@hareb.digital",
   telefon: "+49 201 85393123",
   gruendungsjahr: "2026",

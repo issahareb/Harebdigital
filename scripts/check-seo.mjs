@@ -87,6 +87,15 @@ for (const lang of languages) {
     if (path === '/') {
       const graph = schemas.flatMap((s) => s['@graph'] || [s])
       const faq = graph.find((s) => s['@type'] === 'FAQPage')
+      const business = graph.find((s) => s['@id'] === 'https://issahareb.me/#hareb-digital')
+      assert.equal(business?.['@type'], 'ProfessionalService', `${route}: service business schema`)
+      assert.equal(business.email, 'kontakt@hareb.digital', `${route}: verified public contact email`)
+      assert(business.areaServed.some((area) => area.name === 'Bonn'), `${route}: Bonn service area`)
+      assert(!('telephone' in business), `${route}: do not publish unverified phone in schema`)
+      if (lang === 'de') {
+        assert(!title.includes('Webdesign Essen'), 'No keyword-stuffed homepage title')
+        assert(description.includes('Bonn'), 'Bonn mentioned in German description')
+      }
       assert.equal(faq.mainEntity.length, 6, `${route}: FAQ count`)
       for (const question of faq.mainEntity) {
         assert(html.includes(question.name), `${route}: FAQ question visible`)

@@ -34,7 +34,7 @@ export default async function Impressum() {
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Geschäftssitz und Tätigkeitsgebiet">
-            <p>Geschäftssitz in Sankt Augustin, persönlich in Essen und im Ruhrgebiet tätig. Betreuung von Projekten auch überregional.</p>
+            <p>Geschäftssitz in Sankt Augustin, persönlicher Arbeitsort Essen. Projekte für Unternehmen im Raum Bonn, im Ruhrgebiet und deutschlandweit.</p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Kontakt">

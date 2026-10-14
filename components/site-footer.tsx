@@ -45,10 +45,10 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
           </a>{' '}
           <br />
           {lang === 'de'
-            ? 'Geschäftssitz Sankt Augustin · Tätig in Essen und im Ruhrgebiet'
+            ? 'Geschäftssitz Sankt Augustin · Projekte in Essen, Bonn und deutschlandweit'
             : lang === 'en'
-              ? 'Business address in Sankt Augustin · Working in Essen and the Ruhr region'
-              : 'Domicilio comercial en Sankt Augustin · Actividad en Essen y la región del Ruhr'}
+              ? 'Business address in Sankt Augustin · Projects in Essen, Bonn and beyond'
+              : 'Domicilio comercial en Sankt Augustin · Proyectos en Essen, Bonn y otros lugares'}
         </p>
         <nav
           aria-label={

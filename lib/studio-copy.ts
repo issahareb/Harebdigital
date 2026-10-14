@@ -57,19 +57,19 @@ export type StudioCopy = {
 
 export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
-    title: 'Webdesign Essen & Webentwicklung | Hareb Digital',
+    title: 'Webdesign, SEO & Automatisierung | Hareb Digital',
     description:
-      'Webdesign und Webentwicklung aus Essen: individuelle Websites, Webanwendungen und Automatisierung. Plane dein Projekt direkt mit Issa Hareb von Hareb Digital.',
+      'Webdesign, Webentwicklung, SEO und Automatisierung für Unternehmen in Essen, Bonn und deutschlandweit. Direkte Zusammenarbeit mit Issa Hareb.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
     nav: ['Arbeiten', 'Leistungen', 'Studio'],
     project: 'Projekt anfragen',
     language: 'Sprache wählen',
-    kicker: 'Aus Essen',
+    kicker: 'Digitalstudio aus NRW',
     headline: ['Webdesign.', 'Mit Substanz.'],
     intro:
-      'Gestaltung, Inhalte und Technik aus einer Hand. Für Unternehmen in Essen, die ihr Angebot klar zeigen und den Weg zur Anfrage kurz halten wollen.',
+      'Gestaltung, Inhalte und Technik aus einer Hand. Für Websites, die dein Angebot klar zeigen und Kunden den Weg zur Anfrage erleichtern.',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
     motionOn: 'Animation einschalten',
@@ -86,7 +86,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Was suchen deine Kunden? Welche Informationen brauchen sie, bevor sie anfragen? Daraus entwickle ich die Struktur deiner Website. Gestaltung und Technik sorgen dafür, dass sie auf dem Handy und am Rechner einfach zu bedienen ist.',
     servicesTitle: 'Websites entwickeln.\nAbläufe vereinfachen.',
     servicesIntro:
-      'Webdesign und Webentwicklung für Unternehmen in Essen und darüber hinaus. Dazu kommen individuelle Anwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.',
+      'Webdesign und Webentwicklung für Unternehmen in Essen, Bonn und darüber hinaus. Dazu kommen Webanwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.',
     serviceNames: ['Webdesign & Entwicklung', 'Website-Relaunch', 'Automatisierung', 'SEO & AEO'],
     serviceTags: [
       'Von der ersten Idee bis zur Veröffentlichung',
@@ -111,9 +111,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Archivierte Instagram-Statistik von dailyraphood: Ein Beitrag erreichte rund 1,3 Millionen Konten ohne Werbebudget.',
     reach: 'erreichte Konten mit einem Beitrag',
     budget: 'Werbebudget',
-    studioTitle: 'Dein Webentwickler.\nDirekt aus Essen.',
+    studioTitle: 'Dein Webentwickler.\nDirekt für dich.',
     studioText:
-      'Ich bin Issa Hareb und entwickle digitale Projekte aus Essen. Konzept, Gestaltung und technische Umsetzung liegen bei mir. So kannst du Fragen direkt mit dem klären, der dein Projekt umsetzt. Mein Arbeitsort ist Essen, der Geschäftssitz von Hareb Digital liegt in Sankt Augustin.',
+      'Ich bin Issa Hareb und entwickle digitale Projekte persönlich von der Idee bis zur Umsetzung. Ich arbeite aus Essen, der Geschäftssitz von Hareb Digital liegt in Sankt Augustin nahe Bonn. Unternehmen aus der Region und darüber hinaus betreue ich direkt.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -140,9 +140,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'SEO verbessert die Voraussetzungen dafür, dass deine Website bei passenden Suchanfragen gefunden wird. AEO steht für Answer Engine Optimization: Inhalte werden so aufbereitet, dass KI-Antwortsysteme wie ChatGPT sie leichter verstehen und als Quelle nutzen können. Dazu gehören klare Antworten und eindeutige Unternehmensangaben. Platzierungen oder Nennungen lassen sich nicht garantieren.',
       },
       {
-        question: 'Arbeitest du nur mit Unternehmen aus Essen?',
+        question: 'In welchen Regionen arbeitest du?',
         answer:
-          'Ich arbeite von Essen aus und betreue auch überregionale Projekte. Planung, Entwürfe und Abstimmungen können digital stattfinden. Für eine gute Zusammenarbeit zählen ein klarer Ansprechpartner und kurze Wege.',
+          'Ich arbeite aus Essen und betreue Unternehmen im Ruhrgebiet, im Raum Bonn und deutschlandweit. Planung, Entwürfe und Abstimmungen können digital stattfinden.',
       },
       {
         question: 'Kann meine bestehende Website erhalten bleiben?',
@@ -159,19 +159,19 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     breadcrumb: 'Brotkrumennavigation',
     details: 'Leistung entdecken',
     contactDescription:
-      'Plane dein Webdesign-, SEO- oder Automatisierungsprojekt direkt mit Issa Hareb. Kontakt zu Hareb Digital in Essen per E-Mail und Projektanfrage.',
+      'Plane dein Webdesign-, SEO- oder Automatisierungsprojekt direkt mit Issa Hareb. Kontakt per E-Mail und Projektanfrage für Unternehmen in Essen, Bonn und darüber hinaus.',
   },
   en: {
-    title: 'Web Design, SEO & Automation in Essen | Hareb Digital',
+    title: 'Web Design, SEO & Automation | Hareb Digital',
     description:
-      'Independent web design, technical SEO, AEO and automation from Essen, Germany. Work directly with Issa Hareb, from the first idea to a website in operation.',
+      'Web design, SEO, AEO and automation for businesses in Essen, Bonn and beyond. Work directly with Issa Hareb on clear, effective digital solutions.',
     skip: 'Skip to content',
     menu: 'Open menu',
     close: 'Close menu',
     nav: ['Work', 'Services', 'Studio'],
     project: 'Start a project',
     language: 'Choose language',
-    kicker: 'From Essen',
+    kicker: 'Independent digital studio',
     headline: ['Digital.', 'With substance.'],
     intro:
       'I build websites that explain what you offer and make it easy for customers to enquire. Tailored automation takes recurring tasks off your hands.',
@@ -216,7 +216,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'advertising spend',
     studioTitle: 'Your project.\nBuilt with Issa.',
     studioText:
-      'I’m Issa Hareb, and I develop digital projects from Essen, Germany. I handle planning, design and development, so you can discuss questions directly with the person building your project. I work from Essen; Hareb Digital’s registered business address is in Sankt Augustin.',
+      'I’m Issa Hareb and build digital projects personally, from planning to launch. I work from Essen, while Hareb Digital’s registered business address is in Sankt Augustin near Bonn. I support businesses locally and remotely.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -243,9 +243,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'SEO helps your website become discoverable for relevant searches. AEO stands for Answer Engine Optimization: it prepares content so AI answer systems such as ChatGPT can understand it and use it as a source. This includes clear answers and consistent business details. Rankings and mentions cannot be guaranteed.',
       },
       {
-        question: 'Do you only work with businesses in Essen?',
+        question: 'Which regions do you work with?',
         answer:
-          'I work from Essen and also collaborate remotely with businesses elsewhere. Planning, design reviews and discussions can all happen online.',
+          'I work from Essen with businesses in the Ruhr area, Bonn and throughout Germany. Planning, reviews and meetings can all happen online.',
       },
       {
         question: 'Can my existing website be preserved?',
@@ -262,19 +262,19 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     breadcrumb: 'Breadcrumb',
     details: 'Explore service',
     contactDescription:
-      'Plan your web design, SEO or automation project directly with Issa Hareb. Contact Hareb Digital in Essen by email or prepare a project enquiry.',
+      'Plan your web design, SEO or automation project with Issa Hareb. Contact Hareb Digital by email or project enquiry, from Bonn, Essen or anywhere else.',
   },
   es: {
-    title: 'Diseño web, SEO y automatización | Hareb Digital, Essen',
+    title: 'Diseño web, SEO y automatización | Hareb Digital',
     description:
-      'Diseño web a medida, SEO técnico, AEO y automatización desde Essen, Alemania. Trabaja directamente con Issa Hareb, desde la idea hasta la puesta en marcha.',
+      'Diseño web, SEO, AEO y automatización para empresas de Essen, Bonn y otros lugares. Trabaja directamente con Issa Hareb en tu proyecto digital.',
     skip: 'Saltar al contenido',
     menu: 'Abrir menú',
     close: 'Cerrar menú',
     nav: ['Proyectos', 'Servicios', 'Estudio'],
     project: 'Iniciar un proyecto',
     language: 'Elegir idioma',
-    kicker: 'Desde Essen',
+    kicker: 'Estudio digital independiente',
     headline: ['Digital.', 'Con sustancia.'],
     intro:
       'Desarrollo webs que explican lo que ofreces y facilitan que tus clientes te contacten. Las automatizaciones a medida se encargan de las tareas repetitivas.',
@@ -320,7 +320,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'inversión publicitaria',
     studioTitle: 'Tu proyecto.\nDirectamente con Issa.',
     studioText:
-      'Soy Issa Hareb y desarrollo proyectos digitales desde Essen, Alemania. Me encargo de la planificación, el diseño y el desarrollo. Así puedes resolver tus dudas directamente con quien realiza tu proyecto. Trabajo desde Essen; el domicilio comercial de Hareb Digital está en Sankt Augustin.',
+      'Soy Issa Hareb y desarrollo proyectos digitales personalmente, desde la idea hasta el lanzamiento. Trabajo desde Essen y el domicilio comercial de Hareb Digital está en Sankt Augustin, cerca de Bonn. Atiendo proyectos locales y a distancia.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',
@@ -347,9 +347,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
           'El SEO ayuda a que tu web pueda encontrarse en búsquedas relevantes. AEO significa Answer Engine Optimization: prepara los contenidos para que sistemas de respuesta con IA, como ChatGPT, puedan comprenderlos y usarlos como fuente. Incluye respuestas claras y datos coherentes de la empresa. No se pueden garantizar posiciones ni menciones.',
       },
       {
-        question: '¿Solo trabajas con empresas de Essen?',
+        question: '¿En qué regiones trabajas?',
         answer:
-          'Trabajo desde Essen y también colaboro a distancia con empresas de otras ciudades. La planificación, las revisiones y las conversaciones pueden realizarse online.',
+          'Trabajo desde Essen con empresas del Ruhr, de Bonn y de toda Alemania. La planificación y las revisiones también pueden hacerse online.',
       },
       {
         question: '¿Se puede conservar mi web actual?',
@@ -366,6 +366,6 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     breadcrumb: 'Ruta de navegación',
     details: 'Explorar servicio',
     contactDescription:
-      'Planifica tu proyecto de diseño web, SEO o automatización directamente con Issa Hareb. Contacta con Hareb Digital en Essen por correo o prepara tu consulta.',
+      'Planifica tu proyecto de diseño web, SEO o automatización con Issa Hareb. Contacta con Hareb Digital por correo desde Essen, Bonn o cualquier otro lugar.',
   },
 }
