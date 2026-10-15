@@ -14,7 +14,7 @@ export function contactMetadata(lang: HdLang) {
   return pageMetadata(
     lang,
     '/kontakt/',
-    `${HD_TEXTE[lang].kontakt.titel} | Hareb Digital Essen`,
+    `${HD_TEXTE[lang].kontakt.titel} | Hareb Digital`,
     STUDIO_COPY[lang].contactDescription,
   )
 }
@@ -29,7 +29,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.titel}</span>
       </nav>
-      <span className="eyebrow">HAREB DIGITAL · ESSEN</span>
+      <span className="eyebrow">HAREB DIGITAL · NRW</span>
       <h1 className="mt-5">{t.titel}</h1>
       <p className="service-detail-lead">{copy.contactText}</p>
       <div className="contact-columns">
@@ -108,7 +108,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           name: t.titel,
           inLanguage: lang,
           mainEntity: {
-            '@type': 'Organization',
+            '@type': 'ProfessionalService',
             '@id': ORGANIZATION_ID,
             name: marke.name,
             email: marke.kontaktEmail,

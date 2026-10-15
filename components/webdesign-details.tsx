@@ -19,8 +19,8 @@ const questions = [
     answer: 'Ich bereite die technischen Grundlagen vor: verständliche Seitenstruktur, passende Seitentitel, interne Links und eine Sitemap. Nach dem Start lässt sich die Sichtbarkeit mit der Google Search Console messen. Eine bestimmte Platzierung oder eine feste Zahl an Anfragen kann ich nicht versprechen.',
   },
   {
-    question: 'Arbeitest du nur für Unternehmen aus Essen?',
-    answer: 'Ich arbeite von Essen aus und betreue auch Unternehmen im Ruhrgebiet und überregional. Entwürfe, Rückfragen und Freigaben können digital abgestimmt werden. Der Geschäftssitz von Hareb Digital ist Sankt Augustin; die vollständigen Unternehmensangaben findest du im Impressum.',
+    question: 'In welchen Regionen betreust du Websites?',
+    answer: 'Ich arbeite aus Essen mit Unternehmen im Ruhrgebiet, im Raum Bonn und deutschlandweit. Entwürfe und Freigaben können digital abgestimmt werden. Der Geschäftssitz liegt in Sankt Augustin; vollständige Angaben findest du im Impressum.',
   },
   {
     question: 'Was passiert nach der Veröffentlichung?',

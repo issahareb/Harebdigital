@@ -14,30 +14,30 @@ import { JsonLd, ORGANIZATION_ID } from './studio-schema'
 
 const descriptions: Record<HdLang, string[]> = {
   de: [
-    'Website erstellen lassen in Essen: individuelles Design, Webentwicklung, klare Inhalte und passende Anfragewege. Leistungen, Ablauf und Kundenprojekt ansehen.',
-    'Website-Relaunch mit Hareb Digital: bestehende Inhalte bewahren, Design verbessern und Ladezeiten senken. Klare Planung und ein fester Ansprechpartner in Essen.',
-    'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital aus Essen verbindet Abläufe mit deinen bestehenden Werkzeugen.',
-    'Technisches SEO und AEO aus Essen: klare Seitenstruktur, lokale Sichtbarkeit und verständliche Antworten. Hareb Digital prüft und verbessert deine Website.',
+    'Individuelles Webdesign und Webentwicklung für Unternehmen in Essen, Bonn und darüber hinaus. Leistungen, Ablauf und Kundenprojekt im Überblick.',
+    'Website-Relaunch mit Hareb Digital: Inhalte sinnvoll übernehmen, Design verbessern und Ladezeiten reduzieren. Direkte Abstimmung mit dem Entwickler.',
+    'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital verbindet passende Abläufe mit deinen Werkzeugen.',
+    'Technisches SEO und AEO: klare Seitenstruktur, lokale Auffindbarkeit und verständliche Antworten. Für Unternehmen aus Essen, Bonn und darüber hinaus.',
   ],
   en: [
-    'Bespoke web design from Essen: content, responsive development and technical SEO. Plan your new website directly with Issa Hareb at Hareb Digital.',
+    'Bespoke web design, responsive development and technical SEO for businesses in Essen, Bonn and beyond. Plan your new website with Issa Hareb.',
     'Redesign your website with Hareb Digital: preserve useful content, improve the design and reduce loading times. Clear planning and one point of contact.',
     'Automate recurring tasks, from quotes and appointment reminders to enquiries. Hareb Digital connects workflows with the tools your business already uses.',
-    'Technical SEO and AEO from Essen: clear site structure, local visibility and useful answers. Hareb Digital reviews and improves your existing website.',
+    'Technical SEO and AEO: clear site structure, local visibility and useful answers. Hareb Digital works with businesses in Essen, Bonn and beyond.',
   ],
   es: [
-    'Diseño web a medida desde Essen: contenidos, desarrollo adaptable y SEO técnico. Planifica tu nueva web directamente con Issa Hareb en Hareb Digital.',
+    'Diseño web a medida, desarrollo adaptable y SEO técnico para empresas de Essen, Bonn y otros lugares. Planifica tu nueva web con Issa Hareb.',
     'Rediseña tu web con Hareb Digital: conserva los contenidos útiles, mejora el diseño y reduce los tiempos de carga. Planificación clara y contacto directo.',
     'Automatiza tareas recurrentes, presupuestos, recordatorios y consultas. Hareb Digital conecta procesos con las herramientas que tu empresa ya utiliza.',
-    'SEO técnico y AEO desde Essen: estructura clara, visibilidad local y respuestas útiles. Hareb Digital analiza y mejora tu sitio web actual.',
+    'SEO técnico y AEO: estructura clara, visibilidad local y respuestas útiles. Hareb Digital ayuda a empresas de Essen, Bonn y otros lugares.',
   ],
 }
 export function serviceMetadata(lang: HdLang, slug: string) {
   const index = HD_TEXTE[lang].leistungen.punkte.findIndex((l) => l.slug === slug)
   if (index < 0) notFound()
   const title = lang === 'de' && index === 0
-    ? 'Website erstellen lassen in Essen | Hareb Digital'
-    : `${STUDIO_COPY[lang].serviceNames[index]}${lang === 'de' ? ' in Essen' : ''} | Hareb Digital`
+    ? 'Website erstellen lassen | Hareb Digital'
+    : `${STUDIO_COPY[lang].serviceNames[index]} | Hareb Digital`
   return pageMetadata(lang, `/leistungen/${slug}/`, title, descriptions[lang][index])
 }
 export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
@@ -59,9 +59,9 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       <span className="eyebrow">
         {service.n} / {t.nav[1]}
       </span>
-      <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen in Essen' : t.serviceNames[i]}</h1>
+      <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen' : t.serviceNames[i]}</h1>
       <p className="service-detail-lead">{lang === 'de' && i === 0
-        ? 'Ich bin Issa Hareb, Webdesigner und Webentwickler aus Essen. Ich plane, gestalte und entwickle deine Unternehmenswebsite: mit verständlichen Inhalten, einer passenden mobilen Ansicht und Kontaktwegen, die zu deinem Betrieb passen.'
+        ? 'Ich bin Issa Hareb und entwickle Unternehmenswebsites mit klaren Inhalten, mobiler Gestaltung und passenden Kontaktwegen. Ich betreue Projekte in Essen, Bonn und darüber hinaus persönlich.'
         : service.detail.vorspann}</p>
       <figure className="service-detail-art" data-reveal>
         <ServiceVisual index={i} lang={lang} />
@@ -118,12 +118,12 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
               description: descriptions[lang][i],
               url,
               provider: {
-                '@type': 'Organization',
+                '@type': 'ProfessionalService',
                 '@id': ORGANIZATION_ID,
                 name: 'Hareb Digital',
                 url: `${DOMAIN}/`,
               },
-              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'Country', name: 'Germany' }],
+              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Country', name: 'Germany' }],
               availableChannel: {
                 '@type': 'ServiceChannel',
                 serviceUrl: `${DOMAIN}${localizedPath(lang, '/kontakt/')}`,

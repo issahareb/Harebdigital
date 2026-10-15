@@ -12,9 +12,9 @@ import { ScrollFilm } from './scroll-film'
 type HeroCopy = Pick<
   StudioCopy,
   | 'headline'
+  | 'kicker'
   | 'intro'
   | 'project'
-  | 'workLink'
   | 'scroll'
   | 'motionOff'
   | 'motionOn'
@@ -44,6 +44,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
     >
       <div className="cinematic-frame">
         <div className="hero-copy">
+          <p className="hero-kicker">{t.kicker}</p>
           <h1 id="hero-title">
             {t.headline[0]} <br />
             <span>{t.headline[1]}</span>
@@ -58,10 +59,6 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
               {t.project}
               <ArrowUpRight size={19} aria-hidden />
             </Link>
-            <a className="hero-work-link" href="#arbeiten">
-              {t.workLink}
-              <ArrowDown size={16} aria-hidden />
-            </a>
           </div>
         </div>
         <div className="hero-artwork">
@@ -99,9 +96,6 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
             <ArrowDown size={15} aria-hidden />
             <span>{t.scroll}</span>
           </a>
-          <span className="hero-material" aria-hidden="true">
-            STRATEGY ↗ DESIGN ↗ DEVELOPMENT
-          </span>
           {allowed && (
             <button
               className="motion-toggle"

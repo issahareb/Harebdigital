@@ -146,7 +146,7 @@ export function SiteNavigation({ lang, copy: t }: {
                 </Link>
               ))}
             </nav>
-            <div className="menu-bottom">{languages(true)}<span>ESSEN, DE ↗</span></div>
+            <div className="menu-bottom">{languages(true)}<span>NRW, DE ↗</span></div>
           </div>
         </div>
       </dialog>

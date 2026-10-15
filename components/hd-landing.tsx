@@ -42,9 +42,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           lang={lang}
           copy={{
             headline: t.headline,
+            kicker: t.kicker,
             intro: t.intro,
             project: t.project,
-            workLink: t.workLink,
             scroll: t.scroll,
             motionOff: t.motionOff,
             motionOn: t.motionOn,
@@ -212,7 +212,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <ServiceVisual index={i} lang={lang} decorative />
                 </div>
                 <div className="service-summary">
-                  <h3>{lang === 'de' && i === 0 ? 'Webdesign & Webentwicklung in Essen' : t.serviceNames[i]}</h3>
+                  <h3>{t.serviceNames[i]}</h3>
                   <p>{t.serviceTags[i]}</p>
                 </div>
                 <span className="service-description">{service.detail.vorspann}</span>
@@ -305,7 +305,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <span>
                 DESIGN & DEVELOPMENT
                 <br />
-                ESSEN, DE
+                NRW, DE
               </span>
             </div>
           </div>
