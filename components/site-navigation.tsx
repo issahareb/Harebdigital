@@ -2,22 +2,24 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { localizedPath } from '@/lib/locale'
 import type { StudioCopy } from '@/lib/studio-copy'
 
-export function Wordmark() {
+export function Wordmark({ light = false }: { light?: boolean }) {
   return (
-    <span className="wordmark">
-      <svg width="29" height="30" viewBox="0 0 29 30" aria-hidden="true">
-        <path d="M0 0h8v11h13V0h8v30h-8V19H8v11H0Z" fill="currentColor" />
-      </svg>
-      <span>
-        hareb <span className="wordmark-light">digital</span>
-        <span className="wordmark-dot">.</span>
-      </span>
+    <span className="wordmark brand-image-frame">
+      <Image
+        src={light ? '/brand/hareb-digital-menu-v3.png' : '/brand/hareb-digital-dark-v3.png'}
+        alt=""
+        fill
+        sizes="(max-width: 360px) 140px, (max-width: 600px) 164px, 210px"
+        priority={!light}
+        className="brand-image"
+      />
     </span>
   )
 }
@@ -130,7 +132,7 @@ export function SiteNavigation({ lang, copy: t }: {
         onCancel={e => { e.preventDefault(); closeMenu() }}
         onClose={() => { setOpen(false); unlock() }}>
         <div className="menu-topbar">
-          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark /></Link>
+          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /></Link>
           <button type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
         </div>
         <div className="menu-content">

@@ -2,14 +2,14 @@
 
 import { useEffect, useRef } from 'react'
 
-/** Keep the full sentence in the HTML; scrolling only changes its word colors. */
+/** Keep the full sentence in the HTML; scrolling reveals light behind individual letterforms. */
 export function ScrollAccent({ text }: { text: string }) {
   const line = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     const element = line.current
     if (!element) return
-    const words = [...element.querySelectorAll<HTMLElement>('.scroll-accent-word')]
+    const letters = [...element.querySelectorAll<HTMLElement>('.scroll-accent-letter')]
     const preference = matchMedia('(prefers-reduced-motion: reduce)')
     const clamp = (value: number) => Math.max(0, Math.min(1, value))
     let frame = 0
@@ -24,10 +24,10 @@ export function ScrollAccent({ text }: { text: string }) {
         : clamp((innerHeight * 0.84 - element.getBoundingClientRect().top) / (innerHeight * 0.42))
       if (progress === previous) return
       previous = progress
-      words.forEach((word, index) => {
-        const amount = clamp(progress * words.length - index)
+      letters.forEach((letter, index) => {
+        const amount = clamp(progress * (letters.length + 3) - index)
         const eased = amount * amount * (3 - 2 * amount)
-        word.style.setProperty('--word-reveal', String(eased))
+        letter.style.setProperty('--letter-reveal', String(eased))
       })
     }
     const schedule = () => {
@@ -49,15 +49,20 @@ export function ScrollAccent({ text }: { text: string }) {
 
   return (
     <span ref={line} className="scroll-accent">
+      <span className="accent-accessible-text">{text}</span>
+      <span aria-hidden="true">
       {text.split(/(\s+)/).map((part, index) =>
         part.trim() ? (
           <span className="scroll-accent-word" key={index}>
-            {part}
+            {Array.from(part).map((letter, letterIndex) => (
+              <span className="scroll-accent-letter" data-letter={letter} key={letterIndex}>{letter}</span>
+            ))}
           </span>
         ) : (
           part
         ),
       )}
+      </span>
     </span>
   )
 }

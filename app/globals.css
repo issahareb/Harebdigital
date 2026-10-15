@@ -539,18 +539,24 @@ h3 {
 .approach h2 > span {
   color: #787a6f;
 }
-.scroll-accent-word {
-  color: #787a6f;
-  color: color-mix(in srgb, #787a6f, var(--hd-accent) calc(var(--word-reveal, 0) * 100%));
-  /* A visible olive halo follows the same word-by-word scroll progress.
-     Keep the letterforms dark and crisp on the light background. */
-  text-shadow:
-    0 0 .06em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 55%), transparent),
-    0 0 .24em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 60%), transparent),
-    0 .02em .55em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 38%), transparent);
+/* Stable ink, with light following the contours behind each letter. */
+.accent-accessible-text { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.scroll-accent-word { display: inline-block; white-space: nowrap; }
+.scroll-accent-letter { position: relative; color: #787a6f; }
+.scroll-accent-letter::before {
+  content: attr(data-letter);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: transparent;
+  opacity: var(--letter-reveal, 0);
+  text-shadow: 0 0 .035em #b5c98a, 0 0 .12em #9fb874b3, 0 0 .3em #839b5a73;
+  -webkit-text-stroke: .012em #b3c58999;
+  z-index: -1;
 }
+.scroll-accent { isolation: isolate; }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-accent-word { color: var(--hd-accent); text-shadow: none; }
+  .scroll-accent-letter::before { display: none; }
 }
 .approach-bottom {
   margin-top: 38px;
@@ -2070,4 +2076,31 @@ body :is(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta
 @media (prefers-reduced-motion: reduce) {
   :where(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta), .control-playback i, .control-sound g, .control-confirm svg, .menu-glyph i { transition: none !important; }
   :where(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta):active { scale: 1; }
+}
+
+/* The supplied brand artwork replaces both hand-built wordmarks. */
+.wordmark.brand-image-frame {
+  position: relative;
+  display: block;
+  width: 210px;
+  height: 47px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.brand-image { object-fit: cover; object-position: 50% 50%; }
+.footer-wordmark { padding: 16px 4vw 26px; }
+.footer-brand-frame {
+  position: relative;
+  display: block;
+  width: min(100%, 1200px);
+  aspect-ratio: 4.5;
+  margin-inline: auto;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .wordmark.brand-image-frame { width: 164px; height: 37px; }
+  .footer-wordmark { padding: 22px 4vw 30px; }
+}
+@media (max-width: 360px) {
+  .wordmark.brand-image-frame { width: 140px; height: 32px; }
 }

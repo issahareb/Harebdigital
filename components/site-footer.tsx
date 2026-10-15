@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { HD_TEXTE } from '@/lib/hd-texte'
@@ -34,7 +35,9 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
       )}
       {!compact && (
         <div className="footer-wordmark" aria-hidden="true">
-          hareb digital<span>.</span>
+          <span className="footer-brand-frame">
+            <Image src="/brand/hareb-digital-dark-v3.png" alt="" fill sizes="(max-width: 1200px) 92vw, 1200px" className="brand-image" />
+          </span>
         </div>
       )}
       <div className="footer-bottom wrap">
