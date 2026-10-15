@@ -1,0 +1,902 @@
+{
+  "revisions": {
+    "taxi": {
+      "before": "9af327085e8c6a4f365741f764bdb504377ce5ff",
+      "after": "2e41cf46df187c47b35a2a99ae95d1750cff1dfd"
+    },
+    "hareb": {
+      "before": "a30a085b4aef2f60542b2790c4960fba490d82c5",
+      "after": "bdc8054e846d10b2f2c2bd6eb9a4fc5c6e87819b"
+    }
+  },
+  "sites": {
+    "taxi": {
+      "mobile": {
+        "before": {
+          "performance": {
+            "median": 82,
+            "min": 82,
+            "max": 83
+          },
+          "accessibility": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 1052.552,
+            "min": 1049.7399999999996,
+            "max": 1942.8440000000003
+          },
+          "lcp": {
+            "median": 3149.74,
+            "min": 3142.844,
+            "max": 3152.5519999999997
+          },
+          "tbt": {
+            "median": 154,
+            "min": 127,
+            "max": 161
+          },
+          "cls": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "speedIndex": {
+            "median": 9973.4065454473,
+            "min": 8553.720368003284,
+            "max": 10347.622300403253
+          },
+          "bytes": {
+            "median": 664231,
+            "min": 664205,
+            "max": 664396
+          }
+        },
+        "after": {
+          "performance": {
+            "median": 85,
+            "min": 85,
+            "max": 86
+          },
+          "accessibility": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 1335.3410000000003,
+            "min": 1201.7060000000001,
+            "max": 1812.6150000000002
+          },
+          "lcp": {
+            "median": 2851.706,
+            "min": 2835.3410000000003,
+            "max": 2862.6150000000002
+          },
+          "tbt": {
+            "median": 128,
+            "min": 85,
+            "max": 157
+          },
+          "cls": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "speedIndex": {
+            "median": 9201.08409740446,
+            "min": 8268.529981322288,
+            "max": 9280.531704590347
+          },
+          "bytes": {
+            "median": 596822,
+            "min": 596809,
+            "max": 596915
+          }
+        }
+      },
+      "desktop": {
+        "before": {
+          "performance": {
+            "median": 91,
+            "min": 90,
+            "max": 91
+          },
+          "accessibility": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 468.2449999999996,
+            "min": 464.93849999999986,
+            "max": 475.33950000000004
+          },
+          "lcp": {
+            "median": 795.3395,
+            "min": 784.9384999999999,
+            "max": 808.2449999999997
+          },
+          "tbt": {
+            "median": 0,
+            "min": 0,
+            "max": 3
+          },
+          "cls": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "speedIndex": {
+            "median": 4016.3316126081468,
+            "min": 3991.1110624581856,
+            "max": 4096.437668010511
+          },
+          "bytes": {
+            "median": 758964,
+            "min": 758951,
+            "max": 759126
+          }
+        },
+        "after": {
+          "performance": {
+            "median": 92,
+            "min": 91,
+            "max": 92
+          },
+          "accessibility": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 501.09850000000034,
+            "min": 471.3700000000008,
+            "max": 534.9699999999996
+          },
+          "lcp": {
+            "median": 721.0985000000003,
+            "min": 671.3700000000008,
+            "max": 754.9699999999996
+          },
+          "tbt": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "cls": {
+            "median": 0.0021994784328431063,
+            "min": 0,
+            "max": 0.005551518053614398
+          },
+          "speedIndex": {
+            "median": 3170.509371781251,
+            "min": 3095.9101203454893,
+            "max": 3769.5108111651116
+          },
+          "bytes": {
+            "median": 680423,
+            "min": 680418,
+            "max": 680441
+          }
+        }
+      }
+    },
+    "hareb": {
+      "mobile": {
+        "before": {
+          "performance": {
+            "median": 87,
+            "min": 87,
+            "max": 87
+          },
+          "accessibility": {
+            "median": 96,
+            "min": 96,
+            "max": 96
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 1288.095,
+            "min": 1287.643,
+            "max": 1417.0050000000006
+          },
+          "lcp": {
+            "median": 2722.643,
+            "min": 2722.0950000000003,
+            "max": 2809.0050000000006
+          },
+          "tbt": {
+            "median": 37,
+            "min": 36.5,
+            "max": 78.5
+          },
+          "cls": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "speedIndex": {
+            "median": 9525.724597641665,
+            "min": 8880.13434816452,
+            "max": 9677.212384455881
+          },
+          "bytes": {
+            "median": 603178,
+            "min": 603151,
+            "max": 603236
+          }
+        },
+        "after": {
+          "performance": {
+            "median": 89,
+            "min": 88,
+            "max": 89
+          },
+          "accessibility": {
+            "median": 96,
+            "min": 96,
+            "max": 96
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 1328.9769999999994,
+            "min": 1288.1879999999996,
+            "max": 1354.3120000000004
+          },
+          "lcp": {
+            "median": 2418.3120000000004,
+            "min": 2355.1879999999996,
+            "max": 2419.9769999999994
+          },
+          "tbt": {
+            "median": 92,
+            "min": 81.5,
+            "max": 93.5
+          },
+          "cls": {
+            "median": 0.005702917213927402,
+            "min": 0,
+            "max": 0.005702917213927402
+          },
+          "speedIndex": {
+            "median": 9030.873998259334,
+            "min": 9007.676128715206,
+            "max": 9113.002565440705
+          },
+          "bytes": {
+            "median": 348507,
+            "min": 348494,
+            "max": 348533
+          }
+        }
+      },
+      "desktop": {
+        "before": {
+          "performance": {
+            "median": 92,
+            "min": 91,
+            "max": 92
+          },
+          "accessibility": {
+            "median": 96,
+            "min": 96,
+            "max": 96
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 474.11199999999934,
+            "min": 468.7730000000002,
+            "max": 479.52500000000055
+          },
+          "lcp": {
+            "median": 700.5250000000005,
+            "min": 699.7730000000001,
+            "max": 707.1119999999994
+          },
+          "tbt": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "cls": {
+            "median": 0.002081584738387319,
+            "min": 0.002081584738387319,
+            "max": 0.002081584738387319
+          },
+          "speedIndex": {
+            "median": 3276.526042124746,
+            "min": 3223.00312891335,
+            "max": 3955.4283481695747
+          },
+          "bytes": {
+            "median": 705847,
+            "min": 705837,
+            "max": 705881
+          }
+        },
+        "after": {
+          "performance": {
+            "median": 91,
+            "min": 91,
+            "max": 91
+          },
+          "accessibility": {
+            "median": 96,
+            "min": 96,
+            "max": 96
+          },
+          "best-practices": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "seo": {
+            "median": 100,
+            "min": 100,
+            "max": 100
+          },
+          "fcp": {
+            "median": 470.4,
+            "min": 467.1939999999996,
+            "max": 489.7889999999996
+          },
+          "lcp": {
+            "median": 660.4,
+            "min": 638.1939999999996,
+            "max": 665.7889999999995
+          },
+          "tbt": {
+            "median": 0,
+            "min": 0,
+            "max": 0
+          },
+          "cls": {
+            "median": 0.002081584738387319,
+            "min": 0,
+            "max": 0.002081584738387319
+          },
+          "speedIndex": {
+            "median": 3650.455150313429,
+            "min": 3589.360239584182,
+            "max": 3888.5174535592173
+          },
+          "bytes": {
+            "median": 386206,
+            "min": 386187,
+            "max": 386235
+          }
+        }
+      }
+    }
+  },
+  "profiles": {
+    "mobile": {
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      },
+      "screenEmulation": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    },
+    "desktop": {
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 40,
+        "throughputKbps": 10240,
+        "requestLatencyMs": 0,
+        "downloadThroughputKbps": 0,
+        "uploadThroughputKbps": 0,
+        "cpuSlowdownMultiplier": 1
+      },
+      "screenEmulation": {
+        "mobile": false,
+        "width": 1350,
+        "height": 940,
+        "deviceScaleFactor": 1,
+        "disabled": false
+      }
+    }
+  },
+  "reports": [
+    {
+      "file": "taxi-before-mobile-1.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:30:09.336Z",
+      "sha256": "8088598d1e72a398b61c64b381cafe59951a25670d84d59255b16cac9116121f",
+      "warnings": [],
+      "performance": 83,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1052.552,
+      "lcp": 3152.5519999999997,
+      "tbt": 154,
+      "cls": 0,
+      "speedIndex": 8553.720368003284,
+      "bytes": 664396
+    },
+    {
+      "file": "taxi-before-mobile-2.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:31:22.763Z",
+      "sha256": "717d410718374bedc058b4647357fba655e7352c9fc92d7a0140b7516774201c",
+      "warnings": [],
+      "performance": 82,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1049.7399999999996,
+      "lcp": 3149.74,
+      "tbt": 161,
+      "cls": 0,
+      "speedIndex": 10347.622300403253,
+      "bytes": 664231
+    },
+    {
+      "file": "taxi-before-mobile-3.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:32:39.120Z",
+      "sha256": "f398a4bd8fa3d9443e1dbc29be91b6496b99cdbc3dbdb5d914c1399e83e943e9",
+      "warnings": [],
+      "performance": 82,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1942.8440000000003,
+      "lcp": 3142.844,
+      "tbt": 127,
+      "cls": 0,
+      "speedIndex": 9973.4065454473,
+      "bytes": 664205
+    },
+    {
+      "file": "taxi-after-mobile-1.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:40:39.597Z",
+      "sha256": "74ad2ebc5ad4b7bc34c32c077f46cd853c4a929123a90ae15a309aa6a2665214",
+      "warnings": [],
+      "performance": 85,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1335.3410000000003,
+      "lcp": 2835.3410000000003,
+      "tbt": 128,
+      "cls": 0,
+      "speedIndex": 9201.08409740446,
+      "bytes": 596822
+    },
+    {
+      "file": "taxi-after-mobile-2.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:41:52.169Z",
+      "sha256": "3f7a5b9d5c2971b04ccc24a6fff16a79b4ace0de1e74129d74e92d7150399d7b",
+      "warnings": [],
+      "performance": 85,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1812.6150000000002,
+      "lcp": 2862.6150000000002,
+      "tbt": 85,
+      "cls": 0,
+      "speedIndex": 9280.531704590347,
+      "bytes": 596915
+    },
+    {
+      "file": "taxi-after-mobile-3.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:43:05.476Z",
+      "sha256": "1b32c8279f4175e19395b73a27df5752b9dc38de073174a25c7f924c7ca9e256",
+      "warnings": [],
+      "performance": 86,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1201.7060000000001,
+      "lcp": 2851.706,
+      "tbt": 157,
+      "cls": 0,
+      "speedIndex": 8268.529981322288,
+      "bytes": 596809
+    },
+    {
+      "file": "taxi-before-desktop-1.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:30:27.800Z",
+      "sha256": "f7cfde43496776e406504acd9a9ff1a2b3c9e65b0b428602b483be681507e0f5",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 475.33950000000004,
+      "lcp": 795.3395,
+      "tbt": 0,
+      "cls": 0,
+      "speedIndex": 4016.3316126081468,
+      "bytes": 758951
+    },
+    {
+      "file": "taxi-before-desktop-2.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:31:42.318Z",
+      "sha256": "1d16aef328b0d5f14015330b39e72030e2fe7b88f3d5f76766efe52b03f3065b",
+      "warnings": [],
+      "performance": 90,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 464.93849999999986,
+      "lcp": 784.9384999999999,
+      "tbt": 3,
+      "cls": 0,
+      "speedIndex": 4096.437668010511,
+      "bytes": 759126
+    },
+    {
+      "file": "taxi-before-desktop-3.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:32:58.265Z",
+      "sha256": "c45982c7a0abfc18b6d5d3f452e688f462f4549c3a52649d0d0647e37afc18da",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 468.2449999999996,
+      "lcp": 808.2449999999997,
+      "tbt": 0,
+      "cls": 0,
+      "speedIndex": 3991.1110624581856,
+      "bytes": 758964
+    },
+    {
+      "file": "taxi-after-desktop-1.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:40:58.430Z",
+      "sha256": "529baa66928d47340ddf539d87649f49450d46a06a3b9d7c0d0e07ccd178c873",
+      "warnings": [],
+      "performance": 92,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 501.09850000000034,
+      "lcp": 721.0985000000003,
+      "tbt": 0,
+      "cls": 0.005551518053614398,
+      "speedIndex": 3095.9101203454893,
+      "bytes": 680441
+    },
+    {
+      "file": "taxi-after-desktop-2.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:42:11.306Z",
+      "sha256": "34b34734a2f01aca3336a39c3b6b11d0710dadfce9bfe8ebee373e82e2769d0f",
+      "warnings": [],
+      "performance": 92,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 471.3700000000008,
+      "lcp": 671.3700000000008,
+      "tbt": 0,
+      "cls": 0.0021994784328431063,
+      "speedIndex": 3170.509371781251,
+      "bytes": 680423
+    },
+    {
+      "file": "taxi-after-desktop-3.json",
+      "url": "https://www.taxibbessen.de/",
+      "fetchTime": "2026-10-15T22:43:23.566Z",
+      "sha256": "953ccfff60ae2b27b591bd839ee24f0ec117a389e93fea2774a3c0326a667b57",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 534.9699999999996,
+      "lcp": 754.9699999999996,
+      "tbt": 0,
+      "cls": 0,
+      "speedIndex": 3769.5108111651116,
+      "bytes": 680418
+    },
+    {
+      "file": "hareb-before-mobile-1.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:30:47.183Z",
+      "sha256": "d93a1e1d9923a4f9d0cfe77b1c053092247c169d2055c8193505189364924ec9",
+      "warnings": [],
+      "performance": 87,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1417.0050000000006,
+      "lcp": 2809.0050000000006,
+      "tbt": 78.5,
+      "cls": 0,
+      "speedIndex": 8880.13434816452,
+      "bytes": 603178
+    },
+    {
+      "file": "hareb-before-mobile-2.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:32:01.603Z",
+      "sha256": "dea00912da19ad25af36d8f9f81a22f278b0096803691a311591c656cb96dcc3",
+      "warnings": [],
+      "performance": 87,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1287.643,
+      "lcp": 2722.643,
+      "tbt": 36.5,
+      "cls": 0,
+      "speedIndex": 9677.212384455881,
+      "bytes": 603236
+    },
+    {
+      "file": "hareb-before-mobile-3.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:33:17.816Z",
+      "sha256": "cde6571bf5912df422b6749f5dee5c8c26a91a776330c9f4793741a85110c4ea",
+      "warnings": [],
+      "performance": 87,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1288.095,
+      "lcp": 2722.0950000000003,
+      "tbt": 37,
+      "cls": 0,
+      "speedIndex": 9525.724597641665,
+      "bytes": 603151
+    },
+    {
+      "file": "hareb-after-mobile-1.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:41:16.321Z",
+      "sha256": "fed31b5ca19fbe348116b54bad1e68b650cf4bd4b6735d04b8b55e9a223515ad",
+      "warnings": [],
+      "performance": 89,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1354.3120000000004,
+      "lcp": 2418.3120000000004,
+      "tbt": 81.5,
+      "cls": 0.005702917213927402,
+      "speedIndex": 9007.676128715206,
+      "bytes": 348533
+    },
+    {
+      "file": "hareb-after-mobile-2.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:42:29.349Z",
+      "sha256": "3a2d65cf2d125b03bf6fe2c69f496f384bba42504b0588d7cb7569a3d5deb288",
+      "warnings": [],
+      "performance": 88,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1328.9769999999994,
+      "lcp": 2419.9769999999994,
+      "tbt": 92,
+      "cls": 0.005702917213927402,
+      "speedIndex": 9113.002565440705,
+      "bytes": 348494
+    },
+    {
+      "file": "hareb-after-mobile-3.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:43:42.610Z",
+      "sha256": "a8ffd0ead164b2a0de93790d88abc23346e5388197495ff85ae764d9aea58671",
+      "warnings": [],
+      "performance": 89,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 1288.1879999999996,
+      "lcp": 2355.1879999999996,
+      "tbt": 93.5,
+      "cls": 0,
+      "speedIndex": 9030.873998259334,
+      "bytes": 348507
+    },
+    {
+      "file": "hareb-before-desktop-1.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:31:05.136Z",
+      "sha256": "135cdbe896c3febe0f6dcba5c5b0273421ccf7e34b4dd23d3176ed6901fceb31",
+      "warnings": [],
+      "performance": 92,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 479.52500000000055,
+      "lcp": 700.5250000000005,
+      "tbt": 0,
+      "cls": 0.002081584738387319,
+      "speedIndex": 3223.00312891335,
+      "bytes": 705837
+    },
+    {
+      "file": "hareb-before-desktop-2.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:32:20.422Z",
+      "sha256": "f72681715338781ce908147d96b5ea622f721eabe01a0b224e99a65cfc672ad1",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 468.7730000000002,
+      "lcp": 699.7730000000001,
+      "tbt": 0,
+      "cls": 0.002081584738387319,
+      "speedIndex": 3955.4283481695747,
+      "bytes": 705847
+    },
+    {
+      "file": "hareb-before-desktop-3.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:33:36.503Z",
+      "sha256": "79c8f9b4e9d60ff6fdd9e7783f61965d62db51a5f58a3a433ebdae2be29eaced",
+      "warnings": [],
+      "performance": 92,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 474.11199999999934,
+      "lcp": 707.1119999999994,
+      "tbt": 0,
+      "cls": 0.002081584738387319,
+      "speedIndex": 3276.526042124746,
+      "bytes": 705881
+    },
+    {
+      "file": "hareb-after-desktop-1.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:41:34.366Z",
+      "sha256": "3a4c4f9c7e9aad28012c6923705aa379ae492085b0a33d69260e5c3c3bf268c9",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 467.1939999999996,
+      "lcp": 638.1939999999996,
+      "tbt": 0,
+      "cls": 0.002081584738387319,
+      "speedIndex": 3589.360239584182,
+      "bytes": 386235
+    },
+    {
+      "file": "hareb-after-desktop-2.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:42:47.357Z",
+      "sha256": "9ae79270ed50d0f1d0d8d1ea911eb2dff02c8c53159e0a00cd16da3312bee044",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 470.4,
+      "lcp": 660.4,
+      "tbt": 0,
+      "cls": 0,
+      "speedIndex": 3888.5174535592173,
+      "bytes": 386187
+    },
+    {
+      "file": "hareb-after-desktop-3.json",
+      "url": "https://hareb.digital/",
+      "fetchTime": "2026-10-15T22:44:00.371Z",
+      "sha256": "99bbd98677b439c2c489a45014fc780e000443f8cf46518e774d115c3a6f184c",
+      "warnings": [],
+      "performance": 91,
+      "accessibility": 96,
+      "best-practices": 100,
+      "seo": 100,
+      "fcp": 489.7889999999996,
+      "lcp": 665.7889999999995,
+      "tbt": 0,
+      "cls": 0.002081584738387319,
+      "speedIndex": 3650.455150313429,
+      "bytes": 386206
+    }
+  ],
+  "lighthouseVersions": [
+    "13.5.0"
+  ],
+  "hostUserAgents": [
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/134.0.6998.35 Safari/537.36"
+  ],
+  "start": "2026-10-15T22:30:09.336Z",
+  "end": "2026-10-15T22:44:00.371Z",
+  "runs": 24,
+  "localDate": "16.10.2026"
+}
