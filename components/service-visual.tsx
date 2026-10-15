@@ -5,7 +5,7 @@ import { ScrollAccent } from './scroll-accent'
 
 const SERVICE_IMAGES = [
   { src: '/studio/services-20261010/web-development-1200.webp', width: 1200, height: 900 },
-  { src: '/videos/schau-1.jpg', width: 720, height: 450 },
+  { src: '/studio/services-20261015/webdesign-redesign-1200.webp', width: 1200, height: 900 },
   { src: '/studio/services-20261010/automation-1200.webp', width: 1200, height: 900 },
   { src: '/studio/services-20261010/search-answers-1200.webp', width: 1200, height: 900 },
 ] as const
@@ -34,7 +34,7 @@ export function ServiceVisual({
           <span>0{index + 1}</span>
           <span>{t.labels[index]}</span>
         </div>
-        <div className={`service-art-media${index === 1 ? ' service-art-media--archive' : ''}`}>
+        <div className="service-art-media">
           <Image
             {...source}
             alt=""

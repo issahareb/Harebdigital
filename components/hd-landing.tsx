@@ -110,7 +110,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                       <ArrowUpRight size={16} aria-hidden />
                     </span>
                     <Image
-                      src="/studio/evidence/taxi-desktop-20261009.webp"
+                      src="/studio/evidence/taxi-desktop-20261015.webp"
                       alt={VISUAL_COPY[lang].taxiDesktopAlt}
                       width={1440}
                       height={940}
@@ -120,7 +120,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   </span>
                   <span className="project-mobile-view">
                     <Image
-                      src="/studio/evidence/taxi-mobile-20261009.webp"
+                      src="/studio/evidence/taxi-mobile-20261015.webp"
                       alt={VISUAL_COPY[lang].taxiMobileAlt}
                       width={390}
                       height={844}

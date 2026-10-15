@@ -3,6 +3,13 @@ import type { HdLang } from './hd-texte'
 /** Visual directions for the capabilities showcase, separate from customer case studies. */
 export const WEBSITE_CLIPS = [
   {
+    "id": "iris-ai",
+    "title": "IRIS AI",
+    "src": "/videos/schau-1.mp4",
+    "poster": "/videos/schau-1.jpg",
+    "color": "#989994"
+  },
+  {
     "id": "core-sentinel",
     "title": "CoreSentinel",
     "src": "/videos/design/core-sentinel.mp4",
