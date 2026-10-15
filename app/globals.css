@@ -542,9 +542,15 @@ h3 {
 .scroll-accent-word {
   color: #787a6f;
   color: color-mix(in srgb, #787a6f, var(--hd-accent) calc(var(--word-reveal, 0) * 100%));
+  /* A visible olive halo follows the same word-by-word scroll progress.
+     Keep the letterforms dark and crisp on the light background. */
+  text-shadow:
+    0 0 .06em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 55%), transparent),
+    0 0 .24em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 60%), transparent),
+    0 .02em .55em color-mix(in srgb, var(--hd-accent) calc(var(--word-reveal, 0) * 38%), transparent);
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-accent-word { color: var(--hd-accent); }
+  .scroll-accent-word { color: var(--hd-accent); text-shadow: none; }
 }
 .approach-bottom {
   margin-top: 38px;
