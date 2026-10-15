@@ -18,6 +18,7 @@ import { ScrollAccent } from './scroll-accent'
 import { VISUAL_COPY } from '@/lib/service-visuals'
 import { ServiceVisual, StudioEvidence } from './service-visual'
 import { WebsiteShowcase } from './website-showcase'
+import { PerformanceEvidence } from './performance-evidence'
 
 function Lines({ text }: { text: string }) {
   return (
@@ -183,6 +184,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
         </section>
         <WebsiteShowcase lang={lang} />
+        {lang === 'de' && <PerformanceEvidence />}
         <section
           id="leistungen"
           className="services-section wrap section-space"

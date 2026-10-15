@@ -1,0 +1,39 @@
+.performance-evidence { background: #242b20; color: #f3f1eb; }
+.performance-evidence .section-label { margin-bottom: 20px; color: #c9d2bd; }
+.performance-heading { position: relative; }
+.performance-heading h2 { font-size: clamp(36px, 4.8vw, 68px); line-height: 1.08; letter-spacing: -.045em; max-width: 1000px; }
+.performance-heading h2 span { color: #d4ed8a; }
+.performance-intro { max-width: 620px; margin-top: 28px; color: #c8ccbf; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.65; }
+.performance-draft { display: inline-block; padding: 7px 11px; margin-bottom: 24px; border: 1px solid #8c966c; border-radius: 4px; color: #e3e9cf; font-size: 12px; }
+.performance-comparison { display: grid; grid-template-columns: 1fr 1fr; margin-top: 48px; border: 1px solid #59604e; border-radius: 16px; overflow: hidden; }
+.performance-project, .performance-sample { padding: clamp(24px, 3.3vw, 46px); min-width: 0; }
+.performance-project { background: #303b27; }
+.performance-sample { border-left: 1px solid #59604e; }
+.performance-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 30px; color: #d3d9c8; }
+.performance-dot { width: 8px; height: 8px; border-radius: 50%; background: #d4ed8a; box-shadow: 0 0 14px #d4ed8a55; }
+.performance-count { font-size: 12px; white-space: nowrap; }
+.performance-comparison h3 { font-size: clamp(23px, 2.3vw, 32px); letter-spacing: -.025em; line-height: 1.15; }
+.performance-domain { display: block; font-size: 13px; color: #c3cab8; margin-top: 10px; line-height: 1.6; }
+a.performance-domain:hover { text-decoration: underline; text-underline-offset: 4px; }
+.performance-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 38px 0 26px; }
+.performance-metrics dt { font-size: 12px; color: #c8cebf; line-height: 1.5; min-height: 36px; }
+.performance-metrics dd { margin: 8px 0 0; font-size: clamp(48px, 5.7vw, 82px); line-height: 1; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+.performance-project dd { color: #d4ed8a; }
+.performance-metrics dd span { font-size: 14px; letter-spacing: 0; margin-left: 8px; color: #c7cdbe; white-space: nowrap; }
+.performance-caption { font-size: 12px; line-height: 1.6; color: #c3cab8; }
+.performance-context { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin: 28px 0; color: #c8cebf; font-size: 13px; line-height: 1.7; }
+.performance-context .eyebrow { font-size: 10px; }
+.performance-method { border-top: 1px solid #59604e; border-bottom: 1px solid #59604e; }
+.performance-method summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 22px; font-size: 14px; list-style: none; }
+.performance-method summary::-webkit-details-marker { display: none; }
+.performance-method summary span { font-size: 24px; font-weight: 300; }
+.performance-method[open] summary span { transform: rotate(45deg); }
+.performance-method > div { max-width: 850px; padding-bottom: 24px; font-size: 14px; line-height: 1.75; color: #c8cebf; }
+.performance-method p + p { margin-top: 14px; }
+.performance-evidence :focus-visible { outline-color: #d4ed8a; }
+@media(max-width: 700px) {
+  .performance-comparison, .performance-context { grid-template-columns: 1fr; }
+  .performance-sample { border-left: 0; border-top: 1px solid #59604e; }
+  .performance-context { gap: 16px; }
+  .performance-metrics { margin-top: 28px; }
+}

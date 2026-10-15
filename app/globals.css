@@ -4,6 +4,7 @@
 @import './motion-feature.css';
 @import './ai-discovery.css';
 @import './hosting-care.css';
+@import './performance-evidence.css';
 
 @theme inline {
   --font-display: var(--font-heading-face), Arial, sans-serif;
