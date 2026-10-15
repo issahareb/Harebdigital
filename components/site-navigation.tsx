@@ -10,14 +10,12 @@ import type { StudioCopy } from '@/lib/studio-copy'
 
 export function Wordmark() {
   return (
-    <span className="wordmark">
-      <svg width="29" height="30" viewBox="0 0 29 30" aria-hidden="true">
-        <path d="M0 0h8v11h13V0h8v30h-8V19H8v11H0Z" fill="currentColor" />
+    <span className="wordmark" aria-hidden="true">
+      <svg className="wordmark-symbol" width="34" height="36" viewBox="0 0 214 230" focusable="false">
+        <path d="M0 0h75v230H0ZM85 58h24c58 0 105 47 105 105v67h-70v-51c0-29-12-43-42-43H85Z" fill="currentColor" />
+        <path d="M0 64c0 48 23 72 75 72h16c39 0 53 15 53 52v42h-7v-42c0-32-12-44-46-44H75C26 144 0 119 0 76Z" fill="#c8f532" />
       </svg>
-      <span>
-        hareb <span className="wordmark-light">digital</span>
-        <span className="wordmark-dot">.</span>
-      </span>
+      <span className="wordmark-name">areb<span className="wordmark-dot">.</span>digital</span>
     </span>
   )
 }
@@ -116,7 +114,7 @@ export function SiteNavigation({ lang, copy: t }: {
 
   return (
     <header className="site-header">
-      <Link href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /></Link>
+      <Link href={home} className="brand-link" aria-label={`hareb.digital · ${t.home}`}><Wordmark /></Link>
       <nav className="desktop-nav" aria-label={lang === 'de' ? 'Hauptnavigation' : lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
         {links.slice(0, 3).map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
@@ -130,7 +128,7 @@ export function SiteNavigation({ lang, copy: t }: {
         onCancel={e => { e.preventDefault(); closeMenu() }}
         onClose={() => { setOpen(false); unlock() }}>
         <div className="menu-topbar">
-          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark /></Link>
+          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb.digital · ${t.home}`}><Wordmark /></Link>
           <button type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
         </div>
         <div className="menu-content">
