@@ -24,7 +24,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'Organization',
+            '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
             '@id': ORGANIZATION_ID,
             name: marke.name,
             url: `${DOMAIN}/`,
