@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react'
 import { PlaybackIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
@@ -189,9 +190,8 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
               <article key={clip.id} className="showcase-card" data-active={index === active} aria-label={`${index + 1} / ${WEBSITE_CLIPS.length}: ${clip.title}`}>
                 <div className="showcase-media" style={{ backgroundColor: clip.color }}>
                   {/* A separate poster remains until the first frame has actually been presented. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="showcase-poster" src={clip.poster} alt="" aria-hidden />
-                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} poster={clip.poster} muted loop playsInline preload="none" aria-label={clip.title}
+                  <Image className="showcase-poster" src={clip.poster} alt="" aria-hidden fill sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 800px) calc(100vw - 48px), min(1120px, calc(100vw - 112px), calc((100svh - 420px) * 1.6))" />
+                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} muted loop playsInline preload="none" aria-label={clip.title}
                     onPlaying={event => {
                       const video = event.currentTarget
                       const reveal = () => setDecoded(previous => previous[clip.id] ? previous : { ...previous, [clip.id]: true })

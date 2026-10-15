@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { PlaybackIcon, SoundIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
@@ -123,8 +124,8 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
       </div>
       <div ref={screen} className="motion-feature-screen">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/videos/hareb-motion-final-v5.webp" alt="" className="motion-feature-poster" />
-        <video ref={video} muted={muted} loop playsInline preload="none" poster="/videos/hareb-motion-final-v5.webp" data-decoded={decoded} aria-label={t.credit}
+        <Image src="/videos/hareb-motion-final-v5.webp" alt="" className="motion-feature-poster" fill sizes="(max-width: 600px) calc(100vw - 16px), (max-width: 1280px) 92vw, 1200px" />
+        <video ref={video} muted={muted} loop playsInline preload="none" data-decoded={decoded} aria-label={t.credit}
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)}
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
         <div className="motion-feature-player">
