@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { PlaybackIcon, SoundIcon } from './control-icons'
@@ -23,12 +23,36 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
   const video = useRef<HTMLVideoElement>(null)
   const screen = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(true)
+  const [muted, setMuted] = useState(false)
+  const preferredMuted = useRef(false)
+  const playAttempt = useRef(0)
   const [decoded, setDecoded] = useState(false)
   const userPaused = useRef(false)
   const manual = useRef(false)
   const inView = useRef(false)
   const source = '/videos/hareb-motion-final-v5.mp4'
+
+  const startPlayback = useCallback(async () => {
+    const el = video.current
+    if (!el || !inView.current || document.hidden || userPaused.current) return
+    const attempt = ++playAttempt.current
+    const current = () => attempt === playAttempt.current && inView.current && !document.hidden && !userPaused.current
+    if (!el.getAttribute('src')) { el.preload = 'auto'; el.src = source }
+    el.muted = preferredMuted.current
+    setMuted(el.muted)
+    try {
+      await el.play()
+    } catch (error) {
+      if (!current()) return
+      // Browsers may reject audible autoplay. Keep the video moving silently
+      // and expose the existing sound button instead of leaving a frozen poster.
+      if (!el.muted && error instanceof DOMException && error.name === 'NotAllowedError') {
+        el.muted = true
+        setMuted(true)
+        try { await el.play() } catch { if (current()) setPlaying(false) }
+      } else setPlaying(false)
+    }
+  }, [])
 
   useEffect(() => {
     const el = video.current, area = screen.current
@@ -37,25 +61,27 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
     const sync = () => {
       if (inView.current && !document.hidden && !userPaused.current && (manual.current || (!reduced.matches && !saveData))) {
-        if (!el.getAttribute('src')) el.src = source
-        el.play().catch(() => setPlaying(false))
+        void startPlayback()
       } else {
+        ++playAttempt.current
         el.pause()
-        if (!inView.current || document.hidden) { el.muted = true; setMuted(true) }
       }
     }
-    const prepare = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !reduced.matches && !saveData) {
-        if (!el.getAttribute('src')) { el.preload = 'auto'; el.src = source }
-        prepare.disconnect()
-      }
-    }, { rootMargin: '300px' })
-    const observer = new IntersectionObserver(([entry]) => { inView.current = entry.intersectionRatio >= .3; sync() }, { threshold: [0, .3] })
-    prepare.observe(area); observer.observe(area)
+    const observer = new IntersectionObserver(([entry]) => {
+      inView.current = entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0
+      sync()
+    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    observer.observe(area)
     document.addEventListener('visibilitychange', sync)
     reduced.addEventListener('change', sync)
-    return () => { prepare.disconnect(); observer.disconnect(); el.pause(); document.removeEventListener('visibilitychange', sync); reduced.removeEventListener('change', sync) }
-  }, [])
+    return () => {
+      ++playAttempt.current
+      inView.current = false
+      observer.disconnect(); el.pause()
+      document.removeEventListener('visibilitychange', sync)
+      reduced.removeEventListener('change', sync)
+    }
+  }, [startPlayback])
 
   useEffect(() => {
     const area = section.current
@@ -82,9 +108,8 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     if (!el) return
     if (el.paused) {
       manual.current = true; userPaused.current = false
-      if (!el.getAttribute('src')) el.src = source
-      el.play().catch(() => setPlaying(false))
-    } else { userPaused.current = true; el.pause() }
+      void startPlayback()
+    } else { userPaused.current = true; ++playAttempt.current; el.pause() }
   }
 
   return <section ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
@@ -104,7 +129,13 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
         <div className="motion-feature-player">
           <button type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
-          <button type="button" onClick={() => { const el = video.current; if (!el) return; el.muted = !el.muted; setMuted(el.muted); if (el.paused) togglePlay() }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
+          <button type="button" onClick={() => {
+            const el = video.current
+            if (!el) return
+            preferredMuted.current = !el.muted
+            manual.current = true; userPaused.current = false
+            void startPlayback()
+          }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
         </div>
       </div>
       <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>

@@ -23,7 +23,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   const [edges, setEdges] = useState({ start: true, end: false })
   const [pinned, setPinned] = useState(false)
   const [paused, setPaused] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const [visibleClips, setVisibleClips] = useState<Set<number>>(() => new Set())
   const [manualPlayback, setManualPlayback] = useState(false)
   const [blocked, setBlocked] = useState(false)
   const [decoded, setDecoded] = useState<Record<string, boolean>>({})
@@ -86,15 +86,13 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     }
     const resize = new ResizeObserver(measure)
     resize.observe(windowEl)
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.1), { threshold: [0, 0.1] })
-    observer.observe(frame)
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', measure)
     preference.addEventListener('change', measure)
     measure()
     return () => {
       cancelAnimationFrame(request)
-      resize.disconnect(); observer.disconnect()
+      resize.disconnect()
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', measure)
       preference.removeEventListener('change', measure)
@@ -102,25 +100,37 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   }, [])
 
   useEffect(() => {
+    // Observe each actual video: the heading/sticky stage can be visible while
+    // its media is still below the fold or clipped outside the horizontal rail.
+    const observer = new IntersectionObserver(entries => {
+      setVisibleClips(previous => {
+        const next = new Set(previous)
+        for (const entry of entries) {
+          const index = videos.current.indexOf(entry.target as HTMLVideoElement)
+          if (entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0) next.add(index)
+          else next.delete(index)
+        }
+        return next
+      })
+    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    videos.current.forEach(video => { if (video) observer.observe(video) })
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     let disposed = false
-    // Prepare adjacent clips before they enter. Keep each source and decoded frame
-    // mounted: switching slides must not reload media or reveal an empty video layer.
-    if (visible && !manualPlayback) videos.current.forEach((video, index) => {
-      if (video && Math.abs(index - active) <= 1 && !video.getAttribute('src')) {
-        video.preload = 'auto'
-        video.src = WEBSITE_CLIPS[index].src
-      }
-    })
     const sync = () => {
       videos.current.forEach((video, index) => {
         if (!video) return
-        if (index === active && visible && !paused && !manualPlayback && !document.hidden) {
-          const clip = WEBSITE_CLIPS[index]
-          if (!video.getAttribute('src')) { video.src = clip.src }
+        if (visibleClips.has(index) && !paused && !manualPlayback && !document.hidden) {
+          // No neighbour prefetch: attach the source only once this clip is on screen.
+          if (!video.getAttribute('src')) {
+            video.preload = 'auto'
+            video.src = WEBSITE_CLIPS[index].src
+          }
           video.muted = true
-          video.play().then(() => { if (!disposed) setBlocked(false) }).catch(() => {
-            if (!disposed && !video.paused) return
-            if (!disposed) setBlocked(true)
+          video.play().then(() => { if (!disposed && index === active) setBlocked(false) }).catch(error => {
+            if (!disposed && index === active && error.name !== 'AbortError') setBlocked(true)
           })
         } else video.pause()
       })
@@ -128,7 +138,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     sync()
     document.addEventListener('visibilitychange', sync)
     return () => { disposed = true; document.removeEventListener('visibilitychange', sync) }
-  }, [active, visible, paused, manualPlayback])
+  }, [active, visibleClips, paused, manualPlayback])
 
   useEffect(() => () => { videos.current.forEach(video => video?.pause()) }, [])
 
@@ -145,7 +155,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
 
   const togglePlayback = () => {
     const video = videos.current[active]
-    if (!video) return
+    if (!video || !visibleClips.has(active)) return
     if (paused || manualPlayback || blocked) {
       if (!video.getAttribute('src')) { video.src = WEBSITE_CLIPS[active].src }
       video.muted = true
