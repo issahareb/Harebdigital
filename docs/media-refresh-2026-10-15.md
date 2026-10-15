@@ -18,7 +18,7 @@
 
 ## Image asset and generation
 
-Asset: `public/studio/services-20261015/webdesign-redesign-1200.webp`
+Asset: `public/studio/services-20261015/webdesign-redesign-v2-1200.webp`
 (1200 × 900, compressed WebP). Generated with the built-in Imagegen tool.
 
 Prompt: Create a premium editorial 4:3 website redesign illustration for

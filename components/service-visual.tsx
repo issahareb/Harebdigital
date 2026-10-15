@@ -5,7 +5,7 @@ import { ScrollAccent } from './scroll-accent'
 
 const SERVICE_IMAGES = [
   { src: '/studio/services-20261010/web-development-1200.webp', width: 1200, height: 900 },
-  { src: '/studio/services-20261015/webdesign-redesign-1200.webp', width: 1200, height: 900 },
+  { src: '/studio/services-20261015/webdesign-redesign-v2-1200.webp', width: 1200, height: 900 },
   { src: '/studio/services-20261010/automation-1200.webp', width: 1200, height: 900 },
   { src: '/studio/services-20261010/search-answers-1200.webp', width: 1200, height: 900 },
 ] as const
