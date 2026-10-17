@@ -37,6 +37,8 @@ export function serviceMetadata(lang: HdLang, slug: string) {
   if (index < 0) notFound()
   const title = lang === 'de' && index === 0
     ? 'Website erstellen lassen | Hareb Digital'
+    : lang === 'en' && index === 3
+      ? 'SEO & AEO for Search Visibility | Hareb Digital'
     : `${STUDIO_COPY[lang].serviceNames[index]} | Hareb Digital`
   return pageMetadata(lang, `/leistungen/${slug}/`, title, descriptions[lang][index])
 }

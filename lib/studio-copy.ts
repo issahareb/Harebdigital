@@ -83,7 +83,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'Der Anspruch',
     approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
     approachText:
-      'Was suchen deine Kunden? Welche Informationen brauchen sie, bevor sie anfragen? Daraus entwickle ich die Struktur deiner Website. Gestaltung und Technik sorgen dafür, dass sie auf dem Handy und am Rechner einfach zu bedienen ist.',
+      'Webdesign mit Substanz beginnt bei deinen Kunden: Was suchen sie, und was müssen sie vor einer Anfrage wissen? Daraus entwickle ich die Struktur deiner Website. Klare Inhalte, Gestaltung und Technik machen sie auf dem Handy und am Rechner einfach nutzbar.',
     servicesTitle: 'Websites entwickeln.\nAbläufe vereinfachen.',
     servicesIntro:
       'Webdesign und Webentwicklung für Unternehmen in Essen, Bonn und darüber hinaus. Dazu kommen Webanwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.',
@@ -187,7 +187,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'The approach',
     approach: ['Good design draws you in.', 'Good engineering takes you further.'],
     approachText:
-      'What are your customers looking for? What do they need to know before getting in touch? Those questions shape the structure of your website. Design and development make it easy to use on mobile and desktop.',
+      'Digital design with substance starts with your customers: what are they looking for, and what do they need to know before getting in touch? Those questions shape your website. Clear content, design and development make it easy to use on mobile and desktop.',
     servicesTitle: 'The right solution.\nFor your business.',
     servicesIntro:
       'A new website, a focused redesign or an automated workflow: together, we work out what will help your business.',
@@ -290,7 +290,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     approachLabel: 'El enfoque',
     approach: ['El buen diseño atrae.', 'La buena tecnología te lleva más lejos.'],
     approachText:
-      '¿Qué buscan tus clientes? ¿Qué necesitan saber antes de contactarte? Estas preguntas definen la estructura de tu web. El diseño y el desarrollo hacen que resulte fácil de usar tanto en el móvil como en la computadora.',
+      'El diseño digital con sustancia empieza por tus clientes: ¿qué buscan y qué necesitan saber antes de contactarte? Estas preguntas definen la estructura de tu web. El contenido claro, el diseño y el desarrollo facilitan su uso en el móvil y en la computadora.',
     servicesTitle: 'La solución adecuada.\nPara tu negocio.',
     servicesIntro:
       'Una web nueva, una renovación puntual o un proceso automatizado: juntos definimos qué necesita tu negocio.',

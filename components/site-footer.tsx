@@ -34,9 +34,9 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
         </div>
       )}
       {!compact && (
-        <div className="footer-wordmark" aria-hidden="true">
+        <div className="footer-wordmark">
           <span className="footer-brand-frame">
-            <Image src="/brand/hareb-digital-dark-v3.png" alt="" fill sizes="(max-width: 1200px) 92vw, 1200px" className="brand-image" />
+            <Image src="/brand/hareb-digital-dark-v3.png" alt="Hareb Digital" fill sizes="(max-width: 1200px) 92vw, 1200px" className="brand-image" />
           </span>
         </div>
       )}

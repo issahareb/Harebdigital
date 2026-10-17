@@ -14,7 +14,7 @@ export function Wordmark({ light = false }: { light?: boolean }) {
     <span className="wordmark brand-image-frame">
       <Image
         src={light ? '/brand/hareb-digital-menu-v3.png' : '/brand/hareb-digital-dark-v3.png'}
-        alt=""
+        alt="Hareb Digital"
         fill
         sizes="(max-width: 360px) 140px, (max-width: 600px) 164px, 210px"
         priority={!light}

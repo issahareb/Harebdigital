@@ -14,22 +14,15 @@ const SERVICE_IMAGES = [
 export function ServiceVisual({
   index,
   lang,
-  decorative = false,
 }: {
   index: number
   lang: HdLang
-  decorative?: boolean
 }) {
   const t = VISUAL_COPY[lang]
   const source = SERVICE_IMAGES[index]
   return (
-    <div
-      className={`service-visual service-visual--${index}`}
-      role={decorative ? undefined : 'img'}
-      aria-label={decorative ? undefined : t.descriptions[index]}
-      aria-hidden={decorative || undefined}
-    >
-      <div className="service-visual-inner" aria-hidden={decorative ? undefined : true}>
+    <div className={`service-visual service-visual--${index}`}>
+      <div className="service-visual-inner">
         <div className="visual-kicker">
           <span>0{index + 1}</span>
           <span>{t.labels[index]}</span>
@@ -37,7 +30,7 @@ export function ServiceVisual({
         <div className="service-art-media">
           <Image
             {...source}
-            alt=""
+            alt={t.descriptions[index]}
             sizes="(max-width: 600px) 90vw, (max-width: 1000px) 85vw, 650px"
           />
         </div>

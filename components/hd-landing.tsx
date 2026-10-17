@@ -209,7 +209,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 data-reveal
               >
                 <div className="service-thumbnail">
-                  <ServiceVisual index={i} lang={lang} decorative />
+                  <ServiceVisual index={i} lang={lang} />
                 </div>
                 <div className="service-summary">
                   <h3>{t.serviceNames[i]}</h3>

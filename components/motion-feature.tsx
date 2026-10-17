@@ -15,6 +15,11 @@ const COPY = {
 
 export function MotionFeature({ lang }: { lang: HdLang }) {
   const t = COPY[lang]
+  const posterAlt = {
+    de: 'Standbild des Hareb-Digital-Werbevideos mit Website-Vorschauen auf einer gebogenen Bildschirmfläche.',
+    en: 'Still from the Hareb Digital advertising video with website previews on a curved screen.',
+    es: 'Fotograma del video publicitario de Hareb Digital con vistas previas de sitios web en una pantalla curva.',
+  }[lang]
   const section = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
   const [entered, setEntered] = useState(false)
@@ -124,7 +129,7 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
       </div>
       <div ref={screen} className="motion-feature-screen">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <Image src="/videos/hareb-motion-final-v5.webp" alt="" className="motion-feature-poster" fill sizes="(max-width: 600px) calc(100vw - 16px), (max-width: 1280px) 92vw, 1200px" />
+        <Image src="/videos/hareb-motion-final-v5.webp" alt={posterAlt} aria-hidden={decoded || undefined} className="motion-feature-poster" fill sizes="(max-width: 600px) calc(100vw - 16px), (max-width: 1280px) 92vw, 1200px" />
         <video ref={video} muted={muted} loop playsInline preload="none" data-decoded={decoded} aria-label={t.credit}
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)}
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
