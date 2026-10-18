@@ -202,7 +202,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
                   {failed[clip.id] && <span className="showcase-video-fallback">{copy.unavailable}</span>}
                 </div>
                 <div className="showcase-caption">
-                  <div><span className="showcase-number">0{index + 1}</span><h3>{clip.title}</h3></div>
+                  <div><span className="showcase-number">0{index + 1}</span><span className="showcase-clip-title">{clip.title}</span></div>
                   <span>{copy.reference}</span>
                 </div>
               </article>

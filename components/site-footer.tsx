@@ -24,7 +24,7 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
           <div className="footer-invite-right">
             <p>{t.contactText}</p>
             <Link className="button button-dark" href={localizedPath(lang, '/kontakt/')}>
-              {t.project}
+              {lang === 'de' ? 'Kontakt aufnehmen' : lang === 'en' ? 'Get in touch' : 'Contactar'}
               <ArrowUpRight size={20} aria-hidden />
             </Link>
             <a className="footer-email" href={`mailto:${marke.kontaktEmail}`}>

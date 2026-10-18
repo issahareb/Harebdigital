@@ -137,8 +137,7 @@ export function SiteNavigation({ lang, copy: t }: {
         </div>
         <div className="menu-content">
           <div className="menu-art" aria-hidden="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/studio/impulse/hero-768.webp" alt="" width="768" height="432" loading="lazy" />
+            <div className="menu-art-background" />
             <span>INDEPENDENT THINKING.<br />CONNECTED DESIGN.</span>
           </div>
           <div className="menu-main">

@@ -8,7 +8,7 @@
 .hosting-care-grid li { position:relative; padding-left:20px; margin-top:12px; }
 .hosting-care-grid li::before { content:''; width:5px; height:5px; background:#667740; border-radius:50%; position:absolute; left:0; top:.75em; }
 .hosting-care-commitment { margin-top:46px; display:flex; align-items:center; justify-content:space-between; gap:36px; padding:30px 34px; background:#d4ed8a24; border-radius:18px; }
-.hosting-care-commitment h3 { font-size:clamp(24px,2.2vw,32px); line-height:1.2; letter-spacing:-.035em; }
+.hosting-care-commitment .hosting-promise { font-size:clamp(24px,2.2vw,32px); line-height:1.2; letter-spacing:-.035em; }
 .hosting-care-commitment p { max-width:650px; font-size:15px; line-height:1.75; color:var(--muted); margin-top:14px; }
 .hosting-care-commitment .text-link { flex-shrink:0; max-width:100%; }
 .hosting-care-scope { margin-top:24px; max-width:920px; font-size:13px; line-height:1.8; color:var(--muted); }

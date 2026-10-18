@@ -28,7 +28,7 @@ export function HostingCare({ lang }: { lang: HdLang }) {
       })}
     </div>
     <div className="hosting-care-commitment" data-reveal>
-      <div><h3>{t.promise}</h3><p>{t.detail}</p></div>
+      <div><div className="hosting-promise">{t.promise}</div><p>{t.detail}</p></div>
       <Link className="text-link" href={localizedPath(lang, '/kontakt/')}>{t.cta}<ArrowUpRight size={18} aria-hidden /></Link>
     </div>
     <p className="hosting-care-scope">{t.scope}</p>

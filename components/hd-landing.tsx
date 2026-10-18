@@ -44,7 +44,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             headline: t.headline,
             kicker: t.kicker,
             intro: t.intro,
-            project: t.project,
+            project: lang === 'de' ? 'Deine Idee besprechen' : lang === 'en' ? 'Discuss your idea' : 'Hablemos de tu idea',
             scroll: t.scroll,
             motionOff: t.motionOff,
             motionOn: t.motionOn,
@@ -202,8 +202,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
           <div className="service-list">
             {original.leistungen.punkte.map((service, i) => (
-              <Link
-                href={localizedPath(lang, `/leistungen/${service.slug}/`)}
+              <article
                 key={service.slug}
                 className="service-row"
                 data-reveal
@@ -212,14 +211,14 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <ServiceVisual index={i} lang={lang} />
                 </div>
                 <div className="service-summary">
-                  <h3>{t.serviceNames[i]}</h3>
+                  <h3><Link className="service-link" href={localizedPath(lang, `/leistungen/${service.slug}/`)}>{t.serviceNames[i]}</Link></h3>
                   <p>{t.serviceTags[i]}</p>
                 </div>
                 <span className="service-description">{service.detail.vorspann}</span>
                 <span className="service-arrow">
                   <ArrowUpRight aria-hidden />
                 </span>
-              </Link>
+              </article>
             ))}
           </div>
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
@@ -331,7 +330,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             {original.ablauf.schritte.map((step) => (
               <li key={step.n} data-reveal>
                 <span>{step.n}</span>
-                <h3>{step.t}</h3>
+                <div className="process-step-title">{step.t}</div>
                 <p>{step.b}</p>
               </li>
             ))}
@@ -353,7 +352,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             {t.faq.map((item, i) => (
               <details key={item.question} open={i === 0}>
                 <summary>
-                  <h3>{item.question}</h3>
+                  <span className="faq-question">{item.question}</span>
                   <Plus size={20} aria-hidden />
                 </summary>
                 <p>{item.answer}</p>
