@@ -41,7 +41,7 @@ const ENTITY_GRAPH = {
       areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'City', name: 'Bonn' }, { '@type': 'AdministrativeArea', name: 'Rhein-Sieg-Kreis' }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
       founder: { '@id': PERSON_ID },
       employee: { '@id': PERSON_ID },
-      sameAs: [GOOGLE_BUSINESS_URL],
+      sameAs: [GOOGLE_BUSINESS_URL, 'https://clutch.co/profile/hareb-digital', 'https://www.sortlist.com/fr/agency/hareb-digital'],
     },
     {
       '@type': 'Person',
