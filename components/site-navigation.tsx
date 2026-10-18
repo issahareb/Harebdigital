@@ -118,7 +118,7 @@ export function SiteNavigation({ lang, copy: t }: {
 
   return (
     <header className="site-header">
-      <Link href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /></Link>
+      <Link href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /><span className="sr-only">{t.home}</span></Link>
       <nav className="desktop-nav" aria-label={lang === 'de' ? 'Hauptnavigation' : lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
         {links.slice(0, 3).map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
@@ -132,7 +132,7 @@ export function SiteNavigation({ lang, copy: t }: {
         onCancel={e => { e.preventDefault(); closeMenu() }}
         onClose={() => { setOpen(false); unlock() }}>
         <div className="menu-topbar">
-          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /></Link>
+          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /><span className="sr-only">{`Hareb Digital · ${t.home}`}</span></Link>
           <button type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
         </div>
         <div className="menu-content">
