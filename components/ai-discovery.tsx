@@ -67,7 +67,7 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
             <div className="ai-discovery-question" key={question}>
               <p>{question}</p>
               <div className="ai-discovery-actions">
-                <a href={`https://chatgpt.com/?q=${encodeURIComponent(question)}`} target="_blank" rel="noopener noreferrer">{t.open}<ArrowUpRight size={16} aria-hidden /></a>
+                <a href={`https://chatgpt.com/?q=${encodeURIComponent(question)}`} target="_blank" rel="noopener noreferrer" aria-label={`${t.open}: ${question}`}>{t.open}<ArrowUpRight size={16} aria-hidden /></a>
                 <button type="button" onClick={() => copyQuestion(index)} aria-label={`${t.copy}: ${question}`}>
                   <span className="control-confirm" data-confirmed={copied === index} aria-hidden="true"><Copy size={16} /><Check size={16} /></span>
                   {copied === index ? t.copied : t.copy}

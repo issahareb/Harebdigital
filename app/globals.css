@@ -1788,7 +1788,8 @@ textarea.hd-feld {
   transform: none;
   transition: opacity .3s ease, transform .55s cubic-bezier(.16,1,.3,1);
 }
-[data-reveal-pending] { opacity: .35; transform: translateY(20px); }
+/* Keep text readable throughout the entrance, including before it is in view. */
+[data-reveal-pending] { transform: translateY(20px); }
 [data-reveal]:focus-within { opacity: 1; transform: none; }
 
 /* The stable viewport is cropped to a frame at rest, then revealed on scroll. */
