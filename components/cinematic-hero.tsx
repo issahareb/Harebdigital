@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { preload } from 'react-dom'
 import Link from 'next/link'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import { PlaybackIcon } from './control-icons'
@@ -22,8 +23,19 @@ type HeroCopy = Pick<
   | 'heroChapters'
 >
 
+const HERO_AVIF_SRCSET = '/studio/impulse/hero-768.avif 768w, /studio/impulse/hero-1280.avif 1280w, /studio/impulse/hero-1920.avif 1920w'
+
 /** The page stays native-scrollable; an actual camera journey drives the frames. */
 export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy }) {
+  // React does not automatically preload images inside <picture>. Start the
+  // exact responsive AVIF candidate in the head, without also fetching WebP.
+  preload('/studio/impulse/hero-1280.avif', {
+    as: 'image',
+    type: 'image/avif',
+    imageSrcSet: HERO_AVIF_SRCSET,
+    imageSizes: '100vw',
+    fetchPriority: 'high',
+  })
   const [enabled, setEnabled] = useState(true)
   const [allowed, setAllowed] = useState(false)
   const active = enabled && allowed
@@ -65,7 +77,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
           <picture>
             <source
               type="image/avif"
-              srcSet="/studio/impulse/hero-768.avif 768w, /studio/impulse/hero-1280.avif 1280w, /studio/impulse/hero-1920.avif 1920w"
+              srcSet={HERO_AVIF_SRCSET}
               sizes="100vw"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}

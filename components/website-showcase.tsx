@@ -191,14 +191,18 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
                 <div className="showcase-media" style={{ backgroundColor: clip.color }}>
                   {/* A separate poster remains until the first frame has actually been presented. */}
                   <Image className="showcase-poster" src={clip.poster} alt={clip.alt[lang]} aria-hidden={decoded[clip.id] || undefined} fill sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 800px) calc(100vw - 48px), min(1120px, calc(100vw - 112px), calc((100svh - 420px) * 1.6))" />
-                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} muted loop playsInline preload="none" aria-label={clip.title}
+                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} muted loop playsInline preload="none" aria-label={`${clip.title}: ${clip.alt[lang]}`}
                     onPlaying={event => {
                       const video = event.currentTarget
                       const reveal = () => setDecoded(previous => previous[clip.id] ? previous : { ...previous, [clip.id]: true })
                       if ('requestVideoFrameCallback' in video) video.requestVideoFrameCallback(reveal)
                       else reveal()
                     }}
-                    onError={() => setFailed(previous => ({ ...previous, [clip.id]: true }))} />
+                    onError={() => setFailed(previous => ({ ...previous, [clip.id]: true }))}>
+                    {/* Verified: four files have no audio stream; Spectrum's
+                        audio stream contains only digital silence. */}
+                    <track kind="captions" src={`/captions/silent-webdesign.${lang}.vtt`} srcLang={lang} label={lang === 'de' ? 'Deutsch' : lang === 'en' ? 'English' : 'Español'} />
+                  </video>
                   {failed[clip.id] && <span className="showcase-video-fallback">{copy.unavailable}</span>}
                 </div>
                 <div className="showcase-caption">
