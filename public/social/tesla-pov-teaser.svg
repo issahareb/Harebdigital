@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 960" role="img" aria-labelledby="title desc">
+<title id="title">Tesla POV x Hareb Digital</title><desc id="desc">Stilisierte Straße mit futuristischem Sportwagen und Fokus auf den ungewöhnlichen Werbe-Einstieg.</desc>
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0c1618"/><stop offset=".7" stop-color="#242b24"/><stop offset="1" stop-color="#060b09"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#b9f25d" stop-opacity=".44"/><stop offset="1" stop-color="#b9f25d" stop-opacity="0"/></radialGradient>
+<linearGradient id="road" x1=".2" y1="0" x2=".7" y2="1"><stop stop-color="#3d4840"/><stop offset="1" stop-color="#101614"/></linearGradient>
+</defs>
+<rect width="540" height="960" fill="url(#sky)"/>
+<circle cx="270" cy="430" r="290" fill="url(#glow)"/>
+<path d="M0 0H130L210 630H0Z M540 0H410L335 630H540Z" fill="#0e1817"/>
+<g stroke="#344b40" stroke-width="2" opacity=".6"><path d="M110 80L130 700M430 80L410 700"/><path d="M0 205H165M0 340H181M375 205H540M361 340H540"/><path d="M0 480H207M335 480H540"/></g>
+<path d="M224 445L0 960H540L316 445Z" fill="url(#road)"/>
+<path d="M270 495V950" stroke="#81926f" stroke-width="3" stroke-dasharray="17 42" opacity=".7"/>
+<g transform="translate(270 584)">
+<path d="M-210 76 Q-198 -30 -112 -70 Q-55 -93 0 -93 Q55 -93 112 -70 Q198 -30 210 76 L197 111 L-197 111Z" fill="#0c1010" stroke="#617260" stroke-width="4"/>
+<path d="M-140 -55 Q-70 -90 0 -90 Q70 -90 140 -55 L128 -3 H-128Z" fill="#17251f"/>
+<path d="M-173 25 Q-70 11 0 15 Q70 11 173 25" fill="none" stroke="#d4ed8a" stroke-width="11" stroke-linecap="round"/>
+<path d="M-178 79H-115 M115 79H178" stroke="#809683" stroke-width="12" stroke-linecap="round"/>
+<path d="M-168 111L-184 155M168 111L184 155" stroke="#9aef47" stroke-opacity=".6" stroke-width="20"/>
+</g>
+<rect x="34" y="45" width="472" height="116" rx="8" fill="#0b1111" fill-opacity=".8" stroke="#687e62" stroke-opacity=".6"/>
+<text x="52" y="86" fill="#d4ed8a" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="19" letter-spacing="3">POV / THE HOOK</text>
+<text x="52" y="125" fill="white" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="26">NOT YOUR USUAL AD.</text>
+<path d="M55 780H486" stroke="#759364" stroke-width="2" opacity=".8"/>
+<text x="55" y="828" fill="#d4ed8a" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22" letter-spacing="2">3 SEKUNDEN. EIN TWIST.</text>
+<text x="55" y="867" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="29" letter-spacing="-1">HAREB DIGITAL.</text>
+</svg>

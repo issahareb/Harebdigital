@@ -2,6 +2,7 @@ import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
 import { HostingCare } from './hosting-care'
 import { MotionFeature } from './motion-feature'
+import { TikTokCaseStudy } from './tiktok-case-study'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react'
@@ -279,6 +280,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </div>
             </div>
           </div>
+          <TikTokCaseStudy lang={lang} />
         </section>
         <section
           id="studio"
