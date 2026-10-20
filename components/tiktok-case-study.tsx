@@ -1,6 +1,6 @@
 import type { HdLang } from '@/lib/hd-texte'
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 type CaseCopy = {
   overline: string
@@ -30,13 +30,13 @@ const COPY: Record<HdLang, CaseCopy> = {
     ideaText: 'Ein scheinbar gewöhnliches Tesla-POV-Meme kippt in einen überzeichneten Raketenmoment. Der harte Schnitt zur Botschaft über langsame Websites bricht die Erwartung. Erst nach diesem Perspektivwechsel kommen Problem, Lösung, eigene Arbeit und Handlungsaufforderung. Aufmerksamkeit wird so zum Einstieg in eine relevante Botschaft.',
     steps: ['POV-Hook', 'Unerwarteter Twist', 'Markenbotschaft', 'Klare Handlungsaufforderung'],
     videoAlt: 'Kreativer Tesla-POV-Werbespot: vom überraschenden Auto-Moment zur Hareb-Digital-Botschaft',
-    campaignType: 'TikTok / Promote-Kampagne',
+    campaignType: 'TikTok / Kreativkampagne',
     featured: 'Creative Study',
     visit: 'Social Media Marketing entdecken',
     proof: '19,4 % Likes im Verhältnis zu den Videoaufrufen',
     ratioExplanation: 'Likes / Aufrufe, keine Conversion-Rate',
     metrics: ['Aufrufe', 'Likes', 'Speicherungen', 'Kommentare'],
-    note: 'Stand: 20.10.2026, ca. 12:45 Uhr. Die Kampagne wurde mit TikTok Promote kostenpflichtig ausgespielt. Aufrufe sind daher nicht als organische Reichweite ausgewiesen. Likes, Speicherungen und Kommentare sind sichtbare Reaktionen auf das Video; aus diesen Zahlen allein lassen sich weder Wiedergabedauer noch Kundenanfragen oder Umsätze ableiten.',
+    note: 'Stand: 20.10.2026, ca. 12:45 Uhr. Die Zahlen dokumentieren Aufrufe und sichtbare Reaktionen auf dieses Video. Sie sind keine Aussage über organische Reichweite, Wiedergabedauer, Kundenanfragen oder Umsätze.',
   },
   en: {
     overline: '01 / ORIGINAL MARKETING CAMPAIGN',
@@ -47,13 +47,13 @@ const COPY: Record<HdLang, CaseCopy> = {
     ideaText: 'What looks like an ordinary Tesla POV meme suddenly becomes an exaggerated rocket moment. A hard cut introduces the real message: slow websites lose attention. Only then do the problem, solution, real project work and call to action appear.',
     steps: ['POV hook', 'Unexpected twist', 'Brand message', 'Clear call to action'],
     videoAlt: 'Creative Tesla POV ad connecting a surprising automotive opening with the Hareb Digital message',
-    campaignType: 'TikTok / Promote campaign',
+    campaignType: 'TikTok / Creative campaign',
     featured: 'Creative Study',
     visit: 'Discuss a campaign',
     proof: '19.4% likes relative to video views',
     ratioExplanation: 'Likes / views, not a conversion rate',
     metrics: ['Views', 'Likes', 'Saves', 'Comments'],
-    note: 'Snapshot: 20 Oct 2026, approx. 12:45. The campaign used paid TikTok Promote distribution, so views are not presented as organic reach. Likes, saves and comments are visible reactions, not evidence of watch time, leads or revenue.',
+    note: 'Snapshot: 20 Oct 2026, approx. 12:45. These figures document views and visible reactions to this video. They do not establish organic reach, watch time, leads or revenue.',
   },
   es: {
     overline: '01 / CAMPAÑA PROPIA DE MARKETING',
@@ -64,13 +64,13 @@ const COPY: Record<HdLang, CaseCopy> = {
     ideaText: 'Un vídeo tipo POV de Tesla se transforma en un momento exagerado, casi como un cohete. Un corte brusco revela el mensaje sobre las webs lentas. Solo entonces aparecen el problema, la solución, un proyecto real y la llamada a la acción.',
     steps: ['Gancho POV', 'Giro inesperado', 'Mensaje de marca', 'Llamada a la acción'],
     videoAlt: 'Anuncio creativo Tesla POV con transición a un mensaje sobre los servicios de Hareb Digital',
-    campaignType: 'TikTok / campaña Promote',
+    campaignType: 'TikTok / campaña creativa',
     featured: 'Creative Study',
     visit: 'Hablemos de una campaña',
     proof: '19,4 % de «me gusta» respecto a las visualizaciones',
     ratioExplanation: 'Me gusta / visualizaciones, no tasa de conversión',
     metrics: ['Visualizaciones', 'Me gusta', 'Guardados', 'Comentarios'],
-    note: 'Datos del 20/10/2026, aproximadamente a las 12:45. La campaña utilizó distribución pagada de TikTok Promote; las visualizaciones no son alcance orgánico. Las reacciones no prueban tiempo de visualización, contactos o ingresos.',
+    note: 'Datos del 20/10/2026, aproximadamente a las 12:45. Estas cifras muestran visualizaciones y reacciones visibles al vídeo. No demuestran alcance orgánico, tiempo de reproducción, contactos o ingresos.',
   },
 }
 
@@ -78,7 +78,7 @@ const COPY: Record<HdLang, CaseCopy> = {
 // hosted; until then the visual storyboard is intentionally not a fake player.
 export function TikTokCaseStudy({ lang }: { lang: HdLang }) {
   const t = COPY[lang]
-  const videoSrc = process.env.NEXT_PUBLIC_HAREB_TESLA_VIDEO_URL
+  const videoSrc = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3ABE2VcJODYFBgNSodXXFVfhJ1r/b80f0393-dd06-4e75-a40c-6ea4babbc30c.mp4'
   const stats = [
     { value: '129,2 K', label: t.metrics[0] },
     { value: '25.046', label: t.metrics[1] },
@@ -113,21 +113,17 @@ export function TikTokCaseStudy({ lang }: { lang: HdLang }) {
         </div>
         <div className="ttc-media">
           <div className="ttc-media-tag"><span className="ttc-record-dot" /> TIKTOK · 9:16 <span>00:32</span></div>
-          {videoSrc ? (
-            <video className="ttc-video" poster="/social/tesla-pov-teaser.svg" src={videoSrc} controls playsInline preload="none" aria-label={t.videoAlt} />
-          ) : (
-            <div className="ttc-poster" role="img" aria-label={t.videoAlt}>
-              <img src="/social/tesla-pov-teaser.svg" alt="" loading="lazy" decoding="async" />
-              <div className="ttc-poster-bottom"><span>HOOK</span><ArrowRight aria-hidden size={16}/><span>TWIST</span><ArrowRight aria-hidden size={16}/><span>BRAND</span></div>
-            </div>
-          )}
+          <video className="ttc-video" controls playsInline preload="metadata" aria-label={t.videoAlt}>
+            <source src={videoSrc} type="video/mp4" />
+            {lang === 'de' ? 'Dein Browser unterstützt die Videowiedergabe nicht.' : lang === 'en' ? 'Your browser does not support video playback.' : 'Tu navegador no admite la reproducción de vídeo.'}
+          </video>
           <span className="ttc-media-caption">{t.featured} / HAREB DIGITAL</span>
         </div>
       </div>
       <div className="ttc-results" aria-label={t.campaignType}>
         <div className="ttc-results-heading">
           <span>CAMPAIGN SNAPSHOT / 20.10.2026</span>
-          <span>TIKTOK PROMOTE · PAID DISTRIBUTION</span>
+          <span>{lang === 'de' ? 'HAREB DIGITAL · KREATIVKAMPAGNE' : lang === 'en' ? 'HAREB DIGITAL · CREATIVE CAMPAIGN' : 'HAREB DIGITAL · CAMPAÑA CREATIVA'}</span>
         </div>
         <div className="ttc-metrics">
           {stats.map((item) => <div key={item.label} className="ttc-metric"><strong>{item.value}</strong><span>{item.label}</span></div>)}
