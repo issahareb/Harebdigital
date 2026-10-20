@@ -61,7 +61,8 @@
   .ttc h3 { font-size: clamp(36px,10vw,51px); }
   .ttc-idea { margin-top: 27px; }
   .ttc-lead { margin-top: 20px; }
-  .ttc-media { width: min(100%,290px); margin-top: 12px; }
+  .ttc-media { order: -1; width: min(100%, 310px); margin-top: 0; }
+  .ttc-copy { order: 0; }
   .ttc-sequence { margin-block: 22px; }
   .ttc-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .ttc-metric { padding: 20px 9px 15px 0; }
