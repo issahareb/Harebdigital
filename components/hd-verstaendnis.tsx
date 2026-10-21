@@ -101,7 +101,7 @@ function Abschnitt({
   }, [kriterien, drin, reduce])
 
   return (
-    <section id={id} ref={abschnitt} className="hd-rule hd-verst">
+    <section data-track-section="hd-verstaendnis-section-1" id={id} ref={abschnitt} className="hd-rule hd-verst">
       <div className="hd-verst-buehne">
         {/* Das Motiv liegt hinter allem und trägt keine Aussage — der Text
             daneben sagt dasselbe besser. Deshalb ohne Alternativtext auf dem

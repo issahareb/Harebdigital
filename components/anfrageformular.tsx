@@ -37,7 +37,9 @@ export function Anfrageformular({
     `${f.name}: ${name}\n${f.epost}: ${absender}\n${f.leistung} ${gewaehlt?.titel ?? ''}\n\n${nachricht}`,
   )}`
 
-  const absenden = async (e: React.FormEvent) => {
+  const absenden = async (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget
+    const report = (ok: boolean) => window.dispatchEvent(new CustomEvent('hd-form-result', {detail:{form,ok}}))
     e.preventDefault()
     if (inFlight.current) return
     inFlight.current = true
@@ -55,12 +57,15 @@ export function Anfrageformular({
       })
       const result = await response.json()
       if (!response.ok || result.ok !== true) {
+        report(false)
         setError(response.status === 429 ? f.zuViele : f.fehler)
         setStatus('error')
         return
       }
+      report(true)
       setStatus('sent')
     } catch {
+      report(false)
       setError(f.fehler)
       setStatus('error')
     } finally { inFlight.current = false }
@@ -74,7 +79,7 @@ export function Anfrageformular({
   )
 
   return (
-    <form onSubmit={absenden} className="mt-12 max-w-xl space-y-6" aria-busy={status === 'sending'}>
+    <form data-track-id="project-enquiry" onSubmit={absenden} className="mt-12 max-w-xl space-y-6" aria-busy={status === 'sending'}>
       <h2 className="font-display text-xl font-bold tracking-tight">{f.titel}</h2>
 
       <div hidden aria-hidden="true">
@@ -160,16 +165,16 @@ export function Anfrageformular({
       </div>
 
       <p className="text-sm leading-relaxed text-[color:var(--hd-ink-soft)]">
-        {f.datenschutzText} <Link href={privacyPath} className="underline underline-offset-4">{f.datenschutzLink}</Link>
+        {f.datenschutzText} <Link data-track-id="anfrageformular-link-1" href={privacyPath} className="underline underline-offset-4">{f.datenschutzLink}</Link>
       </p>
       {status === 'error' && (
         <div role="alert" className="hd-surface p-4">
           <p>{error}</p>
-          <a href={fallback} className="mt-2 inline-block underline underline-offset-4">{f.alternativ}</a>
+          <a data-track-id="anfrageformular-a-2" href={fallback} className="mt-2 inline-block underline underline-offset-4">{f.alternativ}</a>
         </div>
       )}
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <button type="submit" disabled={status === 'sending'} className="hd-cta px-7 py-3.5 text-[17px] disabled:opacity-60 disabled:cursor-wait">
+        <button data-track-id="anfrageformular-button-3" type="submit" disabled={status === 'sending'} className="hd-cta px-7 py-3.5 text-[17px] disabled:opacity-60 disabled:cursor-wait">
           {status === 'sending' ? f.sendet : f.senden}
           <ArrowRight className="h-5 w-5" aria-hidden />
         </button>

@@ -104,7 +104,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
           ))}
         </div>
         <div className="hero-bottomline">
-          <a href="#anspruch" className="scroll-cue">
+          <a data-track-id="cinematic-hero-a-1" href="#anspruch" className="scroll-cue">
             <ArrowDown size={15} aria-hidden />
             <span>{t.scroll}</span>
           </a>

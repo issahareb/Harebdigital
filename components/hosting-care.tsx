@@ -8,7 +8,7 @@ const icons = [Server, ShieldCheck, Sparkles]
 
 export function HostingCare({ lang }: { lang: HdLang }) {
   const t = HOSTING_COPY[lang]
-  return <section id="hosting-wartung" className="hosting-care wrap section-space" aria-labelledby="hosting-title">
+  return <section data-track-section="hosting-care-section-1" id="hosting-wartung" className="hosting-care wrap section-space" aria-labelledby="hosting-title">
     <div className="section-heading" data-reveal>
       <div>
         <div className="section-label"><span className="small-index">07 /</span><span className="eyebrow">{t.label}</span></div>
@@ -29,7 +29,7 @@ export function HostingCare({ lang }: { lang: HdLang }) {
     </div>
     <div className="hosting-care-commitment" data-reveal>
       <div><div className="hosting-promise">{t.promise}</div><p>{t.detail}</p></div>
-      <Link className="text-link" href={localizedPath(lang, '/kontakt/')}>{t.cta}<ArrowUpRight size={18} aria-hidden /></Link>
+      <Link data-track-id="hosting-care-link-2" className="text-link" href={localizedPath(lang, '/kontakt/')}>{t.cta}<ArrowUpRight size={18} aria-hidden /></Link>
     </div>
     <p className="hosting-care-scope">{t.scope}</p>
   </section>

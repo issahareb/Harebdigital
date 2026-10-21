@@ -107,7 +107,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const languages = (panel = false) => (
     <nav className={`language-nav${panel ? ' menu-languages' : ''}`} aria-label={t.language}>
       {(['de', 'en', 'es'] as const).map(l => (
-        <a key={l} href={`${localizedPath(l, isLegal || (germanOnly && l !== 'de') ? '/' : path)}${isLegal ? '' : query}`}
+        <a data-track-id="site-navigation-a-1" key={l} href={`${localizedPath(l, isLegal || (germanOnly && l !== 'de') ? '/' : path)}${isLegal ? '' : query}`}
           lang={l} hrefLang={l} aria-current={lang === l ? 'page' : undefined}
           aria-label={{ de: 'Deutsch', en: 'English', es: 'Español' }[l]}>
           {panel ? { de: 'Deutsch', en: 'English', es: 'Español' }[l] : l.toUpperCase()}
@@ -117,23 +117,23 @@ export function SiteNavigation({ lang, copy: t }: {
   )
 
   return (
-    <header className="site-header">
-      <Link href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /><span className="sr-only">{t.home}</span></Link>
+    <header data-track-section="site-navigation-header-2" className="site-header">
+      <Link data-track-id="site-navigation-link-3" href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /><span className="sr-only">{t.home}</span></Link>
       <nav className="desktop-nav" aria-label={lang === 'de' ? 'Hauptnavigation' : lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
-        {links.slice(0, 3).map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+        {links.slice(0, 3).map(link => <Link data-track-id="site-navigation-link-4" key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
       <div className="header-actions">
         {languages()}
-        <Link prefetch={false} href={localizedPath(lang, '/kontakt/')} className="header-cta">{t.project}<ArrowUpRight size={16} aria-hidden /></Link>
-        <button ref={toggle} type="button" className="menu-toggle" aria-label={t.menu}
+        <Link data-track-id="site-navigation-link-5" prefetch={false} href={localizedPath(lang, '/kontakt/')} className="header-cta">{t.project}<ArrowUpRight size={16} aria-hidden /></Link>
+        <button data-track-id="site-navigation-button-6" ref={toggle} type="button" className="menu-toggle" aria-label={t.menu}
           aria-controls="navigation-dialog" aria-haspopup="dialog" aria-expanded={open} onClick={openMenu}><MenuGlyph /></button>
       </div>
       <dialog ref={dialog} id="navigation-dialog" className="navigation-dialog" data-open={open} aria-label={t.menu}
         onCancel={e => { e.preventDefault(); closeMenu() }}
         onClose={() => { setOpen(false); unlock() }}>
         <div className="menu-topbar">
-          <Link href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /><span className="sr-only">{`Hareb Digital · ${t.home}`}</span></Link>
-          <button type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
+          <Link data-track-id="site-navigation-link-7" href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /><span className="sr-only">{`Hareb Digital · ${t.home}`}</span></Link>
+          <button data-track-id="site-navigation-button-8" type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
         </div>
         <div className="menu-content">
           <div className="menu-art" aria-hidden="true">
@@ -144,7 +144,7 @@ export function SiteNavigation({ lang, copy: t }: {
             <span className="menu-eyebrow">HAREB DIGITAL / INDEX</span>
             <nav id="mobile-navigation" className="mobile-nav" aria-label={t.menu}>
               {links.map((link, i) => (
-                <Link key={link.href} href={link.href} prefetch={false} onClick={() => closeMenu(true)} style={{ '--item': i } as React.CSSProperties}>
+                <Link data-track-id="site-navigation-link-9" key={link.href} href={link.href} prefetch={false} onClick={() => closeMenu(true)} style={{ '--item': i } as React.CSSProperties}>
                   <span className="menu-number">0{i + 1}</span><span className="menu-link-label">{link.label}</span><ArrowUpRight aria-hidden />
                 </Link>
               ))}

@@ -52,9 +52,9 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
   return (
     <HdUnterseite lang={lang} motiv>
       <nav className="breadcrumbs" aria-label={t.breadcrumb}>
-        <Link href={localizedPath(lang)}>{t.home}</Link>
+        <Link data-track-id="service-page-link-1" href={localizedPath(lang)}>{t.home}</Link>
         <span aria-hidden="true">/</span>
-        <Link href={`${localizedPath(lang)}#leistungen`}>{t.nav[1]}</Link>
+        <Link data-track-id="service-page-link-2" href={`${localizedPath(lang)}#leistungen`}>{t.nav[1]}</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.serviceNames[i]}</span>
       </nav>
@@ -75,7 +75,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
         </figcaption>
       </figure>
       <div className="service-detail-grid" data-reveal>
-        <section>
+        <section data-track-section="service-page-section-3">
           <h2>{service.detail.dabei.titel}</h2>
           <ul>
             {service.detail.dabei.punkte.map((point) => (
@@ -84,11 +84,11 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           </ul>
         </section>
         <div>
-          <section>
+          <section data-track-section="service-page-section-4">
             <h2>{service.detail.ablauf.titel}</h2>
             <p>{service.detail.ablauf.text}</p>
           </section>
-          <section>
+          <section data-track-section="service-page-section-5">
             <h2>{service.detail.preis.titel}</h2>
             <p>{service.detail.preis.text}</p>
           </section>
@@ -104,7 +104,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           {t.project}
           <ArrowUpRight size={18} aria-hidden />
         </Link>
-        <Link href={`${localizedPath(lang)}#leistungen`} className="text-link">
+        <Link data-track-id="service-page-link-6" href={`${localizedPath(lang)}#leistungen`} className="text-link">
           {t.nav[1]}
           <ArrowUpRight size={17} aria-hidden />
         </Link>

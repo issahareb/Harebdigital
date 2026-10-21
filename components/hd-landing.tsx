@@ -82,7 +82,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </div>
           </div>
         </section>
-        <section id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
+        <section data-track-section="hd-landing-section-1" id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading" data-reveal>
               <div>
@@ -147,11 +147,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
-                <a href="https://www.taxibbessen.de/" className="text-link">
+                <a data-track-id="hd-landing-a-2" href="https://www.taxibbessen.de/" className="text-link">
                   {t.caseLink}
                   <ArrowUpRight size={17} aria-hidden />
                 </a>
-                {lang === 'de' && <Link className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen ↗</Link>}
+                {lang === 'de' && <Link data-track-id="hd-landing-link-3" className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen ↗</Link>}
               </div>
             </article>
             <div className="secondary-work" data-reveal>
@@ -222,11 +222,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </article>
             ))}
           </div>
-          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
+          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
         <MotionFeature lang={lang} />
-        <section id="social" className="social-section section-space" aria-labelledby="social-title">
+        <section data-track-section="hd-landing-section-6" id="social" className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">
             <figure className="social-art" data-reveal>
               <Image
@@ -247,9 +247,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 <Lines text={t.socialTitle} />
               </h2>
               <p>{t.socialText}</p>
-              {lang === 'de' && <Link className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen ↗</Link>}
+              {lang === 'de' && <Link data-track-id="hd-landing-link-7" className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen ↗</Link>}
               <span className="social-profile-label">TikTok · @issa3701</span>
-              <a href="https://www.tiktok.com/@issa3701" className="text-link">
+              <a data-track-id="hd-landing-a-8" href="https://www.tiktok.com/@issa3701" className="text-link">
                 Mr Han
                 <ArrowUpRight size={17} aria-hidden />
               </a>
@@ -297,7 +297,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <Lines text={t.studioTitle} />
             </h2>
             <p>{t.studioText}</p>
-            <a href={PORTFOLIO} className="text-link" rel="me">
+            <a data-track-id="hd-landing-a-9" href={PORTFOLIO} className="text-link" rel="me">
               {t.studioLink}
               <ArrowUpRight size={17} aria-hidden />
             </a>
@@ -339,7 +339,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </ol>
         </section>
         <HostingCare lang={lang} />
-        <section id="faq" className="faq-section wrap section-space" aria-labelledby="faq-title">
+        <section data-track-section="hd-landing-section-10" id="faq" className="faq-section wrap section-space" aria-labelledby="faq-title">
           <div>
             <div className="section-label">
               <span className="small-index">08 /</span>

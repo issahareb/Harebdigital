@@ -10,7 +10,7 @@ import { marke, PORTFOLIO } from '@/lib/marke'
 export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: boolean }) {
   const t = STUDIO_COPY[lang]
   return (
-    <footer className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
+    <footer data-track-section="site-footer-footer-1" className={`site-footer${compact ? ' site-footer--compact' : ''}`}>
       {!compact && (
         <div className="footer-invite wrap" data-reveal>
           <div>
@@ -23,11 +23,11 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
           </div>
           <div className="footer-invite-right">
             <p>{t.contactText}</p>
-            <Link className="button button-dark" href={localizedPath(lang, '/kontakt/')}>
+            <Link data-track-id="site-footer-link-2" className="button button-dark" href={localizedPath(lang, '/kontakt/')}>
               {lang === 'de' ? 'Kontakt aufnehmen' : lang === 'en' ? 'Get in touch' : 'Contactar'}
               <ArrowUpRight size={20} aria-hidden />
             </Link>
-            <a className="footer-email" href={`mailto:${marke.kontaktEmail}`}>
+            <a data-track-id="site-footer-a-3" className="footer-email" href={`mailto:${marke.kontaktEmail}`}>
               {marke.kontaktEmail}
             </a>
           </div>
@@ -43,7 +43,7 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
       <div className="footer-bottom wrap">
         <p>
           © {new Date().getFullYear()} Hareb Digital ·{' '}
-          <a href={PORTFOLIO} rel="me">
+          <a data-track-id="site-footer-a-4" href={PORTFOLIO} rel="me">
             Issa Hareb
           </a>{' '}
           <br />
@@ -62,9 +62,9 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
                 : 'Legal information'
           }
         >
-          <Link href="/impressum/">{HD_TEXTE[lang].fuss.impressum}</Link>
-          <Link href="/datenschutz/">{HD_TEXTE[lang].fuss.datenschutz}</Link>
-          <a href={`mailto:${marke.kontaktEmail}`}>
+          <Link data-track-id="site-footer-link-5" href="/impressum/">{HD_TEXTE[lang].fuss.impressum}</Link>
+          <Link data-track-id="site-footer-link-6" href="/datenschutz/">{HD_TEXTE[lang].fuss.datenschutz}</Link>
+          <a data-track-id="site-footer-a-7" href={`mailto:${marke.kontaktEmail}`}>
             {lang === 'de' ? 'Kontakt' : lang === 'es' ? 'Contacto' : 'Contact'}
             <ArrowUpRight size={13} aria-hidden />
           </a>

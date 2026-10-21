@@ -118,14 +118,14 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     } else { userPaused.current = true; ++playAttempt.current; el.pause() }
   }
 
-  return <section ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
+  return <section data-track-section="motion-feature-section-1" ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
     <div className="motion-orbits" aria-hidden="true"><i /><i /><i /></div>
     <div className="wrap">
       <div className="motion-feature-heading">
         <div className="motion-feature-title"><span className="eyebrow"><i className="motion-signal" aria-hidden="true" />{t.label}</span>
           <h2 id="motion-title" aria-label={`${t.title} ${t.accent}`}><span className="motion-title-line" aria-hidden="true">{t.title}</span><span className="motion-accent" aria-hidden="true">{t.accent.split(' ').map((word, wi) => <span className="motion-word" key={wi}>{[...word].map((letter, i) => <span className="motion-letter" key={i} style={{ '--letter': i + t.accent.split(' ').slice(0, wi).join(' ').length + wi } as CSSProperties}>{letter}</span>)}{wi < t.accent.split(' ').length - 1 ? '\u00a0' : ''}</span>)}</span></h2>
         </div>
-        <div className="motion-feature-copy"><p>{t.text}</p><Link href={lang === 'de' ? '/kontakt/' : `/${lang}/kontakt/`} className="motion-feature-cta">{t.cta}<ArrowUpRight size={20} aria-hidden /></Link></div>
+        <div className="motion-feature-copy"><p>{t.text}</p><Link data-track-id="motion-feature-link-2" href={lang === 'de' ? '/kontakt/' : `/${lang}/kontakt/`} className="motion-feature-cta">{t.cta}<ArrowUpRight size={20} aria-hidden /></Link></div>
       </div>
       <div ref={screen} className="motion-feature-screen">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -134,8 +134,8 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)}
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
         <div className="motion-feature-player">
-          <button type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
-          <button type="button" onClick={() => {
+          <button data-track-id="motion-feature-button-3" type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
+          <button data-track-id="motion-feature-button-4" type="button" onClick={() => {
             const el = video.current
             if (!el) return
             preferredMuted.current = !el.muted
@@ -144,7 +144,7 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
           }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
         </div>
       </div>
-      <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
+      <div className="motion-feature-caption"><button data-track-id="motion-feature-button-5" type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
     </div>
   </section>
 }
