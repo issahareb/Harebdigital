@@ -136,10 +136,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 </span>
               </a>
               <div className="project-story">
-                <span className="eyebrow">{t.caseType}</span>
-                <h3>
-                  <Lines text={t.caseTitle} />
-                </h3>
+                <span className="eyebrow">{t.caseTitle.replace(/\n/g, ' ')}</span>
                 <p>{t.caseText}</p>
                 <ul className="tag-list">
                   {t.caseTags.map((tag) => (
