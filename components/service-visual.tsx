@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import type { HdLang } from '@/lib/hd-texte'
 import { VISUAL_COPY } from '@/lib/service-visuals'
-import { ScrollAccent } from './scroll-accent'
+import { IdeaReveal } from './idea-reveal'
 
 const SERVICE_IMAGES = [
   { src: '/studio/services-20261010/web-development-1200.webp', width: 1200, height: 900 },
@@ -44,7 +44,7 @@ export function StudioEvidence({ lang }: { lang: HdLang }) {
   const t = VISUAL_COPY[lang]
   return (
     <p className="studio-statement">
-      <ScrollAccent text={t.demoText} />
+      <IdeaReveal text={t.demoText} />
     </p>
   )
 }
