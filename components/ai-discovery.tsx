@@ -59,8 +59,8 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
   return (
     <section className="ai-discovery" aria-labelledby="ai-discovery-title" id="ki-sichtbarkeit">
       <div>
-        <span className="eyebrow">{t.label}</span>
-        <h2 id="ai-discovery-title">{t.title}</h2>
+        <h2 id="ai-discovery-title">{t.label}</h2>
+        <p className="ai-discovery-subtitle">{t.title.replace(/\n/g, ' ')}</p>
         <p className="ai-discovery-intro">{t.text}</p>
         <div className="ai-discovery-questions">
           {t.questions.map((question, index) => (
