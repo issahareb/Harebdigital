@@ -153,11 +153,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </div>
             </article>
             <div className="secondary-work" data-reveal>
-              <a
-                className="secondary-image"
-                href="https://www.guardiangrid.io/"
-                aria-label="GuardianGrid"
-              >
+              <div className="secondary-image">
                 <Image
                   src="/projekte/guardiangrid-login.jpg"
                   alt={original.arbeiten.projekte[0].alt}
@@ -165,19 +161,14 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   height={800}
                   sizes="(max-width: 650px) 92vw, 30vw"
                 />
-              </a>
+              </div>
               <div>
                 <span className="eyebrow">{t.moreWork}</span>
                 <h3>GuardianGrid</h3>
+                <p className="project-production-status">{lang === 'de' ? 'In Produktion · Zusammenarbeit mit Bungie' : lang === 'en' ? 'In production · Collaboration with Bungie' : 'En producción · Colaboración con Bungie'}</p>
                 <p>{original.arbeiten.projekte[0].text}</p>
               </div>
-              <a
-                href="https://www.guardiangrid.io/"
-                className="round-link"
-                aria-label={`${original.arbeiten.ansehen}: GuardianGrid`}
-              >
-                <ArrowUpRight aria-hidden />
-              </a>
+
             </div>
           </div>
         </section>
