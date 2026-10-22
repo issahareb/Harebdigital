@@ -127,3 +127,13 @@
   font-size: 11px;
   line-height: 1.5;
 }
+
+.idea-reveal, .idea-line { display: block; }
+.idea-line { position: relative; width: fit-content; }
+.idea-word-mask { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .12em; margin-bottom: -.12em; }
+.idea-word { display: inline-block; transform-origin: bottom left; }
+.idea-line + .idea-line { color: var(--hd-accent); margin-top: .12em; }
+.idea-underline { display: block; height: 3px; margin-top: .2em; background: var(--hd-accent); transform-origin: left; }
+.secondary-work:has(.project-production-status) { grid-template-columns: 260px 1fr; }
+.secondary-work .project-production-status { color: var(--hd-accent); font-weight: 600; }
+@media (max-width: 650px) { .secondary-work:has(.project-production-status) { grid-template-columns: 1fr; } }
