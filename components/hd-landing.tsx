@@ -1,6 +1,7 @@
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
 import { HostingCare } from './hosting-care'
+import { IntroOffer } from './intro-offer'
 import { MotionFeature } from './motion-feature'
 import { TikTokCaseStudy } from './tiktok-case-study'
 import Image from 'next/image'
@@ -225,6 +226,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
+        {lang === 'de' && <IntroOffer />}
         <MotionFeature lang={lang} />
         <section id="social" className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">

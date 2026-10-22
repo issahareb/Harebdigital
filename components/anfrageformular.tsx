@@ -25,7 +25,13 @@ export function Anfrageformular({
   const [leistung, setLeistung] = useState(bekannt ? ausAdresse : '')
   const [name, setName] = useState('')
   const [absender, setAbsender] = useState('')
-  const [nachricht, setNachricht] = useState('')
+  const offerMessages: Record<string, string> = {
+    '0': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Landingpage für 490 € einmalig.\n\nMein Projekt: ',
+    '1': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Unternehmenswebsite für 890 € einmalig.\n\nMein Projekt: ',
+    '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 490 € einmalig.\n\nMein Projekt: ',
+    '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Website für 590 € einmalig mit laufender Betreuung. Bitte nennen Sie mir auch die monatlichen Kosten und Bedingungen.\n\nMein Projekt: ',
+  }
+  const [nachricht, setNachricht] = useState(offerMessages[parameter.get('angebot') ?? ''] ?? '')
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
