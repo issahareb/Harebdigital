@@ -14,6 +14,7 @@ type CaseCopy = {
   campaignType: string
   featured: string
   visit: string
+  timeframe: string
   proof: string
   ratioExplanation: string
   metrics: [string, string, string, string]
@@ -33,6 +34,7 @@ const COPY: Record<HdLang, CaseCopy> = {
     campaignType: 'TikTok / Kreativkampagne',
     featured: 'Creative Study',
     visit: 'Social Media Marketing entdecken',
+    timeframe: 'Bereits 17 Stunden nach Veröffentlichung des Videos erreicht.',
     proof: '19,4 % Likes im Verhältnis zu den Videoaufrufen',
     ratioExplanation: 'Likes / Aufrufe, keine Conversion-Rate',
     metrics: ['Aufrufe', 'Likes', 'Speicherungen', 'Kommentare'],
@@ -50,6 +52,7 @@ const COPY: Record<HdLang, CaseCopy> = {
     campaignType: 'TikTok / Creative campaign',
     featured: 'Creative Study',
     visit: 'Discuss a campaign',
+    timeframe: 'Achieved just 17 hours after the video was published.',
     proof: '19.4% likes relative to video views',
     ratioExplanation: 'Likes / views, not a conversion rate',
     metrics: ['Views', 'Likes', 'Saves', 'Comments'],
@@ -67,6 +70,7 @@ const COPY: Record<HdLang, CaseCopy> = {
     campaignType: 'TikTok / campaña creativa',
     featured: 'Creative Study',
     visit: 'Hablemos de una campaña',
+    timeframe: 'Resultados alcanzados solo 17 horas después de publicar el vídeo.',
     proof: '19,4 % de «me gusta» respecto a las visualizaciones',
     ratioExplanation: 'Me gusta / visualizaciones, no tasa de conversión',
     metrics: ['Visualizaciones', 'Me gusta', 'Guardados', 'Comentarios'],
@@ -125,6 +129,7 @@ export function TikTokCaseStudy({ lang }: { lang: HdLang }) {
           <span>CAMPAIGN SNAPSHOT / 20.10.2026</span>
           <span>{lang === 'de' ? 'HAREB DIGITAL · KREATIVKAMPAGNE' : lang === 'en' ? 'HAREB DIGITAL · CREATIVE CAMPAIGN' : 'HAREB DIGITAL · CAMPAÑA CREATIVA'}</span>
         </div>
+        <p className="ttc-proof">{t.timeframe}</p>
         <div className="ttc-metrics">
           {stats.map((item) => <div key={item.label} className="ttc-metric"><strong>{item.value}</strong><span>{item.label}</span></div>)}
           <div className="ttc-metric ttc-metric--ratio">
