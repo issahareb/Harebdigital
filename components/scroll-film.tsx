@@ -36,7 +36,11 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       if (!images[nearest]) {
         let distance = count
         images.forEach((image, i) => {
-          if (image && Math.abs(i - target) < distance) {
+          // Late image loads may advance towards the target, never overshoot
+          // it or move back against the user's current scroll direction.
+          const withinPath = painted < 0 ? i <= target
+            : target >= painted ? i >= painted && i <= target : i <= painted && i >= target
+          if (image && withinPath && Math.abs(i - target) < distance) {
             nearest = i
             distance = Math.abs(i - target)
           }
@@ -55,7 +59,9 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       // Previously visited WebPs remain available through the browser HTTP cache.
       const priority = [
         target,
-        ...Array.from({ length: 12 }, (_, i) => [target + i + 1, target - i - 1]).flat(),
+        // At rest only prepare the first step. The remaining camera positions
+        // become useful once scrolling advances the playhead.
+        ...Array.from({ length: target === 0 ? 1 : 12 }, (_, i) => [target + i + 1, target - i - 1]).flat(),
       ]
       images.forEach((image, i) => {
         if (image && Math.abs(i - target) > 12) {

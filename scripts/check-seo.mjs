@@ -96,7 +96,9 @@ for (const lang of languages) {
         assert(!title.includes('Webdesign Essen'), 'No keyword-stuffed homepage title')
         assert(description.includes('Bonn'), 'Bonn mentioned in German description')
       }
-      assert.equal(faq.mainEntity.length, 8, `${route}: FAQ count`)
+      const faqSection = html.match(/<section\b[^>]*aria-labelledby="faq-title"[^>]*>(.*?)<\/section>/s)?.[1]
+      assert(faqSection, `${route}: visible FAQ section`)
+      assert.equal(faq.mainEntity.length, (faqSection.match(/<summary[\s>]/g) || []).length, `${route}: schema matches visible FAQ count`)
       for (const question of faq.mainEntity) {
         assert(html.includes(question.name), `${route}: FAQ question visible`)
         assert(html.includes(question.acceptedAnswer.text), `${route}: FAQ answer visible`)

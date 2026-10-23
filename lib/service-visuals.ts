@@ -11,13 +11,13 @@ export const VISUAL_COPY = {
     ],
     captions: [
       'Vom Entwurf zur fertigen Website.',
-      'Neue Perspektiven für deinen Auftritt.',
+      'Vom alten Auftritt zum neuen Erlebnis · Konzeptillustration.',
       'Von der Anfrage bis zur Bestätigung.',
       'Klare Angaben. Verständliche Antworten.',
     ],
     descriptions: [
       'Konzeptillustration zur Webentwicklung: Seitenstruktur und der fiktive Website-Entwurf FORM auf Desktop und Handy.',
-      'Designvorschau: IRIS AI mit animierter dreidimensionaler Gestaltung.',
+      'Konzeptillustration eines Website-Redesigns: links die ältere, überladene Website des fiktiven Studios FORM; rechts ein modernes, klares Layout mit passender Smartphone-Ansicht.',
       'Konzeptillustration eines Ablaufs von der Anfrage über die persönliche Freigabe und den Kalendereintrag bis zur E-Mail-Bestätigung.',
       'Konzeptillustration für SEO und AEO: Seiteninhalte verbinden Suchergebnisse mit einer Antwort samt Quellenangabe.',
     ],
@@ -38,13 +38,13 @@ export const VISUAL_COPY = {
     ],
     captions: [
       'From design to a finished website.',
-      'A fresh perspective for your website.',
+      'From an old website to a fresh experience · Concept illustration.',
       'From enquiry to confirmation.',
       'Clear information. Useful answers.',
     ],
     descriptions: [
       'Web development concept: page structure and the fictional FORM website design on desktop and mobile.',
-      'Design preview: IRIS AI with animated three-dimensional artwork.',
+      'Website redesign concept: the fictional FORM studio’s older, crowded website on the left and a modern, clear layout with a matching mobile view on the right.',
       'Workflow concept showing an enquiry, human approval, a calendar entry and an email confirmation.',
       'SEO and AEO concept: page content connects search results to an answer with a source citation.',
     ],
@@ -65,13 +65,13 @@ export const VISUAL_COPY = {
     ],
     captions: [
       'Del diseño a una web terminada.',
-      'Una nueva perspectiva para tu web.',
+      'De una web antigua a una nueva experiencia · Ilustración conceptual.',
       'De la solicitud a la confirmación.',
       'Información clara. Respuestas útiles.',
     ],
     descriptions: [
       'Concepto de desarrollo web: estructura de página y diseño de la web ficticia FORM en escritorio y móvil.',
-      'Vista previa de diseño: IRIS AI con elementos tridimensionales animados.',
+      'Concepto de rediseño web: a la izquierda, la web antigua y recargada del estudio ficticio FORM; a la derecha, un diseño moderno y claro con su versión móvil.',
       'Concepto de proceso: solicitud, aprobación de una persona, entrada en el calendario y confirmación por correo.',
       'Concepto de SEO y AEO: el contenido conecta resultados de búsqueda con una respuesta que cita su fuente.',
     ],

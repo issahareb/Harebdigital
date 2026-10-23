@@ -4,6 +4,7 @@ import type { HdLang } from '@/lib/hd-texte'
 import { DOMAIN } from '@/lib/marke'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import '@/app/globals.css'
+import { ActivityTracker } from './activity-tracker'
 
 const display = Manrope({ subsets: ['latin'], variable: '--font-heading-face', display: 'swap' })
 
@@ -35,10 +36,11 @@ export function SiteDocument({ lang, children }: { lang: HdLang; children: React
   return (
     <html lang={lang} className={display.variable}>
       <body>
-        <a className="skip-link" href="#main">
+        <a data-track-id="site-document-a-1" className="skip-link" href="#main">
           {STUDIO_COPY[lang].skip}
         </a>
         {children}
+        <ActivityTracker />
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react'
 import { PlaybackIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
@@ -23,7 +24,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   const [edges, setEdges] = useState({ start: true, end: false })
   const [pinned, setPinned] = useState(false)
   const [paused, setPaused] = useState(false)
-  const [visible, setVisible] = useState(false)
+  const [visibleClips, setVisibleClips] = useState<Set<number>>(() => new Set())
   const [manualPlayback, setManualPlayback] = useState(false)
   const [blocked, setBlocked] = useState(false)
   const [decoded, setDecoded] = useState<Record<string, boolean>>({})
@@ -86,15 +87,13 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     }
     const resize = new ResizeObserver(measure)
     resize.observe(windowEl)
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.1), { threshold: [0, 0.1] })
-    observer.observe(frame)
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', measure)
     preference.addEventListener('change', measure)
     measure()
     return () => {
       cancelAnimationFrame(request)
-      resize.disconnect(); observer.disconnect()
+      resize.disconnect()
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', measure)
       preference.removeEventListener('change', measure)
@@ -102,25 +101,37 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   }, [])
 
   useEffect(() => {
+    // Observe each actual video: the heading/sticky stage can be visible while
+    // its media is still below the fold or clipped outside the horizontal rail.
+    const observer = new IntersectionObserver(entries => {
+      setVisibleClips(previous => {
+        const next = new Set(previous)
+        for (const entry of entries) {
+          const index = videos.current.indexOf(entry.target as HTMLVideoElement)
+          if (entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0) next.add(index)
+          else next.delete(index)
+        }
+        return next
+      })
+    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    videos.current.forEach(video => { if (video) observer.observe(video) })
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
     let disposed = false
-    // Prepare adjacent clips before they enter. Keep each source and decoded frame
-    // mounted: switching slides must not reload media or reveal an empty video layer.
-    if (visible && !manualPlayback) videos.current.forEach((video, index) => {
-      if (video && Math.abs(index - active) <= 1 && !video.getAttribute('src')) {
-        video.preload = 'auto'
-        video.src = WEBSITE_CLIPS[index].src
-      }
-    })
     const sync = () => {
       videos.current.forEach((video, index) => {
         if (!video) return
-        if (index === active && visible && !paused && !manualPlayback && !document.hidden) {
-          const clip = WEBSITE_CLIPS[index]
-          if (!video.getAttribute('src')) { video.src = clip.src }
+        if (visibleClips.has(index) && !paused && !manualPlayback && !document.hidden) {
+          // No neighbour prefetch: attach the source only once this clip is on screen.
+          if (!video.getAttribute('src')) {
+            video.preload = 'auto'
+            video.src = WEBSITE_CLIPS[index].src
+          }
           video.muted = true
-          video.play().then(() => { if (!disposed) setBlocked(false) }).catch(() => {
-            if (!disposed && !video.paused) return
-            if (!disposed) setBlocked(true)
+          video.play().then(() => { if (!disposed && index === active) setBlocked(false) }).catch(error => {
+            if (!disposed && index === active && error.name !== 'AbortError') setBlocked(true)
           })
         } else video.pause()
       })
@@ -128,7 +139,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     sync()
     document.addEventListener('visibilitychange', sync)
     return () => { disposed = true; document.removeEventListener('visibilitychange', sync) }
-  }, [active, visible, paused, manualPlayback])
+  }, [active, visibleClips, paused, manualPlayback])
 
   useEffect(() => () => { videos.current.forEach(video => video?.pause()) }, [])
 
@@ -145,7 +156,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
 
   const togglePlayback = () => {
     const video = videos.current[active]
-    if (!video) return
+    if (!video || !visibleClips.has(active)) return
     if (paused || manualPlayback || blocked) {
       if (!video.getAttribute('src')) { video.src = WEBSITE_CLIPS[active].src }
       video.muted = true
@@ -155,7 +166,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   }
 
   return (
-    <section ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned="true">
+    <section data-track-section="website-showcase-section-1" ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned="true">
       <div className="showcase-surround" aria-hidden />
       <div ref={stage} className="showcase-stage">
         <div className="showcase-heading wrap">
@@ -179,20 +190,23 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
               <article key={clip.id} className="showcase-card" data-active={index === active} aria-label={`${index + 1} / ${WEBSITE_CLIPS.length}: ${clip.title}`}>
                 <div className="showcase-media" style={{ backgroundColor: clip.color }}>
                   {/* A separate poster remains until the first frame has actually been presented. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="showcase-poster" src={clip.poster} alt="" aria-hidden />
-                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} poster={clip.poster} muted loop playsInline preload="none" aria-label={clip.title}
+                  <Image className="showcase-poster" src={clip.poster} alt={clip.alt[lang]} aria-hidden={decoded[clip.id] || undefined} fill sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 800px) calc(100vw - 48px), min(1120px, calc(100vw - 112px), calc((100svh - 420px) * 1.6))" />
+                  <video data-decoded={!!decoded[clip.id]} ref={element => { videos.current[index] = element }} muted loop playsInline preload="none" aria-label={`${clip.title}: ${clip.alt[lang]}`}
                     onPlaying={event => {
                       const video = event.currentTarget
                       const reveal = () => setDecoded(previous => previous[clip.id] ? previous : { ...previous, [clip.id]: true })
                       if ('requestVideoFrameCallback' in video) video.requestVideoFrameCallback(reveal)
                       else reveal()
                     }}
-                    onError={() => setFailed(previous => ({ ...previous, [clip.id]: true }))} />
+                    onError={() => setFailed(previous => ({ ...previous, [clip.id]: true }))}>
+                    {/* Verified: four files have no audio stream; Spectrum's
+                        audio stream contains only digital silence. */}
+                    <track kind="captions" src={`/captions/silent-webdesign.${lang}.vtt`} srcLang={lang} label={lang === 'de' ? 'Deutsch' : lang === 'en' ? 'English' : 'Español'} />
+                  </video>
                   {failed[clip.id] && <span className="showcase-video-fallback">{copy.unavailable}</span>}
                 </div>
                 <div className="showcase-caption">
-                  <div><span className="showcase-number">0{index + 1}</span><h3>{clip.title}</h3></div>
+                  <div><span className="showcase-number">0{index + 1}</span><span className="showcase-clip-title">{clip.title}</span></div>
                   <span>{copy.reference}</span>
                 </div>
               </article>
@@ -202,11 +216,11 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
         <div className="showcase-controls wrap">
           <div className="showcase-status"><span>{String(active + 1).padStart(2, '0')} / {String(WEBSITE_CLIPS.length).padStart(2, '0')}</span><span ref={progress} className="showcase-progress" aria-hidden><i /></span></div>
           <div className="showcase-buttons">
-            <button type="button" onClick={() => moveTo(active - 1)} disabled={edges.start} aria-label={copy.previous}><ArrowLeft size={18} aria-hidden /></button>
-            <button type="button" onClick={togglePlayback} aria-label={paused || manualPlayback || blocked ? copy.play : copy.pause}><PlaybackIcon playing={!(paused || manualPlayback || blocked)} size={16} /></button>
-            <button type="button" onClick={() => moveTo(active + 1)} disabled={edges.end} aria-label={copy.next}><ArrowRight size={18} aria-hidden /></button>
+            <button data-track-id="website-showcase-button-2" type="button" onClick={() => moveTo(active - 1)} disabled={edges.start} aria-label={copy.previous}><ArrowLeft size={18} aria-hidden /></button>
+            <button data-track-id="website-showcase-button-3" type="button" onClick={togglePlayback} aria-label={paused || manualPlayback || blocked ? copy.play : copy.pause}><PlaybackIcon playing={!(paused || manualPlayback || blocked)} size={16} /></button>
+            <button data-track-id="website-showcase-button-4" type="button" onClick={() => moveTo(active + 1)} disabled={edges.end} aria-label={copy.next}><ArrowRight size={18} aria-hidden /></button>
           </div>
-          <a className="showcase-continue" href="#leistungen">{copy.continue}<ArrowDown size={15} aria-hidden /></a>
+          <a data-track-id="website-showcase-a-5" className="showcase-continue" href="#leistungen">{copy.continue}<ArrowDown size={15} aria-hidden /></a>
         </div>
         <noscript>
           <style>{`.website-showcase{height:auto!important}.showcase-stage{position:static!important;height:auto!important}.showcase-viewport{overflow-x:auto!important;scroll-snap-type:x mandatory!important}.showcase-surround{display:none}`}</style>

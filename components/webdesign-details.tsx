@@ -32,7 +32,7 @@ const questions = [
 export function WebdesignDetails() {
   return <>
     <div className="service-detail-grid">
-      <section>
+      <section data-track-section="webdesign-details-section-1">
         <span className="eyebrow">DEIN PROJEKTUMFANG</span>
         <h2>Welche Website braucht dein Unternehmen?</h2>
         <p>Für Dienstleister, Handwerksbetriebe und kleine Unternehmen zählt, dass Besucher schnell verstehen, was du anbietest und wie sie dich erreichen. Wir wählen den Umfang nach deinem Angebot.</p>
@@ -41,18 +41,18 @@ export function WebdesignDetails() {
           <li><strong>Unternehmenswebsite:</strong> eigene Seiten für Leistungen, Referenzen und Kontakt, damit Kunden passende Informationen direkt finden.</li>
           <li><strong>Website mit Funktionen:</strong> etwa Fahrtanfragen, Terminwünsche oder ein Verwaltungsbereich. Abläufe und Daten werden vor der Umsetzung gemeinsam geplant.</li>
         </ul>
-        <p>Du hast schon eine Website? Ein <Link className="text-link" href="/leistungen/website-ueberarbeiten/">Website-Relaunch</Link> kann sinnvoller sein als ein vollständiger Neubau.</p>
+        <p>Du hast schon eine Website? Ein <Link data-track-id="webdesign-details-link-2" className="text-link" href="/leistungen/website-ueberarbeiten/">Website-Relaunch</Link> kann sinnvoller sein als ein vollständiger Neubau.</p>
       </section>
-      <section>
+      <section data-track-section="webdesign-details-section-3">
         <span className="eyebrow">VERÖFFENTLICHTES KUNDENPROJEKT</span>
         <h2>Webdesign für Taxi B&B Essen</h2>
         <p>Für Taxi B&B Essen habe ich eine Website mit mobilen Fahrtanfragen, einem geschützten Verwaltungsbereich und automatischen E-Mail-Benachrichtigungen umgesetzt. Das Projekt verbindet den öffentlichen Auftritt mit der Bearbeitung eingehender Anfragen.</p>
         <p>Die Fallstudie zeigt, wie Website und interner Ablauf zusammenpassen: von der Anfrage eines Fahrgasts bis zur Bearbeitung durch das Unternehmen.</p>
-        <Link className="text-link" href="/projekte/taxi-bb-essen/">Website und Buchungsanfragen von Taxi B&B Essen ansehen ↗</Link>
-        <p>Für umfangreichere Prozesse entwickle ich <Link className="text-link" href="/leistungen/webanwendungen/">individuelle Webanwendungen</Link>. Wiederkehrende Arbeit lässt sich durch <Link className="text-link" href="/leistungen/automatisierung/">passende Automatisierung</Link> vereinfachen.</p>
+        <Link data-track-id="webdesign-details-link-4" className="text-link" href="/projekte/taxi-bb-essen/">Website und Buchungsanfragen von Taxi B&B Essen ansehen ↗</Link>
+        <p>Für umfangreichere Prozesse entwickle ich <Link data-track-id="webdesign-details-link-5" className="text-link" href="/leistungen/webanwendungen/">individuelle Webanwendungen</Link>. Wiederkehrende Arbeit lässt sich durch <Link data-track-id="webdesign-details-link-6" className="text-link" href="/leistungen/automatisierung/">passende Automatisierung</Link> vereinfachen.</p>
       </section>
     </div>
-    <section className="service-detail-grid" aria-labelledby="webdesign-questions">
+    <section data-track-section="webdesign-details-section-7" className="service-detail-grid" aria-labelledby="webdesign-questions">
       <div>
         <span className="eyebrow">VOR DER PROJEKTANFRAGE</span>
         <h2 id="webdesign-questions">Fragen zu deiner neuen Website</h2>

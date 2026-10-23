@@ -18,7 +18,10 @@ export function EditorialMotion() {
           observer?.unobserve(entry.target)
         }
       }, { threshold: 0, rootMargin: '160px 0px 240px 0px' })
-      for (const el of elements) if (el.getBoundingClientRect().top > innerHeight + 240) {
+      // Read geometry together before changing styles. Interleaving these
+      // reads with reveal attributes forces a layout for every section.
+      const pending = elements.filter(el => el.getBoundingClientRect().top > innerHeight + 240)
+      for (const el of pending) {
         el.setAttribute('data-reveal-pending', '')
         observer.observe(el)
       }

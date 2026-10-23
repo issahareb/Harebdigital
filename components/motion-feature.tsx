@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { PlaybackIcon, SoundIcon } from './control-icons'
 import type { HdLang } from '@/lib/hd-texte'
@@ -14,6 +15,11 @@ const COPY = {
 
 export function MotionFeature({ lang }: { lang: HdLang }) {
   const t = COPY[lang]
+  const posterAlt = {
+    de: 'Standbild des Hareb-Digital-Werbevideos mit Website-Vorschauen auf einer gebogenen Bildschirmfläche.',
+    en: 'Still from the Hareb Digital advertising video with website previews on a curved screen.',
+    es: 'Fotograma del video publicitario de Hareb Digital con vistas previas de sitios web en una pantalla curva.',
+  }[lang]
   const section = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
   const [entered, setEntered] = useState(false)
@@ -23,12 +29,36 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
   const video = useRef<HTMLVideoElement>(null)
   const screen = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(true)
+  const [muted, setMuted] = useState(false)
+  const preferredMuted = useRef(false)
+  const playAttempt = useRef(0)
   const [decoded, setDecoded] = useState(false)
   const userPaused = useRef(false)
   const manual = useRef(false)
   const inView = useRef(false)
   const source = '/videos/hareb-motion-final-v5.mp4'
+
+  const startPlayback = useCallback(async () => {
+    const el = video.current
+    if (!el || !inView.current || document.hidden || userPaused.current) return
+    const attempt = ++playAttempt.current
+    const current = () => attempt === playAttempt.current && inView.current && !document.hidden && !userPaused.current
+    if (!el.getAttribute('src')) { el.preload = 'auto'; el.src = source }
+    el.muted = preferredMuted.current
+    setMuted(el.muted)
+    try {
+      await el.play()
+    } catch (error) {
+      if (!current()) return
+      // Browsers may reject audible autoplay. Keep the video moving silently
+      // and expose the existing sound button instead of leaving a frozen poster.
+      if (!el.muted && error instanceof DOMException && error.name === 'NotAllowedError') {
+        el.muted = true
+        setMuted(true)
+        try { await el.play() } catch { if (current()) setPlaying(false) }
+      } else setPlaying(false)
+    }
+  }, [])
 
   useEffect(() => {
     const el = video.current, area = screen.current
@@ -37,25 +67,27 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
     const sync = () => {
       if (inView.current && !document.hidden && !userPaused.current && (manual.current || (!reduced.matches && !saveData))) {
-        if (!el.getAttribute('src')) el.src = source
-        el.play().catch(() => setPlaying(false))
+        void startPlayback()
       } else {
+        ++playAttempt.current
         el.pause()
-        if (!inView.current || document.hidden) { el.muted = true; setMuted(true) }
       }
     }
-    const prepare = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !reduced.matches && !saveData) {
-        if (!el.getAttribute('src')) { el.preload = 'auto'; el.src = source }
-        prepare.disconnect()
-      }
-    }, { rootMargin: '300px' })
-    const observer = new IntersectionObserver(([entry]) => { inView.current = entry.intersectionRatio >= .3; sync() }, { threshold: [0, .3] })
-    prepare.observe(area); observer.observe(area)
+    const observer = new IntersectionObserver(([entry]) => {
+      inView.current = entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0
+      sync()
+    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    observer.observe(area)
     document.addEventListener('visibilitychange', sync)
     reduced.addEventListener('change', sync)
-    return () => { prepare.disconnect(); observer.disconnect(); el.pause(); document.removeEventListener('visibilitychange', sync); reduced.removeEventListener('change', sync) }
-  }, [])
+    return () => {
+      ++playAttempt.current
+      inView.current = false
+      observer.disconnect(); el.pause()
+      document.removeEventListener('visibilitychange', sync)
+      reduced.removeEventListener('change', sync)
+    }
+  }, [startPlayback])
 
   useEffect(() => {
     const area = section.current
@@ -82,32 +114,37 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     if (!el) return
     if (el.paused) {
       manual.current = true; userPaused.current = false
-      if (!el.getAttribute('src')) el.src = source
-      el.play().catch(() => setPlaying(false))
-    } else { userPaused.current = true; el.pause() }
+      void startPlayback()
+    } else { userPaused.current = true; ++playAttempt.current; el.pause() }
   }
 
-  return <section ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
+  return <section data-track-section="motion-feature-section-1" ref={section} id="motion-design" className="motion-feature" aria-labelledby="motion-title" data-entered={entered} data-animate={visible && motionAllowed && !motionPaused} data-motion-allowed={motionAllowed && !motionPaused}>
     <div className="motion-orbits" aria-hidden="true"><i /><i /><i /></div>
     <div className="wrap">
       <div className="motion-feature-heading">
         <div className="motion-feature-title"><span className="eyebrow"><i className="motion-signal" aria-hidden="true" />{t.label}</span>
           <h2 id="motion-title" aria-label={`${t.title} ${t.accent}`}><span className="motion-title-line" aria-hidden="true">{t.title}</span><span className="motion-accent" aria-hidden="true">{t.accent.split(' ').map((word, wi) => <span className="motion-word" key={wi}>{[...word].map((letter, i) => <span className="motion-letter" key={i} style={{ '--letter': i + t.accent.split(' ').slice(0, wi).join(' ').length + wi } as CSSProperties}>{letter}</span>)}{wi < t.accent.split(' ').length - 1 ? '\u00a0' : ''}</span>)}</span></h2>
         </div>
-        <div className="motion-feature-copy"><p>{t.text}</p><Link href={lang === 'de' ? '/kontakt/' : `/${lang}/kontakt/`} className="motion-feature-cta">{t.cta}<ArrowUpRight size={20} aria-hidden /></Link></div>
+        <div className="motion-feature-copy"><p>{t.text}</p><Link data-track-id="motion-feature-link-2" href={lang === 'de' ? '/kontakt/' : `/${lang}/kontakt/`} className="motion-feature-cta">{t.cta}<ArrowUpRight size={20} aria-hidden /></Link></div>
       </div>
       <div ref={screen} className="motion-feature-screen">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/videos/hareb-motion-final-v5.webp" alt="" className="motion-feature-poster" />
-        <video ref={video} muted={muted} loop playsInline preload="none" poster="/videos/hareb-motion-final-v5.webp" data-decoded={decoded} aria-label={t.credit}
+        <Image src="/videos/hareb-motion-final-v5.webp" alt={posterAlt} aria-hidden={decoded || undefined} className="motion-feature-poster" fill sizes="(max-width: 600px) calc(100vw - 16px), (max-width: 1280px) 92vw, 1200px" />
+        <video ref={video} muted={muted} loop playsInline preload="none" data-decoded={decoded} aria-label={t.credit}
           onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setPlaying(false)}
           onPlaying={event => { const el = event.currentTarget; if ('requestVideoFrameCallback' in el) el.requestVideoFrameCallback(() => setDecoded(true)); else setDecoded(true) }} />
         <div className="motion-feature-player">
-          <button type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
-          <button type="button" onClick={() => { const el = video.current; if (!el) return; el.muted = !el.muted; setMuted(el.muted); if (el.paused) togglePlay() }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
+          <button data-track-id="motion-feature-button-3" type="button" aria-label={playing ? t.pause : t.play} onClick={togglePlay}><PlaybackIcon playing={playing} /></button>
+          <button data-track-id="motion-feature-button-4" type="button" onClick={() => {
+            const el = video.current
+            if (!el) return
+            preferredMuted.current = !el.muted
+            manual.current = true; userPaused.current = false
+            void startPlayback()
+          }} aria-label={muted ? t.sound : t.mute}><SoundIcon muted={muted} /><span>{muted ? t.sound : t.mute}</span></button>
         </div>
       </div>
-      <div className="motion-feature-caption"><button type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
+      <div className="motion-feature-caption"><button data-track-id="motion-feature-button-5" type="button" className="motion-feature-animation-toggle" aria-label={motionLabel} aria-pressed={!motionPaused} onClick={() => setMotionPaused(value => !value)}><PlaybackIcon playing={!motionPaused} size={14} />{motionLabel}</button><span>{t.credit}</span><ul>{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul></div>
     </div>
   </section>
 }

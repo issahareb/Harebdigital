@@ -24,7 +24,7 @@ import type { HdTexte } from '@/lib/hd-texte'
  *    Landingpage laedt GSAP ohnehin schon fuer den Scroll-Film — zwei
  *    Animationssysteme auf demselben Element sind eine Fehlerquelle.
  *
- * 2. Ein echter <button> statt eines <div role="button">. Die Vorlage baut
+ * 2. Ein echter <button data-track-id="hd-kartenmenue-button-1"> statt eines <div role="button">. Die Vorlage baut
  *    Tastaturbedienung von Hand nach (onKeyDown auf Enter und Leertaste);
  *    ein Knopf kann das selbst, samt Fokusreihenfolge und Ansage.
  *
@@ -157,7 +157,7 @@ export function HdKartenmenue({
           <span aria-hidden className="hd-burger__strich" />
         </button>
 
-        <Link href="/" className="hd-kartenmenue__marke">
+        <Link data-track-id="hd-kartenmenue-link-2" href="/" className="hd-kartenmenue__marke">
           {/* 96 Pixel Quelle fuer 28 Pixel Anzeige. Vorher stand hier die
               32er-Fassung: auf einem Telefon mit dreifacher Pixeldichte
               braucht ein 28-Pixel-Feld 84 echte Pixel, die Quelle wurde also

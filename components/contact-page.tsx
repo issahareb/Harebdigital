@@ -25,7 +25,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
   return (
     <HdUnterseite lang={lang} motiv>
       <nav className="breadcrumbs" aria-label={copy.breadcrumb}>
-        <Link href={localizedPath(lang)}>{copy.home}</Link>
+        <Link data-track-id="contact-page-link-1" href={localizedPath(lang)}>{copy.home}</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{t.titel}</span>
       </nav>
@@ -37,7 +37,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           <Suspense
             fallback={
               <p className="mt-12">
-                <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
+                <a data-track-id="contact-page-a-2" href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
               </p>
             }
           >
@@ -53,7 +53,7 @@ export function ContactPage({ lang }: { lang: HdLang }) {
           </Suspense>
           <noscript>
             <p className="mt-8">
-              <a className="text-link" href={`mailto:${marke.kontaktEmail}`}>
+              <a data-track-id="contact-page-a-3" className="text-link" href={`mailto:${marke.kontaktEmail}`}>
                 {marke.kontaktEmail}
               </a>
             </p>
@@ -64,14 +64,14 @@ export function ContactPage({ lang }: { lang: HdLang }) {
             <div>
               <dt>{t.epost}</dt>
               <dd>
-                <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
+                <a data-track-id="contact-page-a-4" href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a>
               </dd>
             </div>
             {telephone && (
               <div>
                 <dt>{t.telefon}</dt>
                 <dd>
-                  <a href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
+                  <a data-track-id="contact-page-a-5" href={`tel:${telephone.replace(/\s/g, '')}`}>{telephone}</a>
                   <p className="mt-2 text-sm">{lang === 'de' ? 'KI-Telefonassistenz LUKAS' : lang === 'en' ? 'LUKAS AI phone assistant' : 'Asistente telefónico de IA LUKAS'}</p>
                 </dd>
               </div>

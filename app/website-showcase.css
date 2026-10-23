@@ -67,7 +67,7 @@
 .showcase-media video[data-decoded='true'] { opacity: 1; }
 .showcase-caption { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding-top: 16px; }
 .showcase-caption > div { display: flex; gap: 18px; align-items: center; }
-.showcase-caption h3 { font-size: clamp(15px, 1.5vw, 20px); letter-spacing: -0.03em; }
+.showcase-caption .showcase-clip-title { font-size: clamp(15px, 1.5vw, 20px); letter-spacing: -0.03em; }
 .showcase-number, .showcase-caption > span, .showcase-caption > a { font-size: 10px; color: color-mix(in srgb, #b9c1b4 calc(var(--showcase-focus) * 100%), #595e50); }
 .showcase-caption > a { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; }
 .showcase-video-fallback { position: absolute; z-index: 2; inset: auto 16px 16px; padding: 10px; background: #f3f1ebed; color: #202820; font-size: 12px; }

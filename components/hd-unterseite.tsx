@@ -25,7 +25,7 @@ export function HdUnterseite({
 }
 export function Rechtsabschnitt({ titel, children }: { titel: string; children: React.ReactNode }) {
   return (
-    <section>
+    <section data-track-section="hd-unterseite-section-1">
       <h2 className="font-display text-xl font-semibold tracking-tight">{titel}</h2>
       <div className="mt-3 leading-relaxed text-[color:var(--hd-ink-soft)]">{children}</div>
     </section>

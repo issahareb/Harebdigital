@@ -57,18 +57,18 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
     }
   }
   return (
-    <section className="ai-discovery" aria-labelledby="ai-discovery-title" id="ki-sichtbarkeit">
+    <section data-track-section="ai-discovery-section-1" className="ai-discovery" aria-labelledby="ai-discovery-title" id="ki-sichtbarkeit">
       <div>
-        <span className="eyebrow">{t.label}</span>
-        <h2 id="ai-discovery-title">{t.title}</h2>
+        <h2 id="ai-discovery-title">{t.label}</h2>
+        <p className="ai-discovery-subtitle">{t.title.replace(/\n/g, ' ')}</p>
         <p className="ai-discovery-intro">{t.text}</p>
         <div className="ai-discovery-questions">
           {t.questions.map((question, index) => (
             <div className="ai-discovery-question" key={question}>
               <p>{question}</p>
               <div className="ai-discovery-actions">
-                <a href={`https://chatgpt.com/?q=${encodeURIComponent(question)}`} target="_blank" rel="noopener noreferrer">{t.open}<ArrowUpRight size={16} aria-hidden /></a>
-                <button type="button" onClick={() => copyQuestion(index)} aria-label={`${t.copy}: ${question}`}>
+                <a data-track-id="ai-discovery-a-2" href={`https://chatgpt.com/?q=${encodeURIComponent(question)}`} target="_blank" rel="noopener noreferrer" aria-label={`${t.open}: ${question}`}>{t.open}<ArrowUpRight size={16} aria-hidden /></a>
+                <button data-track-id="ai-discovery-button-3" type="button" onClick={() => copyQuestion(index)} aria-label={`${t.copy}: ${question}`}>
                   <span className="control-confirm" data-confirmed={copied === index} aria-hidden="true"><Copy size={16} /><Check size={16} /></span>
                   {copied === index ? t.copied : t.copy}
                 </button>
@@ -78,8 +78,8 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
         </div>
         <p className="ai-discovery-other">{t.other}</p>
         <nav className="ai-discovery-providers" aria-label={t.label}>
-          <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini <ArrowUpRight size={15} aria-hidden /></a>
-          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude <ArrowUpRight size={15} aria-hidden /></a>
+          <a data-track-id="ai-discovery-a-4" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini <ArrowUpRight size={15} aria-hidden /></a>
+          <a data-track-id="ai-discovery-a-5" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude <ArrowUpRight size={15} aria-hidden /></a>
         </nav>
         <span className="ai-discovery-status" role="status">{error || (copied !== null ? t.copied : '')}</span>
       </div>
@@ -92,7 +92,7 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
           <span>{t.caption}</span>
           <span>{t.note}</span>
         </figcaption>
-        <a className="ai-quote-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a>
+        <a data-track-id="ai-discovery-a-6" className="ai-quote-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a>
       </figure>
     </section>
   )
