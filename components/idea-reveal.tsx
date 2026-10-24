@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 
 export function IdeaReveal({ text }: { text: string }) {
   const root = useRef<HTMLSpanElement>(null)
@@ -7,34 +7,57 @@ export function IdeaReveal({ text }: { text: string }) {
     const element = root.current
     if (!element) return
     const preference = matchMedia('(prefers-reduced-motion: reduce)')
-    const animations: Animation[] = []
-    const finish = () => animations.forEach(animation => animation.finish())
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      observer.disconnect()
+    let animations: Animation[] = []
+    let frame = 0
+    let duration = 0
+    const update = () => {
+      frame = 0
+      if (!animations.length) return
+      const { top } = element.getBoundingClientRect()
+      // Tie the reveal to the viewport, so scrolling back reverses it exactly.
+      const progress = Math.max(0, Math.min(1, (innerHeight * .9 - top) / (innerHeight * .4)))
+      animations.forEach(animation => { animation.currentTime = progress * duration })
+    }
+    const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update) }
+    const setup = () => {
+      animations.forEach(animation => animation.cancel())
+      animations = []
       if (preference.matches) return
-      element.querySelectorAll<HTMLElement>('.idea-word').forEach((word, index) => {
-        animations.push(word.animate([
+      const words = element.querySelectorAll<HTMLElement>('.idea-word')
+      duration = Math.max(1350, 850 + (words.length - 1) * 85)
+      words.forEach((word, index) => {
+        const animation = word.animate([
           { transform: 'translateY(110%) rotate(5deg)', opacity: 0 },
           { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-        ], { duration: 850, delay: index * 85, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }))
+        ], { duration: 850, delay: index * 85, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' })
+        animation.pause()
+        animations.push(animation)
       })
       const underline = element.querySelector<HTMLElement>('.idea-underline')
-      if (underline) animations.push(underline.animate([
-        { transform: 'scaleX(0)' }, { transform: 'scaleX(1)' },
-      ], { duration: 700, delay: 650, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }))
-    }, { threshold: 0.25 })
-    observer.observe(element)
-    preference.addEventListener('change', finish)
+      if (underline) {
+        const animation = underline.animate([
+          { transform: 'scaleX(0)' }, { transform: 'scaleX(1)' },
+        ], { duration: 700, delay: 650, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'both' })
+        animation.pause()
+        animations.push(animation)
+      }
+      update()
+    }
+    setup()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+    preference.addEventListener('change', setup)
     return () => {
-      observer.disconnect()
+      cancelAnimationFrame(frame)
       animations.forEach(animation => animation.cancel())
-      preference.removeEventListener('change', finish)
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+      preference.removeEventListener('change', setup)
     }
   }, [text])
   return <span ref={root} className="idea-reveal" aria-label={text.replace(/\n/g, ' ')}>
     {text.split('\n').map((line, lineIndex) => <span className="idea-line" key={lineIndex} aria-hidden="true">
-      {line.split(' ').map((word, index) => <span key={index} className="idea-word-mask"><span className="idea-word">{word}</span>{' '}</span>)}
+      {line.split(' ').map((word, index) => <Fragment key={index}>{index > 0 && ' '}<span className="idea-word-mask"><span className="idea-word">{word}</span></span></Fragment>)}
       {lineIndex === 1 && <span className="idea-underline" />}
     </span>)}
   </span>

@@ -2,15 +2,16 @@ import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
 import { HostingCare } from './hosting-care'
 import { IntroOffer } from './intro-offer'
+import { VoiceOffer } from './voice-offer'
 import { MotionFeature } from './motion-feature'
 import { TikTokCaseStudy } from './tiktok-case-study'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowDown, ArrowUpRight, Plus, Phone } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { localizedPath } from '@/lib/locale'
-import { PORTFOLIO, marke } from '@/lib/marke'
+import { PORTFOLIO } from '@/lib/marke'
 import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
 import { CinematicHero } from './cinematic-hero'
@@ -83,6 +84,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </div>
           </div>
         </section>
+        <VoiceOffer lang={lang} />
         <section data-track-section="hd-landing-section-1" id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading" data-reveal>
@@ -172,7 +174,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </div>
           </div>
         </section>
-        <WebsiteShowcase lang={lang} />
+        {lang === 'de' && <IntroOffer />}
         <section
           id="leistungen"
           className="services-section wrap section-space"
@@ -214,27 +216,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
-        <section id="ki-telefonie" className="wrap section-space" aria-labelledby="ki-telefonie-title">
-          <div className="grid gap-10 rounded-3xl bg-[#20211e] p-6 text-[#f3f1eb] sm:p-10 lg:grid-cols-2 lg:p-14">
-            <div>
-              <span className="eyebrow text-[#d4ed8a]">{lang === 'de' ? 'LUKAS · KI am Telefon' : lang === 'en' ? 'LUKAS · AI on the phone' : 'LUKAS · IA al teléfono'}</span>
-              <h2 id="ki-telefonie-title" className="mt-5 text-4xl leading-tight sm:text-5xl">{lang === 'de' ? 'Du arbeitest. Deine KI nimmt ab.' : lang === 'en' ? 'You work. Your AI answers.' : 'Tú trabajas. Tu IA responde.'}</h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#d3d3c9]">{lang === 'de' ? 'Ein Anruf kann der nächste Auftrag sein. Mit KI-Telefonassistenz lassen sich Fragen beantworten, Anliegen aufnehmen und Rückrufwünsche erfassen. Ich entwickle die passende Lösung für deinen Betrieb. Wie sich das anhört? Ruf meinen eigenen Agenten LUKAS an.' : lang === 'en' ? 'A phone call could be your next project. AI phone assistance can answer questions, capture enquiries and record callback requests. I build a solution for your business. Hear it for yourself by calling my own agent, LUKAS.' : 'Una llamada puede ser tu próximo proyecto. Un asistente telefónico de IA puede responder preguntas, recoger consultas y registrar solicitudes de devolución de llamada. Desarrollo la solución para tu negocio. Pruébala llamando a mi agente LUKAS.'}</p>
-              <Link className="text-link mt-6" href={localizedPath(lang, '/kontakt/')}>{lang === 'de' ? 'KI-Telefonassistenz für meinen Betrieb anfragen' : lang === 'en' ? 'Enquire about AI phone assistance' : 'Consultar sobre asistencia telefónica con IA'}<ArrowUpRight size={17} aria-hidden /></Link>
-            </div>
-            <div className="flex flex-col justify-center rounded-2xl border border-[#62645c] p-6 sm:p-8">
-              <Phone size={32} strokeWidth={1.5} className="mb-6 text-[#d4ed8a]" aria-hidden />
-              <h3 className="text-2xl leading-snug">{lang === 'de' ? 'Probiere es aus, telefoniere mit meinem KI-Agenten' : lang === 'en' ? 'Try it out. Talk to my AI agent.' : 'Pruébalo. Habla con mi agente de IA.'}</h3>
-              <p className="mt-4 text-[#d3d3c9]">{lang === 'de' ? 'Frag zum Beispiel: „Was kann Hareb Digital für mein Unternehmen tun?“' : lang === 'en' ? 'Try asking: “What can Hareb Digital do for my business?”' : 'Pregunta, por ejemplo: «¿Qué puede hacer Hareb Digital por mi negocio?»'}</p>
-              <a href={`tel:${marke.telefon.replace(/\s/g, '')}`} className="button button-accent mt-7 w-full flex-wrap text-center" id="lukas-demo-anrufen" data-track="lukas-demo-call">
-                <Phone size={19} aria-hidden />
-                <span>{lang === 'de' ? 'LUKAS jetzt anrufen' : lang === 'en' ? 'Call LUKAS now' : 'Llamar a LUKAS'}<span className="mt-1 block text-sm font-normal">{marke.telefon}</span></span>
-              </a>
-              <p className="mt-4 text-sm text-[#d3d3c9]">{lang === 'de' ? 'Du sprichst mit einer KI. Es gelten die Telefonkosten deines Tarifs.' : lang === 'en' ? 'You will be speaking with AI. Your usual call charges apply.' : 'Hablarás con una IA. Se aplican las tarifas habituales de tu operador.'}</p>
-            </div>
-          </div>
-        </section>
-        {lang === 'de' && <IntroOffer />}
+        <WebsiteShowcase lang={lang} />
         <MotionFeature lang={lang} />
         <section data-track-section="hd-landing-section-6" id="social" className="social-section section-space" aria-labelledby="social-title">
           <div className="wrap social-grid">

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import type { HdTexte } from '@/lib/hd-texte'
 
@@ -18,6 +18,7 @@ export function Anfrageformular({
   epost: string
   privacyPath: string
 }) {
+  const pathname = usePathname()
   const parameter = useSearchParams()
   const ausAdresse = parameter.get('leistung') ?? ''
   const bekannt = services.some((l) => l.slug === ausAdresse)
@@ -26,9 +27,10 @@ export function Anfrageformular({
   const [name, setName] = useState('')
   const [absender, setAbsender] = useState('')
   const offerMessages: Record<string, string> = {
+    'ki-telefonie': pathname.startsWith('/en') ? 'I am interested in an AI phone agent for my business with my own dashboard and enquiries by email, dashboard or both.\n\nMy business: ' : pathname.startsWith('/es') ? 'Me interesa un agente telefónico de IA para mi empresa con panel propio y consultas por correo, panel o ambos.\n\nMi empresa: ' : 'Ich interessiere mich für einen KI-Telefonagenten für mein Unternehmen mit eigenem Dashboard und Anfragen per E-Mail, Dashboard oder beidem.\n\nMein Unternehmen: ',
     '0': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Landingpage für 490 € einmalig.\n\nMein Projekt: ',
     '1': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Unternehmenswebsite für 890 € einmalig.\n\nMein Projekt: ',
-    '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 490 € einmalig.\n\nMein Projekt: ',
+    '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 190 € einmalig.\n\nMein Projekt: ',
     '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Website für 590 € einmalig mit laufender Betreuung. Bitte nennen Sie mir auch die monatlichen Kosten und Bedingungen.\n\nMein Projekt: ',
   }
   const [nachricht, setNachricht] = useState(offerMessages[parameter.get('angebot') ?? ''] ?? '')
