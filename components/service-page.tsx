@@ -1,5 +1,6 @@
 import { LocalServices } from './local-services'
 import { AiDiscovery } from './ai-discovery'
+import { ServiceDecisionDetails } from './service-decision-details'
 import { WebdesignDetails } from './webdesign-details'
 import Link from 'next/link'
 import { ServiceVisual } from './service-visual'
@@ -37,7 +38,7 @@ export function serviceMetadata(lang: HdLang, slug: string) {
   const index = HD_TEXTE[lang].leistungen.punkte.findIndex((l) => l.slug === slug)
   if (index < 0) notFound()
   const title = lang === 'de' && index === 0
-    ? 'Website erstellen lassen | Hareb Digital'
+    ? 'Website erstellen lassen in Essen | Hareb Digital'
     : lang === 'en' && index === 3
       ? 'SEO & AEO for Search Visibility | Hareb Digital'
     : `${STUDIO_COPY[lang].serviceNames[index]} | Hareb Digital`
@@ -62,9 +63,9 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       <span className="eyebrow">
         {service.n} / {t.nav[1]}
       </span>
-      <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen' : t.serviceNames[i]}</h1>
+      <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen in Essen' : t.serviceNames[i]}</h1>
       <p className="service-detail-lead">{lang === 'de' && i === 0
-        ? 'Ich bin Issa Hareb und entwickle Unternehmenswebsites mit klaren Inhalten, mobiler Gestaltung und passenden Kontaktwegen. Ich betreue Projekte in Essen, Bonn und darüber hinaus persönlich.'
+        ? 'Du möchtest eine Website erstellen lassen und suchst einen direkten Ansprechpartner? Ich bin Issa Hareb, Webdesigner und Entwickler aus Essen. Ich plane und entwickle deinen Auftritt persönlich, von der Seitenstruktur bis zur Veröffentlichung. Auch Unternehmen in Sankt Augustin und Bonn betreue ich digital.'
         : service.detail.vorspann}</p>
       <figure className="service-detail-art" data-reveal>
         <ServiceVisual index={i} lang={lang} />
@@ -96,6 +97,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
         </div>
       </div>
       {lang === 'de' && i === 0 && <WebdesignDetails />}
+      {lang === 'de' && (i === 1 || i === 2) && <ServiceDecisionDetails service={i === 1 ? 'relaunch' : 'automation'} />}
       {i === 3 && <AiDiscovery lang={lang} />}
       {lang === 'de' && <LocalServices currentPath={`/leistungen/${slug}/`} />}
       <div className="mt-12 flex flex-wrap items-center gap-6">
@@ -127,7 +129,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
                 name: 'Hareb Digital',
                 url: `${DOMAIN}/`,
               },
-              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Country', name: 'Germany' }],
+              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'City', name: 'Sankt Augustin' }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Country', name: 'Germany' }],
               availableChannel: {
                 '@type': 'ServiceChannel',
                 serviceUrl: `${DOMAIN}${localizedPath(lang, '/kontakt/')}`,

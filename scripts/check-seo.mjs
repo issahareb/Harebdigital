@@ -93,8 +93,8 @@ for (const lang of languages) {
       assert(business.areaServed.some((area) => area.name === 'Bonn'), `${route}: Bonn service area`)
       assert.equal(business.telephone, '+49 201 85393123', `${route}: public contact phone`)
       if (lang === 'de') {
-        assert(!title.includes('Webdesign Essen'), 'No keyword-stuffed homepage title')
-        assert(description.includes('Bonn'), 'Bonn mentioned in German description')
+        assert(title.includes('Webdesign Essen'), 'German homepage identifies its service and city')
+        assert(description.includes('Essen'), 'Primary service area mentioned in German description')
       }
       const faqSection = html.match(/<section\b[^>]*aria-labelledby="faq-title"[^>]*>(.*?)<\/section>/s)?.[1]
       assert(faqSection, `${route}: visible FAQ section`)
@@ -130,6 +130,12 @@ for (const path of ['/fr/', '/en/leistungen/does-not-exist/'])
 const asset = await fetch(`${base}/studio/h-monolith-v1-1920.webp`)
 assert.equal(asset.status, 200)
 assert(asset.headers.get('cache-control')?.includes('31536000'), 'Versioned asset cache')
+const caseStudy = await fetch(`${base}/projekte/taxi-bb-essen/`)
+assert.equal(caseStudy.status, 200, 'Project case study is accessible')
+assert(!caseStudy.headers.get('cache-control')?.includes('immutable'), 'HTML case study must not use immutable asset caching')
+const projectMedia = await fetch(`${base}/projekte/taxibb.png`)
+assert.equal(projectMedia.status, 200, 'Project media remains accessible')
+assert(projectMedia.headers.get('cache-control')?.includes('31536000'), 'Project media keeps asset caching')
 const redirect = await fetch(`${base}/en`, { redirect: 'manual' })
 assert([301, 308].includes(redirect.status), 'Trailing slash redirect')
 console.log(

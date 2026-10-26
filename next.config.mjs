@@ -98,7 +98,9 @@ const nextConfig = {
       },
       { source: '/studio/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       { source: '/videos/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
-      { source: '/projekte/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
+      // Project case-study HTML must refresh after deployments. Only media assets
+      // with versioned filenames receive the long-lived asset cache policy.
+      { source: '/projekte/:path*.:ext(webp|avif|png|jpg|jpeg|svg|mp4|webm)', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       { source: '/social/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       {
         source: '/:file(icon-32-v2.png|icon-512-v2.png|apple-icon-v2.png)',

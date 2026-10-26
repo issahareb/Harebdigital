@@ -2,6 +2,8 @@ import Link from 'next/link'
 
 const services = [
   { href: '/leistungen/neue-website/', label: 'Webdesign und Webentwicklung in Essen' },
+  { href: '/leistungen/website-ueberarbeiten/', label: 'Bestehende Website überarbeiten lassen' },
+  { href: '/leistungen/gefunden-werden/', label: 'SEO und Sichtbarkeit bei Google' },
   { href: '/leistungen/webanwendungen/', label: 'Individuelle Webanwendungen' },
   { href: '/leistungen/automatisierung/', label: 'Abläufe und Schnittstellen automatisieren' },
   { href: '/leistungen/social-media-marketing/', label: 'Social Media Marketing und Content' },

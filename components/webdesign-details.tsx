@@ -41,6 +41,7 @@ export function WebdesignDetails() {
           <li><strong>Unternehmenswebsite:</strong> eigene Seiten für Leistungen, Referenzen und Kontakt, damit Kunden passende Informationen direkt finden.</li>
           <li><strong>Website mit Funktionen:</strong> etwa Fahrtanfragen, Terminwünsche oder ein Verwaltungsbereich. Abläufe und Daten werden vor der Umsetzung gemeinsam geplant.</li>
         </ul>
+        <p>Die aktuellen Einstiegspakete und ihre Konditionen findest du bei den <Link className="text-link" href="/#angebote">Website-Angeboten</Link>. Vor dem Start legen wir Seitenumfang, Funktionen und laufende Kosten schriftlich fest.</p>
         <p>Du hast schon eine Website? Ein <Link data-track-id="webdesign-details-link-2" className="text-link" href="/leistungen/website-ueberarbeiten/">Website-Relaunch</Link> kann sinnvoller sein als ein vollständiger Neubau.</p>
       </section>
       <section data-track-section="webdesign-details-section-3">

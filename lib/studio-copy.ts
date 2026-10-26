@@ -57,19 +57,19 @@ export type StudioCopy = {
 
 export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
-    title: 'Webdesign, SEO & Automatisierung | Hareb Digital',
+    title: 'Webdesign Essen | Websites für Unternehmen | Hareb Digital',
     description:
-      'Webdesign, Webentwicklung, SEO und Automatisierung für Unternehmen in Essen, Bonn und deutschlandweit. Direkte Zusammenarbeit mit Issa Hareb.',
+      'Individuelles Webdesign aus Essen: Websites, Relaunch, SEO und Automatisierung für Unternehmen. Direkter Kontakt zu Issa Hareb. Auch in Sankt Augustin und Bonn.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
     nav: ['Arbeiten', 'Leistungen', 'Studio'],
     project: 'Projekt anfragen',
     language: 'Sprache wählen',
-    kicker: 'Digitalstudio aus NRW',
-    headline: ['Webdesign.', 'Mit Substanz.'],
+    kicker: 'Dein Webdesigner aus Essen',
+    headline: ['Webdesign.', 'Aus Essen.'],
     intro:
-      'Gestaltung, Inhalte und Technik aus einer Hand. Für Websites, die dein Angebot klar zeigen und Kunden den Weg zur Anfrage erleichtern.',
+      'Ich bin Issa Hareb. Ich entwickle individuelle Websites für Unternehmen in Essen und im Ruhrgebiet: mit klarem Design, schnellen Ladezeiten und einem einfachen Weg zur Anfrage.',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
     motionOn: 'Animation einschalten',
