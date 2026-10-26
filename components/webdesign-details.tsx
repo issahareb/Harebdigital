@@ -1,10 +1,11 @@
+import { PRICING } from '@/lib/pricing'
 import Link from 'next/link'
 import { HOSTING_COPY } from '@/lib/hosting-copy'
 
 const questions = [
   {
     question: 'Was kostet es, eine Website erstellen zu lassen?',
-    answer: 'Entscheidend sind der Umfang der Seiten, vorhandene Texte und Bilder sowie die benötigten Funktionen. Eine kompakte Landingpage hat einen anderen Aufwand als eine mehrsprachige Unternehmenswebsite mit Buchungsanfragen. Nach der Abstimmung erhältst du ein Angebot mit festem Preis für den vereinbarten Umfang. Hosting, Domain und laufende Betreuung werden separat geklärt.',
+    answer: PRICING.de[2],
   },
   {
     question: 'Muss ich Texte und Bilder fertig mitbringen?',

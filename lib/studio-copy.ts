@@ -1,3 +1,4 @@
+import { PRICING } from './pricing'
 import { HOSTING_COPY } from './hosting-copy'
 import type { HdLang } from './hd-texte'
 
@@ -126,8 +127,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       },
       {
         question: 'Wie viel kostet eine Website?',
-        answer:
-          'Der Preis hängt vom Seitenumfang, der Gestaltung und den Funktionen ab. Sobald wir die Anforderungen geklärt haben, erhältst du ein Angebot mit festem Preis und klar beschriebenen Leistungen. Mögliche laufende Kosten, etwa für Hosting oder Betreuung, klären wir ebenfalls vorab.',
+        answer: PRICING.de[2],
       },
       {
         question: 'Wie lange dauert die Umsetzung?',
@@ -229,8 +229,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       },
       {
         question: 'How much does a website cost?',
-        answer:
-          'The cost depends on the number of pages, design and features. Once we have clarified the requirements, you receive a fixed-price proposal with a defined scope. We also discuss any ongoing costs, such as hosting or support, before work begins.',
+        answer: PRICING.en[2],
       },
       {
         question: 'How long does a website take?',
@@ -333,8 +332,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       },
       {
         question: '¿Cuánto cuesta una web?',
-        answer:
-          'El precio depende de la cantidad de páginas, el diseño y las funciones. Una vez definidos los requisitos, recibes una propuesta con precio fijo y alcance detallado. También aclaramos de antemano los posibles costos recurrentes, como alojamiento o mantenimiento.',
+        answer: PRICING.es[2],
       },
       {
         question: '¿Cuánto tarda el desarrollo?',

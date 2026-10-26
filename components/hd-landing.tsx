@@ -1,3 +1,4 @@
+import { PricingSummary } from './pricing-summary'
 import { LocalServices } from './local-services'
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
@@ -176,6 +177,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
         </section>
         {lang === 'de' && <IntroOffer />}
+        <PricingSummary lang={lang} />
         <section
           id="leistungen"
           className="services-section wrap section-space"

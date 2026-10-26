@@ -1,3 +1,4 @@
+import { PricingSummary } from './pricing-summary'
 import { LocalServices } from './local-services'
 import { AiDiscovery } from './ai-discovery'
 import { ServiceDecisionDetails } from './service-decision-details'
@@ -16,7 +17,7 @@ import { JsonLd, ORGANIZATION_ID } from './studio-schema'
 
 const descriptions: Record<HdLang, string[]> = {
   de: [
-    'Individuelles Webdesign und Webentwicklung für Unternehmen in Essen, Bonn und darüber hinaus. Leistungen, Ablauf und Kundenprojekt im Überblick.',
+    'Webdesign aus Essen: Landingpage für 490 € einmalig, Unternehmenswebsite für 890 €. Leistungsumfang, laufende Kosten und Einstiegsangebote im Überblick.',
     'Website-Relaunch mit Hareb Digital: Inhalte sinnvoll übernehmen, Design verbessern und Ladezeiten reduzieren. Direkte Abstimmung mit dem Entwickler.',
     'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital verbindet passende Abläufe mit deinen Werkzeugen.',
     'Technisches SEO und AEO: klare Seitenstruktur, lokale Auffindbarkeit und verständliche Antworten. Für Unternehmen aus Essen, Bonn und darüber hinaus.',
@@ -96,6 +97,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           </section>
         </div>
       </div>
+      {i === 0 && <PricingSummary lang={lang} />}
       {lang === 'de' && i === 0 && <WebdesignDetails />}
       {lang === 'de' && (i === 1 || i === 2) && <ServiceDecisionDetails service={i === 1 ? 'relaunch' : 'automation'} />}
       {i === 3 && <AiDiscovery lang={lang} />}
