@@ -1,3 +1,4 @@
+import { LocalServices } from './local-services'
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
 import { HostingCare } from './hosting-care'
@@ -214,6 +215,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             ))}
           </div>
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
+          {lang === 'de' && <LocalServices />}
           <AiDiscovery lang={lang} />
         </section>
         <WebsiteShowcase lang={lang} />

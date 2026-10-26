@@ -1,3 +1,4 @@
+import { LocalServices } from './local-services'
 import { AiDiscovery } from './ai-discovery'
 import { WebdesignDetails } from './webdesign-details'
 import Link from 'next/link'
@@ -96,6 +97,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       </div>
       {lang === 'de' && i === 0 && <WebdesignDetails />}
       {i === 3 && <AiDiscovery lang={lang} />}
+      {lang === 'de' && <LocalServices currentPath={`/leistungen/${slug}/`} />}
       <div className="mt-12 flex flex-wrap items-center gap-6">
         <Link
           href={`${localizedPath(lang, '/kontakt/')}?leistung=${service.slug}`}
