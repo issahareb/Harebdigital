@@ -68,23 +68,23 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     project: 'Projekt anfragen',
     language: 'Sprache wählen',
     kicker: 'Dein Webdesigner aus Essen',
-    headline: ['Webdesign.', 'Aus Essen.'],
+    headline: ['Dein Angebot überzeugt.', 'Deine Website auch?'],
     intro:
-      'Ich bin Issa Hareb. Ich entwickle individuelle Websites für Unternehmen in Essen und im Ruhrgebiet: mit klarem Design, schnellen Ladezeiten und einem einfachen Weg zur Anfrage.',
+      'Zwischen einem guten Angebot und einer echten Anfrage liegt mehr als schönes Design. Entdecke, worauf es ankommt.',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
     motionOn: 'Animation einschalten',
     heroAlt:
       'Ein Lichtfaden führt durch eine räumliche Landschaft aus Glas und gebürstetem Metall.',
     heroChapters: [
-      { label: 'SEO & AEO', title: 'Bei Google sichtbarer.\nAuch in KI-Antworten.', description: 'Damit Kunden dich auch über ChatGPT, Gemini und Claude entdecken.' },
-      { label: 'Automatisierung', title: 'Bestellung da.\nBestätigung schon raus.', description: 'Verbinde Zahlung, Rechnung und Versand zu einem automatisierten Ablauf.' },
+      { label: '01 / Aus Interesse wird eine Entscheidung', title: 'Was bringt Besucher\ndazu, anzufragen?', description: 'Sie sehen dein Angebot. Doch was gibt ihnen den entscheidenden Grund, dich zu wählen?' },
+      { label: '02 / Die Anfrage ist erst der Anfang', title: 'Und was passiert,\nwenn jemand anfragt?', description: 'Wie viel davon muss noch an dir hängen? Genau hier geht die Geschichte weiter.' },
     ],
     strip: ['Strategie & Design', 'Entwicklung & Automatisierung', 'SEO & AEO'],
     approachLabel: 'Der Anspruch',
-    approach: ['Gutes Design zieht an.', 'Gute Technik trägt weiter.'],
+    approach: ['Verstehen. Vertrauen.', 'Den nächsten Schritt machen.'],
     approachText:
-      'Webdesign mit Substanz beginnt bei deinen Kunden: Was suchen sie, und was müssen sie vor einer Anfrage wissen? Daraus entwickle ich die Struktur deiner Website. Klare Inhalte, Gestaltung und Technik machen sie auf dem Handy und am Rechner einfach nutzbar.',
+      'Ein Besucher muss erkennen, was du für ihn lösen kannst. Echte Arbeiten schaffen Vertrauen. Klare Leistungen und Preise erleichtern die Entscheidung. Ein einfacher Kontaktweg macht daraus den nächsten Schritt. Genau so plane ich deine Website.',
     servicesTitle: 'Websites entwickeln.\nAbläufe vereinfachen.',
     servicesIntro:
       'Webdesign und Webentwicklung für Unternehmen in Essen, Bonn und darüber hinaus. Dazu kommen Webanwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.',
@@ -101,7 +101,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     caseType: 'Kundenprojekt · Mobilität',
     caseTitle: 'Taxi anfragen.\nEinfach online.',
     caseText:
-      'Fahrgäste können ihre Fahrt online anfragen. Taxi B&B Essen verwaltet die Buchungen über einen eigenen Bereich und versendet automatische E-Mails. Die Seitenstruktur ist auf die lokale Suche ausgerichtet.',
+      'So geht es nach der Anfrage weiter: Bei Taxi B&B Essen kommen Fahrtwünsche strukturiert im Verwaltungsbereich an. Automatische E-Mails informieren das Unternehmen, das die Anfrage prüft und bearbeitet. Die Website verbindet damit den ersten Kontakt mit dem tatsächlichen Arbeitsablauf.',
     caseTags: ['Webdesign', 'Buchungssystem', 'Lokale Suche'],
     caseLink: 'Taxi B&B Essen besuchen',
     moreWork: 'Experiment & eigenes Produkt',

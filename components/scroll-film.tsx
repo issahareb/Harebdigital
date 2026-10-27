@@ -15,6 +15,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     if (!surface || !stage || !frame || !enabled) return
     const context = surface.getContext('2d', { alpha: false })
     if (!context) return
+    const captions = Array.from(stage.querySelectorAll<HTMLElement>('.journey-caption > span'))
     const mobile = matchMedia('(max-width: 700px)').matches
     const count = mobile ? 96 : 120
     surface.width = mobile ? 448 : 960
@@ -105,7 +106,17 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       stage.style.setProperty('--hero-expansion', String(expansion))
       stage.dataset.introHidden = String(expansion >= 0.8)
       header?.style.setProperty('--hero-cover', String(expansion * (1 - exit)))
-      stage.dataset.chapter = String(Math.min(2, Math.floor(progress * 3)))
+      // Scroll controls every phase, including reverse scroll. A quiet reading
+      // plateau separates the entrances and exits; no delayed CSS crossfades.
+      captions.forEach((caption, index) => {
+        const start = index === 0 ? 0.23 : 0.64
+        const entrance = ease(clamp((progress - start) / 0.08))
+        const departure = index === 0 ? ease(clamp((progress - 0.55) / 0.07)) : 0
+        caption.style.setProperty('--caption-opacity', String(entrance * (1 - departure)))
+        caption.style.setProperty('--caption-enter', String(entrance))
+        caption.style.setProperty('--caption-exit', String(departure))
+      })
+      stage.dataset.chapter = progress >= 0.64 ? '2' : progress >= 0.23 ? '1' : '0'
       if (!visible) return
       draw()
       pump()
@@ -128,6 +139,11 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
       document.removeEventListener('visibilitychange', schedule)
+      captions.forEach(caption => {
+        caption.style.removeProperty('--caption-opacity')
+        caption.style.removeProperty('--caption-enter')
+        caption.style.removeProperty('--caption-exit')
+      })
       images.length = 0
       delete surface.dataset.ready
       stage.style.removeProperty('--journey')

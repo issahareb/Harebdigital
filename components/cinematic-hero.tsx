@@ -98,7 +98,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
           {t.heroChapters.map((chapter, i) => (
             <span key={chapter.label} data-scene={i + 1}>
               <small>{chapter.label}</small>
-              {chapter.title}
+              <span className="journey-title">{chapter.title.split('\n').map((line, index) => <span className="journey-line-mask" key={line}><span style={{ '--line': index } as React.CSSProperties}>{line}</span></span>)}</span>
               <span className="journey-description">{chapter.description}</span>
             </span>
           ))}
