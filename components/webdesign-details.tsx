@@ -1,33 +1,34 @@
-import { PRICING } from '@/lib/pricing'
 import Link from 'next/link'
-import { HOSTING_COPY } from '@/lib/hosting-copy'
 
 export const webdesignQuestions = [
   {
-    question: 'Was kostet es, eine Website erstellen zu lassen?',
-    answer: PRICING.de[2],
+    question: 'Was kostet eine Website?',
+    answer: 'Eine Landingpage kostet im Einstiegsangebot 490 € einmalig, eine mehrseitige Unternehmenswebsite 890 €. Die Variante mit laufender Betreuung startet bei 590 € einmalig zuzüglich der vereinbarten monatlichen Kosten. Hosting, Domain, Lizenzen und zusätzliche Funktionen sind nicht pauschal enthalten. Du erhältst vor der Beauftragung ein Angebot mit dem genauen Umfang und allen Kosten.',
+  },
+  {
+    question: 'Welches Angebot passt zu meinem Unternehmen?',
+    answer: 'Eine Landingpage eignet sich, wenn du ein Angebot auf einer einzigen Seite vorstellen möchtest, zum Beispiel für eine Werbekampagne. Eine Unternehmenswebsite bietet mehrere Seiten für Leistungen, Referenzen und Informationen über deinen Betrieb. Wenn ich auch den laufenden Betrieb betreuen soll, kommt die Variante mit Betreuung infrage.',
+  },
+  {
+    question: 'Wie lange dauert die Erstellung?',
+    answer: 'Für eine Landingpage sind meist zwei bis drei Wochen vorgesehen, für eine mehrseitige Website vier bis acht Wochen. Der tatsächliche Zeitraum hängt vom Umfang, den benötigten Inhalten und unseren Abstimmungen ab. Den Zeitplan vereinbaren wir vor dem Projektstart.',
   },
   {
     question: 'Muss ich Texte und Bilder fertig mitbringen?',
-    answer: 'Nein. Wir sichten vorhandenes Material und legen fest, welche Inhalte fehlen. Informationen zu deinen Leistungen und deinem Unternehmen kommen von dir; Struktur und Texte stimmen wir gemeinsam ab. Die Beschaffung oder Produktion zusätzlicher Bilder und Videos wird im Angebot berücksichtigt.',
+    answer: 'Du kannst vorhandene Texte, Bilder und dein Logo mitbringen. Falls noch Inhalte fehlen, klären wir gemeinsam, was benötigt wird. Informationen zu deinem Unternehmen kommen von dir; Struktur und Formulierungen erarbeite ich mit dir. Zusätzliche Foto-, Video- oder Lizenzkosten werden vorher abgestimmt.',
   },
   {
-    question: 'Kannst du Design und Programmierung übernehmen?',
-    answer: 'Ja. Ich übernehme Konzeption, Webdesign und Webentwicklung. Wenn dein Projekt zusätzlich einen Kundenbereich, Schnittstellen oder komplexere Abläufe braucht, planen wir diese als individuelle Webanwendung. Du behältst denselben Ansprechpartner.',
+    question: 'Sind Suchmaschinenoptimierung und mobile Darstellung enthalten?',
+    answer: 'Die Website-Angebote enthalten die Umsetzung für Handy, Tablet und Desktop sowie technische SEO-Grundlagen. Dazu gehören passende Seitentitel, eine verständliche Seitenstruktur und maschinenlesbare Inhalte. Weiterführende SEO-Arbeit planen wir bei Bedarf separat. Eine bestimmte Position bei Google ist damit nicht garantiert.',
   },
   {
-    question: 'Wird meine Website bei Google gefunden?',
-    answer: 'Ich bereite die technischen Grundlagen vor: verständliche Seitenstruktur, passende Seitentitel, interne Links und eine Sitemap. Nach dem Start lässt sich die Sichtbarkeit mit der Google Search Console messen. Eine bestimmte Platzierung oder eine feste Zahl an Anfragen kann ich nicht versprechen.',
+    question: 'Welche Kosten entstehen nach der Veröffentlichung?',
+    answer: 'Je nach Projekt fallen Kosten für Hosting, Domain und gegebenenfalls externe Dienste oder Lizenzen an. Beim 590-€-Angebot kommt die vereinbarte monatliche Betreuung hinzu. Alle laufenden Kosten stehen vor der Beauftragung im Angebot. Bei den Website-Angeboten sind drei Monate Fehlerbehebung an der gelieferten Umsetzung und technische Optimierungen enthalten.',
   },
   {
-    question: 'In welchen Regionen betreust du Websites?',
-    answer: 'Ich arbeite aus Essen mit Unternehmen im Ruhrgebiet, im Raum Bonn und deutschlandweit. Entwürfe und Freigaben können digital abgestimmt werden. Der Geschäftssitz liegt in Sankt Augustin; vollständige Angaben findest du im Impressum.',
+    question: 'Kann meine Website später erweitert werden?',
+    answer: 'Zusätzliche Seiten, Terminwünsche, Buchungsanfragen oder ein geschützter Verwaltungsbereich lassen sich als Erweiterung planen. Wir klären zuerst, welche Funktion du brauchst und wie sie sich in deine Website einfügt. Vor der Umsetzung erhältst du dafür ein separates Angebot.',
   },
-  {
-    question: 'Was passiert nach der Veröffentlichung?',
-    answer: 'Du erhältst eine Übergabe der vereinbarten Funktionen. Wenn du deine Website bei mir hostest, betreue ich den Betrieb, die Wartung und die laufende Weiterentwicklung. So bleibt dein Auftritt auch nach dem Start technisch und gestalterisch aktuell. Leistungsumfang und laufende Kosten vereinbaren wir vorab.',
-  },
-  ...HOSTING_COPY.de.faq,
 ]
 
 export function WebdesignDetails() {

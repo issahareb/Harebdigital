@@ -2109,12 +2109,14 @@ body :is(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta
 }
 
 /* Campaign landing page: scoped to the German new-website route. */
-.subpage.website-landing-page { width: min(1200px, calc(100% - 112px)); padding-top: 40px; }
+.subpage.website-landing-page { width: min(1280px, calc(100% - 80px)); padding-top: 18px; }
 @media (max-width: 760px) {
-  .subpage.website-landing-page { width: calc(100% - 40px); padding-top: 26px; padding-bottom: 40px; }
+  .subpage.website-landing-page { width: calc(100% - 40px); padding-top: 10px; padding-bottom: 40px; }
   body:has(.website-landing-page) > [data-track-ignore]:last-of-type:has(> button) { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
 }
 
 /* Keep measurement preferences available below the footer, clear of the enquiry bar. */
 body:has(.website-landing-page) > [data-track-ignore]:has(> button) { padding: 6px max(20px, calc((100% - 1200px) / 2)); background: var(--accent); }
 body:has(.website-landing-page) > [data-track-ignore] > button { position: static !important; background: transparent !important; color: var(--ink) !important; border: 0 !important; text-decoration: underline; text-underline-offset: 3px; }
+
+body:has(.website-landing-page) .site-footer, body:has(.website-landing-page) > [data-track-ignore]:has(> button) { background: var(--paper); }
