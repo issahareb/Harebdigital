@@ -6,6 +6,7 @@ import { DOMAIN } from '@/lib/marke'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import '@/app/globals.css'
 import { ActivityTracker } from './activity-tracker'
+import { TikTokEnquiryTracking } from './tiktok-enquiry-tracking'
 
 const display = Manrope({ subsets: ['latin'], variable: '--font-heading-face', display: 'swap' })
 
@@ -42,6 +43,7 @@ export function SiteDocument({ lang, children }: { lang: HdLang; children: React
         </a>
         {children}
         <ActivityTracker />
+        <TikTokEnquiryTracking />
       </body>
       <Script src="https://px.get-ryze.ai/px.js?key=rz_pk_0dc2d46f23d1df8a0def884abf8f6fa3" strategy="beforeInteractive" />
     </html>
