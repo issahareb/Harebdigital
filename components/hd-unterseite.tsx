@@ -7,15 +7,17 @@ export function HdUnterseite({
   lang,
   motiv = false,
   children,
+  className = '',
 }: {
   lang: HdLang
   motiv?: boolean
+  className?: string
   children: React.ReactNode
 }) {
   return (
     <>
       <SiteHeader lang={lang} />
-      <main id="main" className={`subpage wrap${motiv ? ' subpage--editorial' : ''}`}>
+      <main id="main" className={`subpage wrap${motiv ? ' subpage--editorial' : ''} ${className}`}>
         {children}
       </main>
       <SiteFooter lang={lang} compact />

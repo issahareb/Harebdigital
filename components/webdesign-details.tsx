@@ -2,7 +2,7 @@ import { PRICING } from '@/lib/pricing'
 import Link from 'next/link'
 import { HOSTING_COPY } from '@/lib/hosting-copy'
 
-const questions = [
+export const webdesignQuestions = [
   {
     question: 'Was kostet es, eine Website erstellen zu lassen?',
     answer: PRICING.de[2],
@@ -61,7 +61,7 @@ export function WebdesignDetails() {
         <p>Leistungsumfang, Budget und Betreuung klären wir vor dem Start. Diese Antworten helfen dir bei der Vorbereitung.</p>
       </div>
       <div className="faq-list">
-        {questions.map(({ question, answer }) => <details key={question}>
+        {webdesignQuestions.map(({ question, answer }) => <details key={question}>
           <summary><h3>{question}</h3><span aria-hidden="true">+</span></summary>
           <p>{answer}</p>
         </details>)}

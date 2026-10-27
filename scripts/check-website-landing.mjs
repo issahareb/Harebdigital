@@ -1,0 +1,58 @@
+import { chromium } from 'playwright'
+import AxeBuilder from '@axe-core/playwright'
+import assert from 'node:assert/strict'
+import fs from 'node:fs/promises'
+const base = process.env.SEO_BASE_URL || 'http://localhost:3002'
+const output = process.env.QA_OUTPUT_DIR || '/tmp/hareb-landing-qa'
+await fs.mkdir(output, { recursive: true })
+const browser = await chromium.launch({ executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'], headless: true })
+for (const width of [320, 390, 768, 1440]) {
+  const context = await browser.newContext({ viewport: {width, height: 900}, reducedMotion: 'reduce' })
+  const page = await context.newPage()
+  const errors = []
+  page.on('pageerror', e => errors.push(e.message))
+  // Decline optional measurement so screenshots show the actual page and no test traffic is recorded.
+  await page.addInitScript(() => {
+    localStorage.setItem('site-consent', JSON.stringify({version:4,decidedAt:new Date().toISOString(),analytics:false,lukas:false}))
+    localStorage.setItem('hd-tiktok-consent-v1', JSON.stringify({allowed:false}))
+  })
+  await page.goto(base + '/leistungen/neue-website/', {waitUntil:'networkidle'})
+  await page.evaluate(() => document.fonts.ready)
+  assert.equal(await page.locator('h1').count(),1)
+  assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://hareb.digital/leistungen/neue-website/')
+  assert.ok(await page.locator('[data-track-id="website-hero-enquiry"]').isVisible())
+  const hero = await page.locator('[data-track-id="website-hero-enquiry"]').boundingBox()
+  assert.ok(hero.y + hero.height < 900, 'Main CTA should be visible without scrolling')
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'No horizontal overflow')
+  await page.locator('[data-track-id="website-hero-prices"]').click()
+  await page.waitForTimeout(250)
+  assert.equal(new URL(page.url()).hash, '#preise')
+  for (const index of [0,1,3]) assert.equal(await page.locator(`[data-track-id="website-package-${index}"]`).getAttribute('href'), `/kontakt/?leistung=neue-website&angebot=${index}`)
+  const faq = page.locator('details').filter({hasText:'Muss ich Texte und Bilder fertig mitbringen?'})
+  await faq.locator('summary').click()
+  assert.ok(await faq.evaluate(el => el.open), 'FAQ opens')
+  assert.ok(await faq.locator('p').isVisible())
+  await faq.locator('summary').click()
+  for (let y=0;y<await page.evaluate(()=>document.body.scrollHeight);y+=750) await page.evaluate(y=>scrollTo({top:y,behavior:'instant'}),y)
+  await page.waitForTimeout(250)
+  const broken=await page.evaluate(()=>[...document.images].filter(x=>x.complete && !x.naturalWidth).map(x=>x.src))
+  assert.deepEqual(broken,[])
+  const audit=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
+  console.log(JSON.stringify({width,errors,violations:audit.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))}))
+  assert.deepEqual(errors,[])
+  assert.equal(audit.violations.length, 0, 'Accessibility audit')
+  await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}))
+  await page.screenshot({path:`${output}/${width}-hero.png`})
+  await page.screenshot({path:`${output}/${width}-full.png`,fullPage:true})
+  await page.locator('[data-track-id="website-package-0"]').click()
+  await page.waitForURL('**/kontakt/**')
+  assert.equal(await page.locator('select[name="leistung"]').inputValue(),'neue-website')
+  assert.match(await page.locator('textarea').inputValue(),/490/)
+  await context.close()
+}
+const nojs=await browser.newPage({javaScriptEnabled:false,viewport:{width:390,height:844}})
+await nojs.goto(base+'/leistungen/neue-website/')
+assert.ok(await nojs.locator('[data-track-id="website-hero-enquiry"]').isVisible())
+assert.equal(await nojs.locator('h1').count(),1)
+await browser.close()
+console.log('Landing page checks passed: responsive layouts, links, selected offer, FAQ, accessibility, no-JS.')

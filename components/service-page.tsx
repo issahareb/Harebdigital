@@ -1,3 +1,4 @@
+import { WebsiteLanding } from './website-landing'
 import { PricingSummary } from './pricing-summary'
 import { LocalServices } from './local-services'
 import { AiDiscovery } from './ai-discovery'
@@ -53,7 +54,8 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
   const service = original.leistungen.punkte[i]
   const url = `${DOMAIN}${localizedPath(lang, `/leistungen/${slug}/`)}`
   return (
-    <HdUnterseite lang={lang} motiv>
+    <HdUnterseite lang={lang} motiv className={lang === 'de' && i === 0 ? 'website-landing-page' : ''}>
+      {lang === 'de' && i === 0 ? <WebsiteLanding /> : <>
       <nav className="breadcrumbs" aria-label={t.breadcrumb}>
         <Link data-track-id="service-page-link-1" href={localizedPath(lang)}>{t.home}</Link>
         <span aria-hidden="true">/</span>
@@ -115,6 +117,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
           <ArrowUpRight size={17} aria-hidden />
         </Link>
       </div>
+      </>}
       <JsonLd
         data={{
           '@context': 'https://schema.org',
