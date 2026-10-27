@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Manrope } from 'next/font/google'
 import type { HdLang } from '@/lib/hd-texte'
 import { DOMAIN } from '@/lib/marke'
@@ -42,6 +43,7 @@ export function SiteDocument({ lang, children }: { lang: HdLang; children: React
         {children}
         <ActivityTracker />
       </body>
+      <Script src="https://px.get-ryze.ai/px.js?key=rz_pk_0dc2d46f23d1df8a0def884abf8f6fa3" strategy="beforeInteractive" />
     </html>
   )
 }
