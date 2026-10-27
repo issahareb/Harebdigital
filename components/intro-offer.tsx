@@ -41,7 +41,8 @@ function OfferPreview({ index }: { index: number }) {
   </div>
 }
 
-export function IntroOffer() {
+export function IntroOffer({ headingLevel = 'h2' }: { headingLevel?: 'h1' | 'h2' } = {}) {
+  const Heading = headingLevel
   const [active, setActive] = useState(0)
   const tabs = useRef<(HTMLButtonElement | null)[]>([])
   const touch = useRef<{ x: number; y: number } | null>(null)
@@ -64,8 +65,8 @@ export function IntroOffer() {
 
   return <section id="angebote" className={`${styles.section} wrap section-space`} aria-labelledby="offer-title">
     <div className={styles.heading}>
-      <div><p className={styles.badge}><span />Begrenztes Einstiegsangebot</p><h2 id="offer-title">Was hast du vor<span>?</span></h2></div>
-      <p className={styles.intro}>Eine Idee ist der Anfang.<br />Wähle, was dich weiterbringt.</p>
+      <div><p className={styles.badge}><span />Begrenztes Einstiegsangebot</p><Heading id="offer-title" className={styles.title}>Was hast du vor<span>?</span></Heading></div>
+      <p className={styles.intro}>Eine Idee ist der Anfang.<br />{' '}Wähle, was dich weiterbringt.</p>
     </div>
     <div className={styles.gallery}>
       <div className={styles.tabs} role="tablist" aria-label="Angebot auswählen">
