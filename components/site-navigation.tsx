@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { SERVICE_LINKS } from '@/lib/service-links'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
@@ -43,7 +44,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const scrollLocked = useRef(false)
   const path = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/'
   const isLegal = /^\/(impressum|datenschutz)/.test(path)
-  const germanOnly = /^\/(leistungen\/(social-media-marketing|webanwendungen)|projekte\/taxi-bb-essen)\/?$/.test(path)
+  const germanOnly = /^\/(leistungen\/(social-media-marketing|webanwendungen|motion-design)|projekte\/taxi-bb-essen)\/?$/.test(path)
   const home = localizedPath(lang)
   const links = [
     { href: `${home}#arbeiten`, label: t.nav[0] },
@@ -120,7 +121,9 @@ export function SiteNavigation({ lang, copy: t }: {
     <header data-track-section="site-navigation-header-2" className="site-header">
       <Link data-track-id="site-navigation-link-3" href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /><span className="sr-only">{t.home}</span></Link>
       <nav className="desktop-nav" aria-label={lang === 'de' ? 'Hauptnavigation' : lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
-        {links.slice(0, 3).map(link => <Link data-track-id="site-navigation-link-4" key={link.href} href={link.href}>{link.label}</Link>)}
+        {links.slice(0, 3).map((link, i) => lang === 'de' && i === 1 ? <details className="service-menu" key={link.href} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) event.currentTarget.open = false }} onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
+          <summary>{link.label}</summary><div>{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={event => { const menu = event.currentTarget.closest('details'); if (menu) menu.open = false }}>{service.label}</Link>)}</div>
+        </details> : <Link data-track-id="site-navigation-link-4" key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
       <div className="header-actions">
         {languages()}
@@ -149,6 +152,7 @@ export function SiteNavigation({ lang, copy: t }: {
                 </Link>
               ))}
             </nav>
+            {lang === 'de' && <details className="mobile-service-menu"><summary>Leistungen direkt entdecken</summary><nav aria-label="Leistungsunterseiten">{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={() => closeMenu(true)}>{service.label}<ArrowUpRight size={15} aria-hidden /></Link>)}</nav></details>}
             <div className="menu-bottom">{languages(true)}<span>NRW, DE ↗</span></div>
           </div>
         </div>

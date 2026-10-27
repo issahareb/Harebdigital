@@ -2115,3 +2115,22 @@ body :is(button, .button, .header-cta, .hd-cta, .round-link, .motion-feature-cta
 /* Keep the existing measurement preferences accessible below the footer. */
 body:has(.website-landing-page) > [data-track-ignore]:has(> button) { padding: 6px max(20px, calc((100% - 1280px) / 2)); }
 body:has(.website-landing-page) > [data-track-ignore] > button { position: static !important; }
+
+/* Service discovery uses the site's existing typography and palette. */
+.service-menu { position: relative; }
+.service-menu summary, .mobile-service-menu summary { cursor: pointer; padding-block: 12px; }
+.service-menu > div { position: absolute; top: 100%; left: -24px; min-width: 300px; padding: 16px 24px; background: var(--paper, #f2f1e9); color: var(--ink, #20221d); border: 1px solid var(--line); box-shadow: 0 16px 32px #0001; }
+.service-menu > div a { display: block; padding: 10px 0; }
+.mobile-service-menu { margin-top: 20px; border-bottom: 1px solid #ffffff30; }
+.mobile-service-menu summary { font-size: 15px; }
+.mobile-service-menu nav { display: grid; padding: 8px 0 16px; }
+.mobile-service-menu nav a { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; font-size: 16px; }
+.mobile-service-menu nav a:hover { color: var(--accent); }
+.footer-services { padding-block: 32px; border-top: 1px solid var(--line); }
+.footer-services > div { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 30px; margin-top: 16px; }
+.footer-services a { display: flex; align-items: center; gap: 8px; padding-block: 12px; font-size: 14px; }
+.service-buying-questions { margin-top: 48px; }
+.service-buying-questions details { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.service-buying-questions summary { cursor: pointer; font-size: 19px; }
+.service-buying-questions details p { margin-top: 16px; max-width: 65ch; }
+@media (max-width: 600px) { .footer-services > div { grid-template-columns: 1fr; } }

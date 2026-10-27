@@ -23,4 +23,16 @@ export const ADDITIONAL_SERVICES = [
     proofHref: '/projekte/taxi-bb-essen/',
     proofLabel: 'Projekt Taxi B&B Essen ansehen',
   },
+  {
+    slug: 'motion-design',
+    title: 'Motion Design & Werbevideos',
+    description: 'Motion Design, animierte Markenauftritte und Werbevideos für Websites und Social Media. Konzept, Animation und Schnitt mit Hareb Digital aus Essen.',
+    lead: 'Dein Angebot braucht einen Einstieg, der neugierig macht. Ich entwickle bewegte Gestaltung für Websites, Social Media und Werbekampagnen: vom ersten Bild bis zur klaren Handlungsaufforderung.',
+    items: ['Idee, Einstieg und Storyboard passend zu deiner Zielgruppe', 'Animierte Typografie, Logo-Animationen und bewegte Grafiken', 'Schnitt, Übergänge und Sound passend zur Geschichte', 'Ausgabe für Website, Hochformat und vereinbarte Werbeformate', 'Abstimmung von Materialrechten, Korrekturrunden und Lieferdateien'],
+    process: 'Wir klären Botschaft, Zielgruppe und Einsatzort. Du siehst zuerst das Konzept und die visuelle Richtung. Danach folgen Animation, Schnitt und die vereinbarten Korrekturen. Ich arbeite unter anderem mit After Effects, Photoshop und Blender. Die Werkzeuge richten sich nach dem Projekt.',
+    proofTitle: 'Eine eigene Produktion ansehen',
+    proof: 'Auf der Startseite siehst du einen Werbefilm für Hareb Digital. Er verbindet Website-Präsentation, Motion Design und einen Wechsel der Perspektive. Das ist eine eigene Markenproduktion und zeigt meine gestalterische Arbeitsweise.',
+    proofHref: '/#motion-design',
+    proofLabel: 'Werbefilm für Hareb Digital ansehen',
+  },
 ] as const

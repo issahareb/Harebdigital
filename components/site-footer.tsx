@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SERVICE_LINKS } from '@/lib/service-links'
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
@@ -40,6 +41,10 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
           </span>
         </div>
       )}
+      {lang === 'de' && <nav className="footer-services wrap" aria-label="Unsere Leistungen">
+        <span className="eyebrow">Leistungen</span>
+        <div>{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href}>{service.label}<ArrowUpRight size={14} aria-hidden /></Link>)}</div>
+      </nav>}
       <div className="footer-bottom wrap">
         <p>
           © {new Date().getFullYear()} Hareb Digital ·{' '}
