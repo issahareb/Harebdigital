@@ -15,7 +15,7 @@ export default async function Datenschutz() {
     <HdUnterseite lang={await sprache()}>
       <div lang="de">
         <h1 className="font-display text-4xl font-bold tracking-tight">Datenschutzerklärung</h1>
-        <p className="mt-4 text-sm">Stand: 14. Oktober 2026</p>
+        <p className="mt-4 text-sm">Stand: 27. Oktober 2026</p>
         <div className="mt-10 max-w-2xl space-y-8">
           <Rechtsabschnitt titel="1. Verantwortlicher und Kontakt">
             <p>{marke.inhaber}, handelnd unter {marke.name}<br />{marke.strasse}<br />{marke.plz} {marke.ort}, Deutschland</p>
@@ -28,7 +28,13 @@ export default async function Datenschutz() {
             <p>Informationen des Anbieters: <a href="https://railway.com/legal/privacy" className="underline">Railway Datenschutz</a> und <a href="https://railway.com/legal/dpa" className="underline">Auftragsverarbeitung</a>.</p>
           </Rechtsabschnitt>
           <Rechtsabschnitt titel="3. Cookies, Sprachwahl, Schriften und Medien">
-            <p>Die Website bindet keine Werbenetzwerke ein. Die Sprache ergibt sich aus der URL. Der Sprachschalter speichert keine Auswahl in Cookies oder im dauerhaften Browserspeicher.</p>
+            <p>Die Sprache ergibt sich aus der URL. Der Sprachschalter speichert keine Auswahl in Cookies oder im dauerhaften Browserspeicher.</p>
+            <div id="tiktok" className="space-y-3">
+              <h3 className="font-bold">Optionale TikTok-Werbemessung</h3>
+              <p>Nur nach gesonderter ausdrücklicher Einwilligung laden wir den TikTok Pixel zur Messung unserer Werbung. Empfänger ist TikTok Technology Limited, Irland, mit verbundenen Unternehmen und technischen Dienstleistern. Dabei können Seitenadresse, Seitenaufrufe, bestätigte Formularsendungen, Zeitstempel, IP-Adresse, Geräte- und Browserinformationen sowie Cookie-Kennungen an TikTok übermittelt und mit Anzeigenkontakten bzw. einem TikTok-Konto zusammengeführt werden. Eine Verarbeitung außerhalb der EU bzw. des EWR, auch in den USA, ist möglich. Namen, E-Mail-Adressen, Telefonnummern und Nachrichtentexte aus unserem Formular übermitteln wir nicht als Ereignisdaten; der erweiterte Abgleich von E-Mail-Adresse und Telefonnummer ist deaktiviert.</p>
+              <p>Die Einwilligung ist unabhängig von unserer eigenen Website-Analyse. Rechtsgrundlagen sind Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Ohne Zustimmung wird der TikTok-Code nicht geladen. Die Entscheidung mit Zeitstempel wird unter hd-tiktok-consent-v1 im lokalen Browserspeicher gespeichert. Über „TikTok-Einstellungen“ können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Do Not Track und Global Privacy Control verhindern die Aktivierung. Das Kontaktformular funktioniert auch ohne Werbemessung. Eine bestätigte Formularsendung ist noch keine inhaltlich qualifizierte Projektanfrage.</p>
+              <p>Informationen zu Cookies, Speicherdauer, Empfängern, internationalen Übermittlungen und Ihren Rechten: <a href="https://www.tiktok.com/legal/page/eea/privacy-policy/de" className="underline">TikTok-Datenschutzerklärung</a> und <a href="https://www.tiktok.com/legal/page/global/tiktok-website-cookies-policy/en" className="underline">TikTok-Cookie-Richtlinie</a>.</p>
+            </div>
             <p>Nur nach ausdrücklicher Zustimmung erfassen wir mit einer eigenen Website-Analyse Seitenaufrufe, aktive Verweildauer, betrachtete Abschnitte, Scrolltiefe und Scrollstopps, Klickpositionen und Ziele ohne URL-Parameter, Videonutzung sowie Formularbeginn, Feldkennungen, Fehler, Sendeversuche und bestätigte Sendungen. Abbrüche werden nach 30 Minuten Inaktivität abgeleitet. Eingegebene Inhalte, Namen, E-Mail-Adressen und Chatnachrichten werden nicht in diese Analyse übernommen. Es gibt keine Zusammenführung mit Kontaktanfragen oder Besuchen anderer Websites.</p>
             <p>Eine zufällige pseudonyme Besuchs-ID wird in sessionStorage gespeichert und nach 30 Minuten Inaktivität erneuert. Ihre Einwilligungsentscheidung wird unter site-consent im lokalen Browserspeicher hinterlegt. Die Messdaten sind nur im geschützten LUKAS-Dashboard zugänglich, das bei Railway in den USA gehostet wird. Sie werden nach 90 Tagen bei der nächsten Datenannahme gelöscht. Zur Missbrauchsabwehr verarbeitet der Website-Server die IP-Adresse vorübergehend im Arbeitsspeicher, übermittelt sie aber nicht als Analysefeld an das Dashboard.</p>
             <p>Rechtsgrundlage der optionalen Analyse ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Über „Analyse-Einstellungen“ können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Do Not Track und Global Privacy Control werden berücksichtigt. Ohne Zustimmung funktioniert die Website unverändert.</p>
