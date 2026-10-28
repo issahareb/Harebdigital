@@ -21,10 +21,11 @@ export const siteMetadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
-      { url: '/studio/favicon-v1.svg', type: 'image/svg+xml' },
+      { url: '/brand/icon-96-v3.png', sizes: '96x96', type: 'image/png' },
+      { url: '/brand/icon-v3.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48 64x64 128x128 256x256', type: 'image/x-icon' },
     ],
-    apple: [{ url: '/studio/apple-touch-icon-v1.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/brand/apple-touch-icon-v3.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 export const siteViewport: Viewport = {

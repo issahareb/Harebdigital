@@ -107,11 +107,16 @@ const nextConfig = {
         headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }],
       },
       {
-        /* Googles Favicon-Crawler fragt genau diesen Pfad ab, er lässt sich
-           also nicht umbenennen — und eine unveränderliche Datei unter einem
-           festen Namen ist ein Widerspruch. Ein Tag ist lang genug zum Bündeln
-           und kurz genug, damit ein neues Zeichen ankommt. */
+        // Stable fallback for browsers and crawlers; revalidate after updates.
         source: '/favicon.ico',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+      },
+      {
+        source: '/brand/:file(icon-v3.png|icon-96-v3.png|apple-touch-icon-v3.png)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+      },
+      {
+        source: '/studio/:file(favicon-v1.svg|apple-touch-icon-v1.png)',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
       },
     ]
