@@ -36,7 +36,7 @@ const copy = {
   },
 }
 
-export function VoiceOffer({ lang }: { lang: HdLang }) {
+export function VoiceOffer({ lang, compact = false }: { lang: HdLang; compact?: boolean }) {
   const t = copy[lang]
   const [channel, setChannel] = useState<'dashboard' | 'mail' | 'both'>('dashboard')
   const icons = [SlidersHorizontal, LayoutDashboard, Mail]
@@ -45,10 +45,10 @@ export function VoiceOffer({ lang }: { lang: HdLang }) {
       <div className={styles.copy}>
         <span className={styles.eyebrow}>{t.label}</span>
         <h2 id="ki-telefonie-title">{t.title}</h2>
-        <p className={styles.intro}>{t.intro}</p>
-        <ul className={styles.features}>{t.features.map(([title, detail], i) => { const Icon = icons[i]; return <li key={title}><Icon size={20} strokeWidth={1.5} /><div><h3>{title}</h3><p>{detail}</p></div></li> })}</ul>
+        <p className={styles.intro}>{compact ? t.features[0][1] : t.intro}</p>
+        {!compact && <ul className={styles.features}>{t.features.map(([title, detail], i) => { const Icon = icons[i]; return <li key={title}><Icon size={20} strokeWidth={1.5} /><div><h3>{title}</h3><p>{detail}</p></div></li> })}</ul>}
         <Link className={styles.cta} href={`${localizedPath(lang, '/kontakt/')}?leistung=automatisierung&angebot=ki-telefonie`} data-track-id="voice-business-enquiry">{t.cta}<ArrowUpRight size={19} /></Link>
-        <p className={styles.scope}>{t.scope}</p>
+        {compact ? <Link className="text-link" href={`${localizedPath(lang, '/zusammenarbeit/')}#ki-telefonie`}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'} ↗</Link> : <p className={styles.scope}>{t.scope}</p>}
       </div>
       <div className={styles.experience}>
         <div className={styles.dashboard}>

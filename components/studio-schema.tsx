@@ -87,16 +87,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
               },
             })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({'@type':'Offer',itemOffered:{'@type':'Service',name:s.title,description:s.description,url:`${DOMAIN}/leistungen/${s.slug}/`,provider:{'@id':ORGANIZATION_ID}}})) : [])],
           },
-          {
-            '@type': 'FAQPage',
-            '@id': `${url}#faq`,
-            inLanguage: lang,
-            mainEntity: t.faq.map((f) => ({
-              '@type': 'Question',
-              name: f.question,
-              acceptedAnswer: { '@type': 'Answer', text: f.answer },
-            })),
-          },
+
         ],
       }}
     />

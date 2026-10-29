@@ -5,6 +5,7 @@ const origin = 'https://hareb.digital'
 const paths = [
   '/',
   '/kontakt/',
+  '/zusammenarbeit/',
   '/leistungen/neue-website/',
   '/leistungen/website-ueberarbeiten/',
   '/leistungen/automatisierung/',
@@ -86,7 +87,6 @@ for (const lang of languages) {
     }
     if (path === '/') {
       const graph = schemas.flatMap((s) => s['@graph'] || [s])
-      const faq = graph.find((s) => s['@type'] === 'FAQPage')
       const business = graph.find((s) => s['@id'] === 'https://issahareb.me/#hareb-digital')
       assert([business?.['@type']].flat().includes('ProfessionalService'), `${route}: service business schema`)
       assert.equal(business.email, 'kontakt@hareb.digital', `${route}: verified public contact email`)
@@ -96,8 +96,11 @@ for (const lang of languages) {
         assert(title.includes('Webdesign Essen'), 'German homepage identifies its service and city')
         assert(description.includes('Essen'), 'Primary service area mentioned in German description')
       }
+    }
+    if (path === '/zusammenarbeit/') {
+      const faq = schemas.flatMap(s => s['@graph'] || [s]).find(s => s['@type'] === 'FAQPage')
       const faqSection = html.match(/<section\b[^>]*aria-labelledby="faq-title"[^>]*>(.*?)<\/section>/s)?.[1]
-      assert(faqSection, `${route}: visible FAQ section`)
+      assert(faqSection && faq, `${route}: visible FAQ and schema`)
       assert.equal(faq.mainEntity.length, (faqSection.match(/<summary[\s>]/g) || []).length, `${route}: schema matches visible FAQ count`)
       for (const question of faq.mainEntity) {
         assert(html.includes(question.name), `${route}: FAQ question visible`)
@@ -113,7 +116,7 @@ const sitemap = await (await fetch(`${base}/sitemap.xml`)).text()
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => decode(m[1]))
 const expectedUrls = [
   ...languages.flatMap((lang) => paths.map((path) => `${origin}${at(lang, path)}`)),
-  ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/projekte/taxi-bb-essen/'].map((path) => `${origin}${path}`),
+  ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/leistungen/motion-design/', '/projekte/taxi-bb-essen/', '/projekte/tensa/'].map((path) => `${origin}${path}`),
 ]
 assert.equal(sitemapUrls.length, new Set(sitemapUrls).size, 'No duplicate sitemap URLs')
 assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'All public landing pages in sitemap')

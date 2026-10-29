@@ -9,8 +9,8 @@ const browser = await chromium.launch({
 })
 const results = []
 for (const [name, viewport, lastFrame] of [
-  ['desktop', { width: 1440, height: 960 }, 119],
-  ['iphone', { width: 375, height: 812 }, 95],
+  ['desktop', { width: 1440, height: 960 }, 179],
+  ['iphone', { width: 375, height: 812 }, 149],
 ]) {
   const page = await browser.newPage({ viewport })
   const errors = []

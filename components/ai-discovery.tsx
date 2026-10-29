@@ -1,13 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
+import { localizedPath } from '@/lib/locale'
 import { ArrowUpRight, Check, Copy } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 
 const COPY = {
   de: {
     label: 'Sichtbarkeit in KI-Antworten', title: 'Frag nach mir.\nProbier’s selbst.',
-    text: 'Was erfahren potenzielle Kunden über dich, wenn sie eine KI fragen? Hier ein Satz aus einer gespeicherten Antwort. Stell selbst eine Frage zu Issa Hareb oder Hareb Digital und schau dir die aktuellen Antworten und Quellen an.',
+    text: 'Wirst du schon empfohlen? So sah eine ChatGPT-Antwort über Hareb Digital aus. Frag selbst nach.',
     quote: 'Issa Hareb ist ein deutscher Unternehmer, autodidaktischer Full-Stack- und KI-Entwickler aus Essen. Er ist Gründer von Hareb Digital.',
     questions: ['Wer ist Issa Hareb?', 'Was ist Hareb Digital und welche Leistungen bietet das Unternehmen an?'],
     open: 'In ChatGPT fragen', copy: 'Frage kopieren', copied: 'Kopiert', error: 'Bitte die Frage oben markieren und kopieren.',
@@ -19,7 +21,7 @@ const COPY = {
   },
   en: {
     label: 'Visibility in AI answers', title: 'Ask about me.\nTry it yourself.',
-    text: 'What do potential customers learn about you when they ask AI? Here is one sentence from a saved answer. Ask about Issa Hareb or Hareb Digital and explore the current answers and sources yourself.',
+    text: 'Are you being recommended? Explore this saved ChatGPT answer about Hareb Digital, then ask for yourself.',
     quote: 'Issa Hareb is a self-taught full-stack and AI developer from Essen, and the founder of Hareb Digital.',
     questions: ['Who is Issa Hareb?', 'What is Hareb Digital and what services does the business offer?'],
     open: 'Ask ChatGPT', copy: 'Copy question', copied: 'Copied', error: 'Please select and copy the question above.',
@@ -31,7 +33,7 @@ const COPY = {
   },
   es: {
     label: 'Visibilidad en respuestas de IA', title: 'Pregunta por mí.\nPruébalo tú mismo.',
-    text: '¿Qué descubren tus clientes cuando preguntan a una IA por ti? Aquí hay una frase de una respuesta guardada. Pregunta por Issa Hareb o Hareb Digital y consulta las respuestas y fuentes actuales.',
+    text: '¿Ya te recomiendan? Explora esta respuesta guardada de ChatGPT sobre Hareb Digital y pregunta tú mismo.',
     quote: 'Issa Hareb es un desarrollador full-stack y de IA autodidacta de Essen, y el fundador de Hareb Digital.',
     questions: ['¿Quién es Issa Hareb?', '¿Qué es Hareb Digital y qué servicios ofrece?'],
     open: 'Preguntar a ChatGPT', copy: 'Copiar pregunta', copied: 'Copiado', error: 'Selecciona y copia la pregunta de arriba.',
@@ -63,7 +65,7 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
         <p className="ai-discovery-subtitle">{t.title.replace(/\n/g, ' ')}</p>
         <p className="ai-discovery-intro">{t.text}</p>
         <div className="ai-discovery-questions">
-          {t.questions.map((question, index) => (
+          {t.questions.slice(0, 1).map((question, index) => (
             <div className="ai-discovery-question" key={question}>
               <p>{question}</p>
               <div className="ai-discovery-actions">
@@ -76,23 +78,21 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
             </div>
           ))}
         </div>
-        <p className="ai-discovery-other">{t.other}</p>
+
         <nav className="ai-discovery-providers" aria-label={t.label}>
           <a data-track-id="ai-discovery-a-4" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini <ArrowUpRight size={15} aria-hidden /></a>
           <a data-track-id="ai-discovery-a-5" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude <ArrowUpRight size={15} aria-hidden /></a>
         </nav>
+        <Link className="text-link" href={localizedPath(lang, '/leistungen/gefunden-werden/')}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'} ↗</Link>
         <span className="ai-discovery-status" role="status">{error || (copied !== null ? t.copied : '')}</span>
       </div>
-      <figure className="ai-quote">
-        <blockquote>
-          <p>{t.quote}</p>
-        </blockquote>
-        <figcaption>
-          <span className="ai-quote-source">{t.archive}</span>
-          <span>{t.caption}</span>
-          <span>{t.note}</span>
-        </figcaption>
-        <a data-track-id="ai-discovery-a-6" className="ai-quote-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a>
+      <figure className="ai-discovery-proof">
+        <div className="ai-proof-toolbar"><span>{t.archive}</span><span>{lang === 'de' ? 'Im Bild scrollen ↓' : lang === 'en' ? 'Scroll inside ↓' : 'Desliza dentro ↓'}</span></div>
+        <div className="ai-proof-scroll" tabIndex={0} role="region" aria-label={lang === 'de' ? 'Scrollbare originale ChatGPT-Aufnahme' : lang === 'en' ? 'Scrollable original ChatGPT capture' : 'Captura original de ChatGPT desplazable'}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/studio/evidence/chatgpt-issa-hareb-full.webp" width={728} height={2160} loading="lazy" alt={lang === 'de' ? 'Gespeicherte ChatGPT-Antwort über Issa Hareb und Hareb Digital vom 13. Oktober 2026. Vollständige Originalaufnahme.' : 'Original German ChatGPT answer about Issa Hareb and Hareb Digital, 13 October 2026.'} />
+        </div>
+        <figcaption><p>{t.note}</p><a className="text-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a></figcaption>
       </figure>
     </section>
   )

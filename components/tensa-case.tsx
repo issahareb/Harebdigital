@@ -51,7 +51,7 @@ export function TensaCase({ lang }: { lang: HdLang }) {
     <div className="project-story">
       <span className="eyebrow">{t.status}</span>
       <h3 id={`tensa-title-${lang}`}>{t.title}</h3>
-      <p>{t.text}</p><p>{t.scope}</p>
+      <p>{lang === 'de' ? 'Ein Launch, der neugierig macht. Dahinter entsteht ein umfangreicher Onlineshop. Hier bekommst du einen echten Einblick in die laufende Entwicklung.' : t.text}</p>
       <ul className="tag-list">{t.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
       <Link href="/projekte/tensa/" className="text-link">{t.link}<ArrowUpRight size={17} aria-hidden /></Link>
     </div>

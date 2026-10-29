@@ -17,7 +17,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     if (!context) return
     const captions = Array.from(stage.querySelectorAll<HTMLElement>('.journey-caption > span'))
     const mobile = matchMedia('(max-width: 700px)').matches
-    const count = mobile ? 96 : 120
+    const count = mobile ? 150 : 180
     surface.width = mobile ? 448 : 960
     surface.height = mobile ? 796 : 540
     const images: (HTMLImageElement | undefined)[] = Array(count)
@@ -88,7 +88,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
           busy--
           if (alive) pump()
         }
-        image.src = `/studio/impulse/sequence/${folder}/${String(i + 1).padStart(3, '0')}.webp`
+        image.src = `/studio/impulse/lime-20261029/sequence/${folder}/${String(i + 1).padStart(3, '0')}.webp`
       }
     }
     const update = () => {
@@ -100,10 +100,12 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       const travel = Math.max(1, stage.offsetHeight - frame.offsetHeight)
       const progress = clamp(scroll / travel)
       const expansion = ease(clamp(scroll / (frame.offsetHeight * 0.45)))
-      const exit = ease(clamp((scroll - travel) / (header?.offsetHeight || 86)))
+      const handoff = ease(clamp((progress - 0.78) / 0.22))
+      const exit = ease(clamp((progress - 0.84) / 0.16))
       target = Math.round(progress * (count - 1))
       stage.style.setProperty('--journey', String(progress))
       stage.style.setProperty('--hero-expansion', String(expansion))
+      stage.style.setProperty('--hero-handoff', String(handoff))
       stage.dataset.introHidden = String(expansion >= 0.8)
       header?.style.setProperty('--hero-cover', String(expansion * (1 - exit)))
       // Scroll controls every phase, including reverse scroll. A quiet reading
@@ -111,7 +113,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       captions.forEach((caption, index) => {
         const start = index === 0 ? 0.23 : 0.64
         const entrance = ease(clamp((progress - start) / 0.08))
-        const departure = index === 0 ? ease(clamp((progress - 0.55) / 0.07)) : 0
+        const departure = index === 0 ? ease(clamp((progress - 0.52) / 0.08)) : ease(clamp((progress - 0.80) / 0.09))
         caption.style.setProperty('--caption-opacity', String(entrance * (1 - departure)))
         caption.style.setProperty('--caption-enter', String(entrance))
         caption.style.setProperty('--caption-exit', String(departure))
@@ -148,6 +150,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       delete surface.dataset.ready
       stage.style.removeProperty('--journey')
       stage.style.removeProperty('--hero-expansion')
+      stage.style.removeProperty('--hero-handoff')
       delete stage.dataset.introHidden
       stage.dataset.chapter = '0'
       if (header) {

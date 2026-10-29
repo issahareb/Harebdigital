@@ -2154,3 +2154,33 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 .service-buying-questions summary { cursor: pointer; font-size: 19px; }
 .service-buying-questions details p { margin-top: 16px; max-width: 65ch; }
 @media (max-width: 600px) { .footer-services > div { grid-template-columns: 1fr; } }
+
+/* Keep the homepage focused; full explanations live on the linked detail pages. */
+.home-compact > .section-space { padding-block: clamp(44px, 5vw, 76px); }
+.home-compact .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.home-compact .service-row { grid-template-columns: 1fr auto; gap: 14px; }
+.home-compact .service-thumbnail { grid-column: 1 / -1; }
+.home-compact .service-more { grid-column: 1; }
+.home-compact .service-arrow { grid-column: 2; grid-row: 2; }
+.home-compact .service-detail-grid { gap: 28px; margin-top: 36px; }
+.home-compact .service-detail-grid > section p { font-size: 14px; line-height: 1.6; }
+.home-compact .ai-discovery { margin-top: 48px; padding-top: 44px; }
+.home-compact .approach-bottom p { max-width: 42em; }
+.home-more { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 48px; }
+.home-more article { border-top: 1px solid var(--line); padding-block: 28px; scroll-margin-top: 110px; }
+.home-more h2 { font-size: clamp(25px, 2.8vw, 38px); line-height: 1.12; letter-spacing: -.035em; }
+.home-more p { font-size: 15px; line-height: 1.65; color: var(--muted); margin-top: 14px; max-width: 34em; }
+.home-more .text-link { margin-top: 16px; }
+.details-heading { padding-top: 90px; }
+.details-heading h1 { font-size: clamp(42px,6vw,84px); line-height: 1.05; max-width: 14ch; margin-top: 24px; letter-spacing: -.045em; }
+.details-heading > p:last-child { max-width: 45em; margin-top: 24px; line-height: 1.7; }
+@media (max-width: 700px) { .home-compact .service-list, .home-more { grid-template-columns: 1fr; } .home-compact .service-list { gap: 24px; } }
+
+/* Final fifth of the scroll blends into the paper background before unpinning. */
+.cinematic-stage { --hero-handoff: 0; }
+.cinematic-stage[data-motion='true'] { height: 440svh; }
+.cinematic-frame::after { content: ''; position: absolute; inset: 0; z-index: 5; background: var(--paper); opacity: var(--hero-handoff); pointer-events: none; }
+.cinematic-stage[data-motion='true'] .hero-artwork { transform: translateY(calc(var(--hero-handoff) * -2%)) scale(calc(1 + var(--hero-handoff) * .035)); }
+.cinematic-stage[data-motion='true'] .hero-bottomline { opacity: calc(1 - var(--hero-handoff)); }
+@media (max-width: 700px) { .cinematic-stage[data-motion='true'] { height: 400svh; } }
+@media (prefers-reduced-motion: reduce) { .cinematic-stage[data-motion] { height: auto; } .cinematic-frame::after { display: none; } }

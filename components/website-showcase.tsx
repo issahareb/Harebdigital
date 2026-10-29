@@ -10,7 +10,7 @@ import { SHOWCASE_COPY, WEBSITE_CLIPS } from '@/lib/website-clips'
 const clamp = (value: number) => Math.min(1, Math.max(0, value))
 
 /** Native vertical scrolling moves the rail. No wheel/touch interception or scroll lock. */
-export function WebsiteShowcase({ lang }: { lang: HdLang }) {
+export function WebsiteShowcase({ lang, compact = false }: { lang: HdLang; compact?: boolean }) {
   const copy = SHOWCASE_COPY[lang]
   const section = useRef<HTMLElement>(null)
   const stage = useRef<HTMLDivElement>(null)
@@ -69,7 +69,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
     const schedule = () => { if (!request) request = requestAnimationFrame(draw) }
     const measure = () => {
       // On very short screens and with reduced motion, keep a native swipe carousel.
-      enabled = !preference.matches && innerHeight >= 540
+      enabled = !compact && !preference.matches && innerHeight >= 540
       distance.current = Math.max(0, (strip.lastElementChild as HTMLElement)?.offsetLeft || 0)
       root.style.setProperty('--showcase-distance', `${distance.current}px`)
       root.dataset.pinned = String(enabled)
@@ -98,7 +98,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
       window.removeEventListener('resize', measure)
       preference.removeEventListener('change', measure)
     }
-  }, [])
+  }, [compact])
 
   useEffect(() => {
     // Observe each actual video: the heading/sticky stage can be visible while
@@ -166,7 +166,7 @@ export function WebsiteShowcase({ lang }: { lang: HdLang }) {
   }
 
   return (
-    <section data-track-section="website-showcase-section-1" ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned="true">
+    <section data-track-section="website-showcase-section-1" ref={section} id="werkschau" className="website-showcase" aria-labelledby="showcase-title" data-pinned={compact ? 'false' : 'true'}>
       <div className="showcase-surround" aria-hidden />
       <div ref={stage} className="showcase-stage">
         <div className="showcase-heading wrap">

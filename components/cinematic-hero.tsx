@@ -23,13 +23,13 @@ type HeroCopy = Pick<
   | 'heroChapters'
 >
 
-const HERO_AVIF_SRCSET = '/studio/impulse/hero-768.avif 768w, /studio/impulse/hero-1280.avif 1280w, /studio/impulse/hero-1920.avif 1920w'
+const HERO_AVIF_SRCSET = '/studio/impulse/lime-20261029/hero-768.avif 768w, /studio/impulse/lime-20261029/hero-1280.avif 1280w, /studio/impulse/lime-20261029/hero-1920.avif 1920w'
 
 /** The page stays native-scrollable; an actual camera journey drives the frames. */
 export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy }) {
   // React does not automatically preload images inside <picture>. Start the
   // exact responsive AVIF candidate in the head, without also fetching WebP.
-  preload('/studio/impulse/hero-1280.avif', {
+  preload('/studio/impulse/lime-20261029/hero-1280.avif', {
     as: 'image',
     type: 'image/avif',
     imageSrcSet: HERO_AVIF_SRCSET,
@@ -83,8 +83,8 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="hero-poster"
-              src="/studio/impulse/hero-1280.webp"
-              srcSet="/studio/impulse/hero-768.webp 768w, /studio/impulse/hero-1280.webp 1280w, /studio/impulse/hero-1920.webp 1920w"
+              src="/studio/impulse/lime-20261029/hero-1280.webp"
+              srcSet="/studio/impulse/lime-20261029/hero-768.webp 768w, /studio/impulse/lime-20261029/hero-1280.webp 1280w, /studio/impulse/lime-20261029/hero-1920.webp 1920w"
               sizes="100vw"
               width="1920"
               height="1080"

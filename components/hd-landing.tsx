@@ -1,20 +1,16 @@
+import { HomeMore } from './home-more'
 import { TensaCase } from './tensa-case'
 import { PricingSummary } from './pricing-summary'
-import { LocalServices } from './local-services'
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
 import { AiDiscovery } from './ai-discovery'
-import { HostingCare } from './hosting-care'
 import { IntroOffer } from './intro-offer'
 import { VoiceOffer } from './voice-offer'
-import { MotionFeature } from './motion-feature'
-import { TikTokCaseStudy } from './tiktok-case-study'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { localizedPath } from '@/lib/locale'
-import { PORTFOLIO } from '@/lib/marke'
 import { SiteHeader } from './site-header'
 import { SiteFooter } from './site-footer'
 import { CinematicHero } from './cinematic-hero'
@@ -22,7 +18,7 @@ import { StudioSchema } from './studio-schema'
 import { EditorialMotion } from './editorial-motion'
 import { ScrollAccent } from './scroll-accent'
 import { VISUAL_COPY } from '@/lib/service-visuals'
-import { ServiceVisual, StudioEvidence } from './service-visual'
+import { ServiceVisual } from './service-visual'
 import { WebsiteShowcase } from './website-showcase'
 
 function Lines({ text }: { text: string }) {
@@ -43,7 +39,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
   return (
     <>
       <SiteHeader lang={lang} />
-      <main id="main">
+      <main id="main" className="home-compact">
         <CinematicHero
           lang={lang}
           copy={{
@@ -83,11 +79,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <ScrollAccent text={t.approach[1]} />
             </h2>
             <div className="approach-bottom">
-              <p>{t.approachText}</p>
+              <p>{lang === 'de' ? 'Zeig, was dich ausmacht. Schaffe Vertrauen. Mach den nächsten Schritt einfach. Genau dafür entwickle ich deine Website.' : t.approachText}</p>
             </div>
           </div>
         </section>
-        <VoiceOffer lang={lang} />
+        <VoiceOffer lang={lang} compact />
         <section data-track-section="hd-landing-section-1" id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading" data-reveal>
@@ -144,7 +140,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </a>
               <div className="project-story">
                 <span className="eyebrow">{t.caseTitle.replace(/\n/g, ' ')}</span>
-                <p>{t.caseText}</p>
+                <p>{lang === 'de' ? 'Vom Fahrtwunsch zur geordneten Anfrage: Website, Buchung und Verwaltung greifen ineinander.' : t.caseText}</p>
                 <ul className="tag-list">
                   {t.caseTags.map((tag) => (
                     <li key={tag}>{tag}</li>
@@ -171,15 +167,15 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               <div>
                 <span className="eyebrow">{t.moreWork}</span>
                 <h3>GuardianGrid</h3>
-                <p className="project-production-status">{lang === 'de' ? 'In Produktion · Zusammenarbeit mit Bungie' : lang === 'en' ? 'In production · Collaboration with Bungie' : 'En producción · Colaboración con Bungie'}</p>
+                <p className="project-production-status">{lang === 'de' ? 'Eigenes Produkt · In Entwicklung' : lang === 'en' ? 'Own product · In development' : 'Producto propio · En desarrollo'}</p>
                 <p>{original.arbeiten.projekte[0].text}</p>
               </div>
 
             </div>
           </div>
         </section>
-        {lang === 'de' && <IntroOffer />}
-        <PricingSummary lang={lang} />
+        {lang === 'de' && <div id="preise"><IntroOffer /><div className="wrap"><Link className="text-link" href="/zusammenarbeit/#preise">Preise & Leistungsumfang im Detail ↗</Link></div></div>}
+        {lang !== 'de' && <PricingSummary lang={lang} />}
         <section
           id="leistungen"
           className="services-section wrap section-space"
@@ -211,155 +207,18 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   <h3><Link className="service-link" href={localizedPath(lang, `/leistungen/${service.slug}/`)}>{t.serviceNames[i]}</Link></h3>
                   <p>{t.serviceTags[i]}</p>
                 </div>
-                <span className="service-description">{service.detail.vorspann}</span>
+                <Link className="text-link service-more" href={localizedPath(lang, `/leistungen/${service.slug}/`)}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'}</Link>
                 <span className="service-arrow">
                   <ArrowUpRight aria-hidden />
                 </span>
               </article>
             ))}
           </div>
-          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{service.title} ansehen ↗</Link></section>)}</div>}
-          {lang === 'de' && <LocalServices />}
+          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{lang === 'de' ? 'Mehr erfahren' : service.title} ↗</Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
-        <WebsiteShowcase lang={lang} />
-        <MotionFeature lang={lang} />
-        <section data-track-section="hd-landing-section-6" id="social" className="social-section section-space" aria-labelledby="social-title">
-          <div className="wrap social-grid">
-            <figure className="social-art" data-reveal>
-              <Image
-                src="/social/mrhan-profil.webp"
-                alt={VISUAL_COPY[lang].socialAlt}
-                width={1125}
-                height={542}
-                sizes="(max-width: 700px) 90vw, 45vw"
-              />
-              <figcaption>{VISUAL_COPY[lang].socialArchive}</figcaption>
-            </figure>
-            <div>
-              <div className="section-label">
-                <span className="small-index">04 /</span>
-                <span className="eyebrow">{lang === 'de' ? 'Eigene Content-Experimente' : lang === 'en' ? 'Independent content experiments' : 'Experimentos propios de contenido'}</span>
-              </div>
-              <h2 id="social-title">
-                <Lines text={t.socialTitle} />
-              </h2>
-              <p>{t.socialText}</p>
-              {lang === 'de' && <Link data-track-id="hd-landing-link-7" className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen ↗</Link>}
-              <span className="social-profile-label">TikTok · @issa3701</span>
-              <a data-track-id="hd-landing-a-8" href="https://www.tiktok.com/@issa3701" className="text-link">
-                Mr Han
-                <ArrowUpRight size={17} aria-hidden />
-              </a>
-            </div>
-            <div className="social-proof">
-              <span className="social-proof-label">{VISUAL_COPY[lang].socialProofLabel}</span>
-              <div className="social-stat">
-                <strong>
-                  {lang === 'en' ? '1.3' : '1,3'}
-                  <span> M</span>
-                </strong>
-                <span>{t.reach}</span>
-              </div>
-              <div className="social-proof-bottom">
-                <Image
-                  src="/social/drh-beitrag.webp"
-                  alt={original.social.belege[0].alt}
-                  width={450}
-                  height={700}
-                  sizes="180px"
-                  className="social-receipt"
-                />
-                <div>
-                  <strong>0 €</strong>
-                  <span>{t.budget}</span>
-                  <p>{t.socialSource}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <TikTokCaseStudy lang={lang} />
-        </section>
-        <section
-          id="studio"
-          className="studio-section wrap section-space"
-          aria-labelledby="studio-title"
-        >
-          <StudioEvidence lang={lang} />
-          <div className="studio-copy" data-reveal>
-            <div className="section-label">
-              <span className="small-index">05 /</span>
-              <span className="eyebrow">{t.nav[2]}</span>
-            </div>
-            <h2 id="studio-title">
-              <Lines text={t.studioTitle} />
-            </h2>
-            <p>{t.studioText}</p>
-            <a data-track-id="hd-landing-a-9" href={PORTFOLIO} className="text-link" rel="me">
-              {t.studioLink}
-              <ArrowUpRight size={17} aria-hidden />
-            </a>
-            <div className="studio-signature">
-              <span>Issa Hareb</span>
-              <span>
-                DESIGN & DEVELOPMENT
-                <br />
-                NRW, DE
-              </span>
-            </div>
-          </div>
-        </section>
-        <section
-          id="ablauf"
-          className="process-section wrap section-space"
-          aria-labelledby="process-title"
-        >
-          <div className="section-heading" data-reveal>
-            <div>
-              <div className="section-label">
-                <span className="small-index">06 /</span>
-                <span className="eyebrow">{original.ablauf.label}</span>
-              </div>
-              <h2 id="process-title">
-                <Lines text={t.processTitle} />
-              </h2>
-            </div>
-            <ArrowDown className="section-arrow" size={54} strokeWidth={1} aria-hidden />
-          </div>
-          <ol className="process-list">
-            {original.ablauf.schritte.map((step) => (
-              <li key={step.n} data-reveal>
-                <span>{step.n}</span>
-                <div className="process-step-title">{step.t}</div>
-                <p>{step.b}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-        <HostingCare lang={lang} />
-        <section data-track-section="hd-landing-section-10" id="faq" className="faq-section wrap section-space" aria-labelledby="faq-title">
-          <div>
-            <div className="section-label">
-              <span className="small-index">08 /</span>
-              <span className="eyebrow">FAQ</span>
-            </div>
-            <h2 id="faq-title">
-              <Lines text={t.faqTitle} />
-            </h2>
-            <p>{t.faqIntro}</p>
-          </div>
-          <div className="faq-list" data-reveal>
-            {t.faq.map((item, i) => (
-              <details key={item.question} open={i === 0}>
-                <summary>
-                  <span className="faq-question">{item.question}</span>
-                  <Plus size={20} aria-hidden />
-                </summary>
-                <p>{item.answer}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+        <WebsiteShowcase lang={lang} compact />
+        <HomeMore lang={lang} />
       </main>
       <SiteFooter lang={lang} />
       <StudioSchema lang={lang} />

@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/',
     ...HD_TEXTE.de.leistungen.punkte.map((l) => `/leistungen/${l.slug}/`),
     '/kontakt/',
+    '/zusammenarbeit/',
   ]
   // lastModified is intentionally omitted: a build date is not a content change.
   return [...paths.flatMap((path) =>
