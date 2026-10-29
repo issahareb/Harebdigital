@@ -2184,3 +2184,8 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 .cinematic-stage[data-motion='true'] .hero-bottomline { opacity: calc(1 - var(--hero-handoff)); }
 @media (max-width: 700px) { .cinematic-stage[data-motion='true'] { height: 400svh; } }
 @media (prefers-reduced-motion: reduce) { .cinematic-stage[data-motion] { height: auto; } .cinematic-frame::after { display: none; } }
+/* Let the following content enter while the last hero frame blends to paper. */
+.home-compact > .cinematic-stage[data-motion='true'] + .discipline-strip { position: relative; z-index: 6; margin-top: -45svh; }
+.home-compact > .approach { position: relative; z-index: 6; }
+@media (prefers-reduced-motion: reduce) { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
+@media print { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
