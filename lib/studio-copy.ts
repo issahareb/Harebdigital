@@ -95,9 +95,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Weniger Routine. Mehr Freiraum.',
       'Sichtbarkeit in Suchmaschinen und KI-Antworten',
     ],
-    workTitle: 'Nicht nur entworfen.\nIn Betrieb.',
+    workTitle: 'Echte Projekte.\nDirekte Einblicke.',
     workIntro:
-      'Ein Kundenprojekt und eine eigene Webanwendung zeigen, wie ich Gestaltung und Funktionen auf konkrete Aufgaben abstimme.',
+      'Veröffentlichte Kundenprojekte, laufende Entwicklungen und eigene Webanwendungen. Hier siehst du, wie Gestaltung und Funktionen zusammenkommen.',
     caseType: 'Kundenprojekt · Mobilität',
     caseTitle: 'Taxi anfragen.\nEinfach online.',
     caseText:
@@ -198,8 +198,8 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Less routine. More room to grow.',
       'Visibility in search engines and AI answers',
     ],
-    workTitle: 'Designed. Built.\nOut in the world.',
-    workIntro: 'A client project and my own web application show how I connect design and functionality to practical needs.',
+    workTitle: 'Real projects.\nA closer look.',
+    workIntro: 'Published client projects, work in progress and independent web applications show how I connect design and functionality.',
     caseType: 'Client project · Mobility',
     caseTitle: 'Request a taxi.\nSimply online.',
     caseText:
@@ -300,9 +300,9 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Menos rutina. Más tiempo.',
       'Visibilidad en buscadores y respuestas de IA',
     ],
-    workTitle: 'Diseñado. Desarrollado.\nEn funcionamiento.',
+    workTitle: 'Proyectos reales.\nUna mirada de cerca.',
     workIntro:
-      'Un proyecto para un cliente y una aplicación propia muestran cómo adapto el diseño y las funciones a necesidades concretas.',
+      'Proyectos publicados, trabajos en desarrollo y aplicaciones propias muestran cómo conecto diseño y funcionalidad.',
     caseType: 'Proyecto de cliente · Movilidad',
     caseTitle: 'Solicita tu taxi.\nFácil y en línea.',
     caseText:

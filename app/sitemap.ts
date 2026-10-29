@@ -19,5 +19,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ),
       },
     })),
-  ), ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/leistungen/motion-design/', '/projekte/taxi-bb-essen/'].map(path => ({url:`${DOMAIN}${path}`}))]
+  ), ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/leistungen/motion-design/', '/projekte/taxi-bb-essen/', '/projekte/tensa/'].map(path => ({url:`${DOMAIN}${path}`}))]
 }

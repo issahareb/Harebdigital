@@ -1,3 +1,4 @@
+import { TensaCase } from './tensa-case'
 import { PricingSummary } from './pricing-summary'
 import { LocalServices } from './local-services'
 import { ADDITIONAL_SERVICES } from '@/lib/additional-services'
@@ -156,6 +157,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 {lang === 'de' && <Link data-track-id="hd-landing-link-3" className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen ↗</Link>}
               </div>
             </article>
+            <TensaCase lang={lang} />
             <div className="secondary-work" data-reveal>
               <div className="secondary-image">
                 <Image

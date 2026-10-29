@@ -1,0 +1,4 @@
+.case { margin-top: 48px; padding-top: 48px; border-top: 1px solid #c6ccba; }
+.preview { min-width: 0; margin: 0; }
+.preview video { display: block; width: 100%; height: auto; aspect-ratio: 884 / 438; background: #050505; }
+.preview figcaption { margin-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.6; }
