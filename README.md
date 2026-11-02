@@ -16,6 +16,8 @@ npm run check:seo
 npx playwright install chromium
 npm run check:browser
 npm run check:motion
+# Deterministische Prüfung der Scrollfilm-Wiedergabe ohne Browser:
+node scripts/check-scroll-film.mjs
 # Separater Check der tatsächlichen Veröffentlichungsbereitschaft:
 npm run pruefen
 ```
@@ -39,6 +41,8 @@ Die Sitemap enthält nur die 18 indexierbaren Seiten und deren Sprachen. Kein k�
 Warmer Papierton, Anthrazit, Glas, Aluminium und limettengrüne Verbindungen bilden die Bildsprache. Die Homepage besteht größtenteils aus Server-Komponenten. Navigation, Scrollfilm, dezente Abschnittsübergänge und Anfrageformular benötigen Client-JavaScript. Alte Motion-/GSAP-Komponenten sind nicht im neuen Seitenbaum eingebunden.
 
 `components/cinematic-hero.tsx` und `components/scroll-film.tsx` koppeln eine in Higgsfield erzeugte Kamerafahrt an den nativen Scrollfortschritt: durch architektonische Gänge, zunehmende Geschwindigkeit, dann Kabel als kosmische Energieströme. Vorwärts- und Rückwärtsscrollen wählen tatsächliche Filmbilder aus. Die Wiedergabe nutzt lokale WebP-Einzelbilder auf Canvas, ohne Video-Seeking oder einen ständig laufenden Render-Loop. Vier gleichzeitige Ladevorgänge und ein Fenster von höchstens 25 gehaltenen Bildern begrenzen die Ressourcen; der aktuelle Frame hat Vorrang. Mobil wird ein hochkant zugeschnittener Satz geladen.
+
+Langsames Scrollen behält seit dem 02.11.2026 die gebrochene Bildposition und überblendet die beiden angrenzenden Bilder entsprechend diesem Anteil. Dadurch entfallen die bisherigen sichtbaren Haltepositionen durch Ganzzahlrundung. Dies ist eine Überblendung vorhandener Bilder, keine Optical-Flow-Berechnung zusätzlicher Kameraperspektiven. Bilder werden vor dem Zeichnen asynchron dekodiert; Ladeereignisse bündeln das Zeichnen über `requestAnimationFrame`. `check-scroll-film.mjs` prüft kleine Schritte innerhalb eines Bildintervalls, Rückwärtsbewegung, beide Endpositionen, Ladegrenzen und Bereinigung in beiden Bildformaten.
 
 Sieben zusätzliche Motive begleiten Leistungen, Studio, Social Media und Kontakt. Reale Projekt- und Instagram-Nachweise bleiben erhalten. Quellen, Prompts, Job-IDs und Dateigrößen stehen in `docs/asset-provenance.json`. Responsive AVIF-/WebP-Dateien und der Film liegen versioniert in `public/studio/impulse/`. Schriften und eigene Medien werden über die eigene Domain ausgeliefert.
 

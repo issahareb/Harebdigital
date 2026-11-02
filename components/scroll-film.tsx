@@ -26,13 +26,36 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     let visible = false
     let busy = 0
     let target = 0
+    let position = 0
     let painted = -1
+    let paintedPosition = -1
     let raf = 0
     const clamp = (value: number) => Math.max(0, Math.min(1, value))
     const ease = (value: number) => value * value * (3 - 2 * value)
     if (header) header.dataset.heroMotion = 'true'
     const folder = mobile ? 'mobile' : 'desktop'
     const draw = () => {
+      if (!alive || !visible || document.hidden) return
+      const next = Math.min(count - 1, target + 1)
+      if (images[target] && images[next]) {
+        if (paintedPosition === position) return
+        // Keep the fractional scroll position: rounding held each camera image
+        // for 16–22 scroll pixels, particularly noticeable on slow touch drags.
+        context.globalAlpha = 1
+        context.drawImage(images[target]!, 0, 0, surface.width, surface.height)
+        const blend = position - target
+        if (blend > 0 && next !== target) {
+          context.globalAlpha = blend
+          context.drawImage(images[next]!, 0, 0, surface.width, surface.height)
+          context.globalAlpha = 1
+        }
+        painted = target
+        paintedPosition = position
+        surface.dataset.ready = 'true'
+        surface.dataset.frame = String(target)
+        surface.dataset.position = String(position)
+        return
+      }
       let nearest = target
       if (!images[nearest]) {
         let distance = count
@@ -50,8 +73,10 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       if (images[nearest] && painted !== nearest) {
         context.drawImage(images[nearest]!, 0, 0, surface.width, surface.height)
         painted = nearest
+        paintedPosition = nearest
         surface.dataset.ready = 'true'
         surface.dataset.frame = String(nearest)
+        surface.dataset.position = String(nearest)
       }
     }
     const pump = () => {
@@ -59,7 +84,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       // Keep only the nearby camera positions decoded, especially on phones.
       // Previously visited WebPs remain available through the browser HTTP cache.
       const priority = [
-        target,
+        target, target + 1,
         // At rest only prepare the first step. The remaining camera positions
         // become useful once scrolling advances the playhead.
         ...Array.from({ length: target === 0 ? 1 : 12 }, (_, i) => [target + i + 1, target - i - 1]).flat(),
@@ -76,12 +101,16 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
         requested.add(i)
         busy++
         const image = new Image()
-        image.onload = () => {
+        image.decoding = 'async'
+        image.onload = async () => {
+          // Decode before entering the paint callback, rather than making the
+          // first draw synchronously decode a WebP on the scrolling thread.
+          try { await image.decode() } catch { /* Loaded image remains drawable. */ }
           busy--
           if (!alive) return
           if (Math.abs(i - target) <= 12) images[i] = image
           else requested.delete(i)
-          draw()
+          schedule()
           pump()
         }
         image.onerror = () => {
@@ -102,7 +131,8 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       const expansion = ease(clamp(scroll / (frame.offsetHeight * 0.45)))
       const handoff = ease(clamp((progress - 0.78) / 0.22))
       const exit = ease(clamp((progress - 0.84) / 0.16))
-      target = Math.round(progress * (count - 1))
+      position = progress * (count - 1)
+      target = Math.floor(position)
       stage.style.setProperty('--journey', String(progress))
       stage.style.setProperty('--hero-expansion', String(expansion))
       stage.style.setProperty('--hero-handoff', String(handoff))
@@ -148,6 +178,8 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       })
       images.length = 0
       delete surface.dataset.ready
+      delete surface.dataset.frame
+      delete surface.dataset.position
       stage.style.removeProperty('--journey')
       stage.style.removeProperty('--hero-expansion')
       stage.style.removeProperty('--hero-handoff')
