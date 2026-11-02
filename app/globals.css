@@ -1944,6 +1944,7 @@ main:has(> .cinematic-stage) { display: flow-root; }
 .service-row { grid-template-columns: 1fr 44px; gap: 17px 20px; padding: 0 0 26px; align-items: start; }
 .service-row:hover { padding-inline: 0; background: transparent; }
 .service-thumbnail { grid-column: 1 / -1; min-width: 0; overflow: hidden; margin-bottom: 8px; }
+.service-thumbnail:has(input, button) { position:relative; z-index:2; }
 .service-summary { grid-column: 1; }
 .service-row h3 { font-size: clamp(23px, 2.3vw, 33px); }
 .service-description { display: block; grid-column: 1 / -1; grid-row: 3; max-width: 90%; font-size: 13px; }
