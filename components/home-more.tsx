@@ -1,3 +1,5 @@
+
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import Link from 'next/link'
 import type { HdLang } from '@/lib/hd-texte'
 import { localizedPath } from '@/lib/locale'
@@ -27,5 +29,5 @@ const COPY = {
 }
 export function HomeMore({ lang }: { lang: HdLang }) {
  const t = COPY[lang]
- return <section className="home-more wrap section-space" aria-label={t.more}>{t.cards.map(([id,title,text]) => <article id={id} key={id}><h2>{title}</h2><p>{text}</p><Link className="text-link" href={`${localizedPath(lang, '/zusammenarbeit/')}#${id}`}>{t.more} ↗</Link></article>)}</section>
+ return <section className="home-more wrap section-space" aria-label={t.more}>{t.cards.map(([id,title,text]) => <article id={id} key={id}><h2>{title}</h2><p>{text}</p><Link className="text-link" href={`${localizedPath(lang, '/zusammenarbeit/')}#${id}`}>{t.more} <InlineArrow size={16} aria-hidden /></Link></article>)}</section>
 }

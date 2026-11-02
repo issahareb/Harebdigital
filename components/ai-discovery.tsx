@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { localizedPath } from '@/lib/locale'
-import { ArrowUpRight, Check, Copy } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Check, Copy } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 
 const COPY = {
@@ -83,16 +83,16 @@ export function AiDiscovery({ lang }: { lang: HdLang }) {
           <a data-track-id="ai-discovery-a-4" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini <ArrowUpRight size={15} aria-hidden /></a>
           <a data-track-id="ai-discovery-a-5" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude <ArrowUpRight size={15} aria-hidden /></a>
         </nav>
-        <Link className="text-link" href={localizedPath(lang, '/leistungen/gefunden-werden/')}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'} ↗</Link>
+        <Link className="text-link" href={localizedPath(lang, '/leistungen/gefunden-werden/')}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'}<ArrowUpRight size={16} aria-hidden /></Link>
         <span className="ai-discovery-status" role="status">{error || (copied !== null ? t.copied : '')}</span>
       </div>
       <figure className="ai-discovery-proof">
-        <div className="ai-proof-toolbar"><span>{t.archive}</span><span>{lang === 'de' ? 'Im Bild scrollen ↓' : lang === 'en' ? 'Scroll inside ↓' : 'Desliza dentro ↓'}</span></div>
+        <div className="ai-proof-toolbar"><span>{t.archive} · {lang === 'de' ? 'Auszug' : lang === 'en' ? 'Excerpt' : 'Extracto'}</span><span>{lang === 'de' ? 'Im Bild scrollen' : lang === 'en' ? 'Scroll inside' : 'Desliza dentro'}<ArrowDown size={12} aria-hidden /></span></div>
         <div className="ai-proof-scroll" tabIndex={0} role="region" aria-label={lang === 'de' ? 'Scrollbare originale ChatGPT-Aufnahme' : lang === 'en' ? 'Scrollable original ChatGPT capture' : 'Captura original de ChatGPT desplazable'}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/studio/evidence/chatgpt-issa-hareb-full.webp" width={728} height={2160} loading="lazy" alt={lang === 'de' ? 'Gespeicherte ChatGPT-Antwort über Issa Hareb und Hareb Digital vom 13. Oktober 2026. Vollständige Originalaufnahme.' : 'Original German ChatGPT answer about Issa Hareb and Hareb Digital, 13 October 2026.'} />
+          <div className="ai-proof-excerpt"><img src="/studio/evidence/chatgpt-issa-hareb-full.webp" width={728} height={2160} loading="lazy" alt={lang === 'de' ? 'Auszug der ChatGPT-Antwort über Issa Hareb und Hareb Digital vom 13. Oktober 2026.' : 'Excerpt of a German ChatGPT answer about Issa Hareb and Hareb Digital, 13 October 2026.'} /></div>
         </div>
-        <figcaption><p>{t.note}</p><a className="text-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{t.full}<ArrowUpRight size={14} aria-hidden /></a></figcaption>
+        <figcaption><a className="text-link" href="/studio/evidence/chatgpt-issa-hareb-full.webp" target="_blank" rel="noopener noreferrer">{lang === 'de' ? 'Originalaufnahme ansehen' : lang === 'en' ? 'View original capture' : 'Ver captura original'}<ArrowUpRight size={14} aria-hidden /></a></figcaption>
       </figure>
     </section>
   )

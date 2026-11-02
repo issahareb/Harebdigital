@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { SERVICE_LINKS } from '@/lib/service-links'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
 import { localizedPath } from '@/lib/locale'
 import type { StudioCopy } from '@/lib/studio-copy'
@@ -122,7 +122,7 @@ export function SiteNavigation({ lang, copy: t }: {
       <Link data-track-id="site-navigation-link-3" href={home} className="brand-link" aria-label={`hareb digital. · ${t.home}`}><Wordmark /><span className="sr-only">{t.home}</span></Link>
       <nav className="desktop-nav" aria-label={lang === 'de' ? 'Hauptnavigation' : lang === 'es' ? 'Navegación principal' : 'Main navigation'}>
         {links.slice(0, 3).map((link, i) => lang === 'de' && i === 1 ? <details className="service-menu" key={link.href} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) event.currentTarget.open = false }} onKeyDown={event => { if (event.key === 'Escape') { event.currentTarget.open = false; event.currentTarget.querySelector('summary')?.focus() } }}>
-          <summary>{link.label}</summary><div>{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={event => { const menu = event.currentTarget.closest('details'); if (menu) menu.open = false }}>{service.label}</Link>)}</div>
+          <summary>{link.label}<ChevronDown size={12} aria-hidden /></summary><div>{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={event => { const menu = event.currentTarget.closest('details'); if (menu) menu.open = false }}>{service.label}</Link>)}</div>
         </details> : <Link data-track-id="site-navigation-link-4" key={link.href} href={link.href}>{link.label}</Link>)}
       </nav>
       <div className="header-actions">
@@ -132,28 +132,24 @@ export function SiteNavigation({ lang, copy: t }: {
           aria-controls="navigation-dialog" aria-haspopup="dialog" aria-expanded={open} onClick={openMenu}><MenuGlyph /></button>
       </div>
       <dialog ref={dialog} id="navigation-dialog" className="navigation-dialog" data-open={open} aria-label={t.menu}
+        onClick={event => { const rect = event.currentTarget.getBoundingClientRect(); if (event.target === event.currentTarget && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) closeMenu() }}
         onCancel={e => { e.preventDefault(); closeMenu() }}
         onClose={() => { setOpen(false); unlock() }}>
         <div className="menu-topbar">
-          <Link data-track-id="site-navigation-link-7" href={home} className="brand-link" onClick={() => closeMenu(true)} aria-label={`hareb digital. · ${t.home}`}><Wordmark light /><span className="sr-only">{`Hareb Digital · ${t.home}`}</span></Link>
+          <span className="menu-eyebrow">HAREB DIGITAL</span>
           <button data-track-id="site-navigation-button-8" type="button" className="menu-toggle menu-close" aria-label={t.close} aria-expanded={open} onClick={() => closeMenu()} autoFocus><MenuGlyph /></button>
         </div>
         <div className="menu-content">
-          <div className="menu-art" aria-hidden="true">
-            <div className="menu-art-background" />
-            <span>INDEPENDENT THINKING.<br />CONNECTED DESIGN.</span>
-          </div>
           <div className="menu-main">
-            <span className="menu-eyebrow">HAREB DIGITAL / INDEX</span>
             <nav id="mobile-navigation" className="mobile-nav" aria-label={t.menu}>
               {links.map((link, i) => (
                 <Link data-track-id="site-navigation-link-9" key={link.href} href={link.href} prefetch={false} onClick={() => closeMenu(true)} style={{ '--item': i } as React.CSSProperties}>
-                  <span className="menu-number">0{i + 1}</span><span className="menu-link-label">{link.label}</span><ArrowUpRight aria-hidden />
+                  <span className="menu-link-label">{link.label}</span><ArrowUpRight aria-hidden />
                 </Link>
               ))}
             </nav>
-            {lang === 'de' && <details className="mobile-service-menu"><summary>Leistungen direkt entdecken</summary><nav aria-label="Leistungsunterseiten">{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={() => closeMenu(true)}>{service.label}<ArrowUpRight size={15} aria-hidden /></Link>)}</nav></details>}
-            <div className="menu-bottom">{languages(true)}<span>NRW, DE ↗</span></div>
+            {lang === 'de' && <details className="mobile-service-menu"><summary>Leistungen entdecken<ChevronDown size={15} aria-hidden /></summary><nav aria-label="Leistungsunterseiten">{SERVICE_LINKS.map(service => <Link key={service.href} href={service.href} onClick={() => closeMenu(true)}>{service.label}<ArrowUpRight size={15} aria-hidden /></Link>)}</nav></details>}
+            <div className="menu-bottom">{languages(true)}</div>
           </div>
         </div>
       </dialog>

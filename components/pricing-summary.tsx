@@ -1,3 +1,5 @@
+
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import Link from 'next/link'
 import type { HdLang } from '@/lib/hd-texte'
 import { PRICING } from '@/lib/pricing'
@@ -12,7 +14,7 @@ export function PricingSummary({ lang }: { lang: HdLang }) {
       <div><h3>{t[1]}</h3><p>{t[2]}</p></div>
       <div><ul>
         {[490, 890, 190, 590].map((price, i) => <li key={price} style={{ paddingBlock: '0.75rem', borderBottom: '1px solid currentColor' }}><strong>{t[3+i]}: {price} €</strong> {t[7]}{i === 3 ? `, ${t[8]}` : ''}</li>)}
-      </ul><p style={{ marginTop: '1.5rem' }}>{t[9]}</p><Link className="text-link" href={localizedPath(lang, '/kontakt/?leistung=neue-website')}>{t[10]} ↗</Link></div>
+      </ul><p style={{ marginTop: '1.5rem' }}>{t[9]}</p><Link className="text-link" href={localizedPath(lang, '/kontakt/?leistung=neue-website')}>{t[10]} <InlineArrow size={16} aria-hidden /></Link></div>
     </div>
   </section>
 }

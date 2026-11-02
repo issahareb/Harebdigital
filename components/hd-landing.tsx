@@ -1,3 +1,5 @@
+
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import { HomeMore } from './home-more'
 import { TensaCase } from './tensa-case'
 import { PricingSummary } from './pricing-summary'
@@ -150,7 +152,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                   {t.caseLink}
                   <ArrowUpRight size={17} aria-hidden />
                 </a>
-                {lang === 'de' && <Link data-track-id="hd-landing-link-3" className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen ↗</Link>}
+                {lang === 'de' && <Link data-track-id="hd-landing-link-3" className="text-link" href="/projekte/taxi-bb-essen/">Umsetzung und Messziele ansehen <InlineArrow size={16} aria-hidden /></Link>}
               </div>
             </article>
             <TensaCase lang={lang} />
@@ -174,7 +176,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </div>
           </div>
         </section>
-        {lang === 'de' && <div id="preise"><IntroOffer /><div className="wrap"><Link className="text-link" href="/zusammenarbeit/#preise">Preise & Leistungsumfang im Detail ↗</Link></div></div>}
+        {lang === 'de' && <div id="preise"><IntroOffer /><div className="wrap"><Link className="text-link" href="/zusammenarbeit/#preise">Preise & Leistungsumfang im Detail <InlineArrow size={16} aria-hidden /></Link></div></div>}
         {lang !== 'de' && <PricingSummary lang={lang} />}
         <section
           id="leistungen"
@@ -214,10 +216,10 @@ export function HdLanding({ lang }: { lang: HdLang }) {
               </article>
             ))}
           </div>
-          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{lang === 'de' ? 'Mehr erfahren' : service.title} ↗</Link></section>)}</div>}
+          {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{lang === 'de' ? 'Mehr erfahren' : service.title} <InlineArrow size={16} aria-hidden /></Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
-        <WebsiteShowcase lang={lang} compact />
+        <WebsiteShowcase lang={lang} />
         <HomeMore lang={lang} />
       </main>
       <SiteFooter lang={lang} />

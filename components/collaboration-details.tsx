@@ -1,3 +1,5 @@
+
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import { JsonLd } from './studio-schema'
 import { DOMAIN } from '@/lib/marke'
 import { PricingSummary } from './pricing-summary'
@@ -25,7 +27,7 @@ export function CollaborationDetails({ lang }: { lang: HdLang }) {
  const t = STUDIO_COPY[lang]
  const original = HD_TEXTE[lang]
  return <><SiteHeader lang={lang} /><main id="main" className="collaboration-details">
- <header className="wrap section-space details-heading"><Link className="text-link" href={localizedPath(lang)}>{t.home} ↗</Link><p className="eyebrow">HAREB DIGITAL</p><h1>{lang === 'de' ? 'Was hinter deinem Projekt steckt.' : lang === 'en' ? 'What goes into your project.' : 'Lo que hay detrás de tu proyecto.'}</h1><p>{lang === 'de' ? 'Leistungen, Arbeitsweise und Betreuung. Hier findest du die Details, wenn du tiefer einsteigen möchtest.' : lang === 'en' ? 'Services, process and support. Explore the details behind your project.' : 'Servicios, proceso y soporte. Descubre los detalles de tu proyecto.'}</p></header>
+ <header className="wrap section-space details-heading"><Link className="text-link" href={localizedPath(lang)}>{t.home} <InlineArrow size={16} aria-hidden /></Link><p className="eyebrow">HAREB DIGITAL</p><h1>{lang === 'de' ? 'Was hinter deinem Projekt steckt.' : lang === 'en' ? 'What goes into your project.' : 'Lo que hay detrás de tu proyecto.'}</h1><p>{lang === 'de' ? 'Leistungen, Arbeitsweise und Betreuung. Hier findest du die Details, wenn du tiefer einsteigen möchtest.' : lang === 'en' ? 'Services, process and support. Explore the details behind your project.' : 'Servicios, proceso y soporte. Descubre los detalles de tu proyecto.'}</p></header>
  <section className="wrap section-space"><h2>{t.approachLabel}</h2><p className="service-detail-lead">{t.approachText}</p></section>
  <VoiceOffer lang={lang} /><PricingSummary lang={lang} />
         <MotionFeature lang={lang} />
@@ -50,7 +52,7 @@ export function CollaborationDetails({ lang }: { lang: HdLang }) {
                 <Lines text={t.socialTitle} />
               </h2>
               <p>{t.socialText}</p>
-              {lang === 'de' && <Link data-track-id="hd-landing-link-7" className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen ↗</Link>}
+              {lang === 'de' && <Link data-track-id="hd-landing-link-7" className="text-link" href="/leistungen/social-media-marketing/">Social Media für dein Unternehmen <InlineArrow size={16} aria-hidden /></Link>}
               <span className="social-profile-label">TikTok · @issa3701</span>
               <a data-track-id="hd-landing-a-8" href="https://www.tiktok.com/@issa3701" className="text-link">
                 Mr Han

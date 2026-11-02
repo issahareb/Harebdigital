@@ -3,7 +3,7 @@
   container-type: inline-size;
   width: 100%;
   color: #202820;
-  background: #e8e9e2;
+  background: var(--paper);
 }
 .service-visual-inner {
   display: grid;
@@ -26,7 +26,6 @@
   font-variant-numeric: tabular-nums;
 }
 .visual-caption {
-  border-top: 1px solid #bfc6b8;
   padding-top: 12px;
 }
 .service-art-media {
