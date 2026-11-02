@@ -71,6 +71,7 @@ for (const mobile of [false, true]) {
     tick()
   }
   observer([{ isIntersecting: true }])
+  assert.equal(stage.dataset.filmVisible, 'true', 'Ambient motion runs while hero is visible')
   tick()
   await load()
   assert.equal(surface.dataset.position, '0')
@@ -96,15 +97,18 @@ for (const mobile of [false, true]) {
   const beforeHidden = draws.length
   document.hidden = true
   listeners.get('visibilitychange')()
+  assert.equal(stage.dataset.filmVisible, 'false', 'Ambient motion pauses in a hidden tab')
   tick()
   assert.equal(draws.length, beforeHidden)
   document.hidden = false
   observer([{ isIntersecting: false }])
+  assert.equal(stage.dataset.filmVisible, 'false', 'Ambient motion pauses offscreen')
   scroll(20.5)
   assert.equal(draws.length, beforeHidden, 'Offscreen loading cannot repaint the canvas')
   cleanup()
   assert.equal(callbacks.size, 0)
   assert.equal(surface.dataset.ready, undefined)
+  assert.equal(stage.dataset.filmVisible, undefined)
   assert.equal(listeners.size, 0)
   console.log(`PASS ${mobile ? 'mobile' : 'desktop'}: continuous subframes, reversal, bounded loading, endpoints, hidden/offscreen and cleanup`)
 }

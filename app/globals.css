@@ -367,7 +367,8 @@ h3,
   transform-origin: 72% 52%;
   will-change: transform;
 }
-.hero-artwork > picture {
+.hero-artwork > picture,
+.hero-motion-surface > picture {
   display: block;
   width: 100%;
   height: 100%;
@@ -2189,3 +2190,24 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 .home-compact > .approach { position: relative; z-index: 6; }
 @media (prefers-reduced-motion: reduce) { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
 @media print { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
+
+/* The film playhead remains tied to scroll; only its image plane drifts at rest.
+   One shared layer keeps the poster/canvas aligned and leaves all copy still. */
+.hero-motion-surface { position: absolute; inset: 0; }
+.cinematic-stage[data-motion='true'] .hero-motion-surface {
+  animation: hero-ambient-camera 14s ease-in-out infinite alternate both;
+  animation-play-state: paused;
+  transform-origin: 50% 50%;
+}
+.cinematic-stage[data-motion='true'][data-film-visible='true'] .hero-motion-surface {
+  animation-play-state: running;
+  will-change: transform;
+}
+@keyframes hero-ambient-camera {
+  from { transform: translate3d(-.35%, .2%, 0) scale(1.025); }
+  to { transform: translate3d(.35%, -.2%, 0) scale(1.045); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-stage[data-motion] .hero-motion-surface { animation: none; transform: none; will-change: auto; }
+}
+@media print { .hero-motion-surface { animation: none !important; transform: none !important; } }
