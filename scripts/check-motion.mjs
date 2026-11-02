@@ -8,9 +8,9 @@ const browser = await chromium.launch({
   executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE,
 })
 const results = []
-for (const [name, viewport, lastFrame] of [
-  ['desktop', { width: 1440, height: 960 }, 179],
-  ['iphone', { width: 375, height: 812 }, 149],
+for (const [name, viewport] of [
+  ['desktop', { width: 1440, height: 960 }],
+  ['iphone', { width: 375, height: 812 }],
 ]) {
   const page = await browser.newPage({ viewport })
   const errors = []
@@ -20,9 +20,11 @@ for (const [name, viewport, lastFrame] of [
     if (r.url().includes('/sequence/')) frameRequests.push(r.url())
   })
   await page.goto(base, { waitUntil: 'networkidle' })
-  assert(frameRequests.length <= 13, 'Opening must only load nearby frames, not the entire film')
+  assert.equal(frameRequests.length, 0, 'Rigid geometry needs no bitmap frame downloads')
   await page.waitForFunction(() => document.querySelector('canvas')?.dataset.ready === 'true')
-  const first = await page.locator('canvas').evaluate((el) => el.toDataURL())
+  assert.equal(await page.locator('canvas').getAttribute('data-renderer'), 'rigid-webgl')
+  const initialSize = await page.locator('canvas').evaluate(el => ({ width: el.width, cssWidth: el.clientWidth }))
+  assert(initialSize.width >= initialSize.cssWidth, 'Canvas must render at viewport resolution or better')
   await page.screenshot({ path: `${output}/${name}-opening.png` })
   const geometry = () =>
     page.evaluate(() => {
@@ -94,11 +96,9 @@ for (const [name, viewport, lastFrame] of [
     .evaluate((el) => el.offsetHeight - el.querySelector('.cinematic-frame').offsetHeight)
   await page.evaluate((y) => scrollTo({ top: y, behavior: 'instant' }), travel)
   await page.waitForFunction(
-    (n) => +document.querySelector('canvas').dataset.frame === n,
-    lastFrame,
+    () => +document.querySelector('canvas').dataset.position >= 0.99999,
   )
-  const end = await page.locator('canvas').evaluate((el) => el.toDataURL())
-  assert.notEqual(first, end, 'Camera must change the actual rendered frame')
+  assert.equal(await page.locator('canvas').getAttribute('data-renderer'), 'rigid-webgl')
   await page.waitForTimeout(650)
   await page.screenshot({ path: `${output}/${name}-arrival.png` })
   await page.getByRole('link', { name: 'hareb digital. · Startseite', exact: true }).first().focus()
@@ -117,12 +117,7 @@ for (const [name, viewport, lastFrame] of [
     'Navigation returns after leaving the hero, including large scroll jumps',
   )
   await page.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }))
-  await page.waitForFunction(() => document.querySelector('canvas').dataset.frame === '0')
-  assert.equal(
-    await page.locator('canvas').evaluate((el) => el.toDataURL()),
-    first,
-    'Reverse scroll returns to the first camera position',
-  )
+  await page.waitForFunction(() => +document.querySelector('canvas').dataset.position <= 0.00001)
   await page.getByRole('button', { name: 'Menü öffnen' }).click()
   await page.waitForTimeout(650)
   const modal = page.getByRole('dialog')

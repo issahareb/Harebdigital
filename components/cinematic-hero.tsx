@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { preload } from 'react-dom'
 import Link from 'next/link'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
@@ -38,6 +38,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
   })
   const [enabled, setEnabled] = useState(true)
   const [allowed, setAllowed] = useState(false)
+  const unavailable = useCallback(() => setAllowed(false), [])
   const active = enabled && allowed
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)')
@@ -93,7 +94,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
               alt={t.heroAlt}
             />
           </picture>
-          <ScrollFilm enabled={active} />
+          <ScrollFilm enabled={active} onUnavailable={unavailable} />
           </div>
         </div>
         <div className="journey-caption" aria-hidden="true">

@@ -178,7 +178,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Scroll to explore',
     motionOff: 'Turn animation off',
     motionOn: 'Turn animation on',
-    heroAlt: 'A light thread leads through a spatial landscape of glass and brushed metal.',
+    heroAlt: 'A camera journey through fixed architectural frames, cream surfaces and lime light strips.',
     heroChapters: [
       { label: 'SEO & AEO', title: 'More visible on Google.\nAnd in AI answers.', description: 'Help customers discover you through ChatGPT, Gemini and Claude, too.' },
       { label: 'Automation', title: 'Order received.\nConfirmation sent.', description: 'Connect payments, invoices and shipping in one automated workflow.' },
@@ -280,7 +280,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     scroll: 'Desliza para descubrir',
     motionOff: 'Desactivar animación',
     motionOn: 'Activar animación',
-    heroAlt: 'Un hilo de luz recorre un paisaje espacial de vidrio y metal cepillado.',
+    heroAlt: 'Un recorrido de cámara entre marcos arquitectónicos fijos, superficies crema y luces lima.',
     heroChapters: [
       { label: 'SEO y AEO', title: 'Más visible en Google.\nY en respuestas de IA.', description: 'Para que tus clientes también te descubran en ChatGPT, Gemini y Claude.' },
       { label: 'Automatización', title: 'Pedido recibido.\nConfirmación enviada.', description: 'Conecta pagos, facturas y envíos en un proceso automatizado.' },

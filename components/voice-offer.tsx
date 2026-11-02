@@ -48,7 +48,7 @@ export function VoiceOffer({ lang, compact = false }: { lang: HdLang; compact?: 
         <p className={styles.intro}>{compact ? t.features[0][1] : t.intro}</p>
         {!compact && <ul className={styles.features}>{t.features.map(([title, detail], i) => { const Icon = icons[i]; return <li key={title}><Icon size={20} strokeWidth={1.5} /><div><h3>{title}</h3><p>{detail}</p></div></li> })}</ul>}
         <Link className={styles.cta} href={`${localizedPath(lang, '/kontakt/')}?leistung=automatisierung&angebot=ki-telefonie`} data-track-id="voice-business-enquiry">{t.cta}<ArrowUpRight size={19} /></Link>
-        {compact ? <Link className="text-link" href={`${localizedPath(lang, '/zusammenarbeit/')}#ki-telefonie`}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'} ↗</Link> : <p className={styles.scope}>{t.scope}</p>}
+        {compact ? <Link className={styles.more} href={`${localizedPath(lang, '/zusammenarbeit/')}#ki-telefonie`}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'}<ArrowUpRight size={17} aria-hidden /></Link> : <p className={styles.scope}>{t.scope}</p>}
       </div>
       <div className={styles.experience}>
         <div className={styles.dashboard}>
