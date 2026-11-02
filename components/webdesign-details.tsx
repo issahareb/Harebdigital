@@ -1,3 +1,5 @@
+
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import Link from 'next/link'
 
 export const webdesignQuestions = [
@@ -51,7 +53,7 @@ export function WebdesignDetails() {
         <h2>Webdesign für Taxi B&B Essen</h2>
         <p>Für Taxi B&B Essen habe ich eine Website mit mobilen Fahrtanfragen, einem geschützten Verwaltungsbereich und automatischen E-Mail-Benachrichtigungen umgesetzt. Das Projekt verbindet den öffentlichen Auftritt mit der Bearbeitung eingehender Anfragen.</p>
         <p>Die Fallstudie zeigt, wie Website und interner Ablauf zusammenpassen: von der Anfrage eines Fahrgasts bis zur Bearbeitung durch das Unternehmen.</p>
-        <Link data-track-id="webdesign-details-link-4" className="text-link" href="/projekte/taxi-bb-essen/">Website und Buchungsanfragen von Taxi B&B Essen ansehen ↗</Link>
+        <Link data-track-id="webdesign-details-link-4" className="text-link" href="/projekte/taxi-bb-essen/">Website und Buchungsanfragen von Taxi B&B Essen ansehen <InlineArrow size={16} aria-hidden /></Link>
         <p>Für umfangreichere Prozesse entwickle ich <Link data-track-id="webdesign-details-link-5" className="text-link" href="/leistungen/webanwendungen/">individuelle Webanwendungen</Link>. Wiederkehrende Arbeit lässt sich durch <Link data-track-id="webdesign-details-link-6" className="text-link" href="/leistungen/automatisierung/">passende Automatisierung</Link> vereinfachen.</p>
       </section>
     </div>

@@ -1,5 +1,7 @@
 'use client'
 
+import { ArrowUpRight as InlineArrow } from 'lucide-react'
+
 import { useRef, useState, type KeyboardEvent } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CalendarDays, Layers3, MousePointer2, Sparkles } from 'lucide-react'
@@ -36,7 +38,7 @@ function OfferPreview({ index }: { index: number }) {
       <span className={styles.miniCta}>Lass uns starten <ArrowUpRight size={13} /></span>
       <div className={styles.orbit}><div /><div /><div /></div>
     </div>
-    <div className={styles.miniFooter}>{index === 1 ? <><span>01 / Leistungen</span><span>02 / Über uns</span><span>03 / Kontakt</span></> : <><span>Individuell gestaltet</span><span>Für jedes Display ↗</span></>}</div>
+    <div className={styles.miniFooter}>{index === 1 ? <><span>01 / Leistungen</span><span>02 / Über uns</span><span>03 / Kontakt</span></> : <><span>Individuell gestaltet</span><span>Für jedes Display <InlineArrow size={16} aria-hidden /></span></>}</div>
     {index === 3 && <div className={styles.careFloat}><span className={styles.statusDot} /><div>Gut betreut.<small>Von der ersten Idee an.</small></div><Check size={16} /></div>}
   </div>
 }

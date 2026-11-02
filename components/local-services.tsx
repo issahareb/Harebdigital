@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 
 import { SERVICE_LINKS as services } from '@/lib/service-links'
 
@@ -10,7 +11,7 @@ export function LocalServices({ currentPath }: { currentPath?: string }) {
       <nav aria-label="Passende Leistungen für dein Projekt" className="mt-6 flex flex-wrap gap-6">
         {services.filter(service => service.href !== currentPath).map(service => (
           <Link key={service.href} href={service.href} className="text-link" data-track-id={`local-service-${service.href.split('/')[2]}`}>
-            {service.label} ↗
+            {service.label}<ArrowUpRight size={16} aria-hidden />
           </Link>
         ))}
       </nav>

@@ -123,7 +123,7 @@ export function WebsiteShowcase({ lang, compact = false }: { lang: HdLang; compa
     const sync = () => {
       videos.current.forEach((video, index) => {
         if (!video) return
-        if (visibleClips.has(index) && !paused && !manualPlayback && !document.hidden) {
+        if (index === active && visibleClips.has(index) && !paused && !manualPlayback && !document.hidden) {
           // No neighbour prefetch: attach the source only once this clip is on screen.
           if (!video.getAttribute('src')) {
             video.preload = 'auto'

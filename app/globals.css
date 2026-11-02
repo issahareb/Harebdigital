@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import './service-visuals.css';
 @import './website-showcase.css';
+@import './navigation-panel.css';
 @import './motion-feature.css';
 @import './tiktok-case-study.css';
 @import './ai-discovery.css';
@@ -2192,3 +2193,8 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 
 /* Camera movement is rendered in 3D, with no scaling or warping of the image. */
 .hero-motion-surface { position: absolute; inset: 0; }
+
+/* Display an excerpt ending above the separate Einordnung paragraph. */
+.ai-proof-excerpt { aspect-ratio:728 / 1840; overflow:hidden; }
+.ai-proof-excerpt > img { width:100%; height:auto; display:block; }
+.ai-proof-toolbar > span:last-child { display:flex; align-items:center; gap:6px; }

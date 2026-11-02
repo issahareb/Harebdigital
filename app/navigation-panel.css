@@ -1,0 +1,38 @@
+/* Compact cream navigation panel, sharing the page's exact paper colour. */
+.service-menu > summary { display:flex; align-items:center; gap:7px; list-style:none; }
+.service-menu > summary::-webkit-details-marker { display:none; }
+.service-menu[open] > summary svg { transform:rotate(180deg); }
+.site-header .navigation-dialog {
+  inset:76px 16px auto auto; width:min(390px,calc(100vw - 32px)); height:auto;
+  max-width:390px; max-height:min(76svh,680px); margin:0; padding:0;
+  background:var(--paper); color:var(--ink); border:0;
+  box-shadow:0 20px 80px #20221d14; clip-path:none;
+  opacity:0; transform:translateY(-10px); transition:opacity .22s,transform .28s;
+}
+.site-header .navigation-dialog[data-open='true'] { opacity:1; transform:none; clip-path:none; }
+.site-header .navigation-dialog::backdrop { background:#20221d20; backdrop-filter:none; }
+.navigation-dialog .menu-topbar { height:56px; padding:8px 24px 0; }
+.navigation-dialog .menu-eyebrow { color:var(--muted); font-size:10px; letter-spacing:.12em; }
+.navigation-dialog .menu-close { color:var(--ink); border:0; width:36px; height:36px; }
+.navigation-dialog .menu-content { display:block; min-height:0; padding:4px 24px 24px; }
+.navigation-dialog .menu-main { padding:0; }
+.navigation-dialog .mobile-nav { margin:0; }
+.navigation-dialog .mobile-nav a {
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  border:0; padding:13px 0; font-size:27px; letter-spacing:-.04em;
+  opacity:1; transform:none; transition:color .2s;
+}
+.navigation-dialog .mobile-nav a:hover { color:#667c38; }
+.navigation-dialog .mobile-nav a > svg { width:19px; height:19px; }
+.navigation-dialog .mobile-service-menu { border:0; margin-top:14px; }
+.navigation-dialog .mobile-service-menu summary { display:flex; align-items:center; justify-content:space-between; list-style:none; min-height:44px; font-size:12px; }
+.navigation-dialog .mobile-service-menu summary::-webkit-details-marker { display:none; }
+.navigation-dialog .mobile-service-menu[open] summary > svg { transform:rotate(180deg); }
+.navigation-dialog .mobile-service-menu nav { padding:4px 0; }
+.navigation-dialog .mobile-service-menu nav a { font-size:13px; min-height:44px; padding:10px 0; }
+.navigation-dialog .menu-bottom { margin-top:16px; }
+.navigation-dialog .menu-languages { gap:20px; }
+.navigation-dialog .menu-languages a { color:var(--muted); font-size:11px; }
+.navigation-dialog .menu-languages a[aria-current='page'] { color:var(--ink); }
+@media(max-width:600px) { .site-header .navigation-dialog { top:72px; } }
+@media(prefers-reduced-motion:reduce) { .site-header .navigation-dialog { transition:none; transform:none; } }
