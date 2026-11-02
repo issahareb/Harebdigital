@@ -197,7 +197,6 @@ h3,
   font-weight: 600;
   font-size: 13px;
   min-height: 44px;
-  border-bottom: 1px solid currentColor;
 }
 .skip-link {
   position: fixed;
@@ -1890,7 +1889,7 @@ main:has(> .cinematic-stage) { display: flow-root; }
 .journey-progress { position: absolute; bottom: calc(var(--hero-gutter) * (1 - var(--hero-expansion))); left: 0; right: 0; height: 3px; background: #ffffff20; }
 .journey-progress span { display: block; height: 100%; background: var(--accent); transform: scaleX(var(--journey)); transform-origin: left; }
 
-.menu-toggle { display: flex; flex-shrink: 0; border: 1px solid var(--line); border-radius: 50%; width: 46px; height: 46px; }
+.menu-toggle { display: flex; flex-shrink: 0; border: 0; width: 46px; height: 46px; }
 .menu-glyph { position: relative; display: block; width: 20px; height: 16px; }
 .menu-glyph i { position: absolute; left: 0; width: 20px; height: 1.5px; background: currentColor; transform-origin: center; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .2s, width .3s; }
 .menu-glyph i:nth-child(1) { top: 1px; }
@@ -2191,23 +2190,5 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 @media (prefers-reduced-motion: reduce) { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
 @media print { .home-compact > .cinematic-stage[data-motion] + .discipline-strip { margin-top: 0; } }
 
-/* The film playhead remains tied to scroll; only its image plane drifts at rest.
-   One shared layer keeps the poster/canvas aligned and leaves all copy still. */
+/* Camera movement is rendered in 3D, with no scaling or warping of the image. */
 .hero-motion-surface { position: absolute; inset: 0; }
-.cinematic-stage[data-motion='true'] .hero-motion-surface {
-  animation: hero-ambient-camera 14s ease-in-out infinite alternate both;
-  animation-play-state: paused;
-  transform-origin: 50% 50%;
-}
-.cinematic-stage[data-motion='true'][data-film-visible='true'] .hero-motion-surface {
-  animation-play-state: running;
-  will-change: transform;
-}
-@keyframes hero-ambient-camera {
-  from { transform: translate3d(-.35%, .2%, 0) scale(1.025); }
-  to { transform: translate3d(.35%, -.2%, 0) scale(1.045); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .cinematic-stage[data-motion] .hero-motion-surface { animation: none; transform: none; will-change: auto; }
-}
-@media print { .hero-motion-surface { animation: none !important; transform: none !important; } }
