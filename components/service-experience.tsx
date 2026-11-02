@@ -57,7 +57,7 @@ export function ServiceExperience({ index, lang }: { index: number; lang: HdLang
       <div className={s.switches}><button type="button" aria-pressed={step===0} onClick={()=>setStep(0)}><Search size={15}/>{t.search}</button><button type="button" aria-pressed={step===1} onClick={()=>setStep(1)}><Sparkles size={15}/>{t.ai}</button></div>
       <div className={s.query}><Search size={16} aria-hidden/><span>{t.query}</span></div>
       <div className={s.signal} aria-hidden><i/><i/><i/><i/></div>
-      <div key={step} className={s.answer}><span className={s.source}>{step===0?'hareb.digital':t.source}</span><h3>{step===0?t.result:t.ai}</h3><p>{step===0?t.intro:t.answer}</p><span className={s.answerLink}>{step===0?t.project:t.source}<ArrowUpRight size={14} aria-hidden/></span></div>
+      <div key={step} className={s.answer}><span className={s.source}>{step===0?'hareb.digital':t.source}</span><h3>{step===0?t.result:t.ai}</h3><p>{t.answer}</p><span className={s.answerLink}>{step===0?t.project:t.source}<ArrowUpRight size={14} aria-hidden/></span></div>
     </div>}
   </div>
 }
