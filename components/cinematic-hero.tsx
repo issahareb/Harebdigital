@@ -74,6 +74,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
           </div>
         </div>
         <div className="hero-artwork">
+          <div className="hero-motion-surface">
           <picture>
             <source
               type="image/avif"
@@ -93,6 +94,7 @@ export function CinematicHero({ lang, copy: t }: { lang: HdLang; copy: HeroCopy 
             />
           </picture>
           <ScrollFilm enabled={active} />
+          </div>
         </div>
         <div className="journey-caption" aria-hidden="true">
           {t.heroChapters.map((chapter, i) => (

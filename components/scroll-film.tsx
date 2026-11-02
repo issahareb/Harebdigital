@@ -156,21 +156,27 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
     const schedule = () => {
       if (!raf) raf = requestAnimationFrame(update)
     }
+    const syncVisibility = () => {
+      // The compositor keeps a gentle ambient camera drift alive even when
+      // scroll is idle. Pause it when hidden/offscreen, without a JS paint loop.
+      stage.dataset.filmVisible = String(visible && !document.hidden)
+      schedule()
+    }
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
-      schedule()
+      syncVisibility()
     })
     observer.observe(stage)
     window.addEventListener('scroll', schedule, { passive: true })
     window.addEventListener('resize', schedule)
-    document.addEventListener('visibilitychange', schedule)
+    document.addEventListener('visibilitychange', syncVisibility)
     return () => {
       alive = false
       cancelAnimationFrame(raf)
       observer.disconnect()
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', schedule)
-      document.removeEventListener('visibilitychange', schedule)
+      document.removeEventListener('visibilitychange', syncVisibility)
       captions.forEach(caption => {
         caption.style.removeProperty('--caption-opacity')
         caption.style.removeProperty('--caption-enter')
@@ -184,6 +190,7 @@ export function ScrollFilm({ enabled }: { enabled: boolean }) {
       stage.style.removeProperty('--hero-expansion')
       stage.style.removeProperty('--hero-handoff')
       delete stage.dataset.introHidden
+      delete stage.dataset.filmVisible
       stage.dataset.chapter = '0'
       if (header) {
         header.style.removeProperty('--hero-cover')
