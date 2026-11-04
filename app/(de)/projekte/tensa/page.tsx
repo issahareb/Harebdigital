@@ -27,7 +27,7 @@ export default function Page() {
         <li>PayPal, Klarna, Apple Pay, Google Pay, Vorkasse und Kauf auf Rechnung</li>
         <li>Bestellbestätigungen per E-Mail sowie Informationen zu Versand und Bestellstatus</li>
         <li>Verwaltung von Produkten, Lagerbeständen, Bestellungen und Rabattcodes</li>
-      </ul><p>Diese Funktionen werden aktuell aufgebaut. Die Anbindung und Freischaltung der Zahlungsarten gehören zur weiteren Umsetzung vor dem Launch.</p></section>
+      </ul><p>Diese Funktionen werden aktuell aufgebaut. Die Anbindung und Freischaltung der Zahlungsarten gehören zur weiteren Umsetzung vor dem Launch.</p><p>Du planst deinen eigenen Auftritt? Hier findest du den <Link className="text-link" href="/leistungen/neue-website/">Leistungsumfang für eine neue Website aus Essen</Link>.</p></section>
     </div>
     <div className="mt-12 flex flex-wrap items-center gap-6"><Link className="button button-dark" href="/kontakt/?leistung=webanwendungen">Eigenen Onlineshop besprechen ↗</Link><Link className="text-link" href="/#arbeiten">Weitere Arbeiten ansehen ↗</Link></div>
   </HdUnterseite>

@@ -193,7 +193,9 @@ export function HdLanding({ lang }: { lang: HdLang }) {
                 <Lines text={t.servicesTitle} />
               </h2>
             </div>
-            <p>{t.servicesIntro}</p>
+            <p>{lang === 'de' ? <>
+              <Link className="text-link" href="/leistungen/neue-website/" data-track-id="home-local-webdesign">Webdesign und Webentwicklung für Unternehmen in Essen</Link>, Bonn und darüber hinaus. Dazu kommen Webanwendungen, Automatisierung und Social-Media-Inhalte, passend zu deinem Projekt.
+            </> : t.servicesIntro}</p>
           </div>
           <div className="service-list">
             {original.leistungen.punkte.map((service, i) => (

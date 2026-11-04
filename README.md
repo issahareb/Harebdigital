@@ -22,7 +22,7 @@ node scripts/check-scroll-film.mjs
 npm run pruefen
 ```
 
-`SEO_BASE_URL` kann für `check:seo` einen anderen Testserver setzen. Der Test prüft die tatsächlich ausgelieferte HTML-Ausgabe aller 18 indexierbaren Seiten: Status, Sprache, genau eine H1, individuelle Titel, Beschreibungen, Canonicals, wechselseitige hreflang-Links, Open Graph, sichtbare FAQ-Inhalte, JSON-LD, Sitemap, Robots, interne Links, Fehlerseiten und Asset-Caching.
+`SEO_BASE_URL` kann für `check:seo` einen anderen Testserver setzen. Der Test prüft die tatsächlich ausgelieferte HTML-Ausgabe der 21 mehrsprachigen Seiten: Status, Sprache, genau eine H1, individuelle Titel, Beschreibungen, Canonicals, wechselseitige hreflang-Links, Open Graph, sichtbare FAQ-Inhalte und JSON-LD. Auf den fünf ausschließlich deutschen Leistungs- und Projektseiten prüft er zusätzlich Status, Sprache, Canonical und die Sprachschalter: EN und ES führen auf vorhandene Startseiten. Sitemap, Robots, interne Links, Fehlerseiten und Asset-Caching werden ebenfalls geprüft.
 
 ## Adressen und Sprachen
 
@@ -34,7 +34,7 @@ npm run pruefen
 
 `app/(de)` und `app/[lang]` haben eigene Root-Layouts mit korrektem HTML-Sprachattribut. Die Adresse legt die Sprache fest; Cookies, Geolocation und Accept-Language ändern den Seiteninhalt nicht. Alte deutsche Leistungsadressen bleiben erhalten. Impressum und Datenschutz bleiben deutsch und tragen `noindex, follow`; sie sind crawlbar, damit dieses Signal gelesen werden kann.
 
-Die Sitemap enthält nur die 18 indexierbaren Seiten und deren Sprachen. Kein künstliches `lastmod` bei jedem Build. `public/llms.txt` ist eine zusätzliche Navigationshilfe, kein Ranking-Signal und keine AEO-Garantie.
+Die Sitemap enthält die 21 mehrsprachigen Seiten und die fünf ausschließlich deutschen Leistungs- und Projektseiten. Kein künstliches `lastmod` bei jedem Build. `public/llms.txt` ist eine zusätzliche Navigationshilfe, kein Ranking-Signal und keine AEO-Garantie.
 
 ## Gestaltung und Animation
 
