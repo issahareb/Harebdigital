@@ -44,7 +44,7 @@ export function SiteNavigation({ lang, copy: t }: {
   const scrollLocked = useRef(false)
   const path = pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/'
   const isLegal = /^\/(impressum|datenschutz)/.test(path)
-  const germanOnly = /^\/(leistungen\/(social-media-marketing|webanwendungen|motion-design)|projekte\/taxi-bb-essen)\/?$/.test(path)
+  const germanOnly = /^\/(leistungen\/(social-media-marketing|webanwendungen|motion-design)|projekte\/(taxi-bb-essen|tensa))\/?$/.test(path)
   const home = localizedPath(lang)
   const links = [
     { href: `${home}#arbeiten`, label: t.nav[0] },

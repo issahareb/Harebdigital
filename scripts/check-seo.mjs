@@ -12,6 +12,13 @@ const paths = [
   '/leistungen/gefunden-werden/',
 ]
 const languages = ['de', 'en', 'es']
+const germanOnlyPaths = [
+  '/leistungen/social-media-marketing/',
+  '/leistungen/webanwendungen/',
+  '/leistungen/motion-design/',
+  '/projekte/taxi-bb-essen/',
+  '/projekte/tensa/',
+]
 const at = (lang, path) => (lang === 'de' ? path : `/${lang}${path}`)
 const attr = (tag, key) => tag.match(new RegExp(`\\b${key}="([^"]*)"`))?.[1]
 const decode = (value) =>
@@ -110,13 +117,39 @@ for (const lang of languages) {
     checked++
   }
 }
+// Standalone German pages must never link to translations that do not exist.
+for (const path of germanOnlyPaths) {
+  const response = await fetch(`${base}${path}`)
+  assert.equal(response.status, 200, path)
+  const html = await response.text()
+  assert.equal(html.match(/<html[^>]*lang="([^"]+)"/)?.[1], 'de', `${path}: lang`)
+  const links = [...html.matchAll(/<link\b[^>]*>/g)].map(([tag]) => ({
+    rel: attr(tag, 'rel'), href: decode(attr(tag, 'href')),
+  }))
+  assert.equal(links.find(link => link.rel === 'canonical')?.href, `${origin}${path}`, `${path}: canonical`)
+  for (const [, tag] of html.matchAll(/(<a\b[^>]*>)/g)) {
+    const href = decode(attr(tag, 'href'))
+    if (href?.startsWith('/') && !href.startsWith('//'))
+      internal.add(href.split('#')[0].split('?')[0] || '/')
+  }
+  const languageNavs = [...html.matchAll(/<nav\b[^>]*class="language-nav[^\"]*"[^>]*>(.*?)<\/nav>/gs)]
+  assert(languageNavs.length > 0, `${path}: language navigation exists`)
+  for (const [, nav] of languageNavs) {
+    const anchors = [...nav.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag)
+    for (const lang of ['en', 'es']) {
+      const link = anchors.find(tag => attr(tag, 'hrefLang') === lang || attr(tag, 'hreflang') === lang)
+      assert.equal(decode(attr(link || '', 'href')), `/${lang}/`, `${path}: ${lang} falls back to an existing homepage`)
+    }
+  }
+  checked++
+}
 for (const path of internal)
   assert.equal((await fetch(`${base}${path}`)).status, 200, `Broken internal link: ${path}`)
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text()
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => decode(m[1]))
 const expectedUrls = [
   ...languages.flatMap((lang) => paths.map((path) => `${origin}${at(lang, path)}`)),
-  ...['/leistungen/social-media-marketing/', '/leistungen/webanwendungen/', '/leistungen/motion-design/', '/projekte/taxi-bb-essen/', '/projekte/tensa/'].map((path) => `${origin}${path}`),
+  ...germanOnlyPaths.map((path) => `${origin}${path}`),
 ]
 assert.equal(sitemapUrls.length, new Set(sitemapUrls).size, 'No duplicate sitemap URLs')
 assert.deepEqual(new Set(sitemapUrls), new Set(expectedUrls), 'All public landing pages in sitemap')

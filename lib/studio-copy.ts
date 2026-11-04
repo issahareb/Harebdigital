@@ -58,7 +58,7 @@ export type StudioCopy = {
 
 export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
-    title: 'Webdesign Essen | Websites für Unternehmen | Hareb Digital',
+    title: 'Webdesign Essen | Issa Hareb · Hareb Digital',
     description:
       'Individuelles Webdesign aus Essen: Websites, Relaunch, SEO und Automatisierung für Unternehmen. Direkter Kontakt zu Issa Hareb. Auch in Sankt Augustin und Bonn.',
     skip: 'Zum Inhalt springen',
@@ -162,7 +162,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Plane dein Webdesign-, SEO- oder Automatisierungsprojekt direkt mit Issa Hareb. Kontakt per E-Mail und Projektanfrage für Unternehmen in Essen, Bonn und darüber hinaus.',
   },
   en: {
-    title: 'Web Design, SEO & Automation | Hareb Digital',
+    title: 'Web Design, SEO & Automation | Issa Hareb · Hareb Digital',
     description:
       'Web design, SEO, AEO and automation for businesses in Essen, Bonn and beyond. Work directly with Issa Hareb on clear, effective digital solutions.',
     skip: 'Skip to content',
@@ -264,7 +264,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       'Plan your web design, SEO or automation project with Issa Hareb. Contact Hareb Digital by email or project enquiry, from Bonn, Essen or anywhere else.',
   },
   es: {
-    title: 'Diseño web, SEO y automatización | Hareb Digital',
+    title: 'Diseño web, SEO y automatización | Issa Hareb · Hareb Digital',
     description:
       'Diseño web, SEO, AEO y automatización para empresas de Essen, Bonn y otros lugares. Trabaja directamente con Issa Hareb en tu proyecto digital.',
     skip: 'Saltar al contenido',
