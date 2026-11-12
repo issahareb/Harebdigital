@@ -22,6 +22,8 @@ import { ScrollAccent } from './scroll-accent'
 import { VISUAL_COPY } from '@/lib/service-visuals'
 import { ServiceVisual } from './service-visual'
 import { WebsiteShowcase } from './website-showcase'
+import { ExperienceThread, GoalExperience, LiveDesignLab, ProjectConfigurator } from './interactive-studio'
+import { HandwerkerDemo } from './handwerker-demo'
 
 function Lines({ text }: { text: string }) {
   return (
@@ -41,7 +43,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
   return (
     <>
       <SiteHeader lang={lang} />
-      <main id="main" className="home-compact">
+      <main id="main" className="home-compact" style={{ position: 'relative' }}>
         <CinematicHero
           lang={lang}
           copy={{
@@ -65,6 +67,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
             </span>
           ))}
         </div>
+        {lang === 'de' && <GoalExperience />}
         <section
           id="anspruch"
           className="approach wrap section-space"
@@ -86,6 +89,7 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           </div>
         </section>
         <VoiceOffer lang={lang} compact />
+        {lang === 'de' && <HandwerkerDemo />}
         <section data-track-section="hd-landing-section-1" id="arbeiten" className="work-section section-space" aria-labelledby="work-title">
           <div className="wrap">
             <div className="section-heading" data-reveal>
@@ -221,8 +225,11 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{lang === 'de' ? 'Mehr erfahren' : service.title} <InlineArrow size={16} aria-hidden /></Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
+        {lang === 'de' && <LiveDesignLab />}
         <WebsiteShowcase lang={lang} />
+        {lang === 'de' && <ProjectConfigurator />}
         <HomeMore lang={lang} />
+        {lang === 'de' && <ExperienceThread />}
       </main>
       <SiteFooter lang={lang} />
       <StudioSchema lang={lang} />

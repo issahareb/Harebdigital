@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import type { HdTexte } from '@/lib/hd-texte'
+import { readProjectBrief } from '@/lib/project-brief'
 
 /** Sends through our own API. A success message requires provider acceptance. */
 export function Anfrageformular({
@@ -33,7 +34,7 @@ export function Anfrageformular({
     '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 190 € einmalig.\n\nMein Projekt: ',
     '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Website für 590 € einmalig mit laufender Betreuung. Bitte nennen Sie mir auch die monatlichen Kosten und Bedingungen.\n\nMein Projekt: ',
   }
-  const [nachricht, setNachricht] = useState(offerMessages[parameter.get('angebot') ?? ''] ?? '')
+  const [nachricht, setNachricht] = useState(readProjectBrief(parameter.get('projekt')) || offerMessages[parameter.get('angebot') ?? ''] || '')
 
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [error, setError] = useState('')
