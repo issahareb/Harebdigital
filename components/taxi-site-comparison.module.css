@@ -1,0 +1,17 @@
+.root { min-width:0; padding-top:18px; color:var(--ink); }
+.example { display:block; color:var(--muted); font-size:9px; letter-spacing:.07em; margin-bottom:16px; text-transform:uppercase; }
+.compare { position:relative; width:100%; aspect-ratio:1363/936; overflow:hidden; background:#3cabf0; isolation:isolate; }
+.archived,.current { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.archiveFrame { display:block; position:absolute; left:0; top:0; width:1363px; height:936px; border:0; transform-origin:top left; pointer-events:none; }
+.currentImage { object-fit:cover; object-position:top left; }
+.labels { position:absolute; inset:12px 12px auto; display:flex; justify-content:space-between; pointer-events:none; }
+.labels span { background:var(--paper); color:var(--ink); padding:5px 9px; font-size:10px; }
+.divider { position:absolute; top:0; bottom:0; width:2px; background:var(--accent); pointer-events:none; transform:translateX(-1px); }
+.divider > span { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:grid; place-items:center; width:42px; height:48px; background:var(--accent); color:var(--ink); box-shadow:0 2px 12px #0003; }
+.control { position:absolute; inset:0; margin:0; padding:0; width:100%; height:100%; cursor:ew-resize; opacity:0; z-index:2; }
+.compare:focus-within { outline:2px solid var(--ink); outline-offset:4px; }
+.root .instruction { font-size:11px; margin:12px 0 0; color:var(--ink); line-height:1.5; }
+.root .source { font-size:10px; color:var(--muted); line-height:1.6; margin:7px 0 0; max-width:48em; }
+.project { position:relative; z-index:3; display:inline-flex; align-items:center; gap:8px; min-height:44px; margin-top:3px; font-size:11px; text-decoration:underline; text-underline-offset:3px; }
+.project:focus-visible { outline:2px solid var(--ink); outline-offset:4px; }
+@media(max-width:600px) { .labels { inset:8px 8px auto; } .divider > span { width:34px; height:42px; } }

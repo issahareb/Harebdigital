@@ -97,6 +97,15 @@ const nextConfig = {
         ],
       },
       { source: '/studio/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
+      {
+        // Only this inert, scriptless archive can be framed by our own comparison.
+        source: '/projekte/taxi-vergleich/beige-20230123/index.html',
+        headers: [
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+          { key: 'Content-Security-Policy-Report-Only', value: CSP_NUR_MELDEN.replace("frame-ancestors 'none'", "frame-ancestors 'self'") },
+        ],
+      },
       { source: '/videos/:path*', headers: [{ key: 'Cache-Control', value: UNVERAENDERLICH }] },
       // Project case-study HTML must refresh after deployments. Only media assets
       // with versioned filenames receive the long-lived asset cache policy.

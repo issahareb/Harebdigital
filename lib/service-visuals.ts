@@ -5,19 +5,19 @@ export const VISUAL_COPY = {
   de: {
     labels: [
       'Konzept · Webentwicklung',
-      'Gestaltung · Webdesign',
+      'Kundenprojekt · Website-Relaunch',
       'Konzept · Automatisierung',
       'Konzept · Suche & Antworten',
     ],
     captions: [
       'Vom Entwurf zur fertigen Website.',
-      'Vom alten Auftritt zum neuen Erlebnis · Konzeptillustration.',
+      'Taxi Beige und Taxi B&B Essen im direkten Vergleich.',
       'Von der Anfrage bis zur Bestätigung.',
       'Klare Angaben. Verständliche Antworten.',
     ],
     descriptions: [
       'Konzeptillustration zur Webentwicklung: Seitenstruktur und der fiktive Website-Entwurf FORM auf Desktop und Handy.',
-      'Konzeptillustration eines Website-Redesigns: links die ältere, überladene Website des fiktiven Studios FORM; rechts ein modernes, klares Layout mit passender Smartphone-Ansicht.',
+      'Website-Relaunch für Taxi B&B Essen: rekonstruierter Archivstand von Taxi Beige vom 23. Januar 2023 und Aufnahme der TaxiBB-Website vom 13. November 2026.',
       'Konzeptillustration eines Ablaufs von der Anfrage über die persönliche Freigabe und den Kalendereintrag bis zur E-Mail-Bestätigung.',
       'Konzeptillustration für SEO und AEO: Seiteninhalte verbinden Suchergebnisse mit einer Antwort samt Quellenangabe.',
     ],
@@ -32,19 +32,19 @@ export const VISUAL_COPY = {
   en: {
     labels: [
       'Concept · Web development',
-      'Creative design · Web design',
+      'Client project · Website redesign',
       'Concept · Automation',
       'Concept · Search & answers',
     ],
     captions: [
       'From design to a finished website.',
-      'From an old website to a fresh experience · Concept illustration.',
+      'Compare Taxi Beige and Taxi B&B Essen directly.',
       'From enquiry to confirmation.',
       'Clear information. Useful answers.',
     ],
     descriptions: [
       'Web development concept: page structure and the fictional FORM website design on desktop and mobile.',
-      'Website redesign concept: the fictional FORM studio’s older, crowded website on the left and a modern, clear layout with a matching mobile view on the right.',
+      'Taxi B&B Essen website redesign: reconstructed Taxi Beige archive dated 23 January 2023 and TaxiBB captured 13 November 2026.',
       'Workflow concept showing an enquiry, human approval, a calendar entry and an email confirmation.',
       'SEO and AEO concept: page content connects search results to an answer with a source citation.',
     ],
@@ -59,19 +59,19 @@ export const VISUAL_COPY = {
   es: {
     labels: [
       'Concepto · Desarrollo web',
-      'Creatividad · Diseño web',
+      'Proyecto real · Rediseño web',
       'Concepto · Automatización',
       'Concepto · Búsqueda y respuestas',
     ],
     captions: [
       'Del diseño a una web terminada.',
-      'De una web antigua a una nueva experiencia · Ilustración conceptual.',
+      'Compara Taxi Beige y Taxi B&B Essen directamente.',
       'De la solicitud a la confirmación.',
       'Información clara. Respuestas útiles.',
     ],
     descriptions: [
       'Concepto de desarrollo web: estructura de página y diseño de la web ficticia FORM en escritorio y móvil.',
-      'Concepto de rediseño web: a la izquierda, la web antigua y recargada del estudio ficticio FORM; a la derecha, un diseño moderno y claro con su versión móvil.',
+      'Rediseño web de Taxi B&B Essen: reconstrucción de Taxi Beige del 23 de enero de 2023 y captura de TaxiBB del 13 de noviembre de 2026.',
       'Concepto de proceso: solicitud, aprobación de una persona, entrada en el calendario y confirmación por correo.',
       'Concepto de SEO y AEO: el contenido conecta resultados de búsqueda con una respuesta que cita su fuente.',
     ],
