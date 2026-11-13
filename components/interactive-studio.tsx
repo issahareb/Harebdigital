@@ -18,6 +18,9 @@ function SitePreview({ goal, design = 0, device = 'desktop', accent = true, name
   const [menu, setMenu] = useState(false)
   const [page, setPage] = useState<'start' | 'angebot' | 'kontakt'>('start')
   const [cart, setCart] = useState(0)
+  const [basketOpen, setBasketOpen] = useState(false)
+  const [previewDay, setPreviewDay] = useState(16)
+  const [previewTime, setPreviewTime] = useState('10:00')
   const item = goals.find(item => item.value === goal)!
   const appointments: Record<string, { title: string; label: string; tiles: string[] }> = {
     handwerk: { title: item.title, label: 'HANDWERK MIT WEITBLICK', tiles: ['Sanitär & Bad', 'Heizung & Klima', 'Elektro & Licht'] },
@@ -28,7 +31,7 @@ function SitePreview({ goal, design = 0, device = 'desktop', accent = true, name
   }
   const appointment = appointments[industry] || appointments.handwerk
   return <div className={s.previewViewport} data-device={device}>
-    <div className={s.previewSite} data-design={design} data-accent={accent}>
+    <div className={s.previewSite} data-goal={goal} data-design={design} data-accent={accent}>
       <div className={s.browserBar}><span><i /><i /><i /></span><span>dein-unternehmen.de</span><span>Konzept</span></div>
       <nav className={s.previewNav} aria-label="Navigation der Designvorschau"><span className={s.previewBrand}>{name}</span><button type="button" aria-label={menu ? 'Vorschaumenü schließen' : 'Vorschaumenü öffnen'} aria-expanded={menu} onClick={() => setMenu(!menu)}>{menu ? <X size={19} /> : <Menu size={19} />}</button></nav>
       {menu && <div className={s.previewMenu}>{(['start', 'angebot', 'kontakt'] as const).map((value, index) => <button type="button" key={value} onClick={() => { setPage(value); setMenu(false) }}><span>0{index + 1}</span>{value === 'start' ? 'Start' : value === 'angebot' ? 'Unser Angebot' : 'Kontakt'}<ArrowUpRight size={17} /></button>)}</div>}
@@ -38,10 +41,11 @@ function SitePreview({ goal, design = 0, device = 'desktop', accent = true, name
             <span className={s.previewEyebrow}>{goal === 'termine' ? appointment.label : goal === 'verkaufen' ? 'AUSGEWÄHLT. FÜR DEINEN ALLTAG.' : 'DEIN ANGEBOT. DEIN AUFTRITT.'}</span>
             <h3>{page === 'kontakt' ? 'Ein guter Anfang?\nEin Gespräch.' : page === 'angebot' ? goal === 'verkaufen' ? 'Weniger suchen.\nMehr entdecken.' : 'Passend zu dir.\nBis ins Detail.' : goal === 'termine' ? appointment.title : item.title}</h3>
             <p>{page === 'kontakt' ? 'Der nächste Schritt bleibt einfach. Stell dir hier den Kontakt zu deinem Unternehmen vor.' : item.body}</p>
-            {goal === 'verkaufen' ? <button className={s.previewCta} type="button" onClick={() => { setPage('angebot'); setCart(cart + 1) }}>{cart ? `${cart} im Demo-Warenkorb` : 'Produkt ausprobieren'}<ArrowUpRight size={17} /></button> : <a className={s.previewCta} href={goal === 'termine' ? '#handwerker-demo' : '#projekt-planen'}>{item.action}<ArrowUpRight size={17} /></a>}
+            {goal === 'verkaufen' ? <button className={s.previewCta} type="button" onClick={() => setBasketOpen(!basketOpen)}>Warenkorb · {cart}<ArrowUpRight size={17} /></button> : <a className={s.previewCta} href={goal === 'termine' ? '#handwerker-demo' : '#projekt-planen'}>{item.action}<ArrowUpRight size={17} /></a>}
             <div className={s.previewSculpture} aria-hidden><i /><i /><i /><span /></div>
           </div>
-          <div className={s.previewTiles}>{(goal === 'verkaufen' ? ['Objekt 01', 'Objekt 02', 'Objekt 03'] : goal === 'termine' ? appointment.tiles : ['Klarer Auftritt', 'Gute Orientierung', 'Direkter Kontakt']).map((label, index) => <button type="button" key={label} onClick={() => setPage(index === 2 ? 'kontakt' : 'angebot')}><span>0{index + 1}</span>{label}<ArrowUpRight size={15} /></button>)}</div>
+          {goal === 'verkaufen' ? <div className={s.shopGrid}>{['Contour Vase', 'Studio Tablett', 'Arc Leuchte'].map((product, index) => <article key={product}><div className={s.productObject} data-product={index}><i /></div><span>OBJEKT / 0{index + 1}</span><h4>{product}</h4><div><strong>{[49, 39, 89][index]} €</strong><button type="button" onClick={() => { setCart(cart + 1); setBasketOpen(true) }} aria-label={`${product} zum Demo-Warenkorb hinzufügen`}>Hinzufügen<ArrowUpRight size={13} /></button></div></article>)}</div> : goal === 'termine' ? <div className={s.miniBooking}><strong>Dein nächster freier Moment.</strong><span>Beispielwoche · Wähle Tag und Zeit</span><div>{[16,17,18,19,20].map((day,index) => <button type="button" key={day} aria-pressed={previewDay === day} onClick={() => setPreviewDay(day)}><small>{['Mo','Di','Mi','Do','Fr'][index]}</small>{day}</button>)}</div><div>{['10:00','11:30','14:00'].map(time => <button type="button" key={time} aria-pressed={previewTime === time} onClick={() => setPreviewTime(time)}>{time}</button>)}</div><p aria-live="polite">Tag {previewDay} · {previewTime} Uhr ausgewählt</p><a href="#handwerker-demo">Komplette Buchung durchspielen<ArrowRight size={14} /></a></div> : <div className={s.previewTiles}>{['Angebot entdecken', 'Projekt beschreiben', 'Kontakt aufnehmen'].map((label,index) => <button type="button" key={label} onClick={() => setPage(index === 2 ? 'kontakt' : 'angebot')}><span>0{index + 1}</span>{label}<ArrowUpRight size={15} /></button>)}</div>}
+          {goal === 'verkaufen' && basketOpen && <div className={s.miniBasket} role="status"><strong>Dein Warenkorb <span>{cart} {cart === 1 ? 'Artikel' : 'Artikel'}</span></strong><p>{cart ? 'Deine Auswahl ist im Beispiel-Warenkorb.' : 'Entdecke die Kollektion und füge ein Objekt hinzu.'}</p><span>Shop-Konzept · keine Bestellung</span><button type="button" onClick={() => setBasketOpen(false)}>Weiter entdecken<ArrowRight size={14} /></button></div>}
           <div className={s.previewFoot}><span>Individuell gedacht. Einfach bedient.</span><button type="button" onClick={() => setPage('start')}>Zur Startansicht <ArrowRight size={14} /></button></div>
         </motion.div></AnimatePresence>
       </div>
@@ -54,7 +58,7 @@ export function GoalExperience() {
   return <section id="website-erleben" className={`${s.section} wrap section-space`} aria-labelledby="experience-title" data-track-section="website-erleben" data-thread-stop>
     <div className={s.sectionTop}><span className="eyebrow">Deine Website kann mehr.</span><span className={s.liveLabel}><i />Antippen & ausprobieren</span></div>
     <div className={s.experienceGrid}>
-      <div className={s.experienceCopy}><h2 id="experience-title">Was soll deine Website<br />für dich erledigen<span>?</span></h2><p>Du wählst das Ziel. Dein Auftritt nimmt Form an.</p>
+      <div className={s.experienceCopy}><h2 id="experience-title">Was soll deine Website<br />{' '}für dich erledigen<span>?</span></h2><p>Du wählst das Ziel. Dein Auftritt nimmt Form an.</p>
         <div className={s.goalChoices} aria-label="Ziel deiner Website">{goals.map((item, index) => <button key={item.value} type="button" aria-pressed={goal === item.value} onClick={() => setGoal(item.value)} data-track-id={`experience-goal-${item.value}`}><span>0{index + 1}</span>{item.label}<ArrowUpRight size={19} /></button>)}</div>
         <p className={s.quiet}>Bedienbares Beispielkonzept. Dein Projekt bekommt seinen eigenen Charakter.</p>
       </div>

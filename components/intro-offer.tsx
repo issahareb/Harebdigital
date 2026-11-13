@@ -4,7 +4,7 @@ import { ArrowUpRight as InlineArrow } from 'lucide-react'
 
 import { useRef, useState, type KeyboardEvent } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CalendarDays, Layers3, MousePointer2, Sparkles } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CalendarDays, Layers3, MousePointer2, Sparkles, Menu } from 'lucide-react'
 import styles from './intro-offer.module.css'
 
 const packages = [
@@ -31,7 +31,7 @@ function OfferPreview({ index }: { index: number }) {
 
   return <div className={`${styles.sitePreview} ${index === 1 ? styles.companyPreview : ''}`} aria-hidden="true">
     <div className={styles.browserBar}><i /><i /><i /><span>dein-unternehmen.de</span><ArrowUpRight size={12} /></div>
-    <div className={styles.miniNav}><span className={styles.previewLogo}>h<span>.</span></span><span>{index === 0 ? 'Dein nächster großer Schritt' : 'Start    Leistungen    Kontakt'}</span><span className={styles.miniMenu}>☰</span></div>
+    <div className={styles.miniNav}><span className={styles.previewLogo}>h<span>.</span></span><span>{index === 0 ? 'Dein nächster großer Schritt' : 'Start    Leistungen    Kontakt'}</span><span className={styles.miniMenu}><Menu size={18} aria-hidden /></span></div>
     <div className={styles.miniHero}>
       <span className={styles.miniLabel}>{index === 0 ? 'FÜR IDEEN, DIE MEHR VERDIENEN.' : index === 1 ? 'DEIN UNTERNEHMEN. DEIN CHARAKTER.' : 'GUTE IDEEN WACHSEN WEITER.'}</span>
       <strong>{index === 0 ? <>Kleine Seite.<br />Große Wirkung<span>.</span></> : index === 1 ? <>Ein Auftritt,<br />der bleibt<span>.</span></> : <>Bereit für<br />dein Morgen<span>?</span></>}</strong>

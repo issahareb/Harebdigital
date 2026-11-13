@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import series from '@/data/performance-20261016.json'
 import styles from './taxi-performance-case.module.css'
 
@@ -19,7 +20,7 @@ export function TaxiPerformanceCase() {
     <h2 id="performance-case-title">Andere reden über Qualität.<br />Wir messen sie.</h2>
     <p className={styles.intro}>Ein konkreter Optimierungsschritt an der veröffentlichten Website: kleinere Bilddateien, weniger JavaScript beim Start und Funktionen, die erst bei Bedarf rechnen. Die Gestaltung und die Wege zur Anfrage bleiben erhalten.</p>
     <dl className={styles.highlights}>
-      <div><dt>Mobile Performance</dt><dd><span>{mobile.before.performance.median}</span><span aria-label="auf">→</span>{mobile.after.performance.median}</dd><p>Median aus je drei Läufen · von 100 Punkten</p></div>
+      <div><dt>Mobile Performance</dt><dd><span>{mobile.before.performance.median}</span><span aria-label="auf"><ArrowRight size={17} aria-hidden /></span>{mobile.after.performance.median}</dd><p>Median aus je drei Läufen · von 100 Punkten</p></div>
       <div><dt>Größter Inhalt auf Mobile</dt><dd>{seconds(mobile.after.lcp.median)}</dd><p>Vor dieser Optimierung: {seconds(mobile.before.lcp.median)}</p></div>
       <div><dt>Weniger Daten beim Einstieg</dt><dd>{reduction} %</dd><p>Vergleich der mobilen Medianwerte</p></div>
     </dl>
@@ -37,8 +38,8 @@ export function TaxiPerformanceCase() {
     <details className={styles.method}><summary>So wurde gemessen</summary>
       <p>Am {series.localDate} mit Lighthouse {series.lighthouseVersions.join(', ')} und Chromium 134: drei Läufe je Geräteprofil vor und nach der Änderung, nacheinander, mit frischen Browserprofilen und den Standardprofilen für Mobile und Desktop. Die Startseite wurde jeweils über https://www.taxibbessen.de/ aufgerufen. Die Tabelle zeigt den Median, also den mittleren der drei Werte.</p>
       <p>Die Messungen stammen aus derselben Cloud-Testumgebung mit Netzwerkproxy und simulierter Drosselung. Gerät, Netzwerk und Serverantwort können andere Ergebnisse liefern. Das sind Labormessungen, keine Besucherdaten. TBT ersetzt keinen im Alltag gemessenen INP. „Vorher“ bezieht sich auf diese Optimierungsrunde, nicht auf den ursprünglichen Relaunch.</p>
-      <p>Geprüfte Quellstände: {series.revisions.taxi.before.slice(0, 7)} → {series.revisions.taxi.after.slice(0, 7)}. Das Archiv enthält alle 24 Berichte der TaxiBB- und Hareb-Digital-Messreihe, Einzelwerte, Zeitstempel, Einstellungen und Prüfsummen. Ein Vergleich mit anderen Anbietern ist nicht Bestandteil dieser Fallstudie.</p>
-      <a className="text-link" href="/studio/evidence/lighthouse-20261016.zip" download>Messberichte und Methode herunterladen ↓</a>
+      <p>Geprüfte Quellstände: {series.revisions.taxi.before.slice(0, 7)} <ArrowRight size={17} aria-hidden /> {series.revisions.taxi.after.slice(0, 7)}. Das Archiv enthält alle 24 Berichte der TaxiBB- und Hareb-Digital-Messreihe, Einzelwerte, Zeitstempel, Einstellungen und Prüfsummen. Ein Vergleich mit anderen Anbietern ist nicht Bestandteil dieser Fallstudie.</p>
+      <a className="text-link" href="/studio/evidence/lighthouse-20261016.zip" download>Messberichte und Methode herunterladen <ArrowDown size={17} aria-hidden /></a>
     </details>
   </section>
 }

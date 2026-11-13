@@ -29,8 +29,8 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
   const video = useRef<HTMLVideoElement>(null)
   const screen = useRef<HTMLDivElement>(null)
   const [playing, setPlaying] = useState(false)
-  const [muted, setMuted] = useState(false)
-  const preferredMuted = useRef(false)
+  const [muted, setMuted] = useState(true)
+  const preferredMuted = useRef(true)
   const playAttempt = useRef(0)
   const [decoded, setDecoded] = useState(false)
   const userPaused = useRef(false)
@@ -76,7 +76,7 @@ export function MotionFeature({ lang }: { lang: HdLang }) {
     const observer = new IntersectionObserver(([entry]) => {
       inView.current = entry.isIntersecting && entry.intersectionRect.width > 0 && entry.intersectionRect.height > 0
       sync()
-    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    }, { threshold: .01, rootMargin: `-${Math.round(innerHeight * .25)}px 0px -${Math.round(innerHeight * .25)}px 0px` })
     observer.observe(area)
     document.addEventListener('visibilitychange', sync)
     reduced.addEventListener('change', sync)

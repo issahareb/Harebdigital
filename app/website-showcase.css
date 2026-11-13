@@ -9,7 +9,7 @@
   color: var(--ink);
   margin-block: 28px 0;
 }
-.showcase-surround { display: none; position: fixed; inset: 0; background: #070b08; opacity: calc(var(--showcase-focus) * .78); pointer-events: none; z-index: 55; }
+.showcase-surround { display: block; position: fixed; inset: 0; background: #070b08; opacity: calc(var(--showcase-focus) * .78); pointer-events: none; z-index: 55; }
 .showcase-stage {
   position: relative;
   z-index: 60;
@@ -115,6 +115,13 @@
   .showcase-card:not([data-active='true']) { --clip-focus: .4; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .showcase-surround { display: none; }
+  .showcase-surround { display: block; }
   .showcase-media video { transition: none; }
 }
+
+/* The fixed backdrop is below the elevated gallery and dims the surrounding page. */
+.website-showcase { z-index: 70; }
+.showcase-stage { background: color-mix(in srgb,var(--paper) 96%,transparent); }
+/* Keep only the content above the backdrop, allowing the surrounding stage to darken too. */
+.showcase-stage { background:transparent; color:color-mix(in srgb,var(--ink),#f3f1eb calc(var(--showcase-focus) * 100%)); }
+.showcase-heading > p,.showcase-number,.showcase-caption > span,.showcase-caption > a { color:color-mix(in srgb,var(--muted),#d7dccf calc(var(--showcase-focus) * 100%)); }

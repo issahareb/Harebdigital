@@ -1,3 +1,4 @@
+import { CenteredVideo } from './centered-video'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import type { HdLang } from '@/lib/hd-texte'
@@ -36,10 +37,10 @@ const COPY = {
 export function TensaVideo({ lang = 'de' }: { lang?: HdLang }) {
   const t = COPY[lang]
   return <figure className={styles.preview}>
-    <video controls playsInline preload="none" poster="/projekte/tensa/launch-poster.webp" width={884} height={438} aria-label={t.video}>
+    <CenteredVideo controls playsInline preload="none" poster="/projekte/tensa/launch-poster.webp" width={884} height={438} aria-label={t.video}>
       <source src="/projekte/tensa/launch-einblick.mp4" type="video/mp4" />
       <a href="/projekte/tensa/launch-einblick.mp4">{t.video}</a>
-    </video>
+    </CenteredVideo>
     <figcaption>{t.caption}</figcaption>
   </figure>
 }

@@ -39,14 +39,15 @@ const copy = {
 export function VoiceOffer({ lang, compact = false }: { lang: HdLang; compact?: boolean }) {
   const t = copy[lang]
   const [channel, setChannel] = useState<'dashboard' | 'mail' | 'both'>('dashboard')
+  const [selectedRequest, setSelectedRequest] = useState<number | null>(null)
   const icons = [SlidersHorizontal, LayoutDashboard, Mail]
   return <section id="ki-telefonie" className={`${styles.section} wrap section-space`} aria-labelledby="ki-telefonie-title" data-track-section="ki-telefonie">
     <div className={styles.shell}>
       <div className={styles.copy}>
         <span className={styles.eyebrow}>{t.label}</span>
         <h2 id="ki-telefonie-title">{t.title}</h2>
-        <p className={styles.intro}>{compact ? t.features[0][1] : t.intro}</p>
-        {!compact && <ul className={styles.features}>{t.features.map(([title, detail], i) => { const Icon = icons[i]; return <li key={title}><Icon size={20} strokeWidth={1.5} /><div><h3>{title}</h3><p>{detail}</p></div></li> })}</ul>}
+        <p className={styles.intro}>{compact ? (lang === 'de' ? 'Anrufe annehmen. Anliegen verstehen. Rückrufe für dich vorbereiten.' : t.features[0][1]) : t.intro}</p>
+        {<ul className={styles.features}>{t.features.map(([title, detail], i) => { const Icon = icons[i]; return <li key={title}><Icon size={20} strokeWidth={1.5} /><div><h3>{title}</h3><p>{detail}</p></div></li> })}</ul>}
         <Link className={styles.cta} href={`${localizedPath(lang, '/kontakt/')}?leistung=automatisierung&angebot=ki-telefonie`} data-track-id="voice-business-enquiry">{t.cta}<ArrowUpRight size={19} /></Link>
         {compact ? <Link className={styles.more} href={`${localizedPath(lang, '/zusammenarbeit/')}#ki-telefonie`}>{lang === 'de' ? 'Mehr erfahren' : lang === 'en' ? 'Learn more' : 'Saber más'}<ArrowUpRight size={17} aria-hidden /></Link> : <p className={styles.scope}>{t.scope}</p>}
       </div>
@@ -55,9 +56,10 @@ export function VoiceOffer({ lang, compact = false }: { lang: HdLang; compact?: 
           <div className={styles.dashboardTop}><LayoutDashboard size={17} /><span>{t.enquiries}</span><small>{t.today}</small></div>
           <div className={styles.channelChoice} role="group" aria-label={t.routeLabel}>{(['dashboard', 'mail', 'both'] as const).map(value => <button key={value} type="button" aria-pressed={channel === value} onClick={() => setChannel(value)}>{t[value]}</button>)}</div>
           <div className={styles.previewContent}>
-            {channel !== 'mail' && <div className={styles.requestList}>{t.rows.map((title, index) => <div className={styles.request} key={title}><span className={styles.requestIcon}>{index === 2 ? <Check size={14} /> : <Phone size={14} />}</span><div><strong>{title}</strong><small>{t.times[index]}</small></div><span className={styles.status} data-state={index}>{[t.new, t.progress, t.done][index]}</span></div>)}</div>}
+            {channel !== 'mail' && <div className={styles.requestList}>{t.rows.map((title, index) => <button type="button" className={styles.request} key={title} aria-pressed={selectedRequest === index} onClick={() => setSelectedRequest(selectedRequest === index ? null : index)}><span className={styles.requestIcon}>{index === 2 ? <Check size={14} /> : <Phone size={14} />}</span><div><strong>{title}</strong><small>{t.times[index]}</small></div><span className={styles.status} data-state={index}>{[t.new, t.progress, t.done][index]}</span></button>)}</div>}
             {channel !== 'dashboard' && <div className={styles.email}><Mail size={21} /><div><strong>{t.emailTitle}</strong><p>{t.emailBody}</p></div><Check size={15} /></div>}
           </div>
+          {selectedRequest !== null && channel !== 'mail' && <div className={styles.requestDetail} aria-live="polite"><strong>{t.rows[selectedRequest]}</strong><p>{lang === 'de' ? ['Der Anrufer möchte den Aufbau einer neuen Unternehmenswebsite besprechen. Rückruf am Nachmittag gewünscht.', 'Eine Interessentin fragt nach Terminbuchung und automatisierten Bestätigungen für ihren Betrieb.', 'Ein Anrufer hat seinen Wunschtermin und die passende Leistung hinterlassen.'][selectedRequest] : t.emailBody}</p><small>{t.today}</small></div>}
           <p className={styles.previewLabel}>{t.preview}</p>
         </div>
         <div className={styles.demo}>

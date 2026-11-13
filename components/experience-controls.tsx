@@ -29,7 +29,7 @@ export function AnimatedSelect({ label, value, options, onChange, placeholder = 
   }, [open])
   useEffect(() => { if (open) list.current?.querySelectorAll<HTMLButtonElement>('[role="option"]')[focused]?.focus({ preventScroll: true }) }, [open, focused])
 
-  const show = () => { setFocused(Math.max(0, options.findIndex(option => option.value === value && !option.disabled))); setOpen(true) }
+  const show = () => { const selected = options.findIndex(option => option.value === value && !option.disabled); setFocused(selected >= 0 ? selected : Math.max(0, options.findIndex(option => !option.disabled))); setOpen(true) }
   const move = (direction: number) => {
     for (let offset = 1; offset <= options.length; offset++) {
       const next = (focused + direction * offset + options.length) % options.length

@@ -3,6 +3,7 @@ import type { HdLang } from '@/lib/hd-texte'
 import { VISUAL_COPY } from '@/lib/service-visuals'
 import { IdeaReveal } from './idea-reveal'
 import { ServiceExperience } from './service-experience'
+import { DevelopmentPreview } from './development-preview'
 
 const SERVICE_IMAGES = [
   { src: '/studio/services-20261010/web-development-1200.webp', width: 1200, height: 900 },
@@ -28,13 +29,7 @@ export function ServiceVisual({
           <span>0{index + 1}</span>
           <span>{t.labels[index]}</span>
         </div>
-        {index > 0 ? <ServiceExperience index={index} lang={lang} /> : <div className="service-art-media">
-          <Image
-            {...source}
-            alt={t.descriptions[index]}
-            sizes="(max-width: 600px) 90vw, (max-width: 1000px) 85vw, 650px"
-          />
-        </div>}
+        {index > 0 ? <ServiceExperience index={index} lang={lang} /> : <DevelopmentPreview lang={lang} />}
         <div className="visual-caption">{t.captions[index]}</div>
       </div>
     </div>

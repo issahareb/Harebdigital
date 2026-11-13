@@ -1,3 +1,4 @@
+import { CenteredVideo } from './centered-video'
 import type { HdLang } from '@/lib/hd-texte'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
@@ -117,10 +118,10 @@ export function TikTokCaseStudy({ lang }: { lang: HdLang }) {
         </div>
         <div className="ttc-media">
           <div className="ttc-media-tag"><span className="ttc-record-dot" /> TIKTOK · 9:16 <span>00:32</span></div>
-          <video className="ttc-video" poster="/social/tesla-pov-frame.svg" controls playsInline preload="none" aria-label={t.videoAlt}>
+          <CenteredVideo className="ttc-video" poster="/social/tesla-pov-frame.svg" controls playsInline preload="none" aria-label={t.videoAlt}>
             <source src={videoSrc} type="video/mp4" />
             {lang === 'de' ? 'Dein Browser unterstützt die Videowiedergabe nicht.' : lang === 'en' ? 'Your browser does not support video playback.' : 'Tu navegador no admite la reproducción de vídeo.'}
-          </video>
+          </CenteredVideo>
           <span className="ttc-media-caption">{t.featured} / HAREB DIGITAL</span>
         </div>
       </div>

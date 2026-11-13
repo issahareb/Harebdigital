@@ -256,3 +256,79 @@
   .section *, .section *::before, .section *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .threadPoint { display: none; }
 }
+
+/* The first choice is an explicit, stable segmented control on every screen. */
+.experienceGrid { grid-template-columns: 1fr; gap: 28px; }
+.experienceCopy h2 { max-width: 900px; }
+.experienceCopy > .goalChoices { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-block: 25px 12px; }
+.experienceCopy > .goalChoices button { border: 1px solid #a4ae90; border-radius: 100px; background: #faf9f5; padding: 17px 20px; box-shadow: 0 2px 0 #20211e08; font-weight: 600; }
+.experienceCopy > .goalChoices button[aria-pressed=true] { background: var(--accent); border-color: #a0b967; box-shadow: inset 0 0 0 1px #a0b967; }
+.experienceCopy > .goalChoices button::after { content:'Wählen'; font-size:9px; color:var(--muted); }
+.experienceCopy > .goalChoices button[aria-pressed=true]::after { content:'Aktiv'; color:#3e5125; }
+.experienceCopy > .goalChoices button > span:first-child { display:none; }
+.experienceCopy > .goalChoices button svg { width:17px; }
+.previewStage { max-width:100%; padding:30px; }
+.previewStage .previewScroll { height:440px; }
+.previewStage .previewHero h3 { font-size:clamp(30px,5cqw,64px); }
+.previewSite[data-goal=verkaufen] .previewHero { background:#e8e5dc; min-height:220px; }
+.previewSite[data-goal=verkaufen] .previewSculpture { display:none; }
+.previewSite[data-goal=termine] .previewHero { min-height:240px; background:linear-gradient(130deg,#e2e9d5,#faf9f5); }
+.shopGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; padding:24px 6%; }
+.shopGrid article { min-width:0; }
+.shopGrid article > span { font-size:8px; letter-spacing:.12em; color:var(--muted); }
+.shopGrid h4 { font-size:14px; font-weight:500; margin:8px 0 14px; }
+.shopGrid article > div:last-child { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:center; font-size:12px; }
+.shopGrid button { background:var(--preview-accent); border:0; padding:11px; display:flex; align-items:center; gap:7px; font-size:10px; min-height:40px; }
+.productObject { aspect-ratio:1.3; background:#e8e7df; display:grid; place-items:center; margin-bottom:14px; overflow:hidden; }
+.productObject i { display:block; width:27%; height:65%; background:linear-gradient(100deg,#e1e1d5,#aeb79a,#eceddf); border-radius:35% 35% 44% 44%; box-shadow:12px 12px 18px #20211e20; }
+.productObject[data-product='1'] i { width:65%; height:18%; border-radius:50%; transform:rotate(-20deg); }
+.productObject[data-product='2'] i { width:50%; height:55%; background:transparent; border:12px solid #818b6b; border-bottom:0; border-radius:100% 100% 0 0; }
+.miniBasket { margin:0 6% 20px; padding:20px; background:#e8eedc; border-left:2px solid #627936; font-size:12px; }
+.miniBasket strong { display:flex; justify-content:space-between; gap:12px; font-weight:500; }
+.miniBasket p { margin-block:12px; line-height:1.6; }
+.miniBasket > span { color:var(--muted); font-size:10px; }
+.miniBasket button { display:flex; align-items:center; gap:14px; padding:12px 0 0; border:0; background:transparent; font-size:11px; }
+.miniBooking { padding:24px 6%; background:#f5f5ee; }
+.miniBooking > strong { display:block; font-weight:500; font-size:20px; letter-spacing:-.03em; }
+.miniBooking > span { font-size:10px; color:var(--muted); }
+.miniBooking > div { display:flex; gap:8px; margin-top:16px; }
+.miniBooking button { flex:1; border:1px solid var(--line); background:transparent; padding:12px 8px; font-size:13px; min-height:44px; }
+.miniBooking button small { display:block; margin-bottom:7px; font-size:9px; }
+.miniBooking button[aria-pressed=true] { background:var(--preview-accent); border-color:#a7b68c; }
+.miniBooking > p { margin-top:14px; font-size:11px; }
+.miniBooking > a { display:flex; align-items:center; gap:15px; font-size:11px; padding:16px 0 0; }
+.venueChoice { border:0; margin:0 0 24px; padding:0; }
+.venueChoice legend { font-size:13px; margin-bottom:12px; }
+.venueChoice > div { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.venueChoice button { position:relative; border:1px solid var(--line); background:#faf9f5; padding:16px; text-align:left; }
+.venueChoice button[aria-pressed=true] { border-color:#879d5a; background:#e8efd9; }
+.venueChoice strong { display:block; font-size:13px; font-weight:500; margin-bottom:7px; }
+.venueChoice span { display:block; font-size:10px; line-height:1.6; color:var(--muted); }
+.venueChoice svg { position:absolute; right:10px; top:10px; opacity:0; }
+.venueChoice button[aria-pressed=true] svg { opacity:1; }
+@media(max-width:600px) {
+ .experienceCopy > .goalChoices { gap:5px; }
+ .experienceCopy > .goalChoices button { padding:13px 8px; border-radius:12px; flex-direction:column; justify-content:center; gap:8px; font-size:11px; line-height:1.3; text-align:center; min-height:102px; }
+ .experienceCopy > .goalChoices button svg { margin-left:0; }
+ .previewStage { padding:12px; }
+ .shopGrid { gap:8px; }
+ .shopGrid h4 { font-size:11px; }
+ .shopGrid button { font-size:9px; padding:8px; }
+ .venueChoice > div { grid-template-columns:1fr; }
+}
+.buildPreview { background:#e6e9df; padding:18px; min-height:300px; }
+.buildToolbar { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:8px; letter-spacing:.1em; margin-bottom:14px; }
+.buildToolbar > div { display:flex; gap:4px; }
+.buildToolbar button { display:grid; place-items:center; border:0; background:transparent; width:36px; height:36px; }
+.buildToolbar button[aria-pressed=true] { background:var(--accent); border-radius:50%; }
+.buildScreen { background:#faf9f5; padding:22px; width:100%; margin:auto; transition:width .35s; box-shadow:0 12px 30px #20211e0d; }
+.buildScreen[data-mobile=true] { width:min(100%,245px); }
+.buildScreen > div { display:flex; justify-content:space-between; gap:12px; font-size:8px; }
+.buildScreen strong { font-weight:500; }
+.buildScreen strong > span { color:#728d46; }
+.buildScreen h3 { font-size:29px; line-height:1.1; letter-spacing:-.05em; margin-top:30px; max-width:13ch; }
+.buildScreen > p { font-size:10px; line-height:1.6; color:var(--muted); margin-top:14px; max-width:30ch; }
+.buildScreen > a { font-size:10px; background:var(--accent); display:inline-flex; align-items:center; gap:12px; padding:12px; margin-top:18px; }
+.buildScreen footer { display:flex; justify-content:space-between; font-size:8px; margin-top:24px; border-top:1px solid var(--line); padding-top:12px; }
+.buildScreen footer > span { display:flex; gap:6px; align-items:center; }
+@media(prefers-reduced-motion:reduce) { .buildScreen { transition:none; } }

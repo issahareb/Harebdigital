@@ -2197,3 +2197,6 @@ body:has(.website-landing-page) > [data-track-ignore] > button { position: stati
 .ai-proof-excerpt { aspect-ratio:728 / 1840; overflow:hidden; }
 .ai-proof-excerpt > img { width:100%; height:auto; display:block; }
 .ai-proof-toolbar > span:last-child { display:flex; align-items:center; gap:6px; }
+
+.subpage .motion-feature .wrap,.subpage .ttc.wrap { width:100%; }
+.subpage .motion-feature { margin-top:70px; }

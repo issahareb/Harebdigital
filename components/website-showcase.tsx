@@ -113,7 +113,7 @@ export function WebsiteShowcase({ lang, compact = false }: { lang: HdLang; compa
         }
         return next
       })
-    }, { threshold: [0, 0.001], rootMargin: '0px' })
+    }, { threshold: [0, 0.001], rootMargin: `-${Math.round(innerHeight * .25)}px 0px -${Math.round(innerHeight * .25)}px 0px` })
     videos.current.forEach(video => { if (video) observer.observe(video) })
     return () => observer.disconnect()
   }, [])

@@ -1,3 +1,5 @@
+import { MotionFeature } from './motion-feature'
+import { TikTokCaseStudy } from './tiktok-case-study'
 
 import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import { SERVICE_QUESTIONS } from '@/lib/service-questions'
@@ -27,6 +29,7 @@ export function AdditionalServicePage({service:s}: {service:Service}) {
       <section data-track-section="additional-service-page-section-3"><h2>Was wir umsetzen können</h2><ul>{s.items.map(item=><li key={item}>{item}</li>)}</ul></section>
       <div><section data-track-section="additional-service-page-section-4"><h2>So läuft die Zusammenarbeit</h2><p>{s.process}</p></section><section data-track-section="additional-service-page-section-5"><h2>{s.proofTitle}</h2><p>{s.proof}</p><Link data-track-id="additional-service-page-link-6" className="text-link" href={s.proofHref}>{s.proofLabel} <InlineArrow size={16} aria-hidden /></Link></section></div>
     </div>
+    {(s.slug === 'motion-design' || s.slug === 'social-media-marketing') && <><MotionFeature lang="de" /><TikTokCaseStudy lang="de" /></>}
     <section className="service-buying-questions" aria-label="Fragen zur Zusammenarbeit"><h2>Vor dem Projektstart</h2>{SERVICE_QUESTIONS[s.slug]?.map(item => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
     <LocalServices currentPath={`/leistungen/${s.slug}/`} />
     <div className="mt-12 flex flex-wrap items-center gap-6"><Link data-track-id="additional-service-page-link-7" className="button button-dark" href={`/kontakt/?leistung=${s.slug}`}>Projekt anfragen <InlineArrow size={16} aria-hidden /></Link><Link data-track-id="additional-service-page-link-8" className="text-link" href="/#leistungen">Alle Leistungen</Link></div>
