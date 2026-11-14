@@ -18,7 +18,7 @@ import { JsonLd, ORGANIZATION_ID } from './studio-schema'
 
 const descriptions: Record<HdLang, string[]> = {
   de: [
-    'Webdesign aus Essen: Landingpage für 490 € einmalig, Unternehmenswebsite für 890 €. Leistungsumfang, laufende Kosten und Einstiegsangebote im Überblick.',
+    'Webdesign: Websites ab 990 € einmalig. Betreuung/Hosting für 39,99 € pro Monat. Leistungsumfang und Einstiegsangebote im Überblick.',
     'Website-Relaunch mit Hareb Digital: Inhalte sinnvoll übernehmen, Design verbessern und Ladezeiten reduzieren. Direkte Abstimmung mit dem Entwickler.',
     'Wiederkehrende Aufgaben automatisieren: Angebote, Terminerinnerungen und Anfragen. Hareb Digital verbindet passende Abläufe mit deinen Werkzeugen.',
     'Technisches SEO und AEO: klare Seitenstruktur, lokale Auffindbarkeit und verständliche Antworten. Für Unternehmen aus Essen, Bonn und darüber hinaus.',

@@ -3,6 +3,7 @@ import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { DOMAIN, marke, PORTFOLIO } from '@/lib/marke'
 import { localizedPath } from '@/lib/locale'
+import { WEBSITE_PRICE, HOSTING_MONTHLY_PRICE } from '@/lib/pricing'
 
 // Preserve the entity IDs already used by the portfolio and Taxi B&B.
 export const ORGANIZATION_ID = `${PORTFOLIO}/#hareb-digital`
@@ -35,8 +36,6 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
             founder: { '@id': PERSON_ID },
             address: {
               '@type': 'PostalAddress',
-              streetAddress: marke.strasse,
-              postalCode: marke.plz,
               addressRegion: 'Nordrhein-Westfalen',
               addressLocality: marke.ort,
               addressCountry: marke.land,
@@ -78,6 +77,11 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
             name: HD_TEXTE[lang].leistungen.label,
             itemListElement: [...HD_TEXTE[lang].leistungen.punkte.map((service, i) => ({
               '@type': 'Offer',
+              ...(i === 0 ? {
+                price: WEBSITE_PRICE,
+                priceCurrency: 'EUR',
+                priceSpecification: { '@type': 'PriceSpecification', price: WEBSITE_PRICE, priceCurrency: 'EUR' },
+              } : {}),
               itemOffered: {
                 '@type': 'Service',
                 name: t.serviceNames[i],
@@ -85,7 +89,21 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
                 url: `${DOMAIN}${localizedPath(lang, `/leistungen/${service.slug}/`)}`,
                 provider: { '@id': ORGANIZATION_ID },
               },
-            })), ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({'@type':'Offer',itemOffered:{'@type':'Service',name:s.title,description:s.description,url:`${DOMAIN}/leistungen/${s.slug}/`,provider:{'@id':ORGANIZATION_ID}}})) : [])],
+            })), {
+              '@type': 'Offer',
+              name: 'Betreuung/Hosting',
+              price: HOSTING_MONTHLY_PRICE,
+              priceCurrency: 'EUR',
+              priceSpecification: {
+                '@type': 'UnitPriceSpecification',
+                price: HOSTING_MONTHLY_PRICE,
+                priceCurrency: 'EUR',
+                unitCode: 'MON',
+                unitText: 'pro Monat',
+                referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
+              },
+              itemOffered: { '@type': 'Service', name: 'Betreuung/Hosting', provider: { '@id': ORGANIZATION_ID } },
+            }, ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({'@type':'Offer',itemOffered:{'@type':'Service',name:s.title,description:s.description,url:`${DOMAIN}/leistungen/${s.slug}/`,provider:{'@id':ORGANIZATION_ID}}})) : [])],
           },
 
         ],

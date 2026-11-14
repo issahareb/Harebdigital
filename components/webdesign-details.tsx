@@ -5,7 +5,7 @@ import Link from 'next/link'
 export const webdesignQuestions = [
   {
     question: 'Was kostet eine Website?',
-    answer: 'Eine Landingpage kostet im Einstiegsangebot 490 € einmalig, eine mehrseitige Unternehmenswebsite 890 €. Die Variante mit laufender Betreuung startet bei 590 € einmalig zuzüglich der vereinbarten monatlichen Kosten. Hosting, Domain, Lizenzen und zusätzliche Funktionen sind nicht pauschal enthalten. Du erhältst vor der Beauftragung ein Angebot mit dem genauen Umfang und allen Kosten.',
+    answer: 'Eine Website kostet 990 € einmalig. Betreuung/Hosting kostet 39,99 € pro Monat. Domain, Lizenzen und zusätzliche Funktionen sind nicht pauschal enthalten. Du erhältst vor der Beauftragung ein Angebot mit dem genauen Umfang und allen Kosten.',
   },
   {
     question: 'Welches Angebot passt zu meinem Unternehmen?',
@@ -25,7 +25,7 @@ export const webdesignQuestions = [
   },
   {
     question: 'Welche Kosten entstehen nach der Veröffentlichung?',
-    answer: 'Je nach Projekt fallen Kosten für Hosting, Domain und gegebenenfalls externe Dienste oder Lizenzen an. Beim 590-€-Angebot kommt die vereinbarte monatliche Betreuung hinzu. Alle laufenden Kosten stehen vor der Beauftragung im Angebot. Bei den Website-Angeboten sind drei Monate Fehlerbehebung an der gelieferten Umsetzung und technische Optimierungen enthalten.',
+    answer: 'Betreuung/Hosting kostet 39,99 € pro Monat. Je nach Projekt fallen zusätzlich Kosten für Domain und gegebenenfalls externe Dienste oder Lizenzen an. Alle laufenden Kosten stehen vor der Beauftragung im Angebot. Bei den Website-Angeboten sind drei Monate Fehlerbehebung an der gelieferten Umsetzung und technische Optimierungen enthalten.',
   },
   {
     question: 'Kann meine Website später erweitert werden?',
