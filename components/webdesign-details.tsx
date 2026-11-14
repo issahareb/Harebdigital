@@ -1,11 +1,12 @@
 
 import { ArrowUpRight as InlineArrow } from 'lucide-react'
 import Link from 'next/link'
+import { PRICING, WEBSITE_PACKAGE } from '@/lib/pricing'
 
 export const webdesignQuestions = [
   {
     question: 'Was kostet eine Website?',
-    answer: 'Eine Website kostet 990 € einmalig. Betreuung/Hosting kostet 39,99 € pro Monat. Domain, Lizenzen und zusätzliche Funktionen sind nicht pauschal enthalten. Du erhältst vor der Beauftragung ein Angebot mit dem genauen Umfang und allen Kosten.',
+    answer: PRICING.de[2],
   },
   {
     question: 'Welches Angebot passt zu meinem Unternehmen?',
@@ -13,7 +14,7 @@ export const webdesignQuestions = [
   },
   {
     question: 'Wie lange dauert die Erstellung?',
-    answer: 'Für eine Landingpage sind meist zwei bis drei Wochen vorgesehen, für eine mehrseitige Website vier bis acht Wochen. Der tatsächliche Zeitraum hängt vom Umfang, den benötigten Inhalten und unseren Abstimmungen ab. Den Zeitplan vereinbaren wir vor dem Projektstart.',
+    answer: WEBSITE_PACKAGE.de.timeline,
   },
   {
     question: 'Muss ich Texte und Bilder fertig mitbringen?',
