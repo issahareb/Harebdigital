@@ -1,26 +1,39 @@
 # Hareb Digital
 
-> Independent digital studio of Issa Hareb, based in Essen, Germany. Services: bespoke web design and development, website redesign, technical SEO, Answer Engine Optimization (AEO) and workflow automation.
+> Hareb Digital entwickelt individuelle Websites, Webanwendungen, KI-Agenten und Software. Weitere Leistungen sind SEO und Automatisierung. Kontakt: kontakt@hareb.digital.
 
-## Canonical website and languages
-- [Deutsch](https://hareb.digital/): Primary German home page, services, selected work and visible questions and answers.
-- [English](https://hareb.digital/en/): English home page.
-- [Español](https://hareb.digital/es/): Spanish home page.
+## Preise
 
-## Services
-- [Webdesign & Entwicklung](https://hareb.digital/leistungen/neue-website/): Bespoke websites, responsive design and technical SEO.
-- [Website-Relaunch](https://hareb.digital/leistungen/website-ueberarbeiten/): Review and improve an existing website.
-- [Automatisierung](https://hareb.digital/leistungen/automatisierung/): Connect recurring business workflows and existing tools.
-- [SEO & AEO](https://hareb.digital/leistungen/gefunden-werden/): Technical discoverability, site structure and clear answers.
+- [Website](https://hareb.digital/leistungen/neue-website/): 990 € einmalig.
+- [Betreuung/Hosting](https://hareb.digital/zusammenarbeit/): 39,99 € pro Monat.
 
-## Contact and identity
-- [Contact](https://hareb.digital/kontakt/): Project enquiries. Email: kontakt@hareb.digital. The form prepares a message in the visitor's email application; it does not send automatically.
-- [Founder portfolio](https://issahareb.me/): Issa Hareb, founder, designer and developer.
-- [Legal notice](https://hareb.digital/impressum/)
-- [Privacy](https://hareb.digital/datenschutz/)
+## Leistungen
 
-## Selected work
-- [Taxi B&B Essen](https://www.taxibbessen.de/): Client website with booking flow, management tools, automated emails and local SEO.
-- [GuardianGrid](https://www.guardiangrid.io/): Own software product; not a client testimonial.
+- [Websites und Webdesign](https://hareb.digital/leistungen/neue-website/): Individuelle Gestaltung, mobile Umsetzung und Webentwicklung.
+- [Website-Relaunch](https://hareb.digital/leistungen/website-ueberarbeiten/): Bestehende Websites gestalterisch und technisch überarbeiten.
+- [Webanwendungen und Software](https://hareb.digital/leistungen/webanwendungen/): Individuelle Anwendungen, Verwaltungsbereiche und Schnittstellen.
+- [KI-Agenten](https://hareb.digital/#ki-telefonie): KI-Telefonassistenz mit Anfragen per Dashboard, E-Mail oder beidem.
+- [SEO und AEO](https://hareb.digital/leistungen/gefunden-werden/): Technische Suchmaschinenoptimierung und verständliche Inhalte für Suchmaschinen und KI-Anwendungen.
+- [Automatisierung](https://hareb.digital/leistungen/automatisierung/): Wiederkehrende Aufgaben und Geschäftsabläufe verbinden.
+- [Social Media Marketing](https://hareb.digital/leistungen/social-media-marketing/): Inhalte und Kurzvideos für Unternehmen.
+- [Motion Design und Werbevideos](https://hareb.digital/leistungen/motion-design/): Animationen und Videos für Websites und Social Media.
 
-Project scope, timing and price are agreed individually. Search rankings, AI-answer mentions and future client outcomes are not guaranteed. This file is a navigation aid, not a substitute for the visible pages.
+## Projekte
+
+- [Taxi B&B Essen](https://hareb.digital/projekte/taxi-bb-essen/): Kundenwebsite mit Online-Fahrtanfragen und Verwaltung.
+- [TENSA](https://hareb.digital/projekte/tensa/): Einblick in die laufende Entwicklung einer Launch-Seite und eines Onlineshops.
+
+## Unternehmen und Kontakt
+
+- [Startseite](https://hareb.digital/): Leistungen, ausgewählte Projekte und Website-Angebote.
+- [Zusammenarbeit](https://hareb.digital/zusammenarbeit/): Ablauf, Leistungsumfang und Betreuung.
+- [Kontakt](https://hareb.digital/kontakt/): Projektanfragen an kontakt@hareb.digital.
+- [E-Mail](mailto:kontakt@hareb.digital): Direkter Kontakt zu Hareb Digital.
+- [Impressum](https://hareb.digital/impressum/): Anbieterkennzeichnung.
+- [Datenschutz](https://hareb.digital/datenschutz/): Informationen zur Datenverarbeitung.
+
+## Sprachversionen und Sitemap
+
+- [English](https://hareb.digital/en/): Englische Website.
+- [Español](https://hareb.digital/es/): Spanische Website.
+- [Sitemap](https://hareb.digital/sitemap.xml): Übersicht der veröffentlichten Seiten.

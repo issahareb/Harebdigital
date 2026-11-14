@@ -60,7 +60,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
     title: 'Webdesign Essen | Issa Hareb · Hareb Digital',
     description:
-      'Individuelles Webdesign aus Essen: Websites, Relaunch, SEO und Automatisierung für Unternehmen. Direkter Kontakt zu Issa Hareb. Auch in Sankt Augustin und Bonn.',
+      'Individuelle Websites ab 990 €: Webdesign, Entwicklung, SEO und Automatisierung für Unternehmen. Betreuung/Hosting für 39,99 € pro Monat.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',

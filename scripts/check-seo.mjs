@@ -101,7 +101,8 @@ for (const lang of languages) {
       assert.equal(business.telephone, '+49 201 85393123', `${route}: public contact phone`)
       if (lang === 'de') {
         assert(title.includes('Webdesign Essen'), 'German homepage identifies its service and city')
-        assert(description.includes('Essen'), 'Primary service area mentioned in German description')
+        assert(description.includes('ab 990 €'), 'German description includes the website starting price')
+        assert(description.length <= 155 && !description.includes('aus Essen'), 'German description follows requested length and wording')
       }
     }
     if (path === '/zusammenarbeit/') {
