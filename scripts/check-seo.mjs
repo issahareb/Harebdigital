@@ -18,6 +18,7 @@ const germanOnlyPaths = [
   '/leistungen/motion-design/',
   '/projekte/taxi-bb-essen/',
   '/projekte/tensa/',
+  '/branchen/taxiunternehmen/',
 ]
 const at = (lang, path) => (lang === 'de' ? path : `/${lang}${path}`)
 const attr = (tag, key) => tag.match(new RegExp(`\\b${key}="([^"]*)"`))?.[1]
@@ -128,6 +129,19 @@ for (const path of germanOnlyPaths) {
     rel: attr(tag, 'rel'), href: decode(attr(tag, 'href')),
   }))
   assert.equal(links.find(link => link.rel === 'canonical')?.href, `${origin}${path}`, `${path}: canonical`)
+  if (path === '/branchen/taxiunternehmen/') {
+    const rendered = html.replace(/<!--.*?-->/gs, '')
+    assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${path}: one primary heading`)
+    assert(rendered.includes('990 €') && rendered.includes('39,99 €'), `${path}: prices available in server-rendered content`)
+    assert(rendered.includes('separat kalkuliert'), `${path}: additional enquiry functions have separate scope`)
+    const anchors = [...html.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag)
+    assert(anchors.some(tag => decode(attr(tag, 'href')) === '/projekte/taxi-bb-essen/'), `${path}: accessible project evidence`)
+    const enquiry = anchors.find(tag => attr(tag, 'data-track-id') === 'taxi-industry-enquire')
+    const target = new URL(decode(attr(enquiry || '', 'href')), origin)
+    assert.equal(target.pathname, '/kontakt/', `${path}: real enquiry destination`)
+    assert.equal(target.searchParams.get('leistung'), 'neue-website', `${path}: enquiry service selection`)
+    assert(target.searchParams.get('projekt')?.includes('Taxiunternehmen'), `${path}: project context reaches the contact form`)
+  }
   for (const [, tag] of html.matchAll(/(<a\b[^>]*>)/g)) {
     const href = decode(attr(tag, 'href'))
     if (href?.startsWith('/') && !href.startsWith('//'))

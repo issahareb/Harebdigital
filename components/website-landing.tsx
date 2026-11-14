@@ -11,6 +11,7 @@ export function WebsiteLanding() {
         <h2 id="website-local-title">Website erstellen lassen in Essen</h2>
         <p>Ich bin Issa Hareb und entwickle Websites für Unternehmen in Essen und im Ruhrgebiet. Von der Gestaltung bis zur technischen Umsetzung hast du einen direkten Ansprechpartner.</p>
         <p>Ein veröffentlichtes Beispiel ist die <Link className="text-link" href="/projekte/taxi-bb-essen/" data-track-id="website-local-case">Website für Taxi B&amp;B Essen mit Online-Fahrtanfragen</Link>. Welche Seiten und Funktionen dein Unternehmen braucht, klären wir vor dem Start.</p>
+        <p>Du betreibst ein Taxiunternehmen? Hier findest du <Link className="text-link" href="/branchen/taxiunternehmen/" data-track-id="website-taxi-industry">Websites und Anfragewege für Taxibetriebe</Link>.</p>
       </section>
       <Link href="/" className="text-link" data-track-id="website-main-site">
         Arbeiten & mehr auf hareb.digital
