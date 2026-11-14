@@ -1,4 +1,4 @@
-import { PRICING } from './pricing'
+import { PRICING, WEBSITE_PACKAGE } from './pricing'
 import { HOSTING_COPY } from './hosting-copy'
 import type { HdLang } from './hd-texte'
 
@@ -132,7 +132,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'Wie lange dauert die Umsetzung?',
         answer:
-          'Als Orientierung gelten zwei bis drei Wochen für eine einzelne Landingpage und vier bis acht Wochen für eine Website mit mehreren Seiten. Funktionen, verfügbare Inhalte und Abstimmungen beeinflussen die Dauer. Den konkreten Zeitplan vereinbaren wir vor dem Start.',
+          WEBSITE_PACKAGE.de.timeline,
       },
       {
         question: 'Was ist der Unterschied zwischen SEO und AEO?',
@@ -234,7 +234,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: 'How long does a website take?',
         answer:
-          'As a guide, a single landing page takes two to three weeks and a multi-page website four to eight. Features, available content and feedback affect the schedule. We agree on the timeline before work starts.',
+          WEBSITE_PACKAGE.en.timeline,
       },
       {
         question: 'What is the difference between SEO and AEO?',
@@ -337,7 +337,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
       {
         question: '¿Cuánto tarda el desarrollo?',
         answer:
-          'Como orientación, una landing page requiere de dos a tres semanas y una web con varias páginas de cuatro a ocho. Las funciones, los contenidos disponibles y las revisiones influyen en el plazo. Acordamos el calendario antes de empezar.',
+          WEBSITE_PACKAGE.es.timeline,
       },
       {
         question: '¿Cuál es la diferencia entre SEO y AEO?',

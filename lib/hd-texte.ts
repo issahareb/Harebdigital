@@ -1,3 +1,4 @@
+import { WEBSITE_PACKAGE } from './pricing'
 /** Shared service, contact and project copy. Public language selection is URL-based; see lib/locale.ts. */
 
 export const HD_SPRACHEN = ['de', 'en', 'es'] as const
@@ -483,7 +484,7 @@ const DE: HdTexte = {
           },
           preis: {
             titel: 'Dauer und Preis',
-            text: 'Als Orientierung: zwei bis drei Wochen für eine Landingpage, vier bis acht Wochen für eine mehrseitige Website. Vor dem Start erhältst du einen vereinbarten Zeitplan und ein Angebot mit festem Preis. Mögliche laufende Kosten werden separat ausgewiesen.',
+            text: WEBSITE_PACKAGE.de.timeline,
           },
         },
       },
@@ -888,7 +889,7 @@ const EN: HdTexte = {
           },
           preis: {
             titel: 'Time and price',
-            text: 'As a guide: two to three weeks for a landing page, four to eight for a multi-page website. Before work starts, you receive an agreed timeline and a fixed-price proposal. Any ongoing costs are listed separately.',
+            text: WEBSITE_PACKAGE.en.timeline,
           },
         },
       },
@@ -1293,7 +1294,7 @@ const ES: HdTexte = {
           },
           preis: {
             titel: 'Plazo y precio',
-            text: 'Como orientación: de dos a tres semanas para una landing page y de cuatro a ocho para una web con varias páginas. Antes de empezar, recibes un calendario acordado y una propuesta con precio fijo. Los posibles costos recurrentes se detallan por separado.',
+            text: WEBSITE_PACKAGE.es.timeline,
           },
         },
       },

@@ -4,8 +4,10 @@
 
 ## Preise
 
-- [Website](https://hareb.digital/leistungen/neue-website/): 990 € einmalig.
+- [Website](https://hareb.digital/leistungen/neue-website/): 990 € einmalig für bis zu fünf Inhaltsseiten, zusätzlich Impressum und Datenschutz mit bereitgestellten Rechtstexten. Zwei gebündelte Korrekturrunden. Umsetzung etwa vier bis fünf Wochen ab vollständigen Inhalten und abgestimmtem Projektumfang.
 - [Betreuung/Hosting](https://hareb.digital/zusammenarbeit/): 39,99 € pro Monat.
+
+Zusätzliche Seiten, weitere Korrekturrunden, Buchungsfunktionen, Verwaltungsbereiche, Schnittstellen und KI-Telefonie werden separat angeboten. Domain und Lizenzen sind nicht pauschal enthalten.
 
 ## Leistungen
 
