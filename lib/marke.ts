@@ -12,9 +12,14 @@ export const marke = {
   kontaktEmail: "kontakt@hareb.digital",
   telefon: "+49 201 85393123",
   gruendungsjahr: "2026",
+  // Ladungsfähige Post- und Zustellanschrift über den Dienst Online-Impressum.
+  // Dort ist KEIN Geschäftssitz angemeldet: nie als Sitz, Standort oder
+  // Herkunft ausgeben, nur mit dem c/o-Zusatz und nur als Postanschrift.
+  co: "c/o Online-Impressum",
   strasse: "Europaring 90",
   plz: "53757",
-  ort: "Sankt Augustin", // Geschäftssitz für rechtliche Angaben
+  ort: "Sankt Augustin",
+  postanschriftHinweis: "Postanschrift über Online-Impressum, kein Geschäftssitz",
   arbeitsort: "Essen",
   land: "DE",
   inhaber: "Issa Hareb",

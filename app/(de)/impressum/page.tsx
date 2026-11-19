@@ -25,6 +25,8 @@ export default async function Impressum() {
               <br />
               {marke.inhaber}
               <br />
+              {marke.co}
+              <br />
               {marke.strasse}
               <br />
               {marke.plz} {marke.ort}
@@ -33,8 +35,8 @@ export default async function Impressum() {
             </p>
           </Rechtsabschnitt>
 
-          <Rechtsabschnitt titel="Geschäftssitz und Tätigkeitsgebiet">
-            <p>Geschäftssitz in Sankt Augustin, persönlicher Arbeitsort Essen. Projekte für Unternehmen im Raum Bonn, im Ruhrgebiet und deutschlandweit.</p>
+          <Rechtsabschnitt titel="Hinweis zur Anschrift und Tätigkeitsgebiet">
+            <p>Die oben genannte Anschrift ist eine ladungsfähige Post- und Zustellanschrift über den Dienst Online-Impressum (c/o). Dort befindet sich kein Geschäftssitz von {marke.name}. In {marke.arbeitsort} ansässig, Projekte in Essen, Bonn und bundesweit.</p>
           </Rechtsabschnitt>
 
           <Rechtsabschnitt titel="Kontakt">

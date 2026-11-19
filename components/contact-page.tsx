@@ -77,8 +77,8 @@ export function ContactPage({ lang }: { lang: HdLang }) {
               </div>
             )}
             <div>
-              <dt>{lang === 'de' ? 'Geschäftsanschrift' : lang === 'en' ? 'Business address' : 'Dirección comercial'}</dt>
-              <dd>{marke.strasse}<br />{marke.plz} {marke.ort}</dd>
+              <dt>{lang === 'de' ? 'Postanschrift' : lang === 'en' ? 'Postal address' : 'Dirección postal'}</dt>
+              <dd>{marke.co}<br />{marke.strasse}<br />{marke.plz} {marke.ort}<br /><span className="text-sm">{lang === 'de' ? 'Postanschrift über Online-Impressum, kein Geschäftssitz' : lang === 'en' ? 'Mailing address via Online-Impressum, not a place of business' : 'Dirección postal a través de Online-Impressum, no es sede comercial'}</span></dd>
             </div>
             <div>
               <dt>{lang === 'de' ? 'Arbeitsort' : lang === 'en' ? 'Working from' : 'Lugar de trabajo'}</dt>

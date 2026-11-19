@@ -18,9 +18,9 @@ export default async function Datenschutz() {
         <p className="mt-4 text-sm">Stand: 27. Oktober 2026</p>
         <div className="mt-10 max-w-2xl space-y-8">
           <Rechtsabschnitt titel="1. Verantwortlicher und Kontakt">
-            <p>{marke.inhaber}, handelnd unter {marke.name}<br />{marke.strasse}<br />{marke.plz} {marke.ort}, Deutschland</p>
+            <p>{marke.inhaber}, handelnd unter {marke.name}<br />{marke.co}<br />{marke.strasse}<br />{marke.plz} {marke.ort}, Deutschland</p>
             <p>E-Mail: <a href={`mailto:${marke.kontaktEmail}`}>{marke.kontaktEmail}</a><br />Telefon: <a href={`tel:${marke.telefon.replace(/\s/g, '')}`}>{marke.telefon}</a></p>
-            <p>Diese Hinweise beschreiben den Besuch von hareb.digital und die Bearbeitung von Anfragen an Hareb Digital. Die Geschäftsanschrift befindet sich in Sankt Augustin; der persönliche Arbeitsort ist Essen.</p>
+            <p>Diese Hinweise beschreiben den Besuch von hareb.digital und die Bearbeitung von Anfragen an Hareb Digital. Die Anschrift in Sankt Augustin ist eine Postanschrift über Online-Impressum (c/o) und kein Geschäftssitz. Arbeitsort ist Essen.</p>
           </Rechtsabschnitt>
           <Rechtsabschnitt titel="2. Bereitstellung und Sicherheit der Website">
             <p>Die Website wird bei Railway Corporation gehostet. Beim Aufruf werden insbesondere IP-Adresse, Datum und Uhrzeit, angeforderte Adresse oder Datei, Antwortstatus, übertragene Datenmenge sowie die vom Browser übermittelten Geräte-, Browser- und gegebenenfalls Herkunftsangaben verarbeitet. Diese Daten sind erforderlich, um Inhalte auszuliefern, Fehler zu untersuchen und Angriffe abzuwehren.</p>
