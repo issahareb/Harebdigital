@@ -5,7 +5,7 @@
 ## Preise
 
 - [Website](https://hareb.digital/leistungen/neue-website/): One-Pager ab 490 €, mehrseitige Website ab 1.290 € und Onlineshop ab 1.490 €, jeweils einmalig. Mehrseitige Websites enthalten bis zu fünf Inhaltsseiten, zusätzlich Impressum und Datenschutz mit bereitgestellten Rechtstexten. Zwei gebündelte Korrekturrunden. Umsetzung etwa vier bis fünf Wochen ab vollständigen Inhalten und abgestimmtem Projektumfang.
-- [Betreuung/Hosting](https://hareb.digital/zusammenarbeit/): 39,99 € pro Monat.
+- [Verwaltung, Hosting und Pflege](https://hareb.digital/zusammenarbeit/): optional auf Wunsch für 39,99 € im Monat.
 
 Zusätzliche Seiten, weitere Korrekturrunden, Buchungsfunktionen, Verwaltungsbereiche, Schnittstellen und KI-Telefonie werden separat angeboten. Domain und Lizenzen sind nicht pauschal enthalten.
 

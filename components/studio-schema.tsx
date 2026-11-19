@@ -90,7 +90,8 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
               },
             })), {
               '@type': 'Offer',
-              name: 'Betreuung/Hosting',
+              name: { de: 'Optional auf Wunsch: Verwaltung, Hosting und Pflege', en: 'Optional if you want: administration, hosting and maintenance', es: 'Opcional si lo deseas: administración, alojamiento y mantenimiento' }[lang],
+              description: { de: 'Freiwilliges Paket, nur wenn du die Website von Hareb Digital verwalten lassen möchtest. 39,99 € im Monat.', en: 'A voluntary package only if you want Hareb Digital to manage your website. €39.99 per month.', es: 'Paquete voluntario solo si deseas que Hareb Digital administre tu web. 39,99 € al mes.' }[lang],
               price: HOSTING_MONTHLY_PRICE,
               priceCurrency: 'EUR',
               priceSpecification: {
@@ -98,10 +99,10 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
                 price: HOSTING_MONTHLY_PRICE,
                 priceCurrency: 'EUR',
                 unitCode: 'MON',
-                unitText: 'pro Monat',
+                unitText: { de: 'im Monat', en: 'per month', es: 'al mes' }[lang],
                 referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'MON' },
               },
-              itemOffered: { '@type': 'Service', name: 'Betreuung/Hosting', provider: { '@id': ORGANIZATION_ID } },
+              itemOffered: { '@type': 'Service', name: { de: 'Verwaltung, Hosting und Pflege', en: 'Administration, hosting and maintenance', es: 'Administración, alojamiento y mantenimiento' }[lang], description: { de: 'Optional auf Wunsch, kein Pflichtbestandteil der Website-Angebote.', en: 'Optional if you want, not a required part of the website packages.', es: 'Opcional si lo deseas, no forma parte obligatoria de las ofertas de web.' }[lang], provider: { '@id': ORGANIZATION_ID } },
             }, ...(lang === 'de' ? ADDITIONAL_SERVICES.map(s => ({'@type':'Offer',itemOffered:{'@type':'Service',name:s.title,description:s.description,url:`${DOMAIN}/leistungen/${s.slug}/`,provider:{'@id':ORGANIZATION_ID}}})) : [])],
           },
 
