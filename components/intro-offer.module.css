@@ -6,7 +6,7 @@
 .heading .title > span { color:#728942; }
 .intro { color:var(--muted); line-height:1.65; font-size:.95rem; }
 .gallery { overflow:hidden; }
-.tabs { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); padding:0 0 16px; gap:5px; }
+.tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); padding:0 0 16px; gap:5px; }
 .tab { display:flex; align-items:center; gap:11px; text-align:left; padding:18px 14px; border:0; border-radius:10px; background:transparent; transition:background .25s,color .25s; min-width:0; font-size:13px; }
 .tab > svg { flex-shrink:0; }
 .tab small { display:block; color:var(--muted); font-size:10px; margin-top:5px; }
@@ -113,7 +113,7 @@
 @media (prefers-reduced-motion:reduce) { .content,.sitePreview,.calendar { animation:none; } .tab,.link,.conditions summary > span { transition:none; } }
 
 /* Stable offer selection: four editorial cards, no shifting horizontal rail. */
-.tabs { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; padding:0 0 24px; overflow:visible; }
+.tabs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; padding:0 0 24px; overflow:visible; }
 .tab { position:relative; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; min-height:132px; padding:20px; border:1px solid var(--line); border-radius:3px; font-size:13px; transform:none; }
 .tab small { display:block; font-size:10px; line-height:1.5; min-height:30px; }
 .tab > svg { width:22px; height:22px; margin-bottom:12px; }

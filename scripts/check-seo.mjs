@@ -102,7 +102,7 @@ for (const lang of languages) {
       assert.equal(business.telephone, '+49 201 85393123', `${route}: public contact phone`)
       if (lang === 'de') {
         assert(title.includes('Webdesign Essen'), 'German homepage identifies its service and city')
-        assert(description.includes('ab 990 €'), 'German description includes the website starting price')
+        assert(description.includes('ab 490 €'), 'German description includes the website starting price')
         assert(description.length <= 155 && !description.includes('aus Essen'), 'German description follows requested length and wording')
       }
     }
@@ -132,7 +132,7 @@ for (const path of germanOnlyPaths) {
   if (path === '/branchen/taxiunternehmen/') {
     const rendered = html.replace(/<!--.*?-->/gs, '')
     assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${path}: one primary heading`)
-    assert(rendered.includes('990 €') && rendered.includes('39,99 €'), `${path}: prices available in server-rendered content`)
+    assert(rendered.includes('490 €') && rendered.includes('39,99 €'), `${path}: prices available in server-rendered content`)
     assert(rendered.includes('separat kalkuliert'), `${path}: additional enquiry functions have separate scope`)
     const anchors = [...html.matchAll(/<a\b[^>]*>/g)].map(([tag]) => tag)
     assert(anchors.some(tag => decode(attr(tag, 'href')) === '/projekte/taxi-bb-essen/'), `${path}: accessible project evidence`)

@@ -28,11 +28,11 @@ try {
     await voice.getByRole('button', { name: 'Dein Dashboard', exact: true }).click()
     await shot(voice, `${output}/voice-${width}.png`)
     await offers.scrollIntoViewIfNeeded()
-    for (let index = 0; index < 4; index++) {
+    for (let index = 0; index < 5; index++) {
       await offers.getByRole('tab').nth(index).click()
       const panel = offers.getByRole('tabpanel')
       assert.equal(await panel.count(), 1)
-      assert((await panel.innerText()).includes(['990 €', '990 €', '190 €', '990 €'][index]))
+      assert((await panel.innerText()).includes(['490 €', '1.290 €', '190 €', '1.290 €', '1.490 €'][index]))
       assert((await panel.getByRole('link').getAttribute('href')).endsWith(`angebot=${index}`))
       const visual = panel.locator('[class*=visual]').first()
       const mock = panel.locator('[class*=sitePreview]')
@@ -56,7 +56,7 @@ try {
     await page.keyboard.press('ArrowRight')
     assert.equal(await offers.getByRole('tab').nth(1).getAttribute('aria-selected'), 'true')
     await page.keyboard.press('End')
-    assert.equal(await offers.getByRole('tab').nth(3).getAttribute('aria-selected'), 'true')
+    assert.equal(await offers.getByRole('tab').nth(4).getAttribute('aria-selected'), 'true')
     await offers.getByRole('button', { name: 'Nächstes Angebot', exact: true }).click()
     assert.equal(await offers.getByRole('tab').nth(0).getAttribute('aria-selected'), 'true')
     const stage = offers.getByRole('tabpanel')

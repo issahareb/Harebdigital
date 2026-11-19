@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { HdUnterseite } from '@/components/hd-unterseite'
 import { JsonLd, ORGANIZATION_ID } from '@/components/studio-schema'
 import { DOMAIN } from '@/lib/marke'
-import { WEBSITE_PRICE, HOSTING_MONTHLY_PRICE, WEBSITE_PACKAGE } from '@/lib/pricing'
+import { ONE_PAGER_PRICE, WEBSITE_PRICE, HOSTING_MONTHLY_PRICE, WEBSITE_PACKAGE } from '@/lib/pricing'
 
 const path = '/branchen/taxiunternehmen/'
 const url = `${DOMAIN}${path}`
@@ -67,7 +67,7 @@ export default function TaxiWebsitePage() {
     <div className="service-detail-grid mt-12">
       <section data-track-section="taxi-industry-scope">
         <h2>Was kostet die Website?</h2>
-        <p>Eine Website kostet {WEBSITE_PRICE} € einmalig. Betreuung/Hosting kostet {HOSTING_MONTHLY_PRICE.toLocaleString('de-DE', { minimumFractionDigits: 2 })} € pro Monat. Seitenumfang, Inhalte und Konditionen stehen vor der Beauftragung in deinem Angebot.</p>
+        <p>Ein One-Pager startet ab {ONE_PAGER_PRICE} €, eine mehrseitige Website ab {WEBSITE_PRICE.toLocaleString('de-DE')} €, jeweils einmalig. Betreuung/Hosting kostet {HOSTING_MONTHLY_PRICE.toLocaleString('de-DE', { minimumFractionDigits: 2 })} € pro Monat. Seitenumfang, Inhalte und Konditionen stehen vor der Beauftragung in deinem Angebot.</p>
         <p>{WEBSITE_PACKAGE.de.scope}</p>
         <p>{WEBSITE_PACKAGE.de.timeline}</p>
         <p>Online-Fahrtanfragen, ein Verwaltungsbereich und individuelle Schnittstellen werden separat kalkuliert. Domain und Lizenzen sind nicht pauschal enthalten.</p>

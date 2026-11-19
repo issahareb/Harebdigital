@@ -26,7 +26,7 @@ for (const width of [320,390,768,1440]) {
   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://hareb.digital/leistungen/neue-website/')
   assert.equal(await page.locator('main img, main video').count(),0,'No separate hero image or film')
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'No overflow')
-  assert.equal(await page.getByRole('tab').count(),4)
+  assert.equal(await page.getByRole('tab').count(),5)
   assert.ok((await page.getByRole('tablist').boundingBox()).y<900,'Choices are visible without scrolling')
   assert.equal(await page.locator('[data-track-id="website-main-site"]').getAttribute('href'),'/')
   const initial=await page.locator('main').innerText()
@@ -41,7 +41,7 @@ for (const width of [320,390,768,1440]) {
   const homeHeading=await home.locator('#offer-title').evaluate(el=>{const s=getComputedStyle(el);return [s.fontSize,s.fontFamily,s.fontWeight,s.lineHeight,s.letterSpacing]})
   assert.deepEqual(await page.locator('#offer-title').evaluate(el=>{const s=getComputedStyle(el);return [s.fontSize,s.fontFamily,s.fontWeight,s.lineHeight,s.letterSpacing]}),homeHeading)
   await home.close()
-  for(const [index,price,service] of [[0,'990','neue-website'],[1,'990','neue-website'],[2,'190','automatisierung'],[3,'990','neue-website']]) {
+  for(const [index,price,service] of [[0,'490','neue-website'],[1,'1.290','neue-website'],[2,'190','automatisierung'],[3,'1.290','neue-website'],[4,'1.490','webanwendungen']]) {
     await page.getByRole('tab').nth(index).click()
     assert.equal(await page.getByRole('tab').nth(index).getAttribute('aria-selected'),'true')
     assert.equal(await page.getByRole('tabpanel').count(),1)
@@ -67,7 +67,7 @@ for (const width of [320,390,768,1440]) {
   await page.locator('[data-track-id="offer-enquire-0"]').click()
   await page.waitForURL('**/kontakt/**')
   assert.equal(await page.locator('select[name="leistung"]').inputValue(),'neue-website')
-  assert.match(await page.locator('textarea').inputValue(),/990/)
+  assert.match(await page.locator('textarea').inputValue(),/490/)
   await context.close()
 }
 const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}})

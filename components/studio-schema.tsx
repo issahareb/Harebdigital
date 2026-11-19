@@ -3,7 +3,7 @@ import { HD_TEXTE, type HdLang } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { DOMAIN, marke, PORTFOLIO } from '@/lib/marke'
 import { localizedPath } from '@/lib/locale'
-import { WEBSITE_PRICE, HOSTING_MONTHLY_PRICE } from '@/lib/pricing'
+import { ONE_PAGER_PRICE, HOSTING_MONTHLY_PRICE } from '@/lib/pricing'
 
 // Preserve the entity IDs already used by the portfolio and Taxi B&B.
 export const ORGANIZATION_ID = `${PORTFOLIO}/#hareb-digital`
@@ -78,9 +78,8 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
             itemListElement: [...HD_TEXTE[lang].leistungen.punkte.map((service, i) => ({
               '@type': 'Offer',
               ...(i === 0 ? {
-                price: WEBSITE_PRICE,
                 priceCurrency: 'EUR',
-                priceSpecification: { '@type': 'PriceSpecification', price: WEBSITE_PRICE, priceCurrency: 'EUR' },
+                priceSpecification: { '@type': 'PriceSpecification', minPrice: ONE_PAGER_PRICE, priceCurrency: 'EUR' },
               } : {}),
               itemOffered: {
                 '@type': 'Service',

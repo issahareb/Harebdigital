@@ -1,5 +1,18 @@
 import type { HdLang } from './hd-texte'
-export const WEBSITE_PRICE = 990
+export const ONE_PAGER_PRICE = 490
+export const WEBSITE_PRICE = 1290
+export const SHOP_PRICE = 1490
+
+export const SHOP_FEATURES = [
+  'Individuelles Shopdesign, mobile Optimierung und technische SEO',
+  'Katalog, Kategorien, Suche, Filter, Produktvarianten und Lagerbestand',
+  'Warenkorb, Checkout, Kundenkonten und Gastbestellungen',
+  'Zahlungsarten nach Anbieterfreigabe, etwa Karte, PayPal, Klarna, Apple Pay und Google Pay',
+  'Versandzonen, Versandkosten, Steuern und Rabattcodes',
+  'Bestellverwaltung, Bestellmails, Versandstatus, Rechnungen und Retouren',
+  'Shop-Administration und Einweisung zur eigenständigen Pflege',
+]
+
 export const HOSTING_MONTHLY_PRICE = 39.99
 
 export const WEBSITE_PACKAGE: Record<HdLang, { scope: string; timeline: string; extras: string }> = {
@@ -24,20 +37,20 @@ export const PRICING: Record<HdLang, string[]> = {
   "de": [
     "Preise & Einstiegsangebote",
     "Was kostet eine Website?",
-    `Eine Website kostet bei Hareb Digital 990 € einmalig. ${WEBSITE_PACKAGE.de.scope} Betreuung/Hosting kostet 39,99 € pro Monat. Domain und Lizenzen sind nicht pauschal enthalten.`,
-    "Landingpage",
+    `One-Pager starten bei 490 €, mehrseitige Websites bei 1.290 € und Onlineshops bei 1.490 €, jeweils einmalig. ${WEBSITE_PACKAGE.de.scope} Betreuung/Hosting kostet 39,99 € pro Monat. Domain und Lizenzen sind nicht pauschal enthalten.`,
+    "One-Pager",
     "Unternehmenswebsite",
     "Terminwidget",
     "Website mit laufender Betreuung",
     "einmalig",
     "zzgl. 39,99 € pro Monat für Betreuung/Hosting",
     "Begrenztes Einstiegsangebot. Verfügbarkeit und genauer Leistungsumfang werden vor Auftragserteilung bestätigt. Endpreise gemäß § 19 UStG, ohne gesonderte Umsatzsteuer. Laufende Kosten und Erweiterungen werden separat vereinbart.",
-    "Passendes Angebot anfragen"
+    "Passendes Angebot anfragen", "Onlineshop"
   ],
   "en": [
     "Prices & introductory offers",
     "How much does a website cost?",
-    `A website from Hareb Digital costs €990 one-time. ${WEBSITE_PACKAGE.en.scope} Support/hosting costs €39.99 per month. Domain and licences are not automatically included.`,
+    `One-pagers start at €490, multi-page websites at €1,290 and online shops at €1,490, each as a one-time price. ${WEBSITE_PACKAGE.en.scope} Support/hosting costs €39.99 per month. Domain and licences are not automatically included.`,
     "Landing page",
     "Business website",
     "Appointment widget",
@@ -45,12 +58,12 @@ export const PRICING: Record<HdLang, string[]> = {
     "one-time",
     "plus €39.99 per month for support/hosting",
     "Limited introductory offer. Availability and exact scope are confirmed before ordering. Final prices under German § 19 UStG, with no VAT charged separately. Ongoing costs and additions are agreed separately.",
-    "Request an offer"
+    "Request an offer", "Online shop"
   ],
   "es": [
     "Precios y ofertas iniciales",
     "¿Cuánto cuesta una web?",
-    `Una web de Hareb Digital cuesta 990 € en un pago único. ${WEBSITE_PACKAGE.es.scope} El mantenimiento/alojamiento cuesta 39,99 € al mes. Dominio y licencias no están incluidos de forma general.`,
+    `Las webs de una página parten de 490 €, las webs de varias páginas de 1.290 € y las tiendas online de 1.490 €, en un pago único. ${WEBSITE_PACKAGE.es.scope} El mantenimiento/alojamiento cuesta 39,99 € al mes. Dominio y licencias no están incluidos de forma general.`,
     "Landing page",
     "Web de empresa",
     "Widget de citas",
@@ -58,6 +71,6 @@ export const PRICING: Record<HdLang, string[]> = {
     "pago único",
     "más 39,99 € al mes por mantenimiento/alojamiento",
     "Oferta inicial limitada. Disponibilidad y alcance se confirman antes del encargo. Precios finales conforme al § 19 UStG alemán, sin IVA desglosado. Gastos recurrentes y ampliaciones se acuerdan por separado.",
-    "Solicitar oferta"
+    "Solicitar oferta", "Tienda online"
   ]
 }
