@@ -7,7 +7,7 @@ export function LocalServices({ currentPath }: { currentPath?: string }) {
   return (
     <section className="mt-12" data-track-section="local-services">
       <h2>Digitale Projekte für Essen und das Ruhrgebiet</h2>
-      <p>Ich bin Issa Hareb und arbeite von Essen aus an Websites, Anwendungen und digitalen Inhalten. Bei Hareb Digital lassen sich Gestaltung, Entwicklung und Social Media aufeinander abstimmen: vom ersten Video über die passende Website bis zur Bearbeitung einer Anfrage. Der Geschäftssitz liegt in Sankt Augustin.</p>
+      <p>Ich bin Issa Hareb, in Essen ansässig, und arbeite für Kunden in Essen, Bonn und bundesweit an Websites, Anwendungen und digitalen Inhalten. Bei Hareb Digital lassen sich Gestaltung, Entwicklung und Social Media aufeinander abstimmen: vom ersten Video über die passende Website bis zur Bearbeitung einer Anfrage.</p>
       <nav aria-label="Passende Leistungen für dein Projekt" className="mt-6 flex flex-wrap gap-6">
         {services.filter(service => service.href !== currentPath).map(service => (
           <Link key={service.href} href={service.href} className="text-link" data-track-id={`local-service-${service.href.split('/')[2]}`}>

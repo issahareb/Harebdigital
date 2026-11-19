@@ -114,7 +114,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'Werbebudget',
     studioTitle: 'Dein Webentwickler.\nDirekt für dich.',
     studioText:
-      'Ich bin Issa Hareb und entwickle digitale Projekte persönlich von der Idee bis zur Umsetzung. Ich arbeite aus Essen, der Geschäftssitz von Hareb Digital liegt in Sankt Augustin nahe Bonn. Unternehmen aus der Region und darüber hinaus betreue ich direkt.',
+      'Ich bin Issa Hareb und entwickle digitale Projekte persönlich von der Idee bis zur Umsetzung. Ich bin in Essen ansässig und betreue Projekte in Essen, Bonn und bundesweit direkt.',
     studioLink: 'Mehr über Issa',
     processTitle: 'Klar im Ablauf.\nPersönlich im Kontakt.',
     faqTitle: 'Gute Fragen.\nKlare Antworten.',
@@ -216,7 +216,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'advertising spend',
     studioTitle: 'Your project.\nBuilt with Issa.',
     studioText:
-      'I’m Issa Hareb and build digital projects personally, from planning to launch. I work from Essen, while Hareb Digital’s registered business address is in Sankt Augustin near Bonn. I support businesses locally and remotely.',
+      'I’m Issa Hareb and build digital projects personally, from planning to launch. I am based in Essen and work directly with businesses in Essen, Bonn and across Germany.',
     studioLink: 'More about Issa',
     processTitle: 'Clear process.\nPersonal contact.',
     faqTitle: 'Good questions.\nStraight answers.',
@@ -319,7 +319,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     budget: 'inversión publicitaria',
     studioTitle: 'Tu proyecto.\nDirectamente con Issa.',
     studioText:
-      'Soy Issa Hareb y desarrollo proyectos digitales personalmente, desde la idea hasta el lanzamiento. Trabajo desde Essen y el domicilio comercial de Hareb Digital está en Sankt Augustin, cerca de Bonn. Atiendo proyectos locales y a distancia.',
+      'Soy Issa Hareb y desarrollo proyectos digitales personalmente, desde la idea hasta el lanzamiento. Tengo mi base en Essen y atiendo directamente proyectos en Essen, Bonn y toda Alemania.',
     studioLink: 'Más sobre Issa',
     processTitle: 'Un proceso claro.\nUn trato personal.',
     faqTitle: 'Buenas preguntas.\nRespuestas claras.',

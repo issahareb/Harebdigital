@@ -9,7 +9,7 @@ export function ServiceDecisionDetails({ service }: { service: 'relaunch' | 'aut
       <section data-track-section="relaunch-decision">
         <h2>Website überarbeiten oder neu erstellen?</h2>
         <p>Wenn deine Inhalte noch stimmen, aber die mobile Bedienung oder das Design nicht mehr passen, kann eine gezielte Überarbeitung reichen. Fehlen wichtige Leistungsseiten oder lassen sich Funktionen kaum erweitern, prüfen wir einen Neuaufbau. Dafür sehe ich mir deine bestehende Website an und bespreche mit dir, welche Anfragen sie ermöglichen soll.</p>
-        <p>Ich arbeite aus Essen und betreue Unternehmen im Ruhrgebiet sowie in Sankt Augustin und Bonn. Du stimmst die Änderungen direkt mit mir ab. Vor der Umsetzung bekommst du einen vereinbarten Umfang und Festpreis.</p>
+        <p>Ich bin in Essen ansässig und betreue Unternehmen im Ruhrgebiet, in Bonn und bundesweit. Du stimmst die Änderungen direkt mit mir ab. Vor der Umsetzung bekommst du einen vereinbarten Umfang und Festpreis.</p>
         <Link href="/leistungen/neue-website/" className="text-link">Umfang einer neuen Unternehmenswebsite ansehen <InlineArrow size={16} aria-hidden /></Link>
       </section>
       <section data-track-section="relaunch-search-continuity">
@@ -32,7 +32,7 @@ export function ServiceDecisionDetails({ service }: { service: 'relaunch' | 'aut
       <section data-track-section="automation-planning">
         <h2>Welche Systeme lassen sich verbinden?</h2>
         <p>Das hängt von den Schnittstellen deiner Programme ab. Für die erste Einschätzung brauche ich die beteiligten Werkzeuge und einen konkreten Ablauf: Was löst ihn aus, welche Daten werden gebraucht und was soll am Ende passieren? Wir prüfen außerdem, welche Zugriffsrechte, Freigaben und laufenden Kosten erforderlich sind.</p>
-        <p>Bevor der Ablauf produktiv arbeitet, testen wir auch fehlende Angaben, doppelte Anfragen und Ausfälle eines angeschlossenen Dienstes. Wenn ein Schritt scheitert, soll der Vorgang nachvollziehbar bleiben und zur Bearbeitung gemeldet werden. Ich betreue die Konzeption und Umsetzung aus Essen, auch für Unternehmen in Sankt Augustin und Bonn.</p>
+        <p>Bevor der Ablauf produktiv arbeitet, testen wir auch fehlende Angaben, doppelte Anfragen und Ausfälle eines angeschlossenen Dienstes. Wenn ein Schritt scheitert, soll der Vorgang nachvollziehbar bleiben und zur Bearbeitung gemeldet werden. Ich betreue Konzeption und Umsetzung persönlich, für Unternehmen in Essen, Bonn und bundesweit.</p>
         <Link href="/leistungen/webanwendungen/" className="text-link">Mehr zu individuellen Dashboards und Webanwendungen <InlineArrow size={16} aria-hidden /></Link>
       </section>
     </div>

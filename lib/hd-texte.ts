@@ -692,7 +692,7 @@ const DE: HdTexte = {
       'Schreib mir, was ihr macht und was gerade nicht funktioniert. Drei Sätze genügen. Innerhalb von 24 Stunden bekommst du eine ehrliche Einschätzung zu Umfang, Dauer und Preis — von mir, nicht von einem Vertrieb.',
     epost: 'E-Mail',
     telefon: 'Telefon',
-    sitz: 'Geschäftsanschrift',
+    sitz: 'Postanschrift',
     zurueck: 'Zurück zur Startseite',
     formular: {
       titel: 'Deine Projektanfrage',
@@ -1097,7 +1097,7 @@ const EN: HdTexte = {
       'Tell me what you do and what is not working right now. Three sentences will do. Within 24 hours you get an honest read on scope, timeline and price — from me, not from a sales desk.',
     epost: 'Email',
     telefon: 'Phone',
-    sitz: 'Business address',
+    sitz: 'Postal address',
     zurueck: 'Back to the home page',
     formular: {
       titel: 'Your project enquiry',
@@ -1502,7 +1502,7 @@ const ES: HdTexte = {
       'Escríbeme a qué os dedicáis y qué no está funcionando. Con tres frases basta. En menos de 24 horas recibes una valoración honesta de alcance, plazo y precio — de mí, no de un comercial.',
     epost: 'Correo',
     telefon: 'Teléfono',
-    sitz: 'Dirección comercial',
+    sitz: 'Dirección postal',
     zurueck: 'Volver a la página de inicio',
     formular: {
       titel: 'Tu consulta de proyecto',
