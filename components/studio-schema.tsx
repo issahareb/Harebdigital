@@ -37,10 +37,10 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
             address: {
               '@type': 'PostalAddress',
               addressRegion: 'Nordrhein-Westfalen',
-              addressLocality: marke.ort,
+              addressLocality: marke.arbeitsort,
               addressCountry: marke.land,
             },
-            areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'City', name: marke.ort }, { '@type': 'City', name: 'Bonn' }, { '@type': 'AdministrativeArea', name: 'Rhein-Sieg-Kreis' }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
+            areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
             sameAs: ['https://share.google/EUZlSQOOkoXIK0AMM', PORTFOLIO, 'https://clutch.co/profile/hareb-digital', 'https://www.sortlist.com/fr/agency/hareb-digital'],
           },
           {

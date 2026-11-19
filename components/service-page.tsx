@@ -68,7 +68,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
       </span>
       <h1 className="mt-5">{lang === 'de' && i === 0 ? 'Website erstellen lassen in Essen' : t.serviceNames[i]}</h1>
       <p className="service-detail-lead">{lang === 'de' && i === 0
-        ? 'Du möchtest eine Website erstellen lassen und suchst einen direkten Ansprechpartner? Ich bin Issa Hareb, Webdesigner und Entwickler aus Essen. Ich plane und entwickle deinen Auftritt persönlich, von der Seitenstruktur bis zur Veröffentlichung. Auch Unternehmen in Sankt Augustin und Bonn betreue ich digital.'
+        ? 'Du möchtest eine Website erstellen lassen und suchst einen direkten Ansprechpartner? Ich bin Issa Hareb, Webdesigner und Entwickler aus Essen. Ich plane und entwickle deinen Auftritt persönlich, von der Seitenstruktur bis zur Veröffentlichung. In Essen ansässig, betreue ich Projekte in Essen, Bonn und bundesweit.'
         : service.detail.vorspann}</p>
       <figure className="service-detail-art" data-reveal>
         <ServiceVisual index={i} lang={lang} />
@@ -134,7 +134,7 @@ export function ServicePage({ lang, slug }: { lang: HdLang; slug: string }) {
                 name: 'Hareb Digital',
                 url: `${DOMAIN}/`,
               },
-              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'City', name: 'Sankt Augustin' }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Country', name: 'Germany' }],
+              areaServed: [{ '@type': 'City', name: 'Essen' }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Country', name: 'Germany' }],
               availableChannel: {
                 '@type': 'ServiceChannel',
                 serviceUrl: `${DOMAIN}${localizedPath(lang, '/kontakt/')}`,
