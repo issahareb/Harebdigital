@@ -66,7 +66,7 @@ Das Formular bereitet eine E-Mail vor und öffnet das E-Mail-Programm. Es sendet
 
 ## Noch offene Angaben vor einer Veröffentlichung
 
-Die bestätigte Geschäftsanschrift in Sankt Augustin ist im Impressum enthalten. Weitere Angaben werden nicht aus dem Design abgeleitet oder erfunden; `npm run pruefen` meldet die noch offenen Geschäftsdaten und rechtlichen Textprüfungen. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
+Die ladungsfähige Postanschrift (c/o Online-Impressum, Sankt Augustin) steht im Impressum. Sie ist kein Geschäftssitz und darf nirgends als Sitz oder Standort auftauchen. Weitere Angaben werden nicht aus dem Design abgeleitet oder erfunden; `npm run pruefen` meldet die noch offenen Geschäftsdaten und rechtlichen Textprüfungen. Auf der Kontaktseite wird eine fehlende Telefonnummer nicht als defekter Telefonlink angeboten.
 
 Die aktuellen Prüfergebnisse und ihre Grenzen stehen in `docs/verification.json`. Visuelle Vorschauen: `docs/preview-desktop.png`, `docs/preview-mobile.png`, `docs/preview-flight.png`, `docs/preview-fullscreen.webp` und `docs/preview-menu.png`.
 
