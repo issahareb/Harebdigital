@@ -33,7 +33,7 @@ export function Anfrageformular({
     '1': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Unternehmenswebsite ab 1.290 € einmalig.\n\nMein Projekt: ',
     '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 190 € einmalig.\n\nMein Projekt: ',
     '4': 'Ich interessiere mich für einen Onlineshop ab 1.490 € einmalig.\n\nMein Projekt: ',
-    '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Website ab 1.290 € einmalig mit Betreuung/Hosting für 39,99 € pro Monat. Bitte nennen Sie mir auch die Bedingungen.\n\nMein Projekt: ',
+    '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Website ab 1.290 € einmalig. Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Bitte nennen Sie mir auch die Bedingungen.\n\nMein Projekt: ',
   }
   const [nachricht, setNachricht] = useState(readProjectBrief(parameter.get('projekt')) || offerMessages[parameter.get('angebot') ?? ''] || '')
 

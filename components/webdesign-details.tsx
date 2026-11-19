@@ -26,7 +26,7 @@ export const webdesignQuestions = [
   },
   {
     question: 'Welche Kosten entstehen nach der Veröffentlichung?',
-    answer: 'Betreuung/Hosting kostet 39,99 € pro Monat. Je nach Projekt fallen zusätzlich Kosten für Domain und gegebenenfalls externe Dienste oder Lizenzen an. Alle laufenden Kosten stehen vor der Beauftragung im Angebot. Bei den Website-Angeboten sind drei Monate Fehlerbehebung an der gelieferten Umsetzung und technische Optimierungen enthalten.',
+    answer: 'Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Die Website kannst du auch selbst verwalten. Je nach Projekt fallen zusätzlich Kosten für Domain und gegebenenfalls externe Dienste oder Lizenzen an. Alle laufenden Kosten stehen vor der Beauftragung im Angebot. Bei den Website-Angeboten sind drei Monate Fehlerbehebung an der gelieferten Umsetzung und technische Optimierungen enthalten.',
   },
   {
     question: 'Kann meine Website später erweitert werden?',
