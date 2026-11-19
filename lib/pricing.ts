@@ -1,6 +1,6 @@
 import type { HdLang } from './hd-texte'
 export const ONE_PAGER_PRICE = 490
-export const WEBSITE_PRICE = 1290
+export const WEBSITE_PRICE = 990
 export const SHOP_PRICE = 1490
 
 export const SHOP_FEATURES = [
@@ -37,7 +37,7 @@ export const PRICING: Record<HdLang, string[]> = {
   "de": [
     "Preise & Einstiegsangebote",
     "Was kostet eine Website?",
-    `One-Pager starten bei 490 €, mehrseitige Websites bei 1.290 € und Onlineshops bei 1.490 €, jeweils einmalig. ${WEBSITE_PACKAGE.de.scope} Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Domain und Lizenzen sind nicht pauschal enthalten.`,
+    `One-Pager starten bei 490 €, mehrseitige Websites bei 990 € und Onlineshops bei 1.490 €, jeweils einmalig. ${WEBSITE_PACKAGE.de.scope} Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Domain und Lizenzen sind nicht pauschal enthalten.`,
     "One-Pager",
     "Unternehmenswebsite",
     "Terminwidget",
@@ -50,7 +50,7 @@ export const PRICING: Record<HdLang, string[]> = {
   "en": [
     "Prices & introductory offers",
     "How much does a website cost?",
-    `One-pagers start at €490, multi-page websites at €1,290 and online shops at €1,490, each as a one-time price. ${WEBSITE_PACKAGE.en.scope} Optional if you want: administration, hosting and maintenance for €39.99 per month. Domain and licences are not automatically included.`,
+    `One-pagers start at €490, multi-page websites at €990 and online shops at €1,490, each as a one-time price. ${WEBSITE_PACKAGE.en.scope} Optional if you want: administration, hosting and maintenance for €39.99 per month. Domain and licences are not automatically included.`,
     "Landing page",
     "Business website",
     "Appointment widget",
@@ -63,7 +63,7 @@ export const PRICING: Record<HdLang, string[]> = {
   "es": [
     "Precios y ofertas iniciales",
     "¿Cuánto cuesta una web?",
-    `Las webs de una página parten de 490 €, las webs de varias páginas de 1.290 € y las tiendas online de 1.490 €, en un pago único. ${WEBSITE_PACKAGE.es.scope} Opcional si lo deseas: administración, alojamiento y mantenimiento por 39,99 € al mes. Dominio y licencias no están incluidos de forma general.`,
+    `Las webs de una página parten de 490 €, las webs de varias páginas de 990 € y las tiendas online de 1.490 €, en un pago único. ${WEBSITE_PACKAGE.es.scope} Opcional si lo deseas: administración, alojamiento y mantenimiento por 39,99 € al mes. Dominio y licencias no están incluidos de forma general.`,
     "Landing page",
     "Web de empresa",
     "Widget de citas",

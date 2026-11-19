@@ -30,10 +30,10 @@ export function Anfrageformular({
   const offerMessages: Record<string, string> = {
     'ki-telefonie': pathname.startsWith('/en') ? 'I am interested in an AI phone agent for my business with my own dashboard and enquiries by email, dashboard or both.\n\nMy business: ' : pathname.startsWith('/es') ? 'Me interesa un agente telefónico de IA para mi empresa con panel propio y consultas por correo, panel o ambos.\n\nMi empresa: ' : 'Ich interessiere mich für einen KI-Telefonagenten für mein Unternehmen mit eigenem Dashboard und Anfragen per E-Mail, Dashboard oder beidem.\n\nMein Unternehmen: ',
     '0': 'Ich interessiere mich für das begrenzte Einstiegsangebot: One-Pager ab 490 € einmalig.\n\nMein Projekt: ',
-    '1': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Unternehmenswebsite ab 1.290 € einmalig.\n\nMein Projekt: ',
+    '1': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Unternehmenswebsite ab 990 € einmalig.\n\nMein Projekt: ',
     '2': 'Ich interessiere mich für das begrenzte Einstiegsangebot: Terminwidget für 190 € einmalig.\n\nMein Projekt: ',
     '4': 'Ich interessiere mich für einen Onlineshop ab 1.490 € einmalig.\n\nMein Projekt: ',
-    '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Website ab 1.290 € einmalig. Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Bitte nennen Sie mir auch die Bedingungen.\n\nMein Projekt: ',
+    '3': 'Ich interessiere mich für das begrenzte Einstiegsangebot: mehrseitige Website ab 990 € einmalig. Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat. Bitte nennen Sie mir auch die Bedingungen.\n\nMein Projekt: ',
   }
   const [nachricht, setNachricht] = useState(readProjectBrief(parameter.get('projekt')) || offerMessages[parameter.get('angebot') ?? ''] || '')
 

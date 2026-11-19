@@ -41,7 +41,7 @@ for (const width of [320,390,768,1440]) {
   const homeHeading=await home.locator('#offer-title').evaluate(el=>{const s=getComputedStyle(el);return [s.fontSize,s.fontFamily,s.fontWeight,s.lineHeight,s.letterSpacing]})
   assert.deepEqual(await page.locator('#offer-title').evaluate(el=>{const s=getComputedStyle(el);return [s.fontSize,s.fontFamily,s.fontWeight,s.lineHeight,s.letterSpacing]}),homeHeading)
   await home.close()
-  for(const [index,price,service] of [[0,'490','neue-website'],[1,'1.290','neue-website'],[2,'190','automatisierung'],[3,'1.290','neue-website'],[4,'1.490','webanwendungen']]) {
+  for(const [index,price,service] of [[0,'490','neue-website'],[1,'990','neue-website'],[2,'190','automatisierung'],[3,'990','neue-website'],[4,'1.490','webanwendungen']]) {
     await page.getByRole('tab').nth(index).click()
     assert.equal(await page.getByRole('tab').nth(index).getAttribute('aria-selected'),'true')
     assert.equal(await page.getByRole('tabpanel').count(),1)
