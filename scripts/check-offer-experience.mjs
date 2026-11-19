@@ -32,7 +32,7 @@ try {
       await offers.getByRole('tab').nth(index).click()
       const panel = offers.getByRole('tabpanel')
       assert.equal(await panel.count(), 1)
-      assert((await panel.innerText()).includes(['490 €', '1.290 €', '190 €', '1.290 €', '1.490 €'][index]))
+      assert((await panel.innerText()).includes(['490 €', '990 €', '190 €', '990 €', '1.490 €'][index]))
       assert((await panel.getByRole('link').getAttribute('href')).endsWith(`angebot=${index}`))
       const visual = panel.locator('[class*=visual]').first()
       const mock = panel.locator('[class*=sitePreview]')
