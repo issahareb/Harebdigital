@@ -2,14 +2,14 @@ import { ArrowUpRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { HdUnterseite } from '@/components/hd-unterseite'
-import { TensaVideo } from '@/components/tensa-case'
+import { TENSA_GATE_URL, TensaVideo } from '@/components/tensa-case'
 
 const url = 'https://hareb.digital/projekte/tensa/'
 export const metadata: Metadata = {
   title: 'TENSA: Onlineshop im Aufbau | Hareb Digital',
   description: 'Einblicke in die laufende Entwicklung für die Modemarke TENSA: animierte Launch-Seite und ein umfangreicher Onlineshop mit Kundenkonten und modernen Zahlungsarten im Aufbau.',
   alternates: { canonical: url },
-  openGraph: { url, title: 'TENSA · Einblick in die laufende Entwicklung', description: 'Launch-Inszenierung und Onlineshop für eine Modemarke. Noch nicht live.', images: ['/projekte/tensa/launch-poster.webp'] },
+  openGraph: { url, title: 'TENSA · Einblick in die laufende Entwicklung', description: 'Animierte Gate-Seite für den ersten Drop. Der Onlineshop ist im Aufbau.', images: ['/projekte/tensa/launch-poster.webp'] },
 }
 
 export default function Page() {
@@ -17,7 +17,8 @@ export default function Page() {
     <nav className="breadcrumbs" aria-label="Brotkrumennavigation"><Link href="/">Startseite</Link><span>/</span><span aria-current="page">TENSA</span></nav>
     <span className="eyebrow">KUNDENPROJEKT · MODE · IN BEARBEITUNG</span>
     <h1 className="mt-5">TENSA. Vorfreude auf den ersten Drop.</h1>
-    <p className="service-detail-lead">Für die Modemarke TENSA entwickeln wir einen eigenständigen Markenauftritt und einen umfangreichen Onlineshop. Die Website ist noch nicht live. Hier zeigen wir einen echten Zwischenstand aus der laufenden Arbeit.</p>
+    <p className="service-detail-lead">Für die Modemarke TENSA entwickeln wir einen eigenständigen Markenauftritt und einen umfangreichen Onlineshop. Die Gate-Seite ist bereits online. Ein leuchtender 3D-Ring setzt den Zip-Hoodie für den ersten Drop in Szene.</p>
+    <a className="text-link" href={TENSA_GATE_URL}>TENSA-Gate-Seite besuchen <ArrowUpRight size={17} aria-hidden /></a>
     <TensaVideo />
     <div className="service-detail-grid">
       <section><h2>Der Launch beginnt vor dem Verkauf.</h2><p>Die Gate-Seite kündigt den ersten Drop an und macht aus dem Warten ein Markenerlebnis. Das TENSA-Logo, das Produkt und eine bewegte Lichtinszenierung stehen im Mittelpunkt. Im Video ist zu sehen, wie die Beleuchtung auf die Bewegung des Mauszeigers reagiert.</p><p>So bekommt die Marke schon vor der Shopöffnung einen eigenen Auftritt. Dahinter entsteht aktuell der eigentliche Shop.</p></section>
