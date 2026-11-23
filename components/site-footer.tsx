@@ -7,6 +7,7 @@ import { HD_TEXTE } from '@/lib/hd-texte'
 import { STUDIO_COPY } from '@/lib/studio-copy'
 import { localizedPath } from '@/lib/locale'
 import { marke, PORTFOLIO } from '@/lib/marke'
+import { PrivacySettingsLink } from './privacy-settings-link'
 
 export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: boolean }) {
   const t = STUDIO_COPY[lang]
@@ -69,6 +70,7 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
         >
           <Link data-track-id="site-footer-link-5" href="/impressum/">{HD_TEXTE[lang].fuss.impressum}</Link>
           <Link data-track-id="site-footer-link-6" href="/datenschutz/">{HD_TEXTE[lang].fuss.datenschutz}</Link>
+          <PrivacySettingsLink lang={lang} />
           <a data-track-id="site-footer-a-7" href={`mailto:${marke.kontaktEmail}`}>
             {lang === 'de' ? 'Kontakt' : lang === 'es' ? 'Contacto' : 'Contact'}
             <ArrowUpRight size={13} aria-hidden />
