@@ -45,6 +45,12 @@ export function SiteDocument({ lang, children }: { lang: HdLang; children: React
         {children}
         <ActivityTracker />
         <TikTokEnquiryTracking />
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          type="module"
+          strategy="afterInteractive"
+          data-cf-beacon='{"token":"aae26bd16d754edf8ff92adb88d0fba1"}'
+        />
       </body>
       <Script src="https://px.get-ryze.ai/px.js?key=rz_pk_0dc2d46f23d1df8a0def884abf8f6fa3" strategy="beforeInteractive" />
     </html>
