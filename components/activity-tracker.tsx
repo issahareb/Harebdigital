@@ -60,6 +60,6 @@ const title = en ? 'Your privacy. Your choice.' : es ? 'Tu privacidad. Tú decid
         <button type="button" className="button button-dark" disabled={blocked} onClick={() => save(true,true)}>{en ? 'Allow all' : es ? 'Permitir todo' : 'Alle erlauben'}</button>
       </div>
       <div className={styles.links}><button type="button" aria-expanded={expanded} aria-controls="privacy-options" onClick={() => setExpanded(!expanded)}>{en ? 'Settings' : es ? 'Ajustes' : 'Einstellungen'}</button><a href="/datenschutz/">{en ? 'Privacy details' : es ? 'Privacidad' : 'Datenschutzhinweise'}</a></div>
-    </section> : <button type="button" className={styles.reopen} onClick={() => { setExpanded(true); setOpen(true) }}>{en ? 'Privacy settings' : es ? 'Ajustes de privacidad' : 'Datenschutzeinstellungen'}</button>}
+    </section> : null}
   </div>
 }
