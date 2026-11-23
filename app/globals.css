@@ -1041,15 +1041,30 @@ h3,
   flex-wrap: wrap;
   gap: 24px;
 }
-.footer-bottom a {
+.footer-bottom a,
+.footer-bottom nav button {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   min-height: 25px;
 }
-.footer-bottom a:hover {
+.footer-bottom nav button {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.footer-bottom a:hover,
+.footer-bottom nav button:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+.footer-bottom nav button:focus-visible {
+  outline: 2px solid var(--hd-accent);
+  outline-offset: 4px;
 }
 .site-footer--compact {
   margin-top: auto;
