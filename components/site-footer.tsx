@@ -29,6 +29,12 @@ export function SiteFooter({ lang, compact = false }: { lang: HdLang; compact?: 
               {lang === 'de' ? 'Kontakt aufnehmen' : lang === 'en' ? 'Get in touch' : 'Contactar'}
               <ArrowUpRight size={20} aria-hidden />
             </Link>
+            <div className="footer-portfolio-action" style={{ marginTop: 12 }}>
+              <a data-track-id="site-footer-portfolio" className="button button-accent" href={PORTFOLIO} rel="me">
+                {lang === 'de' ? 'Zum Portfolio' : lang === 'en' ? 'View portfolio' : 'Ver portfolio'}
+                <ArrowUpRight size={20} strokeWidth={1.6} aria-hidden />
+              </a>
+            </div>
             <a data-track-id="site-footer-a-3" className="footer-email" href={`mailto:${marke.kontaktEmail}`}>
               {marke.kontaktEmail}
             </a>
