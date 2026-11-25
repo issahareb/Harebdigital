@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { ArrowUpRight, Server, ShieldCheck, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Server, ShieldCheck, TrendingUp } from 'lucide-react'
 import { HOSTING_COPY } from '@/lib/hosting-copy'
 import type { HdLang } from '@/lib/hd-texte'
 import { localizedPath } from '@/lib/locale'
 
-const icons = [Server, ShieldCheck, Sparkles]
+const icons = [Server, ShieldCheck, TrendingUp]
 
 export function HostingCare({ lang }: { lang: HdLang }) {
   const t = HOSTING_COPY[lang]
