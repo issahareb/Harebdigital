@@ -60,7 +60,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
   de: {
     title: 'Webdesign Essen | Issa Hareb · Hareb Digital',
     description:
-      'Individuelle Websites ab 490 €: Webdesign, Entwicklung, SEO und Automatisierung für Unternehmen. Optional auf Wunsch: Verwaltung, Hosting und Pflege für 39,99 € im Monat.',
+      'Webdesign in Essen von Issa Hareb. Onepager ab 490 €, mehrseitige Websites ab 990 €. Mit Buchung, Shop oder Automatisierung nach Bedarf.',
     skip: 'Zum Inhalt springen',
     menu: 'Menü öffnen',
     close: 'Menü schließen',
@@ -70,7 +70,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     kicker: 'Dein Webdesigner aus Essen',
     headline: ['Dein Angebot überzeugt.', 'Deine Website auch?'],
     intro:
-      'Zwischen einem guten Angebot und einer echten Anfrage liegt mehr als schönes Design. Entdecke, worauf es ankommt.',
+      'Ich bin Issa Hareb aus Essen. Ich entwickle Websites, auf denen deine Kunden Fahrten anfragen, Termine buchen oder direkt einkaufen können.',
     scroll: 'Scrollen & entdecken',
     motionOff: 'Animation ausschalten',
     motionOn: 'Animation einschalten',
@@ -174,7 +174,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     kicker: 'Independent digital studio',
     headline: ['Digital.', 'With substance.'],
     intro:
-      'I build websites that explain what you offer and make it easy for customers to enquire. Tailored automation takes recurring tasks off your hands.',
+      'I’m Issa Hareb, founder of Hareb Digital in Essen. I build websites that let your customers request a ride, book an appointment or place an order online.',
     scroll: 'Scroll to explore',
     motionOff: 'Turn animation off',
     motionOn: 'Turn animation on',
@@ -276,7 +276,7 @@ export const STUDIO_COPY: Record<HdLang, StudioCopy> = {
     kicker: 'Estudio digital independiente',
     headline: ['Digital.', 'Con sustancia.'],
     intro:
-      'Desarrollo webs que explican lo que ofreces y facilitan que tus clientes te contacten. Las automatizaciones a medida se encargan de las tareas repetitivas.',
+      'Soy Issa Hareb, fundador de Hareb Digital en Essen. Desarrollo webs para que tus clientes puedan solicitar un taxi, reservar una cita o comprar en línea.',
     scroll: 'Desliza para descubrir',
     motionOff: 'Desactivar animación',
     motionOn: 'Activar animación',

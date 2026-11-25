@@ -41,7 +41,7 @@ export function StudioSchema({ lang }: { lang: HdLang }) {
               addressCountry: marke.land,
             },
             areaServed: [{ '@type': 'City', name: marke.arbeitsort }, { '@type': 'City', name: 'Bonn' }, { '@type': 'Place', name: 'Ruhrgebiet' }, { '@type': 'Country', name: 'Germany' }],
-            sameAs: ['https://share.google/EUZlSQOOkoXIK0AMM', PORTFOLIO, 'https://clutch.co/profile/hareb-digital', 'https://www.sortlist.com/fr/agency/hareb-digital'],
+            sameAs: ['https://share.google/EUZlSQOOkoXIK0AMM', 'https://clutch.co/profile/hareb-digital', 'https://www.sortlist.com/fr/agency/hareb-digital'],
           },
           {
             '@type': 'Person',
