@@ -22,7 +22,7 @@ import { ScrollAccent } from './scroll-accent'
 import { VISUAL_COPY } from '@/lib/service-visuals'
 import { ServiceVisual } from './service-visual'
 import { WebsiteShowcase } from './website-showcase'
-import { ExperienceThread, GoalExperience, LiveDesignLab, ProjectConfigurator } from './interactive-studio'
+import { ExperienceThread, GoalExperience, ProjectConfigurator } from './interactive-studio'
 import { HandwerkerDemo } from './handwerker-demo'
 
 function Lines({ text }: { text: string }) {
@@ -225,7 +225,6 @@ export function HdLanding({ lang }: { lang: HdLang }) {
           {lang === 'de' && <div className="service-detail-grid">{ADDITIONAL_SERVICES.map(service => <section data-track-section="hd-landing-section-4" key={service.slug}><h3>{service.title}</h3><p>{service.description}</p><Link data-track-id="hd-landing-link-5" className="text-link" href={`/leistungen/${service.slug}/`}>{lang === 'de' ? 'Mehr erfahren' : service.title} <InlineArrow size={16} aria-hidden /></Link></section>)}</div>}
           <AiDiscovery lang={lang} />
         </section>
-        {lang === 'de' && <LiveDesignLab />}
         <WebsiteShowcase lang={lang} />
         {lang === 'de' && <ProjectConfigurator />}
         <HomeMore lang={lang} />
