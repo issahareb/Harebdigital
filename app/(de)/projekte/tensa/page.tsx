@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { HdUnterseite } from '@/components/hd-unterseite'
+import { JsonLd, ORGANIZATION_ID } from '@/components/studio-schema'
 import { TENSA_GATE_URL, TensaVideo } from '@/components/tensa-case'
 
 const url = 'https://hareb.digital/projekte/tensa/'
@@ -14,6 +15,17 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return <HdUnterseite lang="de" motiv>
+    <JsonLd data={{
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      '@id': `${url}#projektbericht`,
+      url,
+      inLanguage: 'de',
+      name: 'TENSA: Launch-Seite und Onlineshop im Aufbau',
+      description: metadata.description,
+      author: { '@id': ORGANIZATION_ID, '@type': 'Organization', name: 'Hareb Digital', url: 'https://hareb.digital/' },
+      about: { '@type': 'WebSite', name: 'TENSA', url: TENSA_GATE_URL },
+    }} />
     <nav className="breadcrumbs" aria-label="Brotkrumennavigation"><Link href="/">Startseite</Link><span>/</span><span aria-current="page">TENSA</span></nav>
     <span className="eyebrow">KUNDENPROJEKT · MODE · IN BEARBEITUNG</span>
     <h1 className="mt-5">TENSA. Vorfreude auf den ersten Drop.</h1>
