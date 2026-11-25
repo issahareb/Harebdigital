@@ -332,3 +332,8 @@
 .buildScreen footer { display:flex; justify-content:space-between; font-size:8px; margin-top:24px; border-top:1px solid var(--line); padding-top:12px; }
 .buildScreen footer > span { display:flex; gap:6px; align-items:center; }
 @media(prefers-reduced-motion:reduce) { .buildScreen { transition:none; } }
+
+/* Avoid iOS Safari auto-zoom when editing booking demo fields. */
+@media (max-width: 767px) {
+  .bookingForm .inputLabel input, .bookingForm .inputLabel textarea { font-size: 16px; box-sizing: border-box; min-width: 0; }
+}
